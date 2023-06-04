@@ -19,7 +19,7 @@ const StyledContainer = styled(Container)`
   width: 100%;
 `;
 
-const FirstPage = () => {
+const FirstContainer = () => {
     return (
         <StyledContainer>
             <Typography variant="h3" component="h1" gutterBottom>
@@ -32,4 +32,31 @@ const FirstPage = () => {
     );
 };
 
-export default FirstPage;
+const SecondContainer = () => {
+    return (
+        <StyledContainer>
+            <Typography variant="h3" component="h1" gutterBottom>
+                Network CE - Education Centers
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+                A network of informal education operating in libraries and public spaces in Lviv and the region. We offer educational courses for professional and social growth.
+            </Typography>
+        </StyledContainer>
+    );
+};
+
+
+const ThirdContainer = () => {
+    return (
+        <StyledContainer>
+            <Typography variant="h3" component="h1" gutterBottom>
+                Network CE - Education Centers
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+                A network of informal education operating in libraries and public spaces in Lviv and the region. We offer educational courses for professional and social growth.
+            </Typography>
+        </StyledContainer>
+    );
+};
+
+export { FirstContainer, SecondContainer, ThirdContainer };
