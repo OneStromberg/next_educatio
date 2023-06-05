@@ -12,6 +12,7 @@ export default function main() {
             <Header />
             <FirstContainer />
             <SecondContainer />
+            <ThirdContainer/>
             <Footer />
         </>
     )
