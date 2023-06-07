@@ -11,7 +11,7 @@ import {
     Paper
 } from '@mui/material';
 
-import backgroundImage from '@/assets/background.jpg';
+import backgroundImage from '../assets/background.jpg';
 
 const StyledContainer = styled(Container)`
     background-image: ${backgroundImage};
@@ -113,9 +113,9 @@ const ThirdContainer = () => {
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Заголовок 1</TableCell>
-                        <TableCell>Заголовок 2</TableCell>
-                        <TableCell>Заголовок 3</TableCell>
+                        <TableCell>Header 1</TableCell>
+                        <TableCell>Header 2</TableCell>
+                        <TableCell>Header 3</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -132,4 +132,92 @@ const ThirdContainer = () => {
     );
 };
 
-export { FirstContainer, SecondContainer, ThirdContainer };
+const FourthContainer = () => {
+    const StyledGrid = styled(Grid)`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  `;
+    const images = [
+        {
+            id: 1,
+            src: 'image1.jpg',
+            caption: 'Image 1',
+        },
+        {
+            id: 2,
+            src: 'image2.jpg',
+            caption: 'Image 2',
+        },
+        {
+            id: 3,
+            src: 'image3.jpg',
+            caption: 'Image 3',
+        },
+        // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
+    ];
+
+    return (
+        <Grid container spacing={2}>
+            {images.map((image) => (
+                <Grid item xs={12} sm={6} md={4} key={image.id}>
+                    <StyledGrid>
+                        <img src={image.src} alt={image.caption} style={{ maxWidth: '100%', height: 'auto' }} />
+                        <Typography variant="subtitle1" gutterBottom>
+                            {image.caption}
+                        </Typography>
+                    </StyledGrid>
+                </Grid>
+            ))}
+        </Grid>
+    );
+}
+
+const FifthContainer = () => {
+    const StyledGrid = styled(Grid)`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  `;
+    const images = [
+        {
+            id: 1,
+            src: 'image1.jpg',
+            caption: 'Image 1',
+        },
+        {
+            id: 2,
+            src: 'image2.jpg',
+            caption: 'Image 2',
+        },
+        {
+            id: 3,
+            src: 'image3.jpg',
+            caption: 'Image 3',
+        },
+        // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
+    ];
+
+    return (
+        <Grid container spacing={2}>
+            {images.map((image) => (
+                <Grid item xs={12} sm={6} md={4} key={image.id}>
+                    <StyledGrid>
+                        <img src={image.src} alt={image.caption} style={{ maxWidth: '100%', height: 'auto' }} />
+                        <Typography variant="subtitle1" gutterBottom>
+                            {image.caption}
+                        </Typography>
+                    </StyledGrid>
+                </Grid>
+            ))}
+        </Grid>
+    );
+}
+
+export { FirstContainer, SecondContainer, ThirdContainer, FourthContainer, FifthContainer };

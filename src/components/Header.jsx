@@ -4,7 +4,7 @@ import { Language, Facebook, Instagram } from '@mui/icons-material';
 
 const Header = () => {
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" color="">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           My Website
