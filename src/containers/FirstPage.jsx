@@ -191,18 +191,24 @@ const FourthContainer = () => {
     ];
 
     return (
-        <Grid container spacing={2}>
-            {images.map((image) => (
-                <Grid item xs={12} sm={6} md={4} key={image.id}>
-                    <StyledGrid>
-                        <img src={image.src} alt={image.caption} style={{ maxWidth: '100%', height: 'auto' }} />
-                        <Typography variant="subtitle1" gutterBottom>
-                            {image.caption}
-                        </Typography>
-                    </StyledGrid>
-                </Grid>
-            ))}
-        </Grid>
+        <Container maxWidth="sm">
+            <Typography variant="h4" gutterBottom>
+                Educational areas
+            </Typography>
+            <Grid container spacing={2}>
+
+                {images.map((image) => (
+                    <Grid item xs={12} sm={6} md={4} key={image.id}>
+                        <StyledGrid>
+                            <img src={image.src} alt={image.caption} style={{ maxWidth: '100%', height: 'auto' }} />
+                            <Typography variant="subtitle1" gutterBottom>
+                                {image.caption}
+                            </Typography>
+                        </StyledGrid>
+                    </Grid>
+                ))}
+            </Grid>
+        </Container>
     );
 }
 
