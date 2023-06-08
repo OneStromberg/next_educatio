@@ -6,9 +6,9 @@ const theme = createTheme({
       styleOverrides: {
         sizeLarge: {
           fontFamily: "Roboto",
-          fontSize: 16,
-          color: "#8493B7",
-          paddingY: 3,
+          fontSize: 42,
+          color: "#ef4056",
+          marginBottom: 16,
         },
       },
     },
@@ -21,10 +21,10 @@ const theme = createTheme({
     },
     allVariants: {
       cursor: "default",
-      fontSize: 14,
-      color: "#8C9EB9",
-      marginTop: 8,
-      lineHeight: "20px",
+      fontSize: 20,
+      fontWeight: 300,
+      color: "#241f55",
+      lineHeight: 1.55,
     },
     body1: {
       fontSize: 14,

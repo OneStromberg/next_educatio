@@ -2,16 +2,13 @@ import { useState, useEffect } from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import {
-    Table,
-    TableBody,
     TableCell,
-    TableContainer,
-    TableHead,
+    // Container,
     TableRow,
-    Paper
 } from '@mui/material';
 
 import backgroundImage from '@/assets/background.jpg';
+import AboutUsPic from '@/assets/pic1.jpg'
 
 const StyledContainer = styled(Container)`
   background-size: cover;
@@ -56,6 +53,7 @@ const StyledSecondContainer = styled(Container)`
         justify-content: center;
         align-items: center;
         text-align: center;
+        
         `;
 
 const StyledTextContainer = styled(Grid)`
@@ -63,6 +61,8 @@ const StyledTextContainer = styled(Grid)`
         flex-direction: column;
         align-items: flex-start;
         padding: 20px;
+        text-align: center;
+        align-items: center;
         `;
 
 const StyledImage = styled('img')`
@@ -103,18 +103,20 @@ const SecondContainer = () => {
         <StyledSecondContainer>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
-                    <StyledImage src={backgroundImage} alt="Background" />
+                    <StyledImage src={AboutUsPic.src} alt="About Us" width={600} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <StyledTextContainer>
                         <Typography variant="h4" gutterBottom>
-                            Network CE - Education Centers
+                            About us
                         </Typography>
                         <Typography variant="body1" gutterBottom>
-                            A network of informal education operating in libraries and public spaces in Lviv and the region.
+                            Developing the habit of continuous learning
                         </Typography>
                         <Typography variant="body1" gutterBottom>
-                            We offer educational courses for professional and social growth.
+                            This is a network of Education Centers that has been operating in eight city libraries in Lviv since 2019. We develop a culture of informal lifelong learning by providing high-quality long-term training courses.
+                            Since 2022, we have been conducting art therapies with qualified psychotherapists in Lviv and the region with the support of UNICEF.
+                            The CE network exists thanks to the close cooperation of the City Institute, Lviv City Council, the Department of Culture, and the financial support of DVV International Ukraine.
                         </Typography>
                     </StyledTextContainer>
                 </Grid>
@@ -145,26 +147,26 @@ const ThirdContainer = () => {
     }, []);
 
     return (
-        <TableContainer component={Paper}>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Header 1</TableCell>
-                        <TableCell>Header 2</TableCell>
-                        <TableCell>Header 3</TableCell>
+        <Container maxWidth="sm">
+            <StyledTextContainer>
+                <Typography variant="h4" gutterBottom>
+                    Our actions
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                    It is worth acquiring new knowledge even after graduation from formal educational institutions. THIS is a network for those who treat knowledge as a basic necessity
+                </Typography>
+            </StyledTextContainer>
+            {
+                data.map((row) => (
+                    <TableRow key={row.id}>
+                        <TableCell>{row.column1}</TableCell>
+                        <TableCell>{row.column2}</TableCell>
+                        <TableCell>{row.column3}</TableCell>
                     </TableRow>
-                </TableHead>
-                <TableBody>
-                    {data.map((row) => (
-                        <TableRow key={row.id}>
-                            <TableCell>{row.column1}</TableCell>
-                            <TableCell>{row.column2}</TableCell>
-                            <TableCell>{row.column3}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                ))
+            }
+
+        </Container>
     );
 };
 
