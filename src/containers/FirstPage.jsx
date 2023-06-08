@@ -14,8 +14,8 @@ import {
 import backgroundImage from '../assets/background.jpg';
 
 const StyledContainer = styled(Container)`
-    background-image: ${backgroundImage};
-  background:linear-gradient(45deg, rgba(0, 176, 255, 0.5), rgba(255, 213, 0, 0.5)), url(${backgroundImage});
+  background-image: url(${backgroundImage.src});
+  background: linear-gradient(45deg, rgba(0, 176, 255, 0.5), rgba(255, 213, 0, 0.5)), url(${backgroundImage.src});
   background-size: cover;
   background-position: center;
   height: 100vh;
