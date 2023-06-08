@@ -11,10 +11,9 @@ import {
     Paper
 } from '@mui/material';
 
-import backgroundImage from '../assets/background.jpg';
+import backgroundImage from '@/assets/background.jpg';
 
 const StyledContainer = styled(Container)`
-  background-image: ${backgroundImage};
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -35,11 +34,11 @@ const BackgroundImage = styled('div')`
   width: 100%;
   height: 100%;
   background-image: linear-gradient(
-      45deg,
-      rgba(0, 176, 255, 0.5),
-      rgba(255, 213, 0, 0.5)
+    90deg, 
+    rgba(36, 31, 85, 0.8), 
+    rgba(8, 29, 31, 0.7)
     ),
-    url(${backgroundImage});
+    url(${backgroundImage.src});
   background-size: cover;
   background-position: center;
   z-index: -1;
