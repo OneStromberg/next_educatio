@@ -14,10 +14,7 @@ import {
 import backgroundImage from '../assets/background.jpg';
 
 const StyledContainer = styled(Container)`
-    background-image: ${backgroundImage};
-  background:linear-gradient(45deg, rgba(0, 176, 255, 0.5), rgba(255, 213, 0, 0.5)), url(${backgroundImage});
-  background-size: cover;
-  background-position: center;
+  position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,25 +22,34 @@ const StyledContainer = styled(Container)`
   align-items: center;
   text-align: center;
   color: white;
-  width: 100%;
+  overflow: hidden;
+  max-width: none;
 `;
 
-const FirstContainer = () => {
-    return (
-        <StyledContainer>
-            <Typography variant="h3" component="h1" gutterBottom>
-                Network CE - Education Centers
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-                A network of informal education operating in libraries and public spaces in Lviv and the region. We offer educational courses for professional and social growth.
-            </Typography>
-        </StyledContainer>
-    );
-};
+const BackgroundImage = styled('div')`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      45deg,
+      rgba(0, 176, 255, 0.5),
+      rgba(255, 213, 0, 0.5)
+    ),
+    url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  max-width: none;
+`;
 
-const SecondContainer = () => {
+const StyledTypography = styled(Typography)`
+  color: white;
+  z-index: 1;
+`;
 
-    const StyledContainer = styled(Container)`
+const StyledSecondContainer = styled(Container)`
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -51,20 +57,49 @@ const SecondContainer = () => {
         text-align: center;
         `;
 
-    const StyledTextContainer = styled(Grid)`
+const StyledTextContainer = styled(Grid)`
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         padding: 20px;
         `;
 
-    const StyledImage = styled('img')`
-        max-width: 100%;
+const StyledImage = styled('img')`
+        max-width: none;
         height: auto;
         `;
 
+const StyledGrid = styled(Grid)`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 20px;
+`;
+
+const FirstContainer = () => {
     return (
         <StyledContainer>
+            <BackgroundImage />
+            <StyledTypography variant="h3" component="h1" gutterBottom>
+                Network CE - Education Centers
+            </StyledTypography>
+            <StyledTypography variant="body1" gutterBottom>
+                A network of informal education operating in libraries and public spaces
+                in Lviv and the region. We offer educational courses for professional
+                and social growth.
+            </StyledTypography>
+        </StyledContainer>
+    );
+};
+
+const SecondContainer = () => {
+
+
+
+    return (
+        <StyledSecondContainer>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <StyledImage src={backgroundImage} alt="Background" />
@@ -83,7 +118,7 @@ const SecondContainer = () => {
                     </StyledTextContainer>
                 </Grid>
             </Grid>
-        </StyledContainer>
+        </StyledSecondContainer>
     );
 };
 
@@ -133,14 +168,6 @@ const ThirdContainer = () => {
 };
 
 const FourthContainer = () => {
-    const StyledGrid = styled(Grid)`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-  `;
     const images = [
         {
             id: 1,
@@ -177,14 +204,7 @@ const FourthContainer = () => {
 }
 
 const FifthContainer = () => {
-    const StyledGrid = styled(Grid)`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-  `;
+
     const images = [
         {
             id: 1,

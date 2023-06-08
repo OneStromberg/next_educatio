@@ -1,42 +1,63 @@
 import Link from 'next/link';
 import { AppBar, Toolbar, Typography, IconButton, Button } from '@mui/material';
 import { Language, Facebook, Instagram } from '@mui/icons-material';
+import { styled } from '@mui/system';
+
+const TransparentAppBar = styled(AppBar)`
+  background-color: transparent;
+  box-shadow: none;
+`;
+
+const StyledLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+`;
+
+const StyledIconButton = styled(IconButton)`
+  color: white;
+  margin-left: 10px;
+`;
+
+const Logo = styled(Typography)`
+  flex-grow: 1;
+  color: white;
+`;
 
 const Header = () => {
   return (
-    <AppBar position="static" color="">
+    <TransparentAppBar position="static">
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Logo variant="h6" component="div">
           My Website
-        </Typography>
+        </Logo>
         <Button color="inherit">
-          <Link href="/about">About Us</Link>
+          <StyledLink href="/about">About Us</StyledLink>
         </Button>
         <Button color="inherit">
-          <Link href="/services">Services</Link>
+          <StyledLink href="/services">Services</StyledLink>
         </Button>
         <Button color="inherit">
-          <Link href="/news">News</Link>
+          <StyledLink href="/news">News</StyledLink>
         </Button>
         <Button color="inherit">
-          <Link href="/calendar">Calendar</Link>
+          <StyledLink href="/calendar">Calendar</StyledLink>
         </Button>
         <Button color="inherit">
-          <Link href="/contact">Contact</Link>
+          <StyledLink href="/contact">Contact</StyledLink>
         </Button>
-        <IconButton color="inherit">
+        <StyledIconButton color="inherit">
           <Language />
-        </IconButton>
-        <IconButton color="inherit" href="https://www.facebook.com">
+        </StyledIconButton>
+        <StyledIconButton color="inherit" href="https://www.facebook.com">
           <Facebook />
-        </IconButton>
-        <IconButton color="inherit" href="https://www.instagram.com">
+        </StyledIconButton>
+        <StyledIconButton color="inherit" href="https://www.instagram.com">
           <Instagram />
-        </IconButton>
+        </StyledIconButton>
       </Toolbar>
-    </AppBar>
+    </TransparentAppBar>
   );
 };
-
 
 export default Header;
