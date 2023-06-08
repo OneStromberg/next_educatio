@@ -9,6 +9,9 @@ import {
 
 import backgroundImage from '@/assets/background.jpg';
 import AboutUsPic from '@/assets/pic1.jpg'
+import img1 from '@/assets/FreeCourses.jpg'
+import img2 from '@/assets/EducationWorld.jpg'
+import img3 from '@/assets/StudyToghther.jpg'
 
 const StyledContainer = styled(Container)`
   background-size: cover;
@@ -170,24 +173,24 @@ const ThirdContainer = () => {
     );
 };
 
+
 const FourthContainer = () => {
     const images = [
         {
             id: 1,
-            src: 'image1.jpg',
+            src: img1,
             caption: 'Image 1',
         },
         {
             id: 2,
-            src: 'image2.jpg',
+            src: img2,
             caption: 'Image 2',
         },
         {
             id: 3,
-            src: 'image3.jpg',
+            src: img3,
             caption: 'Image 3',
         },
-        // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
     ];
 
     return (
@@ -197,13 +200,34 @@ const FourthContainer = () => {
             </Typography>
             <Grid container spacing={2}>
 
-                {images.map((image) => (
-                    <Grid item xs={12} sm={6} md={4} key={image.id}>
+                {images.map((image, index) => (
+                    <Grid item xs={12} key={image.id}>
                         <StyledGrid>
-                            <img src={image.src} alt={image.caption} style={{ maxWidth: '100%', height: 'auto' }} />
-                            <Typography variant="subtitle1" gutterBottom>
-                                {image.caption}
-                            </Typography>
+                            {index % 2 === 0 ? (
+                                <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+                                    <img src={image.src.src} alt={image.caption} style={{ float: 'left', maxWidth: '50%', height: 'auto', marginRight: '10px' }} />
+                                    <div style={{ overflow: 'hidden' }}>
+                                        <Typography variant="subtitle1" gutterBottom>
+                                            {image.caption}
+                                        </Typography>
+                                        <Typography variant="body1">
+                                            Description for Image {image.id}
+                                        </Typography>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+                                    <div style={{ overflow: 'hidden' }}>
+                                        <Typography variant="subtitle1" gutterBottom>
+                                            {image.caption}
+                                        </Typography>
+                                        <Typography variant="body1">
+                                            Description for Image {image.id}
+                                        </Typography>
+                                    </div>
+                                    <img src={image.src.src} alt={image.caption} style={{ float: 'right', maxWidth: '50%', height: 'auto', marginLeft: '10px' }} />
+                                </div>
+                            )}
                         </StyledGrid>
                     </Grid>
                 ))}
@@ -211,6 +235,7 @@ const FourthContainer = () => {
         </Container>
     );
 }
+
 
 const FifthContainer = () => {
 
