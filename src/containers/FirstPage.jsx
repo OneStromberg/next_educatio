@@ -194,8 +194,8 @@ const FourthContainer = () => {
     ];
 
     return (
-        <Container maxWidth="sm">
-            <Typography variant="h4" gutterBottom>
+        <Container maxWidth="m">
+            <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
                 Educational areas
             </Typography>
             <Grid container spacing={2}>
@@ -204,9 +204,9 @@ const FourthContainer = () => {
                     <Grid item xs={12} key={image.id}>
                         <StyledGrid>
                             {index % 2 === 0 ? (
-                                <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <img src={image.src.src} alt={image.caption} style={{ float: 'left', maxWidth: '50%', height: 'auto', marginRight: '10px' }} />
-                                    <div style={{ overflow: 'hidden' }}>
+                                    <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
                                         <Typography variant="subtitle1" gutterBottom>
                                             {image.caption}
                                         </Typography>
@@ -216,8 +216,8 @@ const FourthContainer = () => {
                                     </div>
                                 </div>
                             ) : (
-                                <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
-                                    <div style={{ overflow: 'hidden' }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                    <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center"  }}>
                                         <Typography variant="subtitle1" gutterBottom>
                                             {image.caption}
                                         </Typography>
