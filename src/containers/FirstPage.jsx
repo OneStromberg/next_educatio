@@ -239,20 +239,23 @@ const FourthContainer = () => {
 
 const FifthContainer = () => {
 
-    const images = [
+    const list = [
         {
             id: 1,
-            src: 'image1.jpg',
+            num: 1,
+            header: '',
             caption: 'Image 1',
         },
         {
             id: 2,
-            src: 'image2.jpg',
+            num: 2,
+            header: '',
             caption: 'Image 2',
         },
         {
             id: 3,
-            src: 'image3.jpg',
+            num: 3,
+            header: '',
             caption: 'Image 3',
         },
         // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
@@ -260,12 +263,12 @@ const FifthContainer = () => {
 
     return (
         <Grid container spacing={2}>
-            {images.map((image) => (
-                <Grid item xs={12} sm={6} md={4} key={image.id}>
+            {list.map((el) => (
+                <Grid item xs={12} sm={6} md={4} key={el.id}>
                     <StyledGrid>
-                        <img src={image.src} alt={image.caption} style={{ maxWidth: '100%', height: 'auto' }} />
+                        <Typography style={{background: '#241f55', padding: '1%', borderRadius:'50%', width:"2em", height:'2em', color:'#fff', fontSize:'2em', fontWeight:'600'}}>{el.num}</Typography>
                         <Typography variant="subtitle1" gutterBottom>
-                            {image.caption}
+                            {el.caption}
                         </Typography>
                     </StyledGrid>
                 </Grid>
