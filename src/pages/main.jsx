@@ -5,6 +5,7 @@ import {
     FirstContainer,
     FourthContainer,
     SecondContainer,
+    SixthContainer,
     ThirdContainer
 } from "@/containers/FirstPage"
 
@@ -17,6 +18,7 @@ export default function main() {
             <ThirdContainer />
             <FourthContainer />
             <FifthContainer />
+            <SixthContainer/>
             <Footer />
         </>
     )

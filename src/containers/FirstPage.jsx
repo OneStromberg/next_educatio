@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography, Button } from '@mui/material';
 import { styled } from '@mui/system';
 import {
     TableCell,
@@ -195,9 +195,6 @@ const FourthContainer = () => {
 
     return (
         <Container maxWidth="m">
-            <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
-                Educational areas
-            </Typography>
             <Grid container spacing={2}>
 
                 {images.map((image, index) => (
@@ -217,7 +214,7 @@ const FourthContainer = () => {
                                 </div>
                             ) : (
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center"  }}>
+                                    <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
                                         <Typography variant="subtitle1" gutterBottom>
                                             {image.caption}
                                         </Typography>
@@ -243,38 +240,128 @@ const FifthContainer = () => {
         {
             id: 1,
             num: 1,
-            header: '',
-            caption: 'Image 1',
+            header: 'Professional development',
+            caption: 'We conduct courses in graphic design for beginners, social media promotion, project management, and the fashion industry',
         },
         {
             id: 2,
             num: 2,
-            header: '',
-            caption: 'Image 2',
+            header: 'Psychology',
+            caption: "We conduct courses annually: Psychology of Relationships, Practical Psychology, Psychology of Stress and Stress Resistance, Children's Psychology",
         },
         {
             id: 3,
             num: 3,
-            header: '',
-            caption: 'Image 3',
+            header: 'Particular development',
+            caption: 'English courses in partnership with Green Forest, first aid, career, volunteering',
         },
         // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
     ];
 
     return (
-        <Grid container spacing={2}>
-            {list.map((el) => (
-                <Grid item xs={12} sm={6} md={4} key={el.id}>
-                    <StyledGrid>
-                        <Typography style={{background: '#241f55', padding: '1%', borderRadius:'50%', width:"2em", height:'2em', color:'#fff', fontSize:'2em', fontWeight:'600'}}>{el.num}</Typography>
-                        <Typography variant="subtitle1" gutterBottom>
-                            {el.caption}
-                        </Typography>
-                    </StyledGrid>
-                </Grid>
-            ))}
+        <div>
+            <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
+                Educational areas
+            </Typography>
+            <Grid container spacing={2}>
+                {list.map((el) => (
+                    <Grid item xs={12} sm={6} md={4} key={el.id}>
+                        <StyledGrid>
+
+                            <Typography style={{
+                                background: '#241f55',
+                                padding: '1%',
+                                borderRadius: '50%',
+                                width: "2em",
+                                height: '2em',
+                                color: '#fff',
+                                fontSize: '2em',
+                                fontWeight: '600',
+                                lineHeight: '190%'
+                            }}>{el.num}</Typography>
+
+                            <Typography>{el.header}</Typography>
+
+                            <Typography variant="subtitle1" gutterBottom>
+                                {el.caption}
+                            </Typography>
+                        </StyledGrid>
+                    </Grid>
+                ))}
+            </Grid>
+        </div>
+    );
+}
+
+
+const SixthContainer = () => {
+
+    return (
+        <Grid container spacing={3} justifyContent="center" alignItems="center">
+            <Grid item xs={12}>
+                <Typography variant="h6" align="center" gutterBottom>
+                    Registration for the Discussion with Vitaliy Portnikov "Public experience of war as a chance for (mis)understanding"
+                </Typography>
+            </Grid>
+            <Button variant="outlined">
+                Registration on discussion
+            </Button>
         </Grid>
     );
 }
 
-export { FirstContainer, SecondContainer, ThirdContainer, FourthContainer, FifthContainer };
+
+const SeventhContainer = () => {
+
+    const list = [
+        {
+            id: 1,
+            header: 'The First Lviv Media Library',
+            caption: "2a Mulyarska St., Halytskyi district It has been an Education Center since 2019. More than 150 people have been trained here.",
+        },
+        {
+            id: 2,
+            num: 2,
+            header: 'Psychology',
+            caption: "We conduct courses annually: Psychology of Relationships, Practical Psychology, Psychology of Stress and Stress Resistance, Children's Psychology",
+        },
+        {
+            id: 3,
+            num: 3,
+            header: 'Particular development',
+            caption: 'English courses in partnership with Green Forest, first aid, career, volunteering',
+        },
+        // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
+    ];
+
+    return (
+        <div>
+            <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
+                Members of the CE network
+            </Typography>
+            <Grid container spacing={2}>
+                {list.map((el) => (
+                    <Grid item xs={12} sm={6} md={4} key={el.id}>
+                        <StyledGrid>
+                            <Typography>{el.header}</Typography>
+                            <Typography variant="subtitle1" gutterBottom>
+                                {el.caption}
+                            </Typography>
+                        </StyledGrid>
+                    </Grid>
+                ))}
+            </Grid>
+        </div>
+    );
+}
+
+
+export {
+    FirstContainer,
+    SecondContainer,
+    ThirdContainer,
+    FourthContainer,
+    FifthContainer,
+    SixthContainer,
+    SeventhContainer
+};
