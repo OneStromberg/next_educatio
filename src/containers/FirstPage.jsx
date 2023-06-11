@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Grid, Typography, Button, TextField } from '@mui/material';
+import { Container, Box, Grid, Typography, Button, TextField } from '@mui/material';
 import { styled } from '@mui/system';
 import {
     TableCell,
@@ -50,13 +50,15 @@ const StyledTypography = styled(Typography)`
   z-index: 1;
 `;
 
-const StyledSecondContainer = styled(Container)`
-        height: 100vh;
-        display: flex;
+const StyledSecondContainer = styled(Box)`
+        height: 100%;
         justify-content: center;
         align-items: center;
         text-align: center;
-        
+        width: 80%;
+        gap: 8%;
+        margin: 0 auto;
+        padding: 10% 0;
         `;
 
 const StyledTextContainer = styled(Grid)`
@@ -100,11 +102,9 @@ const FirstContainer = () => {
 
 const SecondContainer = () => {
 
-
-
     return (
         <StyledSecondContainer>
-            <Grid container spacing={2}>
+            <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <StyledImage src={AboutUsPic.src} alt="About Us" width={600} />
                 </Grid>
@@ -150,7 +150,7 @@ const ThirdContainer = () => {
     }, []);
 
     return (
-        <Container maxWidth="sm">
+        <Box mt={2} mb={2}>
             <StyledTextContainer>
                 <Typography variant="h4" gutterBottom>
                     Our actions
@@ -169,7 +169,7 @@ const ThirdContainer = () => {
                 ))
             }
 
-        </Container>
+        </Box>
     );
 };
 
@@ -259,7 +259,7 @@ const FifthContainer = () => {
     ];
 
     return (
-        <div>
+        <Box mt={5} mb={5}>
             <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
                 Educational areas
             </Typography>
@@ -289,7 +289,7 @@ const FifthContainer = () => {
                     </Grid>
                 ))}
             </Grid>
-        </div>
+        </Box>
     );
 }
 
@@ -297,7 +297,7 @@ const FifthContainer = () => {
 const SixthContainer = () => {
 
     return (
-        <Grid container spacing={3} justifyContent="center" alignItems="center">
+        <Grid container spacing={3} justifyContent="center" alignItems="center" style={{ marginTop: '3%', marginBottom: '3%' }}>
             <Grid item xs={12}>
                 <Typography variant="h6" align="center" gutterBottom>
                     Registration for the Discussion with Vitaliy Portnikov "Public experience of war as a chance for (mis)understanding"
@@ -335,7 +335,7 @@ const SeventhContainer = () => {
     ];
 
     return (
-        <div>
+        <Box mt={5} mb={5}>
             <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
                 Members of the CE network
             </Typography>
@@ -351,7 +351,7 @@ const SeventhContainer = () => {
                     </Grid>
                 ))}
             </Grid>
-        </div>
+        </Box>
     );
 }
 
@@ -444,7 +444,7 @@ const EighthContainer = () => {
                     rows={4}
                     required
                 />
-                <Button type="submit" variant="contained" color="secondary">
+                <Button type="submit" variant="contained" style={{ background: '#ef4056' }}>
                     Complete
                 </Button>
             </form>
