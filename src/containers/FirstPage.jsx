@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Grid, Typography, Button } from '@mui/material';
+import { Container, Grid, Typography, Button, TextField } from '@mui/material';
 import { styled } from '@mui/system';
 import {
     TableCell,
@@ -322,14 +322,14 @@ const SeventhContainer = () => {
         {
             id: 2,
             num: 2,
-            header: 'Psychology',
-            caption: "We conduct courses annually: Psychology of Relationships, Practical Psychology, Psychology of Stress and Stress Resistance, Children's Psychology",
+            header: 'URBAN Library',
+            caption: "4 Ustianovycha St., Halytskyi district. It has been an Education Center since 2019. More than 150 people have been trained here.",
         },
         {
             id: 3,
             num: 3,
-            header: 'Particular development',
-            caption: 'English courses in partnership with Green Forest, first aid, career, volunteering',
+            header: 'Wiki Library',
+            caption: '58, Chervona Kalynya Ave. It has been an Education Center since 2019. More than 120 people have been trained here',
         },
         // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
     ];
@@ -355,6 +355,102 @@ const SeventhContainer = () => {
     );
 }
 
+const EighthContainer = () => {
+
+    const [formData, setFormData] = useState({
+        name: '',
+        phoneNumber: '',
+        email: '',
+        message: '',
+    });
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // Здесь можно добавить код для отправки данных формы
+        console.log(formData);
+        // Сбросить значения полей формы
+        setFormData({
+            name: '',
+            phoneNumber: '',
+            email: '',
+            message: '',
+        });
+    };
+
+    return (
+        <Grid container
+            direction="column"
+            justifyContent="center"
+            alignItems="center">
+            <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
+                Do you have any questions?
+            </Typography>
+            <Typography>
+                Fill out the form and we will be happy to answer
+            </Typography>
+            <form onSubmit={handleSubmit} style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: "50%"
+            }}>
+                <TextField
+                    name="name"
+                    label="Name"
+                    placeholder="Enter your name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    fullWidth
+                    margin="normal"
+                    required
+                />
+                <TextField
+                    name="phoneNumber"
+                    label="Phone Number"
+                    placeholder="Enter your phone number"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange}
+                    fullWidth
+                    margin="normal"
+                    required
+                />
+                <TextField
+                    name="email"
+                    label="Email"
+                    placeholder="example@site.com"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    fullWidth
+                    margin="normal"
+                    required
+                />
+                <TextField
+                    name="message"
+                    label="Message"
+                    placeholder="Enter your message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    fullWidth
+                    margin="normal"
+                    multiline
+                    rows={4}
+                    required
+                />
+                <Button type="submit" variant="contained" color="secondary">
+                    Complete
+                </Button>
+            </form>
+        </Grid >
+    );
+}
 
 export {
     FirstContainer,
@@ -363,5 +459,6 @@ export {
     FourthContainer,
     FifthContainer,
     SixthContainer,
-    SeventhContainer
+    SeventhContainer,
+    EighthContainer
 };
