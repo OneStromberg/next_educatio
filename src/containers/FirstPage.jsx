@@ -240,20 +240,20 @@ const FifthContainer = () => {
         {
             id: 1,
             num: 1,
-            header: 'Professional development',
-            caption: 'We conduct courses in graphic design for beginners, social media promotion, project management, and the fashion industry',
+            header: 'Professional development\"',
+            caption: 'We conduct courses in graphic design for beginners, social media promotion, project management, and the fashion industry\"',
         },
         {
             id: 2,
             num: 2,
             header: 'Psychology',
-            caption: "We conduct courses annually: Psychology of Relationships, Practical Psychology, Psychology of Stress and Stress Resistance, Children's Psychology",
+            caption: "We conduct courses annually: Psychology of Relationships, Practical Psychology, Psychology of Stress and Stress Resistance, Children's Psychology\'",
         },
         {
             id: 3,
             num: 3,
-            header: 'Particular development',
-            caption: 'English courses in partnership with Green Forest, first aid, career, volunteering',
+            header: 'Particular development\"',
+            caption: 'English courses in partnership with Green Forest, first aid, career, volunteering\"',
         },
         // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
     ];
@@ -300,7 +300,7 @@ const SixthContainer = () => {
         <Grid container spacing={3} justifyContent="center" alignItems="center" style={{ marginTop: '3%', marginBottom: '3%' }}>
             <Grid item xs={12}>
                 <Typography variant="h6" align="center" gutterBottom>
-                    Registration for the Discussion with Vitaliy Portnikov "Public experience of war as a chance for (mis)understanding"
+                    Registration for the Discussion with Vitaliy Portnikov &quot;Public experience of war as a chance for (mis)understanding&quot;
                 </Typography>
             </Grid>
             <Button variant="outlined">
@@ -316,20 +316,20 @@ const SeventhContainer = () => {
     const list = [
         {
             id: 1,
-            header: 'The First Lviv Media Library',
-            caption: "2a Mulyarska St., Halytskyi district It has been an Education Center since 2019. More than 150 people have been trained here.",
+            header: 'The First Lviv Media Library\"',
+            caption: "2a Mulyarska St., Halytskyi district It has been an Education Center since 2019. More than 150 people have been trained here.\"",
         },
         {
             id: 2,
             num: 2,
-            header: 'URBAN Library',
-            caption: "4 Ustianovycha St., Halytskyi district. It has been an Education Center since 2019. More than 150 people have been trained here.",
+            header: 'URBAN Library\"',
+            caption: "4 Ustianovycha St., Halytskyi district. It has been an Education Center since 2019. More than 150 people have been trained here.\'",
         },
         {
             id: 3,
             num: 3,
-            header: 'Wiki Library',
-            caption: '58, Chervona Kalynya Ave. It has been an Education Center since 2019. More than 120 people have been trained here',
+            header: 'Wiki Library\"',
+            caption: '58, Chervona Kalynya Ave. It has been an Education Center since 2019. More than 120 people have been trained here\"',
         },
         // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
     ];
