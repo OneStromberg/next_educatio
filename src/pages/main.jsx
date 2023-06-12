@@ -20,9 +20,9 @@ export default function main() {
             <ThirdContainer />
             <FourthContainer />
             <FifthContainer />
-            <SixthContainer/>
-            <SeventhContainer/>
-            <EighthContainer/>
+            <SixthContainer />
+            <SeventhContainer />
+            <EighthContainer />
             <Footer />
         </>
     )

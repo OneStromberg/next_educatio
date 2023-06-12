@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import Link from 'next/link';
 import {
@@ -10,7 +11,7 @@ import {
   List,
   ListItem,
   ListItemText,
-  Hidden, // Добавлено
+  Hidden,
 } from '@mui/material';
 import { Language, Facebook, Instagram, Menu } from '@mui/icons-material';
 import { styled } from '@mui/system';
