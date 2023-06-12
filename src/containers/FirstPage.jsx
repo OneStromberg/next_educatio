@@ -59,6 +59,10 @@ const StyledSecondContainer = styled(Box)`
         gap: 8%;
         margin: 0 auto;
         padding: 10% 0;
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+          }
         `;
 
 const StyledTextContainer = styled(Grid)`
@@ -71,7 +75,7 @@ const StyledTextContainer = styled(Grid)`
         `;
 
 const StyledImage = styled('img')`
-        max-width: none;
+        max-width: 100%;
         height: auto;
         `;
 
@@ -240,20 +244,20 @@ const FifthContainer = () => {
         {
             id: 1,
             num: 1,
-            header: 'Professional development\"',
-            caption: 'We conduct courses in graphic design for beginners, social media promotion, project management, and the fashion industry\"',
+            header: 'Professional development',
+            caption: 'We conduct courses in graphic design for beginners, social media promotion, project management, and the fashion industry',
         },
         {
             id: 2,
             num: 2,
             header: 'Psychology',
-            caption: "We conduct courses annually: Psychology of Relationships, Practical Psychology, Psychology of Stress and Stress Resistance, Children's Psychology\'",
+            caption: "We conduct courses annually: Psychology of Relationships, Practical Psychology, Psychology of Stress and Stress Resistance, Children's Psychology",
         },
         {
             id: 3,
             num: 3,
-            header: 'Particular development\"',
-            caption: 'English courses in partnership with Green Forest, first aid, career, volunteering\"',
+            header: 'Particular development',
+            caption: 'English courses in partnership with Green Forest, first aid, career, volunteering',
         },
         // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
     ];
@@ -316,20 +320,20 @@ const SeventhContainer = () => {
     const list = [
         {
             id: 1,
-            header: 'The First Lviv Media Library\"',
-            caption: "2a Mulyarska St., Halytskyi district It has been an Education Center since 2019. More than 150 people have been trained here.\"",
+            header: 'The First Lviv Media Library',
+            caption: "2a Mulyarska St., Halytskyi district It has been an Education Center since 2019. More than 150 people have been trained here.",
         },
         {
             id: 2,
             num: 2,
-            header: 'URBAN Library\"',
-            caption: "4 Ustianovycha St., Halytskyi district. It has been an Education Center since 2019. More than 150 people have been trained here.\'",
+            header: 'URBAN Library',
+            caption: "4 Ustianovycha St., Halytskyi district. It has been an Education Center since 2019. More than 150 people have been trained here.",
         },
         {
             id: 3,
             num: 3,
-            header: 'Wiki Library\"',
-            caption: '58, Chervona Kalynya Ave. It has been an Education Center since 2019. More than 120 people have been trained here\"',
+            header: 'Wiki Library',
+            caption: '58, Chervona Kalynya Ave. It has been an Education Center since 2019. More than 120 people have been trained here',
         },
         // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
     ];
