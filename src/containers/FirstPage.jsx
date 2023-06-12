@@ -3,9 +3,9 @@ import { Container, Box, Grid, Typography, Button, TextField } from '@mui/materi
 import { styled } from '@mui/system';
 import {
     TableCell,
-    // Container,
     TableRow,
 } from '@mui/material';
+import Image from 'next/image';
 
 import backgroundImage from '@/assets/background.jpg';
 import AboutUsPic from '@/assets/pic1.jpg'
@@ -202,7 +202,7 @@ const FourthContainer = () => {
                         <StyledGrid>
                             {index % 2 === 0 ? (
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <img src={image.src.src} alt={image.caption} style={{ float: 'left', maxWidth: '50%', height: 'auto', marginRight: '10px' }} />
+                                    <Image src={image.src.src} alt={image.caption} width={800} height={1000} style={{ float: 'left', maxWidth: '50%', height: 'auto', marginRight: '10px' }} />
                                     <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
                                         <Typography variant="subtitle1" gutterBottom>
                                             {image.caption}
@@ -222,7 +222,7 @@ const FourthContainer = () => {
                                             Description for Image {image.id}
                                         </Typography>
                                     </div>
-                                    <img src={image.src.src} alt={image.caption} style={{ float: 'right', maxWidth: '50%', height: 'auto', marginLeft: '10px' }} />
+                                    <Image src={image.src.src} alt={image.caption} width={800} height={1000} style={{ float: 'right', maxWidth: '50%', height: 'auto', marginLeft: '10px' }} />
                                 </div>
                             )}
                         </StyledGrid>
