@@ -379,7 +379,8 @@ const EighthContainer = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // Здесь можно добавить код для отправки данных формы
-        console.log(formData);
+        const apiUrl = process.env.API_HOST
+        axios.post(`${apiUrl}/`);
         // Сбросить значения полей формы
         setFormData({
             name: '',
@@ -388,6 +389,7 @@ const EighthContainer = () => {
             message: '',
         });
     };
+
 
     return (
         <Grid container
