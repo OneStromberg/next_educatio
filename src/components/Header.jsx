@@ -15,6 +15,8 @@ import {
 } from '@mui/material';
 import { Language, Facebook, Instagram, Menu } from '@mui/icons-material';
 import { styled } from '@mui/system';
+import logo from '@/assets/CE_logo.png'
+import Image from 'next/image';
 
 const TransparentAppBar = styled(AppBar)`
   background-color: transparent;
@@ -48,7 +50,7 @@ const Header = () => {
     <TransparentAppBar position="static">
       <Toolbar>
         <Logo variant="h6" component="div">
-          My Website
+          <Image src={logo.src} width={130} height={70}></Image>
         </Logo>
         <Hidden mdUp> {/* Добавлено */}
           <IconButton color="inherit" onClick={handleMenuToggle}>

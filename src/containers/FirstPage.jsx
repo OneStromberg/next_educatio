@@ -5,6 +5,8 @@ import {
     TableCell,
     TableRow,
 } from '@mui/material';
+import axios from 'axios';
+// import dotenv from 'dotenv';
 import Image from 'next/image';
 
 import backgroundImage from '@/assets/background.jpg';
@@ -142,9 +144,10 @@ const ThirdContainer = () => {
         const fetchData = async () => {
             try {
                 // Запрос к базе данных или другой источник данных
-                const response = await fetch('https://example.com/api/data');
-                const jsonData = await response.json();
-                setData(jsonData);
+                // const response = await fetch('https://example.com/api/data');
+                // const jsonData = await response.json();
+                // setData(jsonData);
+                console.log('something')
             } catch (error) {
                 console.error('Ошибка при получении данных:', error);
             }
@@ -360,15 +363,18 @@ const SeventhContainer = () => {
 }
 
 const EighthContainer = () => {
+    const apiUrl = process.env.API_URL;
+    const apiKey = process.env.API_TOKEN;
 
     const [formData, setFormData] = useState({
         name: '',
-        phoneNumber: '',
+        phone: '',
         email: '',
         message: '',
     });
 
     const handleInputChange = (event) => {
+        console.log('sheesh')
         const { name, value } = event.target;
         setFormData((prevData) => ({
             ...prevData,
@@ -376,38 +382,55 @@ const EighthContainer = () => {
         }));
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // Здесь можно добавить код для отправки данных формы
-        const apiUrl = process.env.API_HOST
-        axios.post(`${apiUrl}/`);
-        // Сбросить значения полей формы
-        setFormData({
-            name: '',
-            phoneNumber: '',
-            email: '',
-            message: '',
-        });
+        try {
+            await axios.post(
+                `${apiUrl}/callback-requests`,
+                {
+                    data: formData
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${apiKey}`,
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+            setFormData({
+                name: '',
+                phone: '',
+                email: '',
+                message: ''
+            });
+            console.log('Form submitted successfully');
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
     };
 
-
     return (
-        <Grid container
+        <Grid
+            container
             direction="column"
             justifyContent="center"
-            alignItems="center">
-            <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
+            alignItems="center"
+        >
+            <Typography variant="h4" gutterBottom style={{ textAlign: 'center' }}>
                 Do you have any questions?
             </Typography>
-            <Typography>
-                Fill out the form and we will be happy to answer
-            </Typography>
-            <form onSubmit={handleSubmit} style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                width: "50%"
-            }}>
+            <Typography>Fill out the form and we will be happy to answer</Typography>
+            <form
+                onSubmit={handleSubmit}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    width: '50%',
+                }}
+            >
                 <TextField
                     name="name"
                     label="Name"
@@ -419,10 +442,10 @@ const EighthContainer = () => {
                     required
                 />
                 <TextField
-                    name="phoneNumber"
+                    name="phone"
                     label="Phone Number"
                     placeholder="Enter your phone number"
-                    value={formData.phoneNumber}
+                    value={formData.phone}
                     onChange={handleInputChange}
                     fullWidth
                     margin="normal"
@@ -450,13 +473,18 @@ const EighthContainer = () => {
                     rows={4}
                     required
                 />
-                <Button type="submit" variant="contained" style={{ background: '#ef4056' }}>
+                <Button
+                    type="submit"
+                    variant="contained"
+                    style={{ background: '#ef4056' }}
+                >
                     Complete
                 </Button>
             </form>
-        </Grid >
+        </Grid>
     );
-}
+};
+
 
 export {
     FirstContainer,
