@@ -350,7 +350,7 @@ const SeventhContainer = () => {
                 {list.map((el) => (
                     <Grid item xs={12} sm={6} md={4} key={el.id}>
                         <StyledGrid>
-                            <Typography>{el.header}</Typography>
+                            <Typography variant='card_header'>{el.header}</Typography>
                             <Typography variant="subtitle1" gutterBottom>
                                 {el.caption}
                             </Typography>

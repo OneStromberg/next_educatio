@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import '@fontsource/roboto';
 
 const theme = createTheme({
   components: {
@@ -33,11 +34,17 @@ const theme = createTheme({
     body2: {
       fontSize: 12,
     },
+    h3: {
+      fontFamily: "Roboto",
+      fontWeight: 600,
+      fontSize: 65,
+      color: "#1B2753",
+    },
     h4: {
       fontFamily: "Roboto",
       fontWeight: 600,
-      fontSize: 20,
-      color: "#1B2753",
+      fontSize: 52,
+      color: "#ef4056",
     },
     h6: {
       color: "#1B2753",
@@ -52,7 +59,18 @@ const theme = createTheme({
       fontSize: 16,
     },
     subtitle1: {
-      color: "#5A7092",
+      fontFamily: "Roboto",
+      fontSize: 14,
+      color: "#241f55",
+      fontWeight: 300,
+      lineHeight: 1.55,
+      marginTop: 12,
+    },
+    card_header: {
+      fontFamily: "Roboto",
+      fontWeight: 600,
+      fontSize: 16,
+      color: "#ef4056",
     },
   },
 });
