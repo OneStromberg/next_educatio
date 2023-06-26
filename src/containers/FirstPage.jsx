@@ -286,9 +286,9 @@ const FifthContainer = () => {
                                 lineHeight: '190%'
                             }}>{el.num}</Typography>
 
-                            <Typography>{el.header}</Typography>
+                            <Typography variant="title1">{el.header}</Typography>
 
-                            <Typography variant="subtitle1" gutterBottom>
+                            <Typography variant="subtitle5" gutterBottom style={{ maxWidth: '50%' }}>
                                 {el.caption}
                             </Typography>
                         </StyledGrid>
@@ -303,13 +303,24 @@ const FifthContainer = () => {
 const SixthContainer = () => {
 
     return (
-        <Grid container spacing={3} justifyContent="center" alignItems="center" style={{ marginTop: '3%', marginBottom: '3%' }}>
-            <Grid item xs={12}>
-                <Typography variant="h6" align="center" gutterBottom>
+        <Grid container spacing={3} justifyContent="center" alignItems="center" style={
+            {
+                flexDirection: 'column',
+                marginTop: '3%',
+                marginBottom: '3%',
+                padding: '75px 0',
+                gap: 75,
+                background: '#ededed'
+            }}>
+            <Grid item xs={12} style={{ maxWidth: '50%', textAlign: 'center' }}>
+                <Typography variant="title2" align="center" gutterBottom>
                     Registration for the Discussion with Vitaliy Portnikov &quot;Public experience of war as a chance for (mis)understanding&quot;
                 </Typography>
             </Grid>
-            <Button variant="outlined">
+            <Button variant="outlined" style={{
+                cursor: 'pointer',
+                width: '30%'
+            }}>
                 Registration on discussion
             </Button>
         </Grid>
@@ -341,23 +352,32 @@ const SeventhContainer = () => {
     ];
 
     return (
-        <Box mt={5} mb={5}>
-            <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
+        <Box mt={5} mb={5} style={{
+            display: 'flex',
+            margin: '0 auto',
+            flexDirection: 'column',
+            alignItems: 'center',
+            paddingBottom: '180px',
+        }}>
+            <Typography variant="h4" gutterBottom style={{
+                textAlign: "center",
+                margin: '0 0 72px',
+            }}>
                 Members of the CE network
             </Typography>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} style={{ maxWidth: '70%' }}>
                 {list.map((el) => (
                     <Grid item xs={12} sm={6} md={4} key={el.id}>
-                        <StyledGrid>
+                        <StyledGrid >
                             <Typography variant='card_header'>{el.header}</Typography>
-                            <Typography variant="subtitle1" gutterBottom>
+                            <Typography variant="card_body" gutterBottom>
                                 {el.caption}
                             </Typography>
                         </StyledGrid>
                     </Grid>
                 ))}
             </Grid>
-        </Box>
+        </Box >
     );
 }
 
@@ -416,11 +436,24 @@ const EighthContainer = () => {
             direction="column"
             justifyContent="center"
             alignItems="center"
+            style={{ background: '#ededed', padding: '130px 0' }}
         >
-            <Typography variant="h4" gutterBottom style={{ textAlign: 'center' }}>
-                Do you have any questions?
-            </Typography>
-            <Typography>Fill out the form and we will be happy to answer</Typography>
+            <div style={{
+                paddingTop: '7%',
+                paddingBottom: '3.5%',
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+            }}>
+                <Typography variant="title2" gutterBottom style={{
+                    textAlign: 'center',
+                    margin: '0 auto',
+                    paddingBottom: '41px',
+                }}>
+                    Do you have any questions?
+                </Typography>
+                <Typography variant='subtitle4'>Fill out the form and we will be happy to answer</Typography>
+            </div>
             <form
                 onSubmit={handleSubmit}
                 style={{
@@ -475,7 +508,12 @@ const EighthContainer = () => {
                 <Button
                     type="submit"
                     variant="contained"
-                    style={{ background: '#ef4056' }}
+                    style={{
+                        cursor: 'pointer',
+                        background: '#ef4056',
+                        marginTop: '30px',
+                        width: '30%'
+                    }}
                 >
                     Complete
                 </Button>
