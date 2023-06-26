@@ -47,11 +47,6 @@ const BackgroundImage = styled('div')`
   max-width: none;
 `;
 
-const StyledTypography = styled(Typography)`
-  color: white;
-  z-index: 1;
-`;
-
 const StyledSecondContainer = styled(Box)`
         height: 100%;
         justify-content: center;
@@ -94,14 +89,14 @@ const FirstContainer = () => {
     return (
         <StyledContainer>
             <BackgroundImage />
-            <StyledTypography variant="h3" component="h1" gutterBottom>
+            <Typography variant="h1" component="h1" gutterBottom>
                 Network CE - Education Centers
-            </StyledTypography>
-            <StyledTypography variant="body1" gutterBottom>
+            </Typography>
+            <Typography variant="h2" gutterBottom>
                 A network of informal education operating in libraries and public spaces
                 in Lviv and the region. We offer educational courses for professional
                 and social growth.
-            </StyledTypography>
+            </Typography>
         </StyledContainer>
     );
 };
@@ -119,7 +114,7 @@ const SecondContainer = () => {
                         <Typography variant="h4" gutterBottom>
                             About us
                         </Typography>
-                        <Typography variant="body1" gutterBottom>
+                        <Typography variant="subtitle2" gutterBottom>
                             Developing the habit of continuous learning
                         </Typography>
                         <Typography variant="body1" gutterBottom>
@@ -157,12 +152,12 @@ const ThirdContainer = () => {
     }, []);
 
     return (
-        <Box mt={2} mb={2}>
+        <Box mt={2} mb={2} style={{ background: '#ededed', padding: '120px 0' }}>
             <StyledTextContainer>
                 <Typography variant="h4" gutterBottom>
                     Our actions
                 </Typography>
-                <Typography variant="body1" gutterBottom>
+                <Typography variant="subtitle3" gutterBottom>
                     It is worth acquiring new knowledge even after graduation from formal educational institutions. THIS is a network for those who treat knowledge as a basic necessity
                 </Typography>
             </StyledTextContainer>
@@ -201,20 +196,24 @@ const FourthContainer = () => {
     ];
 
     return (
-        <Container maxWidth="m">
+        <Container maxWidth="m" style={{ background: '#ededed' }}>
             <Grid container spacing={2}>
 
                 {images.map((image, index) => (
-                    <Grid item xs={12} key={image.id}>
+                    <Grid item xs={12} key={image.id} style={{
+                        background: '#fff',
+                        maxWidth: 'fit-content',
+                        margin: '0 auto'
+                    }}>
                         <StyledGrid>
                             {index % 2 === 0 ? (
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Image src={image.src.src} alt={image.caption} width={800} height={1000} style={{ float: 'left', maxWidth: '50%', height: 'auto', marginRight: '10px' }} />
                                     <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
-                                        <Typography variant="subtitle1" gutterBottom>
+                                        <Typography variant="title" gutterBottom>
                                             {image.caption}
                                         </Typography>
-                                        <Typography variant="body1">
+                                        <Typography variant="subtitle4">
                                             Description for Image {image.id}
                                         </Typography>
                                     </div>
@@ -222,10 +221,10 @@ const FourthContainer = () => {
                             ) : (
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
-                                        <Typography variant="subtitle1" gutterBottom>
+                                        <Typography variant="title" gutterBottom>
                                             {image.caption}
                                         </Typography>
-                                        <Typography variant="body1">
+                                        <Typography variant="subtitle4">
                                             Description for Image {image.id}
                                         </Typography>
                                     </div>
@@ -236,7 +235,7 @@ const FourthContainer = () => {
                     </Grid>
                 ))}
             </Grid>
-        </Container>
+        </Container >
     );
 }
 
