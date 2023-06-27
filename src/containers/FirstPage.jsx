@@ -312,14 +312,15 @@ const SixthContainer = () => {
                 gap: 75,
                 background: '#ededed'
             }}>
-            <Grid item xs={12} style={{ maxWidth: '50%', textAlign: 'center' }}>
-                <Typography variant="title2" align="center" gutterBottom>
-                    Registration for the Discussion with Vitaliy Portnikov &quot;Public experience of war as a chance for (mis)understanding&quot;
+            <Grid item xs={12} style={{ maxWidth: '70%', textAlign: 'center' }}>
+                <Typography variant="title2" align="center" gutterBottom wrap="wrap">
+                    Registration for the Discussion with Vitaliy Portnikov &quot;Public experience of war as a chance for (mis) understanding&quot;
                 </Typography>
             </Grid>
             <Button variant="outlined" style={{
                 cursor: 'pointer',
-                width: '30%'
+                width: '20%',
+                minWidth: 200,
             }}>
                 Registration on discussion
             </Button>
@@ -512,7 +513,8 @@ const EighthContainer = () => {
                         cursor: 'pointer',
                         background: '#ef4056',
                         marginTop: '30px',
-                        width: '30%'
+                        width: '30%',
+                        minWidth: 150,
                     }}
                 >
                     Complete

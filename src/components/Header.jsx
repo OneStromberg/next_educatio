@@ -39,6 +39,10 @@ const Logo = styled(Typography)`
   color: white;
 `;
 
+const drawerStyles = {
+  background: 'rgba(255, 255, 255, 0.05)',
+};
+
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -49,15 +53,22 @@ const Header = () => {
   return (
     <TransparentAppBar position="static">
       <Toolbar>
-        <Logo variant="h6" component="div">
-          <Image src={logo.src} width={130} height={70}></Image>
-        </Logo>
+        <Hidden mdDown>
+          <Logo variant="h6" component="div">
+            <Image src={logo.src} width={130} height={70}></Image>
+          </Logo>
+        </Hidden>
+        <Hidden mdUp>
+          <Logo variant="h6" component="div">
+            <Typography variant='h2'>CE - Center of Education</Typography>
+          </Logo>
+        </Hidden>
         <Hidden mdUp> {/* Добавлено */}
           <IconButton color="inherit" onClick={handleMenuToggle}>
             <Menu />
           </IconButton>
         </Hidden>
-        <Hidden smDown> {/* Добавлено */}
+        <Hidden mdDown> {/* Добавлено */}
           <Button color="inherit">
             <StyledLink href="/about">About Us</StyledLink>
           </Button>
@@ -83,7 +94,12 @@ const Header = () => {
             <Instagram />
           </StyledIconButton>
         </Hidden>
-        <Drawer anchor="right" open={isMenuOpen} onClose={handleMenuToggle}>
+        <Drawer anchor="right"
+          open={isMenuOpen}
+          onClose={handleMenuToggle}
+          PaperProps={{
+            sx: drawerStyles,
+          }}>
           <List>
             <ListItem button>
               <ListItemText>
