@@ -9,7 +9,11 @@ import {
     SecondContainer,
     SeventhContainer,
     SixthContainer,
-    ThirdContainer
+    ThirdContainer,
+    CalendarContainer,
+    PartnersCarousel,
+    ReviewsCarousel,
+    BlogPage
 } from "@/containers/FirstPage"
 import theme from "@/Theme"
 
@@ -21,10 +25,14 @@ export default function main() {
                 <FirstContainer />
                 <SecondContainer />
                 <ThirdContainer />
+                <CalendarContainer />
                 <FourthContainer />
                 <FifthContainer />
                 <SixthContainer />
                 <SeventhContainer />
+                <ReviewsCarousel />
+                <PartnersCarousel />
+                <BlogPage />
                 <EighthContainer />
                 <Footer />
             </ThemeProvider>

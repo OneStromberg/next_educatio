@@ -1,13 +1,30 @@
 import { useState, useEffect } from 'react';
-import { Container, Box, Grid, Typography, Button, TextField } from '@mui/material';
+import {
+    Container,
+    Box,
+    Grid,
+    Typography,
+    Button,
+    TextField,
+    IconButton,
+    Paper,
+    Card,
+    CardContent
+} from '@mui/material';
+
 import { styled } from '@mui/system';
 import {
     TableCell,
     TableRow,
+
 } from '@mui/material';
+import { CalendarToday } from '@mui/icons-material';
+import Calendar from 'react-calendar';
+import Carousel from 'react-material-ui-carousel';
+
 import axios from 'axios';
-// import dotenv from 'dotenv';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import backgroundImage from '@/assets/background.jpg';
 import AboutUsPic from '@/assets/pic1.jpg'
@@ -77,13 +94,101 @@ const StyledImage = styled('img')`
         `;
 
 const StyledGrid = styled(Grid)`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-text-align: center;
-padding: 20px;
-`;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        `;
+
+const StyledCalendar = styled(Calendar)`
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+        padding: 16px;
+        color: #241f55;
+        font-family: "Roboto", sans-serif;
+        font-weight: 600;
+        text-align: center;
+        line-height: 1.55;
+
+        .react-calendar__navigation {
+        margin-bottom: 16px;
+        }
+
+        .react-calendar__navigation button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #241f55;
+        font-size: 1.2em;
+        font-weight: bold;
+        padding: 4px;
+        transition: color 0.3s ease;
+        }
+
+        .react-calendar__navigation button:enabled:hover,
+        .react-calendar__navigation button:enabled:focus {
+        color: #6c63ff;
+        }
+
+        .react-calendar__navigation button[disabled] {
+        color: #ccc;
+        cursor: default;
+        }
+
+        .react-calendar__navigation button.react-calendar__navigation__label {
+        font-size: 1.4em;
+        margin: 0;
+        }
+
+        .react-calendar__tile {
+            background: #f6fcff;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .react-calendar__tile:enabled:hover,
+        .react-calendar__tile:enabled:focus {
+        background-color: #ef4056;
+        cursor: pointer;
+        }
+
+        .react-calendar__tile--active {
+        background-color: #ff8e9c;
+        color: #fff;
+        }
+
+        .react-calendar__tile--active:enabled:hover,
+        .react-calendar__tile--active:enabled:focus {
+        background-color: #514bc6;
+        color: #fff;
+        }
+
+        .react-calendar__tile--now {
+        background-color: #ff8e9c;
+        color: #241f55;
+        font-weight: 500;
+        }
+
+        .react-calendar__tile--now:enabled:hover,
+        .react-calendar__tile--now:enabled:focus {
+        background-color: #ef4056;
+        }
+
+        .react-calendar__tile--hasActive:enabled:hover,
+        .react-calendar__tile--hasActive:enabled:focus {
+        background-color: #ef4056;
+        }
+        // .react-calendar__month-view__weekdays{
+        //     gap: 0% 0%; 
+        // }
+        // .react-calendar__month-view__days{
+        //     gap: 0% 2%;
+        // }
+            `
 
 const FirstContainer = () => {
     return (
@@ -152,7 +257,7 @@ const ThirdContainer = () => {
     }, []);
 
     return (
-        <Box mt={2} mb={2} style={{ background: '#ededed', padding: '120px 0' }}>
+        <Box mt={2} mb={2} style={{ background: '#ededed', padding: '120px 0', margin: '0', }}>
             <StyledTextContainer>
                 <Typography variant="h4" gutterBottom>
                     Our actions
@@ -382,6 +487,7 @@ const SeventhContainer = () => {
     );
 }
 
+
 const EighthContainer = () => {
     const apiUrl = process.env.API_URL;
     const apiKey = process.env.API_TOKEN;
@@ -525,6 +631,130 @@ const EighthContainer = () => {
 };
 
 
+const CalendarContainer = () => {
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+
+    return (
+        <Grid container spacing={2}
+            alignItems="center"
+            justifyContent="center"
+            style={{
+                width: '100%',
+                background: '#ededed',
+                padding: '5% 0',
+                margin: '0',
+            }}>
+
+            <Grid item>
+                <StyledCalendar onChange={handleDateChange} value={selectedDate} />
+            </Grid>
+
+            <Grid item>
+                <IconButton>
+                    <CalendarToday />
+                </IconButton>
+            </Grid>
+
+            <Grid item>
+                <Typography variant="h5">{selectedDate.toLocaleDateString()}</Typography>
+            </Grid>
+        </Grid>
+    );
+};
+
+
+const PartnersCarousel = () => {
+
+    const partnerData = [
+        { id: 1, logo: '/images/partner1.png' },
+        { id: 2, logo: '/images/partner2.png' },
+        { id: 3, logo: '/images/partner3.png' },
+        // Добавьте остальных партнеров
+    ];
+
+    return (
+        <Carousel>
+            {partnerData.map((partner) => (
+                <Paper key={partner.id} elevation={0} style={{ padding: 20, textAlign: 'center' }}>
+                    <img src={partner.logo} alt="Partner Logo" style={{ maxWidth: '100%' }} />
+                </Paper>
+            ))}
+        </Carousel>
+    );
+};
+
+
+const ReviewsCarousel = () => {
+
+    const reviewData = [
+        { id: 1, name: 'John Doe', review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+        { id: 2, name: 'Jane Smith', review: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.' },
+        { id: 3, name: 'Alice Johnson', review: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.' },
+        // Добавьте остальные отзывы
+    ];
+
+
+    return (
+        <Carousel>
+            {reviewData.map((review) => (
+                <Paper key={review.id} elevation={0} style={{ padding: 20, textAlign: 'center' }}>
+                    <Typography variant="body1">{review.review}</Typography>
+                    <Typography variant="subtitle2" style={{ marginTop: 10 }}>{review.name}</Typography>
+                </Paper>
+            ))}
+        </Carousel>
+    );
+};
+
+
+const BlogPage = () => {
+
+    const blogData = [
+        { id: 1, title: 'Blog Post 1', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+        { id: 2, title: 'Blog Post 2', excerpt: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.' },
+        { id: 3, title: 'Blog Post 3', excerpt: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.' },
+        // Добавьте остальные посты блога
+    ];
+
+    return (
+        <Grid container spacing={3}
+            alignItems="center"
+            justifyContent="center"
+            style={{
+                padding: '80px 0',
+                width: '70%',
+                margin: '0 auto'
+            }}>
+
+            <Grid item xs={12} textAlign="center">
+                <Typography variant="h4" gutterBottom>
+                    Blog
+                </Typography>
+            </Grid>
+
+            {blogData.map((post) => (
+                <Grid item xs={12} sm={6} key={post.id}>
+                    <Link href={`/blog/${post.id}`} passHref style={{ textDecoration: 'none' }}>
+                        <Card style={{ height: '100%' }}>
+                            <CardContent>
+                                <Typography variant="title1" gutterBottom>
+                                    {post.title}
+                                </Typography>
+                                <Typography variant="subtitle4"><br />{post.excerpt}</Typography>
+                            </CardContent>
+                        </Card>
+                    </Link>
+                </Grid>
+            ))}
+        </Grid>
+    );
+};
+
+
 export {
     FirstContainer,
     SecondContainer,
@@ -533,5 +763,9 @@ export {
     FifthContainer,
     SixthContainer,
     SeventhContainer,
-    EighthContainer
+    EighthContainer,
+    CalendarContainer,
+    PartnersCarousel,
+    ReviewsCarousel,
+    BlogPage,
 };
