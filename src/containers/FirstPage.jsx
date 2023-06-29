@@ -102,93 +102,6 @@ const StyledGrid = styled(Grid)`
         padding: 20px;
         `;
 
-const StyledCalendar = styled(Calendar)`
-        background: #fff;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        border-radius: 8px;
-        padding: 16px;
-        color: #241f55;
-        font-family: "Roboto", sans-serif;
-        font-weight: 600;
-        text-align: center;
-        line-height: 1.55;
-
-        .react-calendar__navigation {
-        margin-bottom: 16px;
-        }
-
-        .react-calendar__navigation button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #241f55;
-        font-size: 1.2em;
-        font-weight: bold;
-        padding: 4px;
-        transition: color 0.3s ease;
-        }
-
-        .react-calendar__navigation button:enabled:hover,
-        .react-calendar__navigation button:enabled:focus {
-        color: #6c63ff;
-        }
-
-        .react-calendar__navigation button[disabled] {
-        color: #ccc;
-        cursor: default;
-        }
-
-        .react-calendar__navigation button.react-calendar__navigation__label {
-        font-size: 1.4em;
-        margin: 0;
-        }
-
-        .react-calendar__tile {
-            background: #f6fcff;
-            padding: 8px;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
-
-        .react-calendar__tile:enabled:hover,
-        .react-calendar__tile:enabled:focus {
-        background-color: #ef4056;
-        cursor: pointer;
-        }
-
-        .react-calendar__tile--active {
-        background-color: #ff8e9c;
-        color: #fff;
-        }
-
-        .react-calendar__tile--active:enabled:hover,
-        .react-calendar__tile--active:enabled:focus {
-        background-color: #514bc6;
-        color: #fff;
-        }
-
-        .react-calendar__tile--now {
-        background-color: #ff8e9c;
-        color: #241f55;
-        font-weight: 500;
-        }
-
-        .react-calendar__tile--now:enabled:hover,
-        .react-calendar__tile--now:enabled:focus {
-        background-color: #ef4056;
-        }
-
-        .react-calendar__tile--hasActive:enabled:hover,
-        .react-calendar__tile--hasActive:enabled:focus {
-        background-color: #ef4056;
-        }
-        // .react-calendar__month-view__weekdays{
-        //     gap: 0% 0%; 
-        // }
-        // .react-calendar__month-view__days{
-        //     gap: 0% 2%;
-        // }
-            `
 
 const FirstContainer = () => {
     return (
@@ -647,21 +560,16 @@ const CalendarContainer = () => {
                 background: '#ededed',
                 padding: '5% 0',
                 margin: '0',
-            }}>
-
-            <Grid item>
-                <StyledCalendar onChange={handleDateChange} value={selectedDate} />
-            </Grid>
-
-            <Grid item>
-                <IconButton>
-                    <CalendarToday />
-                </IconButton>
-            </Grid>
-
-            <Grid item>
-                <Typography variant="h5">{selectedDate.toLocaleDateString()}</Typography>
-            </Grid>
+            }}
+        >
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FJerusalem&showTabs=0&showPrint=0&showDate=1&showNav=0&showTitle=0&showCalendars=0&showTz=0&src=NDU5MjhhN2Q5NzcwZTc4YWM3ZGZiMmQ4NTU1YWRmODhhYmMyN2QzNDkwYjc1ZWM2Yjc2ZjJiOGM1NzBhNTM1ZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%237CB342"
+                style={{ borderWidth: 0 }}
+                width="80%"
+                height="100%"
+                minHeight='600px'
+                frameborder="0"
+                scrolling="no">
+            </iframe>
         </Grid>
     );
 };
