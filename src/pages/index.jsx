@@ -1,39 +1,37 @@
+import '@/styles/reset.css'
 import { ThemeProvider, createTheme } from "@mui/material/styles"
+import theme from "@/Theme"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-import {
-    EighthContainer,
-    FifthContainer,
-    FirstContainer,
-    FourthContainer,
-    SecondContainer,
-    SeventhContainer,
-    SixthContainer,
-    ThirdContainer,
-    CalendarContainer,
-    PartnersCarousel,
-    ReviewsCarousel,
-    BlogPage
-} from "@/containers/FirstPage"
-import theme from "@/Theme"
+import HeadingPage from "@/components/HeadingPage"
+import About from "@/components/About"
+import Services from "@/components/Services"
+import EducationslAreas from "@/components/EducationslAreas"
+import DiscussionReg from "@/components/DiscussionReg"
+import Members from "@/components/Members"
+import CallbackForm from "@/components/CallbackForm"
+import CalendarContainer from "@/components/Calendar"
+import PartnersCarousel from "@/components/Partners"
+import ReviewsCarousel from "@/components/Reviews"
+import Blog from "@/components/Blog"
+
 
 export default function main() {
     return (
         <>
             <ThemeProvider theme={theme}>
                 <Header />
-                <FirstContainer />
-                <SecondContainer />
-                <ThirdContainer />
+                <HeadingPage />
+                <About />
+                <Services />
+                <EducationslAreas />
+                <DiscussionReg />
+                <Members />
                 <CalendarContainer />
-                <FourthContainer />
-                <FifthContainer />
-                <SixthContainer />
-                <SeventhContainer />
                 <ReviewsCarousel />
                 <PartnersCarousel />
-                <BlogPage />
-                <EighthContainer />
+                <Blog />
+                <CallbackForm />
                 <Footer />
             </ThemeProvider>
         </>

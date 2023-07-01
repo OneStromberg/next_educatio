@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
   AppBar,
   Toolbar,
@@ -23,7 +24,8 @@ const TransparentAppBar = styled(AppBar)`
   box-shadow: none;
 `;
 
-const StyledLink = styled(Link)`
+const StyledButton = styled(Button)`
+  cursor: pointer;
   color: white;
   text-decoration: none;
   margin-right: 10px;
@@ -49,6 +51,7 @@ const Header = () => {
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
   };
+  const router = useRouter();
 
   return (
     <TransparentAppBar position="static">
@@ -70,19 +73,19 @@ const Header = () => {
         </Hidden>
         <Hidden mdDown> {/* Добавлено */}
           <Button color="inherit">
-            <StyledLink href="/about">About Us</StyledLink>
+            <StyledButton onClick={() => router.push('#about')}>About Us</StyledButton>
           </Button>
           <Button color="inherit">
-            <StyledLink href="/services">Services</StyledLink>
+            <StyledButton onClick={() => router.push('#services')}>Services</StyledButton>
           </Button>
           <Button color="inherit">
-            <StyledLink href="/news">News</StyledLink>
+            <StyledButton onClick={() => router.push('#news')}>News</StyledButton>
           </Button>
           <Button color="inherit">
-            <StyledLink href="/calendar">Calendar</StyledLink>
+            <StyledButton onClick={() => router.push('#calendar')}>Calendar</StyledButton>
           </Button>
           <Button color="inherit">
-            <StyledLink href="/contact">Contact</StyledLink>
+            <StyledButton onClick={() => router.push('#contact')}>Contact</StyledButton>
           </Button>
           <StyledIconButton color="inherit">
             <Language />
@@ -103,27 +106,27 @@ const Header = () => {
           <List>
             <ListItem button>
               <ListItemText>
-                <StyledLink href="/about">About Us</StyledLink>
+                <StyledButton onClick={() => router.push('#about')}>About Us</StyledButton>
               </ListItemText>
             </ListItem>
             <ListItem button>
               <ListItemText>
-                <StyledLink href="/services">Services</StyledLink>
+                <StyledButton onClick={() => router.push('#services')}>Services</StyledButton>
               </ListItemText>
             </ListItem>
             <ListItem button>
               <ListItemText>
-                <StyledLink href="/news">News</StyledLink>
+                <StyledButton onClick={() => router.push('#news')}>News</StyledButton>
               </ListItemText>
             </ListItem>
             <ListItem button>
               <ListItemText>
-                <StyledLink href="/calendar">Calendar</StyledLink>
+                <StyledButton onClick={() => router.push('#calendar')}>Calendar</StyledButton>
               </ListItemText>
             </ListItem>
             <ListItem button>
               <ListItemText>
-                <StyledLink href="/contact">Contact</StyledLink>
+                <StyledButton onClick={() => router.push('#contact')}>Contact</StyledButton>
               </ListItemText>
             </ListItem>
           </List>
