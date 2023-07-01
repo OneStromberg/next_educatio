@@ -2,6 +2,11 @@ import { createTheme } from '@mui/material/styles';
 import '@fontsource/roboto';
 
 const theme = createTheme({
+  overrides: {
+    '*': {
+      scrollBehavior: 'smooth',
+    },
+  },
   components: {
     MuiButton: {
       styleOverrides: {
