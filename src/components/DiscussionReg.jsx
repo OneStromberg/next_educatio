@@ -26,7 +26,10 @@ const DiscussionReg = () => {
                 cursor: 'pointer',
                 width: '20%',
                 minWidth: 200,
-            }}>
+            }}
+                href='https://docs.google.com/forms/d/e/1FAIpQLSdUnsUGsILgs4e3kgWszSLLoWhetUvvPtu8astg3uOy3MuZ0A/closedform'
+                target='_blank'
+            >
                 Registration on discussion
             </Button>
         </Grid>

@@ -18,9 +18,14 @@ const CallbackForm = () => {
         email: '',
         message: '',
     });
+    const [formErrors, setFormErrors] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        message: '',
+    });
 
     const handleInputChange = (event) => {
-        console.log('sheesh')
         const { name, value } = event.target;
         setFormData((prevData) => ({
             ...prevData,
@@ -28,32 +33,72 @@ const CallbackForm = () => {
         }));
     };
 
+    const validateForm = () => {
+        let isValid = true;
+        const errors = {
+            name: '',
+            phone: '',
+            email: '',
+            message: '',
+        };
+
+        if (!formData.name) {
+            isValid = false;
+            errors.name = 'Please enter your name';
+        }
+
+        if (!formData.phone) {
+            isValid = false;
+            errors.phone = 'Please enter your phone number';
+        } else if (!/^(\+38)?\(0[1-9][0-9]\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/.test(formData.phone)) {
+            isValid = false;
+            errors.phone = 'Please enter a valid Ukrainian phone number';
+        }
+
+        if (!formData.email) {
+            isValid = false;
+            errors.email = 'Please enter your email';
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            isValid = false;
+            errors.email = 'Please enter a valid email address';
+        }
+
+        if (!formData.message) {
+            isValid = false;
+            errors.message = 'Please enter your message';
+        }
+
+        setFormErrors(errors);
+        return isValid;
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // Здесь можно добавить код для отправки данных формы
-        try {
-            await axios.post(
-                `${apiUrl}/callback-requests`,
-                {
-                    data: formData
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${apiKey}`,
-                        Accept: "application/json",
-                        "Content-Type": "application/json"
+        if (validateForm()) {
+            try {
+                await axios.post(
+                    `${apiUrl}/callback-requests`,
+                    {
+                        data: formData
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${apiKey}`,
+                            Accept: "application/json",
+                            "Content-Type": "application/json"
+                        }
                     }
-                }
-            );
-            setFormData({
-                name: '',
-                phone: '',
-                email: '',
-                message: ''
-            });
-            console.log('Form submitted successfully');
-        } catch (error) {
-            console.error('Error submitting form:', error);
+                );
+                setFormData({
+                    name: '',
+                    phone: '',
+                    email: '',
+                    message: ''
+                });
+                console.log('Form submitted successfully');
+            } catch (error) {
+                console.error('Error submitting form:', error);
+            }
         }
     };
 
@@ -99,6 +144,8 @@ const CallbackForm = () => {
                     fullWidth
                     margin="normal"
                     required
+                    error={!!formErrors.name} // Add error prop
+                    helperText={<Typography variant='error_message'>{formErrors.name}</Typography>} // Add helperText prop
                 />
                 <TextField
                     name="phone"
@@ -109,6 +156,8 @@ const CallbackForm = () => {
                     fullWidth
                     margin="normal"
                     required
+                    error={!!formErrors.phone} // Add error prop
+                    helperText={<Typography variant='error_message'>{formErrors.phone}</Typography>} // Add helperText prop
                 />
                 <TextField
                     name="email"
@@ -119,6 +168,8 @@ const CallbackForm = () => {
                     fullWidth
                     margin="normal"
                     required
+                    error={!!formErrors.email} // Add error prop
+                    helperText={<Typography variant='error_message'>{formErrors.email}</Typography>} // Add helperText prop
                 />
                 <TextField
                     name="message"
@@ -131,6 +182,8 @@ const CallbackForm = () => {
                     multiline
                     rows={4}
                     required
+                    error={!!formErrors.message} // Add error prop
+                    helperText={<Typography variant='error_message'>{formErrors.message}</Typography>} // Add helperText prop
                 />
                 <Button
                     type="submit"
@@ -150,4 +203,4 @@ const CallbackForm = () => {
     );
 };
 
-export default CallbackForm 
+export default CallbackForm;

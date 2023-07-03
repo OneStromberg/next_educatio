@@ -161,6 +161,13 @@ const theme = createTheme({
       color: "#241f55",
       margin: '12px 0 0'
     },
+    error_message: {
+      fontFamily: "Roboto",
+      fontWeight: 300,
+      fontSize: 14,
+      lineHeight: 1.35,
+      color: "#ef4056",
+    },
   },
 });
 
