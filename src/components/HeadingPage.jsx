@@ -1,7 +1,8 @@
+import { useState, useEffect } from 'react';
 import { Container, Typography, } from '@mui/material';
 import { styled } from '@mui/system';
 import backgroundImage from '@/assets/background.jpg';
-
+import axios from 'axios';
 
 const StyledContainer = styled(Container)`
   background-size: cover;
@@ -36,17 +37,46 @@ const BackgroundImage = styled('div')`
 `;
 
 
-const HeadingPage = () => {
+const HeadingPage = ({isEnglish}) => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const apiUrl = process.env.API_URL;
+      const apiKey = process.env.API_TOKEN;
+
+      try {
+        const response = await axios.get(`${apiUrl}/main-pages/1`, {
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+          }
+        });
+
+        setData(response.data.data.attributes);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(data)
+  if (!data) {
+    return null;
+  }
+
+  const text = isEnglish ? data.englishText : data.text;
+  const subtext = isEnglish ? data.exnglishSubText : data.subtext;
+
   return (
     <StyledContainer>
       <BackgroundImage />
       <Typography variant="h1" component="h1" gutterBottom>
-        Network CE - Education Centers
+        {text}
       </Typography>
       <Typography variant="h2" gutterBottom>
-        A network of informal education operating in libraries and public spaces
-        in Lviv and the region. We offer educational courses for professional
-        and social growth.
+        {subtext}
       </Typography>
     </StyledContainer>
   );

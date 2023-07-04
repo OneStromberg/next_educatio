@@ -1,5 +1,6 @@
 import '@/styles/reset.css'
-import { ThemeProvider, createTheme } from "@mui/material/styles"
+import { useState } from 'react'
+import { ThemeProvider } from "@mui/material/styles"
 import theme from "@/Theme"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
@@ -18,22 +19,28 @@ import Achiwments from '@/components/Achiwments'
 
 
 export default function main() {
+    const [isEnglish, setIsEnglish] = useState(false);
+
+    const handleLanguageToggle = () => {
+        setIsEnglish(!isEnglish);
+    };
+
     return (
         <>
             <ThemeProvider theme={theme}>
-                <Header />
-                <HeadingPage />
-                <About />
-                <Services />
-                <EducationslAreas />
-                <DiscussionReg />
-                <Members />
-                <CalendarContainer />
-                <ReviewsCarousel />
-                <PartnersCarousel />
-                <Achiwments />
-                <Blog />
-                <CallbackForm />
+                <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} />
+                <HeadingPage isEnglish={isEnglish} />
+                <About isEnglish={isEnglish} />
+                <Services isEnglish={isEnglish} />
+                <EducationslAreas isEnglish={isEnglish} />
+                <DiscussionReg isEnglish={isEnglish} />
+                <Members isEnglish={isEnglish} />
+                <CalendarContainer isEnglish={isEnglish} />
+                <ReviewsCarousel isEnglish={isEnglish} />
+                <PartnersCarousel isEnglish={isEnglish} />
+                <Achiwments isEnglish={isEnglish} />
+                <Blog isEnglish={isEnglish} />
+                <CallbackForm isEnglish={isEnglish} />
                 <Footer />
             </ThemeProvider>
         </>

@@ -40,7 +40,7 @@ const StyledImage = styled('img')`
         height: auto;
         `;
 
-const About = () => {
+const About = ({ isEnglish }) => {
 
   return (
     <StyledSecondContainer>

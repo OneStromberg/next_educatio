@@ -12,7 +12,7 @@ import {
   ListItemText,
   Hidden,
 } from '@mui/material';
-import { Language, Facebook, Instagram, Menu } from '@mui/icons-material';
+import { Facebook, Instagram, Menu } from '@mui/icons-material';
 import { styled } from '@mui/system';
 import logo from '@/assets/CE_logo.png'
 import Image from 'next/image';
@@ -46,7 +46,7 @@ flex-grow: 1;
 color: inherit;
 `;
 
-const Header = () => {
+const Header = ({ onLanguageToggle, isEnglish }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setScrolled] = useState(false);
   const [isDarkBackground, setDarkBackground] = useState(false);
@@ -77,6 +77,11 @@ const Header = () => {
     };
   }, []);
 
+  const toggleLanguage = () => {
+    onLanguageToggle();
+  };
+  const languageIcon = isEnglish ? '🇬🇧' : '🇺🇦';
+
   return (
     <TransparentAppBar position="static"
       style={{ color: isDarkBackground ? '#000010f0' : '#f9f9f9f9' }}
@@ -91,6 +96,9 @@ const Header = () => {
           <Logo variant="h6" component="div">
             <Typography variant='h2' style={{ color: 'inherit' }}>CE - Center of Education</Typography>
           </Logo>
+          <StyledIconButton color="inherit" onClick={toggleLanguage}>
+            {languageIcon}
+          </StyledIconButton>
         </Hidden>
         <Hidden mdUp>
           <IconButton color="inherit" onClick={handleMenuToggle}>
@@ -113,8 +121,8 @@ const Header = () => {
           <Button color="inherit">
             <StyledButton onClick={() => handleScrollToSection('contact')}>Contact</StyledButton>
           </Button>
-          <StyledIconButton color="inherit">
-            <Language />
+          <StyledIconButton color="inherit" onClick={toggleLanguage}>
+            {languageIcon}
           </StyledIconButton>
           <StyledIconButton color="inherit" href="https://www.facebook.com">
             <Facebook />
