@@ -14,6 +14,7 @@ import CalendarContainer from "@/components/Calendar"
 import PartnersCarousel from "@/components/Partners"
 import ReviewsCarousel from "@/components/Reviews"
 import Blog from "@/components/Blog"
+import Achiwments from '@/components/Achiwments'
 
 
 export default function main() {
@@ -30,6 +31,7 @@ export default function main() {
                 <CalendarContainer />
                 <ReviewsCarousel />
                 <PartnersCarousel />
+                <Achiwments />
                 <Blog />
                 <CallbackForm />
                 <Footer />

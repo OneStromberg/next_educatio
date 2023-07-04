@@ -50,7 +50,7 @@ const CallbackForm = () => {
         if (!formData.phone) {
             isValid = false;
             errors.phone = 'Please enter your phone number';
-        } else if (!/^(\+38)?\(0[1-9][0-9]\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/.test(formData.phone)) {
+        } else if (!/^(\+3|)[0-9]{10,11}$/.test(formData.phone)) {
             isValid = false;
             errors.phone = 'Please enter a valid Ukrainian phone number';
         }

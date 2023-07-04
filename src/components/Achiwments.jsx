@@ -39,24 +39,34 @@ const StyledGrid = styled(Grid)`
         `;
 
 
-const Services = () => {
+const Achiwments = () => {
     const [data, setData] = useState([]);
 
     const images = [
         {
             id: 1,
             src: img1,
-            caption: 'Image 1',
+            caption: 'More than 8000 participants attended our educational events',
         },
         {
             id: 2,
             src: img2,
-            caption: 'Image 2',
+            caption: 'More than 70 training programs',
         },
         {
             id: 3,
             src: img3,
-            caption: 'Image 3',
+            caption: '9 members of the Network of Education Centers',
+        },
+        {
+            id: 4,
+            src: img2,
+            caption: '6 educational festivals organized',
+        },
+        {
+            id: 5,
+            src: img3,
+            caption: '1 application for Lviv to join the UNESCO Network of Learning Cities was submitted',
         },
     ];
 
@@ -79,10 +89,14 @@ const Services = () => {
     }, []);
 
     return (
-        <Box mt={2} mb={2} style={{ background: '#ededed', padding: '120px 0', margin: '0', }}>
+        <Box mt={2} mb={2} style={{
+            background: '#ededed',
+            padding: '120px 0',
+            margin: '0',
+        }}>
             <StyledTextContainer>
                 <Typography id='services' variant="h4" gutterBottom>
-                    Our actions
+                    Our Achiwments
                 </Typography>
                 <Typography variant="subtitle3" gutterBottom>
                     It is worth acquiring new knowledge even after graduation from formal educational institutions. THIS is a network for those who treat knowledge as a basic necessity
@@ -143,4 +157,4 @@ const Services = () => {
     );
 };
 
-export default Services
+export default Achiwments

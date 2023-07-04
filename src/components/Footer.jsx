@@ -4,14 +4,22 @@ import { Facebook, Instagram } from '@mui/icons-material';
 
 const Footer = () => {
   return (
-    <footer>
+    <footer style={{ background: '#ededed' }}>
       <Grid container justifyContent="center" alignItems="center">
         <Grid item xs={12} sm={6}>
-          <Typography variant="body2" align="center">
-            Контакты: example@example.com | +123456789
+          <Typography
+            variant="subtitle2"
+            align="center"
+            marginBottom={2}
+            marginTop={3}>
+            c.educatio.net@gmail.com
           </Typography>
-        </Grid>
-        <Grid item xs={12} sm={6}>
+          <Typography
+            variant="subtitle2"
+            align="center"
+            marginBottom={2}>
+            Market Square 1, room. 110. Institute of the City
+          </Typography>
           <Grid container justifyContent="center" alignItems="center">
             <IconButton color="inherit" href="https://www.facebook.com">
               <Facebook />
@@ -20,14 +28,18 @@ const Footer = () => {
               <Instagram />
             </IconButton>
           </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="body2" align="center">
-            <Link href="/offer">Оферта</Link>
-          </Typography>
+          <Grid item xs={12}>
+            <Typography variant="body2" align="center">
+              <Link href="/offer"
+                style={{
+                  textDecoration: 'none',
+                  color: '#666666'
+                }}>Оферта</Link>
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
-    </footer>
+    </footer >
   );
 };
 
