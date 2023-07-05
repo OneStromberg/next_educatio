@@ -18,7 +18,7 @@ import Blog from "@/components/Blog"
 import Achiewments from '@/components/Achiewments'
 
 
-export default function main() {
+export default function Main() {
     const [isEnglish, setIsEnglish] = useState(false);
 
     const handleLanguageToggle = () => {

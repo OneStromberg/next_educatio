@@ -79,7 +79,30 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
 
   const toggleLanguage = () => {
     onLanguageToggle();
+    const newLanguage = isEnglish ? 'en' : 'ua';
+    document.cookie = `language=${newLanguage}; path=/`; // Сохранение языка в куки
   };
+
+  const getLanguageFromCookie = () => {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith('language=')) {
+        const language = cookie.substring('language='.length);
+        return language;
+      }
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    const languageFromCookie = getLanguageFromCookie();
+    if (languageFromCookie) {
+      const isEnglishFromCookie = languageFromCookie === 'en';
+      onLanguageToggle(isEnglishFromCookie);
+    }
+  }, []);
+
   const languageIcon = isEnglish ? '🇬🇧' : '🇺🇦';
 
   return (
