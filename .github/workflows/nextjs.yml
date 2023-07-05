@@ -73,14 +73,14 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Create env file
         run: |
           touch .env
-          echo "API_URL=http://193.169.188.141:1337/api" >> .env
+          echo "API_URL='http://193.169.188.141:1337/api'" >> .env
           echo "API_TOKEN=6400362440238402abb9e2f0689a90e43f94f4734152a56fe6449bb7081ce7a0a6ec3cfbd258e611be7033773057d085d3b0dd89ae67c30217866a9eff741b0aab8c9870385c3c0833218d5dfbf9edb987b370cd3e95d09bb5e95e44ba2c59928c53c361f9ca2059baa477cd1dd90a6f84375cf8eef3daeda77d2035d9ef3c70" >> .env
           cat .env
+      - name: Build with Next.js
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
