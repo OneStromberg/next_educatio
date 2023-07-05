@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Container, Typography, } from '@mui/material';
 import { styled } from '@mui/system';
-import backgroundImage from '@/assets/background.jpg';
-import axios from 'axios';
+
 
 const StyledContainer = styled(Container)`
   background-size: cover;
@@ -24,12 +24,6 @@ const BackgroundImage = styled('div')`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-    90deg, 
-    rgba(36, 31, 85, 0.8), 
-    rgba(8, 29, 31, 0.7)
-    ),
-    url(${backgroundImage.src});
   background-size: cover;
   background-position: center;
   z-index: -1;
@@ -37,21 +31,19 @@ const BackgroundImage = styled('div')`
 `;
 
 
-const HeadingPage = ({isEnglish}) => {
+const HeadingPage = ({ isEnglish }) => {
   const [data, setData] = useState(null);
+  const apiUrl = process.env.API_URL;
+  const apiKey = process.env.API_TOKEN;
 
   useEffect(() => {
     const fetchData = async () => {
-      const apiUrl = process.env.API_URL;
-      const apiKey = process.env.API_TOKEN;
-
       try {
-        const response = await axios.get(`${apiUrl}/main-pages/1`, {
+        const response = await axios.get(`${apiUrl}/main-pages/1?populate=*`, {
           headers: {
             Authorization: `Bearer ${apiKey}`,
           }
         });
-
         setData(response.data.data.attributes);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -61,17 +53,26 @@ const HeadingPage = ({isEnglish}) => {
     fetchData();
   }, []);
 
-  console.log(data)
+
   if (!data) {
     return null;
   }
 
   const text = isEnglish ? data.englishText : data.text;
   const subtext = isEnglish ? data.exnglishSubText : data.subtext;
+  const backgroundImage = data.BackgroundImage.data.attributes.url
+  const bgURL = apiUrl.slice(0, apiUrl.length - 4) + backgroundImage
 
   return (
     <StyledContainer>
-      <BackgroundImage />
+      <BackgroundImage style={{
+        backgroundImage: `linear-gradient(
+    90deg, 
+    rgba(36, 31, 85, 0.8), 
+    rgba(8, 29, 31, 0.7)
+    ),
+    url(${bgURL})`
+      }} />
       <Typography variant="h1" component="h1" gutterBottom>
         {text}
       </Typography>

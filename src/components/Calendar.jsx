@@ -1,7 +1,37 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Grid, Typography } from '@mui/material';
 
 const CalendarContainer = () => {
 
+    const [data, setData] = useState(null);
+    const apiUrl = process.env.API_URL;
+    const apiKey = process.env.API_TOKEN;
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/calendars/1?populate=*`, {
+                    headers: {
+                        Authorization: `Bearer ${apiKey}`,
+                    }
+                });
+                console.log(response)
+                setData(response.data.data.attributes);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
+    if (!data) {
+        return null;
+    }
+
+    const calendar = data.CalendarURL
 
     return (
         <Grid
@@ -21,7 +51,7 @@ const CalendarContainer = () => {
                     margin: '0',
                 }}
             >
-                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FJerusalem&showTabs=0&showPrint=0&showDate=1&showNav=0&showTitle=0&showCalendars=0&showTz=0&src=NDU5MjhhN2Q5NzcwZTc4YWM3ZGZiMmQ4NTU1YWRmODhhYmMyN2QzNDkwYjc1ZWM2Yjc2ZjJiOGM1NzBhNTM1ZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%237CB342"
+                <iframe src={calendar}
                     style={{ borderWidth: 0 }}
                     width="80%"
                     height="100%"

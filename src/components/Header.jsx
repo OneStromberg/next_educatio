@@ -64,7 +64,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
 
   const handleScroll = () => {
     const scrollTop = window.pageYOffset;
-    const darkBackgroundThreshold = 600;
+    const darkBackgroundThreshold = 700;
 
     setScrolled(scrollTop > 0);
     setDarkBackground(scrollTop > darkBackgroundThreshold);
@@ -84,7 +84,10 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
 
   return (
     <TransparentAppBar position="static"
-      style={{ color: isDarkBackground ? '#000010f0' : '#f9f9f9f9' }}
+      style={{
+        color: isDarkBackground ? '#000010f0' : '#f9f9f9f9',
+        background: isDarkBackground ? '#241f554a' : '',
+      }}
     >
       <Toolbar>
         <Hidden mdDown>

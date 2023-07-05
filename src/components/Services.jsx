@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
     Container,
     Box,
@@ -7,17 +8,7 @@ import {
 } from '@mui/material';
 
 import { styled } from '@mui/system';
-import {
-    TableCell,
-    TableRow,
-
-} from '@mui/material';
-
 import Image from 'next/image';
-
-import img1 from '@/assets/FreeCourses.jpg'
-import img2 from '@/assets/EducationWorld.jpg'
-import img3 from '@/assets/StudyToghther.jpg'
 
 const StyledTextContainer = styled(Grid)`
         display: flex;
@@ -39,44 +30,31 @@ const StyledGrid = styled(Grid)`
         `;
 
 
-const Services = () => {
-    const [data, setData] = useState([]);
-
-    const images = [
-        {
-            id: 1,
-            src: img1,
-            caption: 'Image 1',
-        },
-        {
-            id: 2,
-            src: img2,
-            caption: 'Image 2',
-        },
-        {
-            id: 3,
-            src: img3,
-            caption: 'Image 3',
-        },
-    ];
+const Services = ({ isEnglish }) => {
+    const [data, setData] = useState(null);
+    const apiUrl = process.env.API_URL;
+    const apiKey = process.env.API_TOKEN;
 
     useEffect(() => {
-        // Здесь нужно добавить логику получения данных из базы данных
-        // и установить полученные данные в состояние `data` с помощью `setData()`
         const fetchData = async () => {
             try {
-                // Запрос к базе данных или другой источник данных
-                // const response = await fetch('https://example.com/api/data');
-                // const jsonData = await response.json();
-                // setData(jsonData);
-                console.log('something')
+                const response = await axios.get(`${apiUrl}/our-actions/?populate=*`, {
+                    headers: {
+                        Authorization: `Bearer ${apiKey}`,
+                    }
+                });
+                setData(response.data.data);
             } catch (error) {
-                console.error('Ошибка при получении данных:', error);
+                console.error('Error fetching data:', error);
             }
         };
 
         fetchData();
     }, []);
+
+    if (!data) {
+        return null;
+    }
 
     return (
         <Box mt={2} mb={2} style={{ background: '#ededed', padding: '120px 0', margin: '0', }}>
@@ -88,21 +66,12 @@ const Services = () => {
                     It is worth acquiring new knowledge even after graduation from formal educational institutions. THIS is a network for those who treat knowledge as a basic necessity
                 </Typography>
             </StyledTextContainer>
-            {
-                data.map((row) => (
-                    <TableRow key={row.id}>
-                        <TableCell>{row.column1}</TableCell>
-                        <TableCell>{row.column2}</TableCell>
-                        <TableCell>{row.column3}</TableCell>
-                    </TableRow>
-                ))
-            }
 
             <Container maxWidth="m" style={{ background: '#ededed' }}>
                 <Grid container spacing={2}>
 
-                    {images.map((image, index) => (
-                        <Grid item xs={12} key={image.id} style={{
+                    {data.map((item, index) => (
+                        <Grid item xs={12} key={item.id} style={{
                             background: '#fff',
                             maxWidth: 'fit-content',
                             margin: '0 auto'
@@ -110,13 +79,25 @@ const Services = () => {
                             <StyledGrid>
                                 {index % 2 === 0 ? (
                                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                                        <Image src={image.src.src} alt={image.caption} width={800} height={1000} style={{ float: 'left', maxWidth: '50%', height: 'auto', marginRight: '10px' }} />
+                                        <Image
+                                            src={apiUrl.slice(0, apiUrl.length - 4) + item.attributes.image.data.attributes.url}
+                                            alt={item.attributes.image.data.attributes.name}
+                                            width={800}
+                                            height={1000}
+                                            style={
+                                                {
+                                                    float: 'left',
+                                                    maxWidth: '50%',
+                                                    height: 'auto',
+                                                    marginRight: '10px'
+                                                }
+                                            } />
                                         <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
                                             <Typography variant="title" gutterBottom>
-                                                {image.caption}
+                                                {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
                                             </Typography>
                                             <Typography variant="subtitle4">
-                                                Description for Image {image.id}
+                                                {isEnglish ? item.attributes.EnglishText : item.attributes.text}
                                             </Typography>
                                         </div>
                                     </div>
@@ -124,13 +105,25 @@ const Services = () => {
                                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                         <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
                                             <Typography variant="title" gutterBottom>
-                                                {image.caption}
+                                                {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
                                             </Typography>
                                             <Typography variant="subtitle4">
-                                                Description for Image {image.id}
+                                                {isEnglish ? item.attributes.EnglishText : item.attributes.text}
                                             </Typography>
                                         </div>
-                                        <Image src={image.src.src} alt={image.caption} width={800} height={1000} style={{ float: 'right', maxWidth: '50%', height: 'auto', marginLeft: '10px' }} />
+                                        <Image
+                                            src={apiUrl.slice(0, apiUrl.length - 4) + item.attributes.image.data.attributes.url}
+                                            alt={item.attributes.image.data.attributes.name}
+                                            width={800}
+                                            height={1000}
+                                            style={
+                                                {
+                                                    float: 'left',
+                                                    maxWidth: '50%',
+                                                    height: 'auto',
+                                                    marginRight: '10px'
+                                                }
+                                            } />
                                     </div>
                                 )}
                             </StyledGrid>

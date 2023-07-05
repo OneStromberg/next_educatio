@@ -1,14 +1,12 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
-  Container,
   Box,
   Grid,
   Typography,
 } from '@mui/material';
 
 import { styled } from '@mui/system';
-
-import AboutUsPic from '@/assets/pic1.jpg'
-
 
 
 const StyledSecondContainer = styled(Box)`
@@ -42,11 +40,41 @@ const StyledImage = styled('img')`
 
 const About = ({ isEnglish }) => {
 
+  const [data, setData] = useState(null);
+  const apiUrl = process.env.API_URL;
+  const apiKey = process.env.API_TOKEN;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/about-uses/1?populate=*`, {
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+          }
+        });
+        setData(response.data.data.attributes);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+  if (!data) {
+    return null;
+  }
+
+  const text = isEnglish ? data.englishText : data.text;
+  const image = data.image.data.attributes.url
+  const imageURL = apiUrl.slice(0, apiUrl.length - 4) + image
+
   return (
     <StyledSecondContainer>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <StyledImage id='about' src={AboutUsPic.src} alt="About Us" width={600} />
+          <StyledImage id='about' src={imageURL} alt="About Us" width={600} />
         </Grid>
         <Grid item xs={12} sm={6}>
           <StyledTextContainer>
@@ -57,9 +85,7 @@ const About = ({ isEnglish }) => {
               Developing the habit of continuous learning
             </Typography>
             <Typography variant="body1" gutterBottom>
-              This is a network of Education Centers that has been operating in eight city libraries in Lviv since 2019. We develop a culture of informal lifelong learning by providing high-quality long-term training courses.
-              Since 2022, we have been conducting art therapies with qualified psychotherapists in Lviv and the region with the support of UNICEF.
-              The CE network exists thanks to the close cooperation of the City Institute, Lviv City Council, the Department of Culture, and the financial support of DVV International Ukraine.
+              {text}
             </Typography>
           </StyledTextContainer>
         </Grid>
