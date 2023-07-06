@@ -16,19 +16,22 @@ const BlogPost = ({ isEnglish, id }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${apiUrl}/blog-posts/${id}/`, {
-                    headers: {
-                        Authorization: `Bearer ${apiKey}`,
-                    }
-                });
-                setData(response.data.data);
+                if (id) {
+                    const response = await axios.get(`${apiUrl}/blog-posts/${id}`, {
+                        headers: {
+                            Authorization: `Bearer ${apiKey} `,
+                        }
+                    });
+                    setData(response.data.data);
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
 
         fetchData();
-    }, []);
+    }, [id]);
+
 
     if (!data) {
         return null;
@@ -37,14 +40,14 @@ const BlogPost = ({ isEnglish, id }) => {
 
     return (
         <Grid item xs={12} sm={6}>
-            <Card style={{ height: '100%' }}>
+            <Card style={{ height: '100%', paddingTop: '10%', width: '80%', margin: '0 auto' }}>
                 <CardContent>
                     <Typography variant="title1" gutterBottom>
-                        {isEnglish ? post.attributes.EnglishTitle : post.attributes.Title}
+                        {isEnglish ? data.attributes.EnglishTitle : data.attributes.Title}
                     </Typography>
                     <Typography variant="subtitle4">
                         <br />
-                        {isEnglish ? post.attributes.EnglishText : post.attributes.text}
+                        {isEnglish ? data.attributes.EnglishText : data.attributes.text}
                     </Typography>
                 </CardContent>
             </Card>

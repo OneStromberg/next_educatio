@@ -3,9 +3,10 @@ import '@/styles/reset.css'
 import { useState } from 'react'
 import { useRouter } from "next/router"
 import { ThemeProvider } from "@mui/material/styles"
+import BlogPost from '@/components/BlogPost'
 import theme from "@/Theme"
 
-export default function BlogPost() {
+export default function BlogPostPage() {
     const [isEnglish, setIsEnglish] = useState(false);
 
     const handleLanguageToggle = () => {
@@ -18,7 +19,7 @@ export default function BlogPost() {
         <>
             <ThemeProvider theme={theme}>
                 <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} />
-                {/* <BlogPost isEnglish={isEnglish} id={id} /> */}
+                <BlogPost isEnglish={isEnglish} id={id} />
             </ThemeProvider>
 
         </>
