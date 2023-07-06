@@ -36,7 +36,7 @@ const Blog = ({ isEnglish }) => {
         return null;
     }
 
-
+    const pageTitle = isEnglish ? 'Blog' : 'Блог'
     return (
         <Grid container spacing={3}
             alignItems="center"
@@ -49,7 +49,7 @@ const Blog = ({ isEnglish }) => {
 
             <Grid item xs={12} textAlign="center">
                 <Typography id='news' variant="h4" gutterBottom>
-                    Blog
+                    {pageTitle}
                 </Typography>
             </Grid>
 

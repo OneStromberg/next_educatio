@@ -55,16 +55,16 @@ const Achiewments = ({ isEnglish }) => {
     if (!data) {
         return null;
     }
-
+    const pageTitle = isEnglish ? 'Our achiewments' : 'Наші досягнення'
     return (
         <Box mt={2} mb={2} style={{ background: '#ededed', padding: '120px 0', margin: '0', }}>
             <StyledTextContainer>
                 <Typography id='services' variant="h4" gutterBottom>
-                    Achiewments
+                    {pageTitle}
                 </Typography>
-                <Typography variant="subtitle3" gutterBottom>
+                {/* <Typography variant="subtitle3" gutterBottom>
                     It is worth acquiring new knowledge even after graduation from formal educational institutions. THIS is a network for those who treat knowledge as a basic necessity
-                </Typography>
+                </Typography> */}
             </StyledTextContainer>
 
             <Container maxWidth="m" style={{ background: '#ededed' }}>

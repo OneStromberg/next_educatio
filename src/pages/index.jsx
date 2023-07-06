@@ -41,7 +41,7 @@ export default function Main() {
                 <Achiewments isEnglish={isEnglish} />
                 <Blog isEnglish={isEnglish} />
                 <CallbackForm isEnglish={isEnglish} />
-                <Footer />
+                <Footer isEnglish={isEnglish} />
             </ThemeProvider>
         </>
     )

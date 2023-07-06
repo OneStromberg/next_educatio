@@ -77,7 +77,7 @@ jobs:
         run: |
           touch .env
           echo "API_URL='http://193.169.188.141:1337/api'" >> .env
-          echo "API_TOKEN=6400362440238402abb9e2f0689a90e43f94f4734152a56fe6449bb7081ce7a0a6ec3cfbd258e611be7033773057d085d3b0dd89ae67c30217866a9eff741b0aab8c9870385c3c0833218d5dfbf9edb987b370cd3e95d09bb5e95e44ba2c59928c53c361f9ca2059baa477cd1dd90a6f84375cf8eef3daeda77d2035d9ef3c70" >> .env
+          echo "API_TOKEN=ede7c85772d9cd2755649181c7c6bafec502dee26f6251a18a467daed0b9a967ae2b5ca9c0aeae1f42af83fa0c611508e54be2907cf80450f955257bc04555b9f7f29bb5d0a9c7527fedc21d5fce654873f8e07644110eef0f414c4da55e5c978bc45b95cb84adbf21f8502206fc29738b5a089be53131f0e2fb7dc9548e9def" >> .env
           cat .env
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build

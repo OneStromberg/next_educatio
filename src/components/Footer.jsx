@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Grid, Typography, IconButton } from '@mui/material';
 import { Facebook, Instagram } from '@mui/icons-material';
 
-const Footer = () => {
+const Footer = ({ isEnglish }) => {
   return (
     <footer style={{ background: '#ededed' }}>
       <Grid container justifyContent="center" alignItems="center">
@@ -18,7 +18,7 @@ const Footer = () => {
             variant="subtitle2"
             align="center"
             marginBottom={2}>
-            Market Square 1, room. 110. Institute of the City
+            {isEnglish ? 'Market Square 1, room. 110. Institute of the City' : "Площа Ринок 1, каб. 110. Інститут міста"}
           </Typography>
           <Grid container justifyContent="center" alignItems="center">
             <IconButton color="inherit" href="https://www.facebook.com">

@@ -104,6 +104,11 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
   }, []);
 
   const languageIcon = isEnglish ? '🇬🇧' : '🇺🇦';
+  const about = isEnglish ? 'About us' : 'Про нас'
+  const services = isEnglish ? 'Services' : 'Послуги'
+  const news = isEnglish ? 'News' : 'Новини'
+  const calendar = isEnglish ? 'Calendar' : 'Календар'
+  const contact = isEnglish ? 'Contact' : 'Контакти'
 
   return (
     <TransparentAppBar position="static"
@@ -133,19 +138,19 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
         </Hidden>
         <Hidden mdDown>
           <Button color="inherit">
-            <StyledButton onClick={() => handleScrollToSection('about')}>About Us</StyledButton>
+            <StyledButton onClick={() => handleScrollToSection('about')}>{about}</StyledButton>
           </Button>
           <Button color="inherit">
-            <StyledButton onClick={() => handleScrollToSection('services')}>Services</StyledButton>
+            <StyledButton onClick={() => handleScrollToSection('services')}>{services}</StyledButton>
           </Button>
           <Button color="inherit">
-            <StyledButton onClick={() => handleScrollToSection('news')}>News</StyledButton>
+            <StyledButton onClick={() => handleScrollToSection('news')}>{news}</StyledButton>
           </Button>
           <Button color="inherit">
-            <StyledButton onClick={() => handleScrollToSection('calendar')}>Calendar</StyledButton>
+            <StyledButton onClick={() => handleScrollToSection('calendar')}>{calendar}</StyledButton>
           </Button>
           <Button color="inherit">
-            <StyledButton onClick={() => handleScrollToSection('contact')}>Contact</StyledButton>
+            <StyledButton onClick={() => handleScrollToSection('contact')}>{contact}</StyledButton>
           </Button>
           <StyledIconButton color="inherit" onClick={toggleLanguage}>
             {languageIcon}
@@ -169,7 +174,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
                 <StyledButton
                   onClick={() => handleScrollToSection('about')}
                   style={{ color: '#fff' }}>
-                  About Us
+                  {about}
                 </StyledButton>
               </ListItemText>
             </ListItem>
@@ -178,7 +183,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
                 <StyledButton
                   onClick={() => handleScrollToSection('services')}
                   style={{ color: '#fff' }}>
-                  Services
+                  {services}
                 </StyledButton>
               </ListItemText>
             </ListItem>
@@ -187,7 +192,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
                 <StyledButton
                   onClick={() => handleScrollToSection('news')}
                   style={{ color: '#fff' }}>
-                  News
+                  {news}
                 </StyledButton>
               </ListItemText>
             </ListItem>
@@ -196,7 +201,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
                 <StyledButton
                   onClick={() => handleScrollToSection('calendar')}
                   style={{ color: '#fff' }}>
-                  Calendar
+                  {calendar}
                 </StyledButton>
               </ListItemText>
             </ListItem>
@@ -205,7 +210,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
                 <StyledButton
                   onClick={() => handleScrollToSection('contact')}
                   style={{ color: '#fff' }}>
-                  Contact
+                  {contact}
                 </StyledButton>
               </ListItemText>
             </ListItem>

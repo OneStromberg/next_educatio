@@ -56,14 +56,17 @@ const Services = ({ isEnglish }) => {
         return null;
     }
 
+    const pageTitle = isEnglish ? 'Our actions' : 'Наші дії'
+    const subtitle = isEnglish ? 'It is worth acquiring new knowledge even after graduation from formal educational institutions. THIS is a network for those who treat knowledge as a basic necessity' : 'Здобувати нові знання варто і після закінчення офіційних навчальних інстанцій. ЦЕ є мережею для тих, хто ставляться до знань як до базової необхідності'
+
     return (
         <Box mt={2} mb={2} style={{ background: '#ededed', padding: '120px 0', margin: '0', }}>
             <StyledTextContainer>
                 <Typography id='services' variant="h4" gutterBottom>
-                    Our actions
+                    {pageTitle}
                 </Typography>
                 <Typography variant="subtitle3" gutterBottom>
-                    It is worth acquiring new knowledge even after graduation from formal educational institutions. THIS is a network for those who treat knowledge as a basic necessity
+                    {subtitle}
                 </Typography>
             </StyledTextContainer>
 

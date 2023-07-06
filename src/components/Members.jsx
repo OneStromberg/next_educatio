@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
     Box,
     Grid,
@@ -14,29 +16,36 @@ const StyledGrid = styled(Grid)`
         padding: 20px;
         `;
 
+const Members = ({ isEnglish }) => {
 
-const Members = () => {
+    const [data, setData] = useState(null);
+    const apiUrl = process.env.API_URL;
+    const apiKey = process.env.API_TOKEN;
 
-    const list = [
-        {
-            id: 1,
-            header: 'The First Lviv Media Library',
-            caption: "2a Mulyarska St., Halytskyi district It has been an Education Center since 2019. More than 150 people have been trained here.",
-        },
-        {
-            id: 2,
-            num: 2,
-            header: 'URBAN Library',
-            caption: "4 Ustianovycha St., Halytskyi district. It has been an Education Center since 2019. More than 150 people have been trained here.",
-        },
-        {
-            id: 3,
-            num: 3,
-            header: 'Wiki Library',
-            caption: '58, Chervona Kalynya Ave. It has been an Education Center since 2019. More than 120 people have been trained here',
-        },
-        // Добавить дополнительные объекты с изображениями и подписями по вашему желанию
-    ];
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/members`, {
+                    headers: {
+                        Authorization: `Bearer ${apiKey}`,
+                    }
+                });
+                setData(response.data.data);
+                console.log(data)
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (!data) {
+        return null;
+    }
+
+    const pageTitle = isEnglish ? 'Members of the CE network' : 'Навчальні напрями'
+
 
     return (
         <Box mt={5} mb={5} style={{
@@ -50,16 +59,18 @@ const Members = () => {
                 textAlign: "center",
                 margin: '0 0 72px',
             }}>
-                Members of the CE network
+                {pageTitle}
             </Typography>
             <Grid container spacing={2} style={{ maxWidth: '70%' }}>
-                {list.map((el) => (
-                    <Grid item xs={12} sm={6} md={4} key={el.id}>
+                {data.map((item) => (
+                    <Grid item xs={12} sm={6} md={4} key={item.id}>
                         <StyledGrid >
-                            <Typography variant='card_header'>{el.header}</Typography>
-                            <Typography variant="card_body" gutterBottom>
-                                {el.caption}
-                            </Typography>
+                            <Typography variant='card_header'>{
+                                isEnglish ? item.attributes.EnglishTitle : item.attributes.title
+                            }</Typography>
+                            <Typography variant="card_body" gutterBottom>{
+                                isEnglish ? item.attributes.EnglishDescription : item.attributes.description
+                            }</Typography>
                         </StyledGrid>
                     </Grid>
                 ))}

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Typography } from '@mui/material';
 
-const CalendarContainer = () => {
+const CalendarContainer = ({ isEnglish }) => {
 
     const [data, setData] = useState(null);
     const apiUrl = process.env.API_URL;
@@ -32,6 +32,7 @@ const CalendarContainer = () => {
     }
 
     const calendar = data.CalendarURL
+    const pageTitle = isEnglish ? 'Calendar' : 'Календар'
 
     return (
         <Grid
@@ -40,7 +41,7 @@ const CalendarContainer = () => {
             justifyContent="center"
             alignItems="center"
             style={{ background: '#ededed', padding: '130px 0' }}>
-            <Typography id='calendar' variant='h4'>Calendar</Typography>
+            <Typography id='calendar' variant='h4'>{pageTitle}</Typography>
             <Grid container spacing={2}
                 alignItems="center"
                 justifyContent="center"

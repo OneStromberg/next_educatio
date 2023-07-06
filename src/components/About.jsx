@@ -69,6 +69,8 @@ const About = ({ isEnglish }) => {
   const text = isEnglish ? data.englishText : data.text;
   const image = data.image.data.attributes.url
   const imageURL = apiUrl.slice(0, apiUrl.length - 4) + image
+  const aboutus = isEnglish ? 'About us' : 'Про нас'
+  const subtitle = isEnglish ? 'Developing the habit of continuous learning' : 'Розвиваємо звичку навчатися невпинно'
 
   return (
     <StyledSecondContainer>
@@ -79,10 +81,10 @@ const About = ({ isEnglish }) => {
         <Grid item xs={12} sm={6}>
           <StyledTextContainer>
             <Typography variant="h4" gutterBottom>
-              About us
+              {aboutus}
             </Typography>
             <Typography variant="subtitle2" gutterBottom>
-              Developing the habit of continuous learning
+              {subtitle}
             </Typography>
             <Typography variant="body1" gutterBottom>
               {text}

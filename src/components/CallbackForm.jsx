@@ -8,7 +8,7 @@ import {
 
 import axios from 'axios';
 
-const CallbackForm = () => {
+const CallbackForm = ({ isEnglish }) => {
     const apiUrl = process.env.API_URL;
     const apiKey = process.env.API_TOKEN;
 
@@ -102,6 +102,16 @@ const CallbackForm = () => {
         }
     };
 
+    const pageTitle = isEnglish ? 'Do you have any questions?' : 'Залишились питання?'
+    const pageSubTitle = isEnglish ? 'Fill out the form and we will be happy to answer' : 'Заповніть форму і ми будемо раді відповісти'
+    const nameField = isEnglish ? 'Name' : "Ім'я"
+    const namePalceholder = isEnglish ? 'Enter your name' : "Введіть своє ім'я"
+    const phoneField = isEnglish ? 'Phone number' : "Номер телефону"
+    const phonePalceholder = isEnglish ? 'Enter your phone number' : "Введіть свій номер телефону"
+    const messageField = isEnglish ? 'Message' : "Повідомлення"
+    const messagePalceholder = isEnglish ? 'Enter your message' : "Введіть своє повідомлення"
+    const buttonText = isEnglish ? 'Complete' : "Заповнити"
+
     return (
         <Grid
             container
@@ -122,9 +132,9 @@ const CallbackForm = () => {
                     margin: '0 auto',
                     paddingBottom: '41px',
                 }}>
-                    Do you have any questions?
+                    {pageTitle}
                 </Typography>
-                <Typography variant='subtitle4'>Fill out the form and we will be happy to answer</Typography>
+                <Typography variant='subtitle4'>{pageSubTitle}</Typography>
             </div>
             <form
                 onSubmit={handleSubmit}
@@ -137,8 +147,8 @@ const CallbackForm = () => {
             >
                 <TextField
                     name="name"
-                    label="Name"
-                    placeholder="Enter your name"
+                    label={nameField}
+                    placeholder={namePalceholder}
                     value={formData.name}
                     onChange={handleInputChange}
                     fullWidth
@@ -149,8 +159,8 @@ const CallbackForm = () => {
                 />
                 <TextField
                     name="phone"
-                    label="Phone Number"
-                    placeholder="Enter your phone number"
+                    label={phoneField}
+                    placeholder={phonePalceholder}
                     value={formData.phone}
                     onChange={handleInputChange}
                     fullWidth
@@ -173,8 +183,8 @@ const CallbackForm = () => {
                 />
                 <TextField
                     name="message"
-                    label="Message"
-                    placeholder="Enter your message"
+                    label={messageField}
+                    placeholder={messagePalceholder}
                     value={formData.message}
                     onChange={handleInputChange}
                     fullWidth
@@ -196,7 +206,7 @@ const CallbackForm = () => {
                         minWidth: 150,
                     }}
                 >
-                    Complete
+                    {buttonText}
                 </Button>
             </form>
         </Grid>
