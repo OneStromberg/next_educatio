@@ -168,6 +168,10 @@ const theme = createTheme({
       lineHeight: 1.35,
       color: "#ef4056",
     },
+    dark_header: {
+      background: "#24fe241",
+      color: "#0010010"
+    },
   },
 });
 

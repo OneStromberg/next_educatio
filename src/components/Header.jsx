@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -28,6 +28,7 @@ const TransparentAppBar = styled(AppBar)`
 const StyledIconButton = styled(IconButton)`
   color: inherit;
   margin-left: 10px;
+  text-shadow: 1px 1px 2px #000009;
 `;
 
 const drawerStyles = {
@@ -39,6 +40,7 @@ cursor: pointer;
 color: inherit;
 text-decoration: none;
 margin-right: 10px;
+text-shadow: 1px 1px 2px #000009;
 `;
 
 const Logo = styled(Typography)`
@@ -48,8 +50,8 @@ color: inherit;
 
 const Header = ({ onLanguageToggle, isEnglish }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [isScrolled, setScrolled] = useState(false);
   const [isDarkBackground, setDarkBackground] = useState(false);
+
 
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
@@ -62,20 +64,62 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
     }
   };
 
-  const handleScroll = () => {
-    const scrollTop = window.pageYOffset;
-    const darkBackgroundThreshold = 700;
+  // useEffect(() => {
+  //   let timeoutId;
 
-    setScrolled(scrollTop > 0);
-    setDarkBackground(scrollTop > darkBackgroundThreshold);
-  };
+  //   const handleScroll = () => {
+  //     clearTimeout(timeoutId);
+  //     timeoutId = setTimeout(() => {
+  //       const headerElement = document.querySelector('header');
+  //       if (headerElement) {
+  //         const headerStyles = getComputedStyle(headerElement);
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //         const elementsBelowHeader = document.querySelectorAll('body *');
+  //         let backgroundColorBelowHeader = '';
+
+  //         for (let i = 0; i < elementsBelowHeader.length; i++) {
+  //           const element = elementsBelowHeader[i];
+  //           const elementStyles = getComputedStyle(element);
+  //           const elementBackgroundColor = elementStyles.backgroundColor;
+  //           const rgbRegex = /rgb\(\s*(\d+),\s*(\d+),\s*(\d+)\)/;
+  //           const rgbMatch = elementBackgroundColor.match(rgbRegex);
+  //           const rgbaRegex = /rgba\(\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d*\.\d+|\d+)\)/;
+  //           const rgbaMatch = elementBackgroundColor.match(rgbaRegex);
+
+  //           if ((backgroundColorBelowHeader !== elementBackgroundColor)
+  //             && ((rgbMatch && rgbMatch[0] !== '0')
+  //               || (rgbaMatch && rgbaMatch[4] !== '0'))) {
+  //             backgroundColorBelowHeader = elementBackgroundColor;
+  //             break;
+  //           }
+  //         }
+
+  //         const isLightBackground = isColorLight(backgroundColorBelowHeader);
+  //         const isLightText = isColorLight(headerStyles.color);
+  //         const hasContrastIssue = isLightBackground === isLightText;
+  //         console.log(isLightBackground, isLightText)
+  //         setDarkBackground(hasContrastIssue);
+  //       }
+  //     }, 500); // Задержка в 0.5 секунды
+  //   };
+
+  //   const isColorLight = (color) => {
+  //     const rgb = color.match(/\d+/g);
+  //     if (rgb && (rgb[3] !== '0' || rgb[4] !== '0')) {
+  //       const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+  //       return brightness > 150;
+  //     }
+  //     return false;
+  //   };
+
+  //   window.addEventListener('scroll', handleScroll);
+
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //     clearTimeout(timeoutId);
+  //   };
+  // }, []);
+
 
   const toggleLanguage = () => {
     onLanguageToggle();
@@ -114,7 +158,6 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
     <TransparentAppBar position="static"
       style={{
         color: isDarkBackground ? '#000010f0' : '#f9f9f9f9',
-        background: isDarkBackground ? '#241f554a' : '',
       }}
     >
       <Toolbar>
@@ -155,10 +198,10 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
           <StyledIconButton color="inherit" onClick={toggleLanguage}>
             {languageIcon}
           </StyledIconButton>
-          <StyledIconButton color="inherit" href="https://www.facebook.com">
+          <StyledIconButton style={{ color: "#4267B2" }} href="https://www.facebook.com">
             <Facebook />
           </StyledIconButton>
-          <StyledIconButton color="inherit" href="https://www.instagram.com">
+          <StyledIconButton style={{ color: "#E1306C" }} href="https://www.instagram.com">
             <Instagram />
           </StyledIconButton>
         </Hidden>
