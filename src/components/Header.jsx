@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -16,6 +16,7 @@ import { Facebook, Instagram, Menu } from '@mui/icons-material';
 import { styled } from '@mui/system';
 import logo from '@/assets/CE_logo.png'
 import Image from 'next/image';
+import Link from 'next/link';
 
 const TransparentAppBar = styled(AppBar)`
   background-color: transparent;
@@ -23,6 +24,7 @@ const TransparentAppBar = styled(AppBar)`
   position: fixed;
   z-index: 5;
   transition: .3s
+  
 `;
 
 const StyledIconButton = styled(IconButton)`
@@ -163,19 +165,35 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
       <Toolbar>
         <Hidden mdDown>
           <Logo variant="h6" component="div">
-            <Image src={logo.src} width={130} height={70}></Image>
+            <Link href='/' >
+              <Image src={logo.src} width={130} height={70} style={{ cursor: 'pointer' }}></Image>
+            </Link>
           </Logo>
+
         </Hidden>
         <Hidden mdUp>
           <Logo variant="h6" component="div">
-            <Typography variant='h2' style={{ color: 'inherit' }}>CE - Center of Education</Typography>
+            <Link href='/' style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Typography variant='h2'
+                style={{
+                  color: 'inherit',
+                  textShadow: '1px 1px 2px #000009',
+                  cursor: 'pointer'
+                }}>CE - Center of Education</Typography>
+            </Link>
           </Logo>
-          <StyledIconButton color="inherit" onClick={toggleLanguage}>
+          <StyledIconButton
+            color="inherit"
+            onClick={toggleLanguage}
+            style={{ padding: '0 2% 1%', margin: 0, }}
+          >
             {languageIcon}
           </StyledIconButton>
         </Hidden>
         <Hidden mdUp>
-          <IconButton color="inherit" onClick={handleMenuToggle}>
+          <IconButton color="inherit"
+            onClick={handleMenuToggle}
+            style={{ color: '#a9a9a9', height: '100%' }}>
             <Menu />
           </IconButton>
         </Hidden>
@@ -195,7 +213,8 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
           <Button color="inherit">
             <StyledButton onClick={() => handleScrollToSection('contact')}>{contact}</StyledButton>
           </Button>
-          <StyledIconButton color="inherit" onClick={toggleLanguage}>
+          <StyledIconButton color="inherit"
+            onClick={toggleLanguage}>
             {languageIcon}
           </StyledIconButton>
           <StyledIconButton style={{ color: "#4267B2" }} href="https://www.facebook.com">

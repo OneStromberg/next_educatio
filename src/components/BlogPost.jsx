@@ -39,8 +39,8 @@ const BlogPost = ({ isEnglish, id }) => {
 
 
     return (
-        <Grid item xs={12} sm={6}>
-            <Card style={{ height: '100%', paddingTop: '10%', width: '80%', margin: '0 auto' }}>
+        <Grid item xs={12} sm={6} style={{ paddingTop: '10%' }}>
+            <Card style={{ height: '100%', width: '80%', margin: '0 auto' }}>
                 <CardContent>
                     <Typography variant="title1" gutterBottom>
                         {isEnglish ? data.attributes.EnglishTitle : data.attributes.Title}
