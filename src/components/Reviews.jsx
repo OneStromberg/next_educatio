@@ -50,7 +50,7 @@ const ReviewsCarousel = () => {
                     <Typography variant="body1">
                         {review.attributes.ReviewText}
                     </Typography>
-                    <Typography variant="subtitle2"
+                    <Typography variant="subtitle2" marginBottom={2}
                         style={{ marginTop: 10 }}>
                         {review.attributes.ReviewerName}
                     </Typography>
