@@ -1,26 +1,66 @@
-import { Typography, Paper, } from '@mui/material';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Typography, Paper, Rating } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 
 
 const ReviewsCarousel = () => {
 
-    const reviewData = [
-        { id: 1, name: 'John Doe', review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-        { id: 2, name: 'Jane Smith', review: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.' },
-        { id: 3, name: 'Alice Johnson', review: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.' },
-        // Добавьте остальные отзывы
-    ];
+    const [data, setData] = useState(null);
+    const apiUrl = process.env.API_URL;
+    const apiKey = process.env.API_TOKEN;
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/reviews`, {
+                    headers: {
+                        Authorization: `Bearer ${apiKey}`,
+                    }
+                });
+                setData(response.data.data);
+                console.log(data)
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    console.log(data)
+
+    if (!data) {
+        return null;
+    }
 
     return (
-        <Carousel>
-            {reviewData.map((review) => (
-                <Paper key={review.id} elevation={0} style={{ padding: 20, textAlign: 'center' }}>
-                    <Typography variant="body1">{review.review}</Typography>
-                    <Typography variant="subtitle2" style={{ marginTop: 10 }}>{review.name}</Typography>
+        <Carousel style={{ paddingBottom: 10, }}>
+            {data.map((review) => (
+                <Paper
+                    key={review.id}
+                    elevation={0}
+                    style={{
+                        paddingTop: 20,
+                        textAlign: 'center',
+                        maxWidth: '1000px',
+                        maxHeight: '100%',
+                        margin: '0 auto'
+                    }}>
+                    <Typography variant="body1">
+                        {review.attributes.ReviewText}
+                    </Typography>
+                    <Typography variant="subtitle2"
+                        style={{ marginTop: 10 }}>
+                        {review.attributes.ReviewerName}
+                    </Typography>
+                    <Rating name="read-only"
+                        value={review.attributes.rating}
+                        readOnly />
                 </Paper>
-            ))}
-        </Carousel>
+            ))
+            }
+        </Carousel >
     );
 };
 

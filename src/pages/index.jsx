@@ -36,8 +36,10 @@ export default function Main() {
                 <DiscussionReg isEnglish={isEnglish} />
                 <Members isEnglish={isEnglish} />
                 <CalendarContainer isEnglish={isEnglish} />
-                <ReviewsCarousel isEnglish={isEnglish} />
-                <PartnersCarousel isEnglish={isEnglish} />
+                <div style={{ padding: '2% 0' }}>
+                    <ReviewsCarousel isEnglish={isEnglish} />
+                    <PartnersCarousel isEnglish={isEnglish} />
+                </div>
                 <Achiewments isEnglish={isEnglish} />
                 <Blog isEnglish={isEnglish} />
                 <CallbackForm isEnglish={isEnglish} />

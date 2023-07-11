@@ -16,21 +16,29 @@ const PartnersCarousel = () => {
     ];
 
     return (
-        <Carousel>
-            {partnerData.map((partner) => (
-                <Paper key={partner.id} elevation={0} style={{ padding: 20, textAlign: 'center' }}>
-                    <Image
-                        src={partner.logo}
-                        alt="Partner Logo"
-                        width={100}
-                        height={'auto'}
+        <div style={{ marginTop: '3%' }}>
+            <Carousel>
+                {partnerData.map((partner) => (
+                    <Paper
+                        key={partner.id}
+                        elevation={0}
                         style={{
-                            maxWidth: '100%',
-                            margin: '0 auto'
-                        }} />
-                </Paper>
-            ))}
-        </Carousel>
+                            paddingBottom: 10,
+                            textAlign: 'center'
+                        }}>
+                        <Image
+                            src={partner.logo}
+                            alt="Partner Logo"
+                            width={100}
+                            height={'auto'}
+                            style={{
+                                maxWidth: '100%',
+                                margin: '0 auto'
+                            }} />
+                    </Paper>
+                ))}
+            </Carousel>
+        </div>
     );
 };
 
