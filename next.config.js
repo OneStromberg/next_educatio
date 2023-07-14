@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 const nextConfig = {
-  output: 'export',
+  // output: 'export',
   images: {
     loader: 'akamai',
     path: '',

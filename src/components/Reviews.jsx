@@ -19,7 +19,6 @@ const ReviewsCarousel = () => {
                     }
                 });
                 setData(response.data.data);
-                console.log(data)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -27,8 +26,6 @@ const ReviewsCarousel = () => {
 
         fetchData();
     }, []);
-
-    console.log(data)
 
     if (!data) {
         return null;

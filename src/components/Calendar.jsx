@@ -16,7 +16,6 @@ const CalendarContainer = ({ isEnglish }) => {
                         Authorization: `Bearer ${apiKey}`,
                     }
                 });
-                console.log(response)
                 setData(response.data.data.attributes);
             } catch (error) {
                 console.error('Error fetching data:', error);

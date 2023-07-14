@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Container, Typography, } from '@mui/material';
 import { styled } from '@mui/system';
 
@@ -31,29 +29,9 @@ const BackgroundImage = styled('div')`
 `;
 
 
-const HeadingPage = ({ isEnglish }) => {
-  const [data, setData] = useState(null);
+const HeadingPage = ({ isEnglish, data }) => {
+
   const apiUrl = process.env.API_URL;
-  const apiKey = process.env.API_TOKEN;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${apiUrl}/main-pages/1?populate=*`, {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-          }
-        });
-        setData(response.data.data.attributes);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-
   if (!data) {
     return null;
   }
