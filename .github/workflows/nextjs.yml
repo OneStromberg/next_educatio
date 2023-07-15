@@ -78,6 +78,7 @@ jobs:
           touch .env
           echo "API_URL='http://193.169.188.141:1337/api'" >> .env
           echo "API_TOKEN=9648615d432e37399c4f982204ee5778f292d7702ec5accd8cc904fc0e8fa23cf971607fb2fbf60eaee8e97f3ea0a63749e7827a703616be434ee6c50a1b249e24841c76251497f1559e3edb047d100b391609477e0e0ce54e0dc7301bb06b104b946b4111f44e4cf5acd5308484934f34c03375e8957d190466e855a75faaf9" >> .env
+          echo "APP_DOMAIN='stromedos.github.io/next_educatio/'" >> .env
           cat .env
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build

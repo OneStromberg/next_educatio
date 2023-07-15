@@ -2,15 +2,14 @@
 require('dotenv').config();
 
 const nextConfig = {
-  // output: 'export',
   images: {
-    loader: 'akamai',
-    path: '',
-    unoptimized: true,
+    domains: [process.env.APP_DOMAIN],
+    optimized: true,
   },
   env: {
     API_URL: process.env.API_URL,
     API_TOKEN: process.env.API_TOKEN,
+    APP_DOMAIN: process.env.APP_DOMAIN,
   }
 };
 

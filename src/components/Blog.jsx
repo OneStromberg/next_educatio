@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import {
     Grid,
     Typography,
@@ -9,28 +7,7 @@ import {
 import Link from 'next/link';
 
 
-const Blog = ({ isEnglish }) => {
-
-    const [data, setData] = useState(null);
-    const apiUrl = process.env.API_URL;
-    const apiKey = process.env.API_TOKEN;
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/blog-posts/?populate=*`, {
-                    headers: {
-                        Authorization: `Bearer ${apiKey}`,
-                    }
-                });
-                setData(response.data.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
+const Blog = ({ isEnglish, data }) => {
 
     if (!data) {
         return null;

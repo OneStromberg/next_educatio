@@ -19,7 +19,18 @@ import Achiewments from '@/components/Achiewments';
 import Head from 'next/head';
 import { getServerSideProps } from '../ssr';
 
-const Main = ({ data }) => {
+const Main = (
+    {
+        mainData,
+        aboutData,
+        servicesData,
+        areasData,
+        regOnData,
+        membersData,
+        reviewsData,
+        achiewmentsData,
+        blogData
+    }) => {
 
     const [isEnglish, setIsEnglish] = useState(false);
 
@@ -40,19 +51,19 @@ const Main = ({ data }) => {
 
             <ThemeProvider theme={theme}>
                 <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} />
-                <HeadingPage isEnglish={isEnglish} data={data} />
-                <About isEnglish={isEnglish} />
-                <Services isEnglish={isEnglish} />
-                <EducationslAreas isEnglish={isEnglish} />
-                <DiscussionReg isEnglish={isEnglish} />
-                <Members isEnglish={isEnglish} />
+                <HeadingPage isEnglish={isEnglish} data={mainData} />
+                <About isEnglish={isEnglish} data={aboutData} />
+                <Services isEnglish={isEnglish} data={servicesData} />
+                <EducationslAreas isEnglish={isEnglish} data={areasData} />
+                <DiscussionReg isEnglish={isEnglish} data={regOnData} />
+                <Members isEnglish={isEnglish} data={membersData} />
                 <CalendarContainer isEnglish={isEnglish} />
                 <div style={{ padding: '2% 0' }}>
-                    <ReviewsCarousel isEnglish={isEnglish} />
-                    <PartnersCarousel isEnglish={isEnglish} />
+                    <ReviewsCarousel data={reviewsData} />
+                    <PartnersCarousel />
                 </div>
-                <Achiewments isEnglish={isEnglish} />
-                <Blog isEnglish={isEnglish} />
+                <Achiewments isEnglish={isEnglish} data={achiewmentsData} />
+                <Blog isEnglish={isEnglish} data={blogData} />
                 <CallbackForm isEnglish={isEnglish} />
                 <Footer isEnglish={isEnglish} />
             </ThemeProvider>

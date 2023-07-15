@@ -55,8 +55,8 @@ const CalendarContainer = ({ isEnglish }) => {
                     style={{ borderWidth: 0 }}
                     width="80%"
                     height="100%"
-                    minHeight='600px'
-                    frameborder="0"
+                    minheight='600px'
+                    frameBorder="0"
                     scrolling="no">
                 </iframe>
             </Grid>

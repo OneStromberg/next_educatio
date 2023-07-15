@@ -1,31 +1,8 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Typography, Paper, Rating } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 
 
-const ReviewsCarousel = () => {
-
-    const [data, setData] = useState(null);
-    const apiUrl = process.env.API_URL;
-    const apiKey = process.env.API_TOKEN;
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/reviews`, {
-                    headers: {
-                        Authorization: `Bearer ${apiKey}`,
-                    }
-                });
-                setData(response.data.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
+const ReviewsCarousel = ({ data }) => {
 
     if (!data) {
         return null;
@@ -52,7 +29,7 @@ const ReviewsCarousel = () => {
                         {review.attributes.ReviewerName}
                     </Typography>
                     <Rating name="read-only"
-                        value={review.attributes.rating}
+                        value={Number(review.attributes.rating)}
                         readOnly />
                 </Paper>
             ))

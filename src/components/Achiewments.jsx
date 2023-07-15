@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import {
     Container,
     Box,
@@ -30,31 +28,14 @@ const StyledGrid = styled(Grid)`
         `;
 
 
-const Achiewments = ({ isEnglish }) => {
-    const [data, setData] = useState(null);
+const Achiewments = ({ isEnglish, data }) => {
+
     const apiUrl = process.env.API_URL;
-    const apiKey = process.env.API_TOKEN;
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/achiewments/?populate=*`, {
-                    headers: {
-                        Authorization: `Bearer ${apiKey}`,
-                    }
-                });
-                setData(response.data.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
 
     if (!data) {
         return null;
     }
+
     const pageTitle = isEnglish ? 'Our achiewments' : 'Наші досягнення'
     return (
         <Box mt={2} mb={2} style={{ background: '#ededed', padding: '120px 0', margin: '0', }}>

@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import {
     Container,
     Box,
@@ -30,27 +28,9 @@ const StyledGrid = styled(Grid)`
         `;
 
 
-const Services = ({ isEnglish }) => {
-    const [data, setData] = useState(null);
+const Services = ({ isEnglish, data }) => {
+
     const apiUrl = process.env.API_URL;
-    const apiKey = process.env.API_TOKEN;
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/our-actions/?populate=*`, {
-                    headers: {
-                        Authorization: `Bearer ${apiKey}`,
-                    }
-                });
-                setData(response.data.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
 
     if (!data) {
         return null;
@@ -94,7 +74,8 @@ const Services = ({ isEnglish }) => {
                                                     height: 'auto',
                                                     marginRight: '10px'
                                                 }
-                                            } />
+                                            }
+                                        />
                                         <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
                                             <Typography variant="title" gutterBottom>
                                                 {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
