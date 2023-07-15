@@ -3,7 +3,7 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
-
+import Image from 'next/image';
 import { styled } from '@mui/system';
 
 
@@ -31,11 +31,6 @@ const StyledTextContainer = styled(Grid)`
         align-items: center;
         `;
 
-const StyledImage = styled('img')`
-        max-width: 100%;
-        height: auto;
-        `;
-
 const About = ({ isEnglish, data }) => {
 
   const apiUrl = process.env.API_URL;
@@ -54,7 +49,16 @@ const About = ({ isEnglish, data }) => {
     <StyledSecondContainer>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <StyledImage id='about' src={imageURL} alt="About Us" width={600} />
+          <Image
+            id='about'
+            src={imageURL}
+            alt="About Us"
+            width={600}
+            height={900}
+            style={{
+              maxWidth: '100%',
+              height: 'auto'
+            }} />
         </Grid>
         <Grid item xs={12} sm={6}>
           <StyledTextContainer>

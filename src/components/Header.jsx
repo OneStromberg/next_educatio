@@ -198,21 +198,11 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
           </IconButton>
         </Hidden>
         <Hidden mdDown>
-          <Button color="inherit">
-            <StyledButton onClick={() => handleScrollToSection('about')}>{about}</StyledButton>
-          </Button>
-          <Button color="inherit">
-            <StyledButton onClick={() => handleScrollToSection('services')}>{services}</StyledButton>
-          </Button>
-          <Button color="inherit">
-            <StyledButton onClick={() => handleScrollToSection('news')}>{news}</StyledButton>
-          </Button>
-          <Button color="inherit">
-            <StyledButton onClick={() => handleScrollToSection('calendar')}>{calendar}</StyledButton>
-          </Button>
-          <Button color="inherit">
-            <StyledButton onClick={() => handleScrollToSection('contact')}>{contact}</StyledButton>
-          </Button>
+            <StyledButton color="inherit" onClick={() => handleScrollToSection('about')}>{about}</StyledButton>
+            <StyledButton color="inherit" onClick={() => handleScrollToSection('services')}>{services}</StyledButton>
+            <StyledButton color="inherit" onClick={() => handleScrollToSection('news')}>{news}</StyledButton>
+            <StyledButton color="inherit" onClick={() => handleScrollToSection('calendar')}>{calendar}</StyledButton>
+            <StyledButton color="inherit" onClick={() => handleScrollToSection('contact')}>{contact}</StyledButton>
           <StyledIconButton color="inherit"
             onClick={toggleLanguage}>
             {languageIcon}

@@ -2,6 +2,7 @@
 require('dotenv').config();
 
 const nextConfig = {
+  output: "server",
   images: {
     domains: [process.env.APP_DOMAIN],
     optimized: true,

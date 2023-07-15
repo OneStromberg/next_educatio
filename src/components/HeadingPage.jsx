@@ -43,14 +43,16 @@ const HeadingPage = ({ isEnglish, data }) => {
 
   return (
     <StyledContainer>
-      <BackgroundImage style={{
-        backgroundImage: `linear-gradient(
+      <BackgroundImage
+        title="Background"
+        style={{
+          backgroundImage: `linear-gradient(
     90deg, 
     rgba(36, 31, 85, 0.8), 
     rgba(8, 29, 31, 0.7)
     ),
     url(${bgURL})`
-      }} />
+        }} />
       <Typography variant="h1" component="h1" gutterBottom>
         {text}
       </Typography>
