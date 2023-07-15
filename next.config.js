@@ -11,11 +11,6 @@ const nextConfig = {
     API_TOKEN: process.env.API_TOKEN,
     APP_DOMAIN: process.env.APP_DOMAIN,
   },
-  exportPathMap: function () {
-    return {
-      '/': { page: '/' },
-    };
-  }
 };
 
 module.exports = nextConfig
