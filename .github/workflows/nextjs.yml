@@ -82,12 +82,12 @@ jobs:
           cat .env
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Static HTML export with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./out
+      # - name: Static HTML export with Next.js
+      #   run: ${{ steps.detect-package-manager.outputs.runner }} next export
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v1
+      #   with:
+      #     path: ./out
 
 # Deployment job
   deploy:
@@ -97,6 +97,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Start Next.js
+        run: npm run start
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
