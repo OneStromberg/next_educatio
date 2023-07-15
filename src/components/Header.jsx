@@ -126,7 +126,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
   const toggleLanguage = () => {
     onLanguageToggle();
     const newLanguage = isEnglish ? 'en' : 'ua';
-    document.cookie = `language=${newLanguage}; path=/`; // Сохранение языка в куки
+    document.cookie = `language=${newLanguage}; path=/`;
   };
 
   const getLanguageFromCookie = () => {
