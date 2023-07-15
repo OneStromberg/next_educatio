@@ -88,11 +88,6 @@ jobs:
       #   uses: actions/upload-pages-artifact@v1
       #   with:
       #     path: ./out
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
 
 # Deployment job
   deploy:
@@ -103,7 +98,7 @@ jobs:
     needs: build
     steps:
       - name: Start Next.js
-        run: npm run start
+        run: ${{ steps.build.outputs.runner }} next start
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
