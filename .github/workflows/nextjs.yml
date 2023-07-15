@@ -88,6 +88,11 @@ jobs:
       #   uses: actions/upload-pages-artifact@v1
       #   with:
       #     path: ./out
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
 
 # Deployment job
   deploy:
