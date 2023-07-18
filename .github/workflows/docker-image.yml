@@ -22,3 +22,10 @@ jobs:
       run: |
         docker build . --tag ghcr.io/onestromberg/next_educatio:latest
         docker push ghcr.io/onestromberg/next_educatio:latest
+    - uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY_GITACTIONS }}
+        script: |
+            bash ~/bootstrap.sh nextjs
