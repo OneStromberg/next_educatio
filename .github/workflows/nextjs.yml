@@ -88,17 +88,6 @@ jobs:
       #   uses: actions/upload-pages-artifact@v1
       #   with:
       #     path: ./out
-      - uses: actions/checkout@v3
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build the hello-docker Docker image
-      run: |
-        docker build . --tag ghcr.io/onestromberg/strapi_educatio:latest
-        docker push ghcr.io/onestromberg/strapi_educatio:latest
 
 # Deployment job
   deploy:
