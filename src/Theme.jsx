@@ -172,6 +172,13 @@ const theme = createTheme({
       background: "#24fe241",
       color: "#0010010"
     },
+    header_text: {
+      fontFamily: "Roboto",
+      cursor: 'pointer',
+      color: '#AFABB8',
+      fontSize: 16,
+      fontWeight: 500,
+    }
   },
 });
 

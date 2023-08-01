@@ -1,5 +1,6 @@
 import { Container, Typography, } from '@mui/material';
 import { styled } from '@mui/system';
+import Image from 'next/image';
 
 
 const StyledContainer = styled(Container)`
@@ -7,10 +8,8 @@ const StyledContainer = styled(Container)`
   background-position: center;
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   color: white;
   overflow: hidden;
   max-width: none;
@@ -44,21 +43,18 @@ const HeadingPage = ({ isEnglish, data }) => {
   return (
     <StyledContainer>
       <BackgroundImage
-        title="Background"
         style={{
-          backgroundImage: `linear-gradient(
-    90deg, 
-    rgba(36, 31, 85, 0.8), 
-    rgba(8, 29, 31, 0.7)
-    ),
-    url(${bgURL})`
+          background: '#2B2B93',
         }} />
-      <Typography variant="h1" component="h1" gutterBottom>
-        {text}
-      </Typography>
-      <Typography variant="h2" gutterBottom>
-        {subtext}
-      </Typography>
+      <div>
+        <Typography variant="h1" component="h1" gutterBottom>
+          {text}
+        </Typography>
+        <Typography variant="h2" gutterBottom>
+          {subtext}
+        </Typography>
+      </div>
+      <Image src={bgURL} alt='image' width={300} height={300} />
     </StyledContainer>
   );
 };
