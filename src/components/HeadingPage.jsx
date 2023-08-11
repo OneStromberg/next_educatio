@@ -1,4 +1,5 @@
 import { Container, Typography, } from '@mui/material';
+import ReactMarkdown from 'react-markdown';
 import { styled } from '@mui/system';
 import Image from 'next/image';
 
@@ -48,10 +49,10 @@ const HeadingPage = ({ isEnglish, data }) => {
         }} />
       <div>
         <Typography variant="h1" component="h1" gutterBottom>
-          {text}
+          <ReactMarkdown>{text}</ReactMarkdown>
         </Typography>
         <Typography variant="h2" gutterBottom>
-          {subtext}
+          <ReactMarkdown>{subtext}</ReactMarkdown>
         </Typography>
       </div>
       <Image src={bgURL} alt='image' width={300} height={300} />
@@ -59,4 +60,4 @@ const HeadingPage = ({ isEnglish, data }) => {
   );
 };
 
-export default HeadingPage 
+export default HeadingPage

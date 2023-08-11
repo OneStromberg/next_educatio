@@ -52,17 +52,20 @@ const Main = (
             <ThemeProvider theme={theme}>
                 <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} />
                 <HeadingPage isEnglish={isEnglish} data={mainData} />
+                <Members isEnglish={isEnglish} data={membersData} />
+
+
+                <Achiewments isEnglish={isEnglish} data={achiewmentsData} />
+
                 <About isEnglish={isEnglish} data={aboutData} />
                 <Services isEnglish={isEnglish} data={servicesData} />
                 <EducationslAreas isEnglish={isEnglish} data={areasData} />
                 <DiscussionReg isEnglish={isEnglish} data={regOnData} />
-                <Members isEnglish={isEnglish} data={membersData} />
                 <CalendarContainer isEnglish={isEnglish} />
                 <div style={{ padding: '2% 0' }}>
                     <ReviewsCarousel data={reviewsData} />
                     <PartnersCarousel />
                 </div>
-                <Achiewments isEnglish={isEnglish} data={achiewmentsData} />
                 <Blog isEnglish={isEnglish} data={blogData} />
                 <CallbackForm isEnglish={isEnglish} />
                 <Footer isEnglish={isEnglish} />

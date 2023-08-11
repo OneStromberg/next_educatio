@@ -58,55 +58,30 @@ const Achiewments = ({ isEnglish, data }) => {
                             margin: '0 auto'
                         }}>
                             <StyledGrid>
-                                {index % 2 === 0 ? (
-                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                                        <Image
-                                            src={apiUrl.slice(0, apiUrl.length - 4) + item.attributes.image.data.attributes.url}
-                                            alt={item.attributes.image.data.attributes.name}
-                                            width={800}
-                                            height={1000}
-                                            style={
-                                                {
-                                                    float: 'left',
-                                                    maxWidth: '50%',
-                                                    height: 'auto',
-                                                    marginRight: '10px'
-                                                }
-                                            } />
-                                        <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
-                                            <Typography variant="title" gutterBottom>
-                                                {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
-                                            </Typography>
-                                            <Typography variant="subtitle4">
-                                                {isEnglish ? item.attributes.EnglishText : item.attributes.text}
-                                            </Typography>
-                                        </div>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                    <Image
+                                        src={apiUrl.slice(0, apiUrl.length - 4) + item.attributes.image.data.attributes.url}
+                                        alt={item.attributes.image.data.attributes.name}
+                                        width={800}
+                                        height={1000}
+                                        style={
+                                            {
+                                                float: 'left',
+                                                maxWidth: '50%',
+                                                height: 'auto',
+                                                marginRight: '10px'
+                                            }
+                                        } />
+                                    <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
+                                        <Typography variant="title" gutterBottom>
+                                            {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
+                                        </Typography>
+                                        <Typography variant="subtitle4">
+                                            {isEnglish ? item.attributes.EnglishText : item.attributes.text}
+                                        </Typography>
                                     </div>
-                                ) : (
-                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                                        <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
-                                            <Typography variant="title" gutterBottom>
-                                                {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
-                                            </Typography>
-                                            <Typography variant="subtitle4">
-                                                {isEnglish ? item.attributes.EnglishText : item.attributes.text}
-                                            </Typography>
-                                        </div>
-                                        <Image
-                                            src={apiUrl.slice(0, apiUrl.length - 4) + item.attributes.image.data.attributes.url}
-                                            alt={item.attributes.image.data.attributes.name}
-                                            width={800}
-                                            height={1000}
-                                            style={
-                                                {
-                                                    float: 'left',
-                                                    maxWidth: '50%',
-                                                    height: 'auto',
-                                                    marginRight: '10px'
-                                                }
-                                            } />
-                                    </div>
-                                )}
+                                </div>
+
                             </StyledGrid>
                         </Grid>
                     ))}

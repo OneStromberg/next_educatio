@@ -7,6 +7,8 @@ import {
 import { styled } from '@mui/system';
 const StyledGrid = styled(Grid)`
         display: flex;
+        background: #fff;
+        border-radius: 18px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -20,7 +22,7 @@ const Members = ({ isEnglish, data }) => {
         return null;
     }
 
-    const pageTitle = isEnglish ? 'Members of the CE network' : 'Навчальні напрями'
+    const pageTitle = isEnglish ? 'Our actions and education' : 'Наші події і навчання'
 
 
     return (
@@ -30,6 +32,7 @@ const Members = ({ isEnglish, data }) => {
             flexDirection: 'column',
             alignItems: 'center',
             paddingBottom: '180px',
+            background: '#FBFBFB',
         }}>
             <Typography variant="h4" gutterBottom style={{
                 textAlign: "center",
@@ -42,11 +45,24 @@ const Members = ({ isEnglish, data }) => {
                     <Grid item xs={12} sm={6} md={4} key={item.id}>
                         <StyledGrid >
                             <Typography variant='card_header'>{
-                                isEnglish ? item.attributes.EnglishTitle : item.attributes.title
+                                isEnglish ? item.attributes.EnglishAdress : item.attributes.adress
                             }</Typography>
-                            <Typography variant="card_body" gutterBottom>{
-                                isEnglish ? item.attributes.EnglishDescription : item.attributes.description
+                            <Typography variant='card_date'>{
+                                isEnglish ? item.attributes.EnglishDate : item.attributes.date
                             }</Typography>
+                            <Typography variant='card_place'>{
+                                isEnglish ? item.attributes.EnglishPlace : item.attributes.place
+                            }</Typography>
+                            <Typography variant='card_event'>{
+                                isEnglish ? item.attributes.EnglishEvent : item.attributes.event
+                            }</Typography>
+                            <div style={{ display: 'flex' }}>
+                                <Typography variant='card_decorated_text'>{
+                                    isEnglish ? item.attributes.EnglishType : item.attributes.type
+                                }</Typography>
+                                <Typography>{item.attributes.hit ? isEnglish ? 'HIT' : 'ХІТ' : ''}</Typography>
+                            </div>
+                            <Typography variant='card_link'>{isEnglish ? 'Registration' : 'Реєстрація'}</Typography>
                         </StyledGrid>
                     </Grid>
                 ))}

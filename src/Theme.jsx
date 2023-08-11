@@ -97,17 +97,18 @@ const theme = createTheme({
     subtitle3: {
       fontFamily: "Roboto",
       fontSize: 24,
-      color: "#241f55",
+      color: "#262626",
       fontWeight: 300,
       lineHeight: 1.55,
       paddingTop: 41,
       width: '50%',
     },
-    title: {
-      fontFamily: "Roboto",
-      fontWeight: 600,
-      fontSize: 36,
-      color: "#ef4056",
+    title_black: {
+      fontFamily: "Roboto Condensed",
+      fontWeight: 700,
+      fontSize: 32,
+      color: "#262626",
+      lineHeight: '175%',
       textAlign: 'center',
     },
     subtitle4: {
@@ -146,13 +147,6 @@ const theme = createTheme({
       textAlign: 'center',
       maxWidth: '50%',
     },
-    card_header: {
-      fontFamily: "Roboto",
-      fontWeight: 600,
-      fontSize: 18,
-      lineHeight: 1.35,
-      color: "#ef4056",
-    },
     card_body: {
       fontFamily: "Roboto",
       fontWeight: 300,
@@ -178,8 +172,50 @@ const theme = createTheme({
       color: '#AFABB8',
       fontSize: 16,
       fontWeight: 500,
-    }
-  },
+    },
+    card_header: {
+      fontFamily: "Roboto",
+      fontWeight: 400,
+      color: '#626367',
+      fontSize: 16,
+    },
+    card_date: {
+      fontFamily: "Roboto",
+      fontWeight: 600,
+      color: '#313131',
+      fontSize: 18,
+      lineHeight: '311.11%',
+    },
+    card_place: {
+      fontFamily: "Roboto",
+      fontWeight: 300,
+      color: '#7D7987',
+      fontSize: 16,
+      lineHeight: '175%',
+    },
+    card_event: {
+      fontFamily: "Roboto",
+      fontWeight: 700,
+      color: '#242424',
+      fontSize: 24,
+      lineHeight: '233.33%',
+    },
+    card_decorated_text: {
+      fontFamily: "Roboto",
+      fontWeight: 400,
+      color: '#fff',
+      fontSize: 14,
+      lineHeight: '115%',
+    },
+    card_link: {
+      fontFamily: "Roboto",
+      fontWeight: 400,
+      color: '#4089ED',
+      fontSize: 17,
+      lineHeight: '165%',
+    },
+
+  }
 });
 
 export default theme;
