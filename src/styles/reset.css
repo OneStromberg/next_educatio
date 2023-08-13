@@ -20,5 +20,5 @@
     overflow-wrap: break-word;
   }
   #root, #__next {
-    isolation: isolate;
+    /* isolation: isolate; */
   }

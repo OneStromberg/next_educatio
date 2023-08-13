@@ -1,95 +1,87 @@
 import {
-    Container,
     Box,
     Grid,
     Typography,
 } from '@mui/material';
 
 import { styled } from '@mui/system';
-import Image from 'next/image';
 
 const StyledTextContainer = styled(Grid)`
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-        text-align: center;
-        align-items: center;
-        `;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+`;
 
 const StyledGrid = styled(Grid)`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 20px;
-        max-width: 1200px;
-        `;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    max-width: 1200px;
+`;
 
+const GridContainer = styled('div')`
+    display: grid;
+    grid-template-columns: ${props => props.dataLength > 3 ? "1fr 1fr" : "1fr"};
+    gap: 16px;
+`;
+
+const GridItem = styled(Grid)`
+    background: #fff;
+    max-width: fit-content;
+    margin: 0 auto;
+`;
 
 const Achiewments = ({ isEnglish, data }) => {
-
     const apiUrl = process.env.API_URL;
 
     if (!data) {
         return null;
     }
 
-    const pageTitle = isEnglish ? 'Our achiewments' : 'Наші досягнення'
+    const pageTitle = isEnglish ? 'Our achiewments' : 'Наші досягнення';
+
     return (
-        <Box mt={2} mb={2} style={{ background: '#ededed', padding: '120px 0', margin: '0', }}>
+        <Box mt={2} mb={2} style={{
+            background: '#2B2B93',
+            padding: '120px 20%',
+            margin: '0',
+        }}>
             <StyledTextContainer>
-                <Typography id='services' variant="h4" gutterBottom>
+                <Typography id='services' variant="h4_light" gutterBottom>
                     {pageTitle}
                 </Typography>
-                {/* <Typography variant="subtitle3" gutterBottom>
-                    It is worth acquiring new knowledge even after graduation from formal educational institutions. THIS is a network for those who treat knowledge as a basic necessity
-                </Typography> */}
             </StyledTextContainer>
 
-            <Container maxWidth="m" style={{ background: '#ededed' }}>
-                <Grid container spacing={2}>
-
-                    {data.map((item, index) => (
-                        <Grid item xs={12} key={item.id} style={{
-                            background: '#fff',
-                            maxWidth: 'fit-content',
-                            margin: '0 auto'
-                        }}>
-                            <StyledGrid>
-                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Image
-                                        src={apiUrl.slice(0, apiUrl.length - 4) + item.attributes.image.data.attributes.url}
-                                        alt={item.attributes.image.data.attributes.name}
-                                        width={800}
-                                        height={1000}
-                                        style={
-                                            {
-                                                float: 'left',
-                                                maxWidth: '50%',
-                                                height: 'auto',
-                                                marginRight: '10px'
-                                            }
-                                        } />
-                                    <div style={{ overflow: 'hidden', display: "flex", flexDirection: "column", margin: "0 auto", justifyContent: "center" }}>
-                                        <Typography variant="title" gutterBottom>
-                                            {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
-                                        </Typography>
-                                        <Typography variant="subtitle4">
-                                            {isEnglish ? item.attributes.EnglishText : item.attributes.text}
-                                        </Typography>
-                                    </div>
-                                </div>
-
-                            </StyledGrid>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container >
+            <GridContainer dataLength={data.length}>
+                {data.map((item, index) => (
+                    <GridItem
+                        item
+                        key={item.id}
+                    >
+                        <StyledGrid>
+                            <div style={{
+                                display: 'flex',
+                                flexDirection: "column",
+                                justifyContent: 'space-between',
+                                maxHeight: '70%'
+                            }}>
+                                <Typography variant="h4">
+                                    {isEnglish ? item.attributes.EnglishText : item.attributes.text}
+                                </Typography>
+                                <Typography variant="h4" gutterBottom>
+                                    {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
+                                </Typography>
+                            </div>
+                        </StyledGrid>
+                    </GridItem>
+                ))}
+            </GridContainer>
         </Box>
-
     );
 };
 
-export default Achiewments
+export default Achiewments;

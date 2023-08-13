@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import '@fontsource/roboto';
+import '@fontsource/roboto-condensed';
 
 const theme = createTheme({
   overrides: {
@@ -60,16 +61,29 @@ const theme = createTheme({
       color: "#1B2753",
     },
     h4: {
-      fontFamily: "Roboto",
-      fontWeight: 600,
-      fontSize: 52,
-      color: "#ef4056",
+      fontFamily: "Roboto Condensed",
+      fontWeight: 700,
+      fontSize: '32px',
+      lineHeight: '175%',
+      textTransform: 'uppercase',
+      color: "#262626",
+    },
+    h4_light: {
+      fontFamily: "Roboto Condensed",
+      fontWeight: 700,
+      fontSize: '32px',
+      lineHeight: '175%',
+      textTransform: 'uppercase',
+      color: "#e8e7e0",
     },
     h5: {
-      color: "#1B2753",
-      fontFamily: "Roboto",
-      fontWeight: 600,
-      fontSize: 16,
+      fontFamily: "Roboto Condensed",
+      fontWeight: 700,
+      fontSize: '26px',
+      lineHeight: '140%',
+      textTransform: 'uppercase',
+      color: "#262626",
+      opacity: .8,
     },
     h6: {
       color: "#1B2753",
@@ -176,6 +190,12 @@ const theme = createTheme({
     card_header: {
       fontFamily: "Roboto",
       fontWeight: 400,
+      color: '#626367',
+      fontSize: 16,
+    },
+    card_header2: {
+      fontFamily: "Roboto",
+      fontWeight: 500,
       color: '#626367',
       fontSize: 16,
     },

@@ -33,6 +33,7 @@ const Members = ({ isEnglish, data }) => {
             alignItems: 'center',
             paddingBottom: '180px',
             background: '#FBFBFB',
+            paddingTop: '70px',
         }}>
             <Typography variant="h4" gutterBottom style={{
                 textAlign: "center",

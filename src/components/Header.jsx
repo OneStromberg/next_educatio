@@ -56,7 +56,7 @@ const MobileHeader = ({ languageIcon, toggleLanguage, handleMenuToggle, isMenuOp
         onClick={handleMenuToggle}
         style={{ color: '#a9a9a9', height: '100%', marginLeft: 'auto' }}
       >
-        {isMenuOpen ? <Close /> : <Menu />}
+        {isMenuOpen ? <Close size={'30px'} /> : <Menu size={'30px'} />}
       </IconButton>
     </Hidden>
   </>
@@ -64,27 +64,29 @@ const MobileHeader = ({ languageIcon, toggleLanguage, handleMenuToggle, isMenuOp
 
 const DesktopHeader = ({ languageIcon, toggleLanguage, handleMenuToggle, isMenuOpen }) => (
   <>
-    <Hidden mdDown>
+    <Hidden mdDown style={{ display: 'flex', gap: '5%', alignItems: 'center' }}>
       <Logo variant="h6" component="div">
-        <Link href="/">
-          <Image src={logo.src} width={130} height={70} style={{ cursor: 'pointer' }}></Image>
+        <Link href="/" style={{ margin: 0, width: '10%' }}>
+          <Image src={logo.src} width={80} height={35} style={{ cursor: 'pointer', marginLeft: 40 }}></Image>
         </Link>
       </Logo>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', width: '70%', gap: '5%', alignItems: 'center', justifyContent: 'flex-end' }}>
         <StyledButton onClick={toggleLanguage}>{languageIcon}</StyledButton>
-        <Typography style={{ color: '#AFABB8' }} href="https://www.facebook.com">
-          <Facebook />
-        </Typography>
-        <Typography style={{ color: '#AFABB8' }} href="https://www.instagram.com">
-          <Instagram />
-        </Typography>
-        <IconButton
-          color="inherit"
-          onClick={handleMenuToggle}
-          style={{ color: '#a9a9a9', height: '100%', marginLeft: 'auto' }}
-        >
-          {isMenuOpen ? <Close /> : <Menu />}
-        </IconButton>
+        <div style={{ display: 'flex', width: '20%', gap: '5%', alignItems: 'center', justifyContent: 'center' }}>
+          <Typography style={{ color: '#AFABB8', width: '2.5rem' }} href="https://www.facebook.com">
+            <Facebook style={{ fontSize: '1.42 rem', cursor: 'pointer' }} />
+          </Typography>
+          <Typography style={{ color: '#AFABB8' }} href="https://www.instagram.com">
+            <Instagram style={{ fontSize: '1.42 rem', cursor: 'pointer' }} />
+          </Typography>
+          <IconButton
+            color="inherit"
+            onClick={handleMenuToggle}
+            style={{ color: '#a9a9a9', height: '100%', marginLeft: 'auto' }}
+          >
+            {isMenuOpen ? <Close style={{ fontSize: '2.2rem' }} /> : <Menu style={{ fontSize: '2.2rem' }} />}
+          </IconButton>
+        </div>
       </div>
     </Hidden>
   </>
@@ -95,8 +97,9 @@ const MobileDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, abo
     anchor="top"
     style={{
       display: 'flex',
-      zIndex: 4, top: '60px',
+      zIndex: 4, top: '70px',
       height: 'fit-content',
+      boxShadow: 'none',
     }}
     open={isMenuOpen}
     onClose={handleMenuToggle}
@@ -104,11 +107,12 @@ const MobileDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, abo
       sx: {
         background: '#fff',
         display: 'flex',
-        flex: '1',
+        // flex: '1 2 50%',
         borderRadius: '0 0 18px 18px',
         textAlign: 'center',
         position: 'static',
         zIndex: 4,
+        boxShadow: 'none',
       },
     }}
     BackdropProps={{ invisible: true }}
@@ -194,6 +198,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
     <>
       <TransparentAppBar
         position="fixed"
+        style={{ borderRadius: isMenuOpen ? '0' : '0px 0px 18px 18px', }}
       >
         <Toolbar>
           <DesktopHeader

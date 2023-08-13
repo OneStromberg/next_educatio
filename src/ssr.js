@@ -11,7 +11,7 @@ export async function getServerSideProps() {
             },
         });
 
-        const aboutResponse = await axios.get(`${apiUrl}/about-uses/1?populate=*`, {
+        const aboutResponse = await axios.get(`${apiUrl}/about-uses/?populate=*`, {
             headers: {
                 Authorization: `Bearer ${apiKey}`,
             }
@@ -60,7 +60,7 @@ export async function getServerSideProps() {
         });
 
         const mainData = mainResponse.data.data.attributes;
-        const aboutData = aboutResponse.data.data.attributes;
+        const aboutData = aboutResponse.data.data;
         const servicesData = servicesResponse.data.data;
         const areasData = areasResponse.data.data;
         const regOnData = regOnResponse.data.data.attributes;

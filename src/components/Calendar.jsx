@@ -37,30 +37,31 @@ const CalendarContainer = ({ isEnglish }) => {
         <Grid
             container
             direction="column"
-            justifyContent="center"
+            justifyContent="flex-start"
             alignItems="center"
-            style={{ background: '#ededed', padding: '130px 0' }}>
+            style={{
+                // background: '#ededed',
+                // padding: '130px 0'
+            }}>
             <Typography id='calendar' variant='h4'>{pageTitle}</Typography>
             <Grid container spacing={2}
                 alignItems="center"
                 justifyContent="center"
                 style={{
                     width: '100%',
+                    height: '100vh',
                     background: '#ededed',
-                    padding: '5% 0',
                     margin: '0',
                 }}
             >
                 <iframe src={calendar}
                     style={{ borderWidth: 0 }}
-                    width="80%"
+                    width="100%"
                     height="100%"
-                    minheight='600px'
-                    frameBorder="0"
-                    scrolling="no">
+                    minheight='600px'>
                 </iframe>
             </Grid>
-        </Grid>
+        </Grid >
     );
 };
 

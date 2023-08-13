@@ -18,6 +18,7 @@ import Blog from '@/components/Blog';
 import Achiewments from '@/components/Achiewments';
 import Head from 'next/head';
 import { getServerSideProps } from '../ssr';
+import Centers from '@/components/Centers';
 
 const Main = (
     {
@@ -53,20 +54,23 @@ const Main = (
                 <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} />
                 <HeadingPage isEnglish={isEnglish} data={mainData} />
                 <Members isEnglish={isEnglish} data={membersData} />
-
-
                 <Achiewments isEnglish={isEnglish} data={achiewmentsData} />
-
                 <About isEnglish={isEnglish} data={aboutData} />
+                <PartnersCarousel />
+
+                <Centers isEnglish={isEnglish} data={membersData} />
+                <CalendarContainer isEnglish={isEnglish} />
+                <Blog isEnglish={isEnglish} data={blogData} />
+
+
+
+
                 <Services isEnglish={isEnglish} data={servicesData} />
                 <EducationslAreas isEnglish={isEnglish} data={areasData} />
                 <DiscussionReg isEnglish={isEnglish} data={regOnData} />
-                <CalendarContainer isEnglish={isEnglish} />
                 <div style={{ padding: '2% 0' }}>
-                    <ReviewsCarousel data={reviewsData} />
-                    <PartnersCarousel />
+                    <ReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
                 </div>
-                <Blog isEnglish={isEnglish} data={blogData} />
                 <CallbackForm isEnglish={isEnglish} />
                 <Footer isEnglish={isEnglish} />
             </ThemeProvider>

@@ -6,30 +6,25 @@ import {
 import Image from 'next/image';
 import { styled } from '@mui/system';
 
-
 const StyledSecondContainer = styled(Box)`
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 80%;
-        gap: 8%;
-        margin: 0 auto;
-        padding: 10% 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8%;
+    padding: 5% 20%;
+    margin: 0 auto;
 
-        @media (max-width: 600px) {
-            flex-direction: column;
-          }
-        `;
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
+`;
 
-const StyledTextContainer = styled(Grid)`
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-        text-align: center;
-        align-items: center;
-        `;
+const StyledHeaderContainer = styled(Grid)`
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+`;
 
 const About = ({ isEnglish, data }) => {
 
@@ -39,43 +34,41 @@ const About = ({ isEnglish, data }) => {
     return null;
   }
 
-  const text = isEnglish ? data.englishText : data.text;
-  const image = data.image.data.attributes.url
-  const imageURL = apiUrl.slice(0, apiUrl.length - 4) + image
-  const aboutus = isEnglish ? 'About us' : 'Про нас'
-  const subtitle = isEnglish ? 'Developing the habit of continuous learning' : 'Розвиваємо звичку навчатися невпинно'
-
   return (
     <StyledSecondContainer>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <Image
-            id='about'
-            src={imageURL}
-            alt="About Us"
-            width={600}
-            height={900}
-            style={{
-              maxWidth: '100%',
-              height: 'auto'
-            }} />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <StyledTextContainer>
-            <Typography variant="h4" gutterBottom>
-              {aboutus}
-            </Typography>
+      <StyledHeaderContainer>
+        <Typography variant="h4" gutterBottom>
+          {isEnglish ? 'About us' : 'Про нас'}
+        </Typography>
+      </StyledHeaderContainer>
+
+      {data.map((item, index) => (
+        <div key={index} style={{ display: 'flex' }}>
+          <Grid item xs={12} sm={6}>
+            <Image
+              id='about'
+              src={`${apiUrl.slice(0, apiUrl.length - 4)}${item.attributes.image.data.attributes.url}`}
+              alt="About Us"
+              width={600}
+              height={900}
+              style={{
+                maxWidth: '100%',
+                height: 'auto'
+              }} />
+          </Grid>
+          <Grid item xs={12} sm={6} margin={'0 20px'}>
             <Typography variant="subtitle2" gutterBottom>
-              {subtitle}
+              {isEnglish ? item.EnglishSubtitle : item.subtitle}
             </Typography>
             <Typography variant="body1" gutterBottom>
-              {text}
+              {isEnglish ? item.attributes.englishText : item.attributes.text}
             </Typography>
-          </StyledTextContainer>
-        </Grid>
-      </Grid>
+          </Grid>
+
+        </div>
+      ))}
     </StyledSecondContainer>
   );
 };
 
-export default About
+export default About;
