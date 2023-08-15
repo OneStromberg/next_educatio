@@ -2,9 +2,11 @@ import {
     Grid,
     Typography,
     Card,
-    CardContent
+    CardContent,
+    Button
 } from '@mui/material';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 const Blog = ({ isEnglish, data }) => {
@@ -13,7 +15,11 @@ const Blog = ({ isEnglish, data }) => {
         return null;
     }
 
-    const pageTitle = isEnglish ? 'Blog' : 'Блог'
+    console.log(data)
+
+    const pageTitle = isEnglish ? 'News' : 'Новини'
+    const allNews = isEnglish ? 'All news' : 'Всi новини'
+    const apiUrl = process.env.API_URL;
     return (
         <Grid container spacing={3}
             alignItems="center"
@@ -21,11 +27,13 @@ const Blog = ({ isEnglish, data }) => {
             style={{
                 padding: '80px 0',
                 width: '70%',
-                margin: '0 auto'
+                margin: '0 auto',
+                flexDirection: 'column',
+                gap: 50,
             }}>
 
             <Grid item xs={12} textAlign="center">
-                <Typography id='news' variant="h4" gutterBottom>
+                <Typography id='news' variant="news_page_title" gutterBottom>
                     {pageTitle}
                 </Typography>
             </Grid>
@@ -33,21 +41,42 @@ const Blog = ({ isEnglish, data }) => {
             {data.map((post) => (
                 <Grid item xs={12} sm={6} key={post.id}>
                     <Link href={`/blog/${post.id}`} passHref style={{ textDecoration: 'none' }}>
-                        <Card style={{ height: '100%' }}>
-                            <CardContent>
-                                <Typography variant="title1" gutterBottom>
-                                    {isEnglish ? post.attributes.EnglishTitle : post.attributes.Title}
-                                </Typography>
-                                <Typography variant="subtitle4">
-                                    <br />
-                                    {isEnglish ? post.attributes.EnglishText : post.attributes.text}
-                                </Typography>
+                        <Card style={{ height: '100%', borderRadius: 18 }}>
+                            <CardContent style={{ padding: 0 }}>
+                                <Image
+                                    src={`${apiUrl.slice(0, apiUrl.length - 4)}${post.attributes.headingImage.data.attributes.url}`}
+                                    alt={post.attributes.Title}
+                                    width={600}
+                                    height={350}
+                                />
+                                <div style={{ display: 'flex', flexDirection: 'column', padding: '1em 2em' }}>
+                                    <Typography variant="news_title" gutterBottom>
+                                        {isEnglish ? post.attributes.EnglishTitle : post.attributes.Title}
+                                    </Typography>
+                                    <Typography variant="news_text">
+                                        {isEnglish ? post.attributes.EnglishText : post.attributes.text}
+                                    </Typography>
+                                    <Typography variant='card_link' paddingTop={5}>{isEnglish ? 'Read →' : 'Читати →'}</Typography>
+                                </div>
+
                             </CardContent>
                         </Card>
                     </Link>
                 </Grid>
-            ))}
-        </Grid>
+            ))
+            }
+            <Button variant='outlined' href='/blog' passHref
+                style={{
+                    borderRadius: 55,
+                    border: '1.4px solid #458FF6',
+                    color: '#458FF6',
+                    fontSize: 18,
+                    fontWeight: 700,
+                    lineHeight: 3.33,
+                    width: 200,
+                    cursor: 'pointer',
+                }}>{allNews}</Button>
+        </Grid >
     );
 };
 

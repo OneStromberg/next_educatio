@@ -1,10 +1,9 @@
 import { Paper, IconButton, useTheme, useMediaQuery } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 import Image from 'next/image';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import partner1 from '@/assets/partner1.png'
-import partner2 from '@/assets/partner2.png'
-import partner3 from '@/assets/partner3.png'
+// import partner1 from '@/assets/partner1.png'
+// import partner2 from '@/assets/partner2.png'
+// import partner3 from '@/assets/partner3.png'
 import { useState, useEffect } from 'react';
 
 
@@ -26,24 +25,24 @@ const PartnersCarousel = () => {
     }, [isMobile, isTablet]);
 
     const partnerData = [
-        { id: 1, logo: partner1 },
-        { id: 2, logo: partner2 },
-        { id: 3, logo: partner3 },
-        { id: 1, logo: partner1 },
-        { id: 2, logo: partner2 },
-        { id: 3, logo: partner3 },
-        { id: 1, logo: partner2 },
-        { id: 2, logo: partner2 },
-        { id: 3, logo: partner1 },
-        { id: 1, logo: partner2 },
-        { id: 2, logo: partner1 },
-        { id: 3, logo: partner1 },
-        { id: 1, logo: partner3 },
-        { id: 2, logo: partner3 },
-        { id: 3, logo: partner3 },
-        { id: 1, logo: partner1 },
-        { id: 2, logo: partner2 },
-        { id: 3, logo: partner2 },
+        // { id: 1, logo: partner1 },
+        // { id: 2, logo: partner2 },
+        // { id: 3, logo: partner3 },
+        // { id: 4, logo: partner1 },
+        // { id: 5, logo: partner2 },
+        // { id: 6, logo: partner3 },
+        // { id: 7, logo: partner2 },
+        // { id: 8, logo: partner2 },
+        // { id: 9, logo: partner1 },
+        // { id: 10, logo: partner2 },
+        // { id: 11, logo: partner1 },
+        // { id: 12, logo: partner1 },
+        // { id: 13, logo: partner3 },
+        // { id: 14, logo: partner3 },
+        // { id: 15, logo: partner3 },
+        // { id: 16, logo: partner1 },
+        // { id: 17, logo: partner2 },
+        // { id: 18, logo: partner2 },
         // Добавьте остальных партнеров
     ];
 
@@ -64,11 +63,14 @@ const PartnersCarousel = () => {
                             transform: 'translateY(-50%)',
                             zIndex: 1000,
                             backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                            color: '#b5d2fb',
+                            fontSize: '2.5rem',
+                            fontWeight: 700,
                             left: prev ? '-10px' : 'unset',
                             right: next ? '-10px' : 'unset'
                         }}>
-                            {next && <ArrowForwardIos position='static' />}
-                            {prev && <ArrowBackIos position='static' />}
+                            {next && '→'}
+                            {prev && '←'}
                         </IconButton>
                     )
                 }}

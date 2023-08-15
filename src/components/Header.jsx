@@ -117,7 +117,7 @@ const MobileDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, abo
     }}
     BackdropProps={{ invisible: true }}
   >
-    <List style={{ flex: '1' }}>
+    <List style={{ display: 'flex', flex: '1' }}>
       <ListItem button style={{ justifyContent: 'center' }}>
         <StyledButton onClick={() => handleScrollToSection('about')}>
           {about}

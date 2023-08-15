@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 
 import { styled } from '@mui/system';
+import background from '../assets/achiewments_bg.svg';
 
 const StyledTextContainer = styled(Grid)`
     display: flex;
@@ -45,10 +46,13 @@ const Achiewments = ({ isEnglish, data }) => {
     const pageTitle = isEnglish ? 'Our achiewments' : 'Наші досягнення';
 
     return (
-        <Box mt={2} mb={2} style={{
-            background: '#2B2B93',
-            padding: '120px 20%',
-            margin: '0',
+        <Box style={{
+            padding: '150px 10%',
+            margin: 0,
+            backgroundImage: `url(${background.src})`,
+            backgroundRepeat: 'no-repeat no-repeat',
+            backgroundPosition: 'center center',
+            backgroundSize: 'cover'
         }}>
             <StyledTextContainer>
                 <Typography id='services' variant="h4_light" gutterBottom>
@@ -80,7 +84,7 @@ const Achiewments = ({ isEnglish, data }) => {
                     </GridItem>
                 ))}
             </GridContainer>
-        </Box>
+        </Box >
     );
 };
 

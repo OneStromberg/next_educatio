@@ -24,6 +24,7 @@ const Members = ({ isEnglish, data }) => {
 
     const pageTitle = isEnglish ? 'Our actions and education' : 'Наші події і навчання'
 
+    console.log(data)
 
     return (
         <Box mt={5} mb={5} style={{
@@ -58,12 +59,14 @@ const Members = ({ isEnglish, data }) => {
                                 isEnglish ? item.attributes.EnglishEvent : item.attributes.event
                             }</Typography>
                             <div style={{ display: 'flex' }}>
-                                <Typography variant='card_decorated_text'>{
-                                    isEnglish ? item.attributes.EnglishType : item.attributes.type
-                                }</Typography>
+                                <Typography
+                                    variant='card_decorated_text'
+                                    backgroundColor={item.attributes.highlight_type}
+                                    padding={'0.3em 0.7em'}>{
+                                        isEnglish ? item.attributes.EnglishType : item.attributes.type}</Typography>
                                 <Typography>{item.attributes.hit ? isEnglish ? 'HIT' : 'ХІТ' : ''}</Typography>
                             </div>
-                            <Typography variant='card_link'>{isEnglish ? 'Registration' : 'Реєстрація'}</Typography>
+                            <Typography variant='card_link'>{isEnglish ? 'Registration →' : 'Реєстрація →'}</Typography>
                         </StyledGrid>
                     </Grid>
                 ))}

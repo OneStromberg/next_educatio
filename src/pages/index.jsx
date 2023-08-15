@@ -62,15 +62,7 @@ const Main = (
                 <CalendarContainer isEnglish={isEnglish} />
                 <Blog isEnglish={isEnglish} data={blogData} />
 
-
-
-
-                <Services isEnglish={isEnglish} data={servicesData} />
-                <EducationslAreas isEnglish={isEnglish} data={areasData} />
-                <DiscussionReg isEnglish={isEnglish} data={regOnData} />
-                <div style={{ padding: '2% 0' }}>
-                    <ReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
-                </div>
+                <ReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
                 <CallbackForm isEnglish={isEnglish} />
                 <Footer isEnglish={isEnglish} />
             </ThemeProvider>
