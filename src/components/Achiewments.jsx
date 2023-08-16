@@ -31,7 +31,6 @@ const GridContainer = styled('div')`
 `;
 
 const GridItem = styled(Grid)`
-    background: #fff;
     max-width: fit-content;
     margin: 0 auto;
 `;
@@ -65,18 +64,19 @@ const Achiewments = ({ isEnglish, data }) => {
                     <GridItem
                         item
                         key={item.id}
+                        gap={20}
                     >
                         <StyledGrid>
                             <div style={{
                                 display: 'flex',
-                                flexDirection: "column",
-                                justifyContent: 'space-between',
-                                maxHeight: '70%'
+                                gap: '20px',
+                                maxHeight: '70%',
+                                alignItems: 'center',
                             }}>
-                                <Typography variant="h4">
-                                    {isEnglish ? item.attributes.EnglishText : item.attributes.text}
+                                <Typography variant="h4_light" >
+                                    {item.attributes.number}
                                 </Typography>
-                                <Typography variant="h4" gutterBottom>
+                                <Typography variant="text_light" gutterBottom>
                                     {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
                                 </Typography>
                             </div>

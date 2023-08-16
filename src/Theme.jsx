@@ -2,6 +2,7 @@ import { createTheme } from '@mui/material/styles';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import '@fontsource/roboto';
 import '@fontsource/roboto-condensed';
+import '@fontsource/roboto-slab';
 
 const theme = createTheme({
   overrides: {
@@ -292,7 +293,37 @@ const theme = createTheme({
       fontFamily: 'Roboto',
       fontSize: 18,
       fontWeight: 400,
-    }
+    },
+    text_light: {
+      color: '#FBF5E5',
+      fontFamily: 'Roboto',
+      fontSize: 20,
+      fontWeight: 400,
+      lineHeight: '120%'
+    },
+    member_title: {
+      color: '#FFF1D0',
+      fontFamily: 'Roboto Condensed',
+      fontSize: 26,
+      fontWeight: 700,
+      lineHeight: '138.462%',
+      textTransform: 'uppercase',
+      flexBasis: '80%',
+    },
+    member_subtitle: {
+      color: '#FFF1D0',
+      fontFamily: 'Roboto',
+      fontSize: 16,
+      fontWeight: 300
+    },
+    member_number: {
+      color: '#FFF1D0',
+      fontFamily: 'Roboto Slab',
+      fontSize: 80,
+      fontWeight: 900,
+      lineHeight: '70%',
+    },
+
   }
 });
 

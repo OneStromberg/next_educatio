@@ -37,8 +37,8 @@ const About = ({ isEnglish, data }) => {
   return (
     <StyledSecondContainer>
       <StyledHeaderContainer>
-        <Typography variant="h4" gutterBottom>
-          {isEnglish ? 'About us' : 'Про нас'}
+        <Typography variant="h4" gutterBottom color={'#F7BA21'}>
+          {isEnglish ? 'What we are doing' : 'Що ми робимо'}
         </Typography>
       </StyledHeaderContainer>
 

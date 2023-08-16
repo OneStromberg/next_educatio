@@ -56,8 +56,9 @@ const Main = (
                 <Members isEnglish={isEnglish} data={membersData} />
                 <Achiewments isEnglish={isEnglish} data={achiewmentsData} />
                 <About isEnglish={isEnglish} data={aboutData} />
-                <PartnersCarousel />
+                <PartnersCarousel isEnglish={isEnglish} />
 
+                <EducationslAreas isEnglish={isEnglish} data={areasData} />
                 <Centers isEnglish={isEnglish} data={membersData} />
                 <CalendarContainer isEnglish={isEnglish} />
                 <Blog isEnglish={isEnglish} data={blogData} />

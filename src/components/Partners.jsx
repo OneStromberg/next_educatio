@@ -1,4 +1,4 @@
-import { Paper, IconButton, useTheme, useMediaQuery } from '@mui/material';
+import { Paper, IconButton, useTheme, useMediaQuery, Typography } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 import Image from 'next/image';
 // import partner1 from '@/assets/partner1.png'
@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 
-const PartnersCarousel = () => {
+const PartnersCarousel = ({ isEnglish }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
     const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
@@ -49,14 +49,23 @@ const PartnersCarousel = () => {
     const slides = Array.from({ length: Math.ceil(partnerData.length / itemsPerSlide) }).map((_, index) =>
         partnerData.slice(index * itemsPerSlide, (index + 1) * itemsPerSlide)
     );
+    const pageTitle = isEnglish ? 'Our partners' : 'Наші партнери';
 
     return (
-        <div style={{ marginTop: '3%', position: 'relative', width: '80%', margin: '0 auto' }}>
+        <div style={{
+            marginTop: '3%',
+            position: 'relative',
+            width: '80%',
+            margin: '0 auto',
+            justifyContent: 'center'
+        }}>
+            <Typography variant='h4'>{pageTitle}</Typography>
             <Carousel
                 navButtonsAlwaysVisible
                 indicators={false}
                 NavButton={({ onClick, className, style, next, prev }) => {
                     return (
+
                         <IconButton onClick={onClick} style={{
                             ...style,
                             top: '50%',

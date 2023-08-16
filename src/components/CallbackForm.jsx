@@ -120,8 +120,7 @@ const CallbackForm = ({ isEnglish }) => {
             alignItems="center"
             style={{
                 background: `url(${background.src}) no-repeat center`,
-                backgroundSize: 'cover',  // Changed from 'contain'
-                // padding: '130px 0',
+                backgroundSize: 'cover',  // was 'contain'
                 width: '80%',
                 height: 'auto',
                 margin: '10% auto',

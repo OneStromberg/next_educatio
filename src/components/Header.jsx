@@ -11,11 +11,15 @@ import {
   ListItem,
   Hidden,
 } from '@mui/material';
-import { Facebook, Instagram, Menu, Close } from '@mui/icons-material';
+import { Menu, Close } from '@mui/icons-material';
 import { styled } from '@mui/system';
 import logo from '@/assets/logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import Facebook from '../assets/Facebook.svg';
+import Instagram from '../assets/Instagram.svg';
+import TikTok from '../assets/TikTok.svg';
+import YouTube from '../assets/Youtube.svg';
 
 const TransparentAppBar = styled(AppBar)`
   background-color: #fff;
@@ -39,6 +43,12 @@ const Logo = styled(Typography)`
   color: #afabb8;
 `;
 
+const StyledImage = styled(Image)`
+  cursor: pointer;
+  &:hover {
+   filter: brightness(0) saturate(100%) invert(84%) sepia(100%) saturate(6278%) hue-rotate(292deg) brightness(102%) contrast(132%);
+  }
+`;
 
 const MobileHeader = ({ languageIcon, toggleLanguage, handleMenuToggle, isMenuOpen }) => (
   <>
@@ -62,7 +72,13 @@ const MobileHeader = ({ languageIcon, toggleLanguage, handleMenuToggle, isMenuOp
   </>
 );
 
-const DesktopHeader = ({ languageIcon, toggleLanguage, handleMenuToggle, isMenuOpen }) => (
+const DesktopHeader = ({
+  languageIcon,
+  toggleLanguage,
+  handleMenuToggle,
+  isMenuOpen,
+  setHovered,
+  isHovered }) => (
   <>
     <Hidden mdDown style={{ display: 'flex', gap: '5%', alignItems: 'center' }}>
       <Logo variant="h6" component="div">
@@ -72,17 +88,41 @@ const DesktopHeader = ({ languageIcon, toggleLanguage, handleMenuToggle, isMenuO
       </Logo>
       <div style={{ display: 'flex', width: '70%', gap: '5%', alignItems: 'center', justifyContent: 'flex-end' }}>
         <StyledButton onClick={toggleLanguage}>{languageIcon}</StyledButton>
-        <div style={{ display: 'flex', width: '20%', gap: '5%', alignItems: 'center', justifyContent: 'center' }}>
-          <Typography style={{ color: '#AFABB8', width: '2.5rem' }} href="https://www.facebook.com">
-            <Facebook style={{ fontSize: '1.42 rem', cursor: 'pointer' }} />
+        <div style={{ display: 'flex', width: '30%', gap: 30, alignItems: 'center', justifyContent: 'center' }}>
+          <Typography style={{ color: '#AFABB8' }} href="https://www.facebook.com">
+            <StyledImage
+              src={Facebook.src}
+              width={22.7}
+              height={22.7}
+            />
           </Typography>
           <Typography style={{ color: '#AFABB8' }} href="https://www.instagram.com">
-            <Instagram style={{ fontSize: '1.42 rem', cursor: 'pointer' }} />
+            <StyledImage
+              src={Instagram.src}
+              width={22.7}
+              height={22.7}
+            />
+          </Typography>
+          <Typography style={{ color: '#AFABB8' }} href="https://www.youtube.com">
+            <StyledImage
+              src={YouTube.src}
+              width={22.7}
+              height={22.7}
+            />
+          </Typography>
+          <Typography style={{ color: '#AFABB8' }} href="https://www.tiktok.com">
+            <StyledImage
+              src={TikTok.src}
+              width={22.7}
+              height={22.7}
+            />
           </Typography>
           <IconButton
             color="inherit"
             onClick={handleMenuToggle}
-            style={{ color: '#a9a9a9', height: '100%', marginLeft: 'auto' }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            style={{ color: isHovered ? '#1F1F71' : '#a9a9a9', height: '100%', marginLeft: 'auto' }}
           >
             {isMenuOpen ? <Close style={{ fontSize: '2.2rem' }} /> : <Menu style={{ fontSize: '2.2rem' }} />}
           </IconButton>
@@ -149,6 +189,7 @@ const MobileDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, abo
 
 const Header = ({ onLanguageToggle, isEnglish }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isHovered, setHovered] = useState(false);
 
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
@@ -206,6 +247,8 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
             toggleLanguage={toggleLanguage}
             handleMenuToggle={handleMenuToggle}
             isMenuOpen={isMenuOpen}
+            setHovered={setHovered}
+            isHovered={isHovered}
           />
           <MobileHeader
             languageIcon={languageIcon}
