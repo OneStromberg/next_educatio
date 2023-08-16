@@ -1,5 +1,6 @@
 import { Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
+import Wavy from './UI/Wavy';
 import educationalBg from '../assets/educational_bg.svg';
 
 const StyledGrid = styled(Grid)`
@@ -9,6 +10,13 @@ const StyledGrid = styled(Grid)`
   color: #fff;
   padding: 20px;
   gap: 20px;
+`;
+
+const StyledTextContainer = styled(Grid)`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
 `;
 
 const EducationalAreas = ({ isEnglish, data }) => {
@@ -28,9 +36,12 @@ const EducationalAreas = ({ isEnglish, data }) => {
             flexDirection: 'column',
             gap: '130px',
         }}>
-            <Typography variant="h4_light" gutterBottom>
-                {pageTitle}
-            </Typography>
+            <StyledTextContainer>
+                <Typography variant="h4_light" gutterBottom>
+                    {pageTitle}
+                </Typography>
+                <Wavy fill={'#E8E7E0'} />
+            </StyledTextContainer>
             <Grid container spacing={2} direction="reverse">
                 {data.map((item, index) => (
                     <Grid

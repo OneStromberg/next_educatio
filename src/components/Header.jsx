@@ -36,6 +36,11 @@ const StyledButton = styled(Button)`
   color: #afabb8;
   text-decoration: none;
   margin-right: 10px;
+  transition: .3s;
+  &:hover{
+    color: #1F1F71
+    background: none;
+  }
 `;
 
 const Logo = styled(Typography)`

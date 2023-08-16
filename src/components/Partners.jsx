@@ -5,6 +5,7 @@ import Image from 'next/image';
 // import partner2 from '@/assets/partner2.png'
 // import partner3 from '@/assets/partner3.png'
 import { useState, useEffect } from 'react';
+import Wavy from './UI/Wavy';
 
 
 const PartnersCarousel = ({ isEnglish }) => {
@@ -59,7 +60,15 @@ const PartnersCarousel = ({ isEnglish }) => {
             margin: '0 auto',
             justifyContent: 'center'
         }}>
-            <Typography variant='h4'>{pageTitle}</Typography>
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+                <Typography variant='h4'>{pageTitle}</Typography>
+                <Wavy fill={'#262626'} />
+            </div>
             <Carousel
                 navButtonsAlwaysVisible
                 indicators={false}

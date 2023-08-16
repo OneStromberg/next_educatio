@@ -8,6 +8,7 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 import { styled } from '@mui/system';
+import Wavy from './UI/Wavy';
 
 const StyledCard = styled(Card)`
     cursor: pointer;
@@ -50,10 +51,16 @@ const Blog = ({ isEnglish, data }) => {
                 gap: 50,
             }}>
 
-            <Grid item xs={12} textAlign="center">
+            <Grid item xs={12} textAlign="center" style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                padding: 0,
+            }}>
                 <Typography id='news' variant="news_page_title" gutterBottom>
                     {pageTitle}
                 </Typography>
+                <Wavy fill='#7D7987' />
             </Grid>
 
             {data.map((post) => (
@@ -68,7 +75,7 @@ const Blog = ({ isEnglish, data }) => {
                                     height={350}
                                 />
                                 <div style={{ display: 'flex', flexDirection: 'column', padding: '1em 2em' }}>
-                                    <Typography variant="news_title" gutterBottom>
+                                    <Typography variant="news_preview_title" gutterBottom>
                                         {isEnglish ? post.attributes.EnglishTitle : post.attributes.Title}
                                     </Typography>
                                     <Typography variant="news_text" className="text-element">

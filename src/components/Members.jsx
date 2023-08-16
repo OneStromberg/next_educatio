@@ -8,6 +8,7 @@ import { styled } from '@mui/system';
 import Image from 'next/image';
 import SvgBack from './UI/SvgBack';
 import GeoPin from '../assets/geo_pin.svg';
+import Wavy from './UI/Wavy';
 
 const StyledGrid = styled(Grid)`
         cursor: pointer;
@@ -50,12 +51,20 @@ const Members = ({ isEnglish, data }) => {
             background: '#FBFBFB',
             paddingTop: '70px',
         }}>
-            <Typography variant="h4" gutterBottom style={{
-                textAlign: "center",
+            <div style={{
                 margin: '0 0 72px',
+                alignItems: 'center',
+                justifyContent: 'center',
+                display: 'flex',
+                flexDirection: 'column',
             }}>
-                {pageTitle}
-            </Typography>
+                <Typography variant="h4" gutterBottom style={{
+                    textAlign: "center",
+                }}>
+                    {pageTitle}
+                </Typography>
+                <Wavy fill='#262626' />
+            </div>
             <Grid container spacing={2} style={{ maxWidth: '70%' }}>
                 {data.map((item) => (
                     <Grid item xs={12} sm={6} md={4} key={item.id}>

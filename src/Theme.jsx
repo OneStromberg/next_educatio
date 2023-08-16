@@ -126,6 +126,14 @@ const theme = createTheme({
       lineHeight: '175%',
       textTransform: 'uppercase',
     },
+    h4_pink: {
+      fontFamily: "Roboto Condensed",
+      fontWeight: 700,
+      fontSize: 32,
+      lineHeight: '175%',
+      color: "#FF9888",
+      textTransform: 'uppercase',
+    },
     h5_blue: {
       color: '#27278F',
       fontFamily: "Roboto",
@@ -195,8 +203,9 @@ const theme = createTheme({
       color: "#7d7987",
       textAlign: 'center',
       marginTop: 70,
+      textTransform: 'uppercase',
     },
-    news_title: {
+    news_preview_title: {
       fontFamily: "Roboto",
       fontWeight: 700,
       fontSize: 21,

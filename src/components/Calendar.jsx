@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Grid, Typography } from '@mui/material';
+import Wavy from './UI/Wavy';
 
 const CalendarContainer = ({ isEnglish }) => {
 
@@ -43,8 +44,14 @@ const CalendarContainer = ({ isEnglish }) => {
                 // background: '#ededed',
                 // padding: '130px 0'
             }}>
-            <Typography id='calendar' variant='h4'>{pageTitle}</Typography>
-            <Grid container spacing={2}
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+            }}>
+                <Typography id='calendar' variant='h4_pink'>{pageTitle}</Typography>
+                <Wavy fill={'#FF9888'} />
+            </div>            <Grid container spacing={2}
                 alignItems="center"
                 justifyContent="center"
                 style={{

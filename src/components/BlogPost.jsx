@@ -100,7 +100,7 @@ const BlogPost = ({ isEnglish, id }) => {
                 href='/'
                 startIcon='←'
                 variant="text"
-                style={{ cursor: 'pointer', margin: '2% 5%' }}>
+                style={{ cursor: 'pointer', margin: '2% 5%', color: '#458FF6' }}>
                 {isEnglish ? 'Back to Home' : 'На головну'}
             </Button>
         </Grid>

@@ -6,6 +6,7 @@ import {
 
 import { styled } from '@mui/system';
 import background from '../assets/achiewments_bg.svg';
+import Wavy from './UI/Wavy';
 
 const StyledTextContainer = styled(Grid)`
     display: flex;
@@ -56,6 +57,7 @@ const Achiewments = ({ isEnglish, data }) => {
                 <Typography id='services' variant="h4_light" gutterBottom>
                     {pageTitle}
                 </Typography>
+                <Wavy fill={'#E8E7E0'} />
             </StyledTextContainer>
 
             <GridContainer dataLength={data.length}>
