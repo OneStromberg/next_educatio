@@ -118,6 +118,20 @@ const theme = createTheme({
       textTransform: 'uppercase',
       color: "#e8e7e0",
     },
+    h4_blue: {
+      color: '#1F1F71',
+      fontFamily: "Roboto Condensed",
+      fontWeight: 700,
+      fontSize: '32px',
+      lineHeight: '175%',
+      textTransform: 'uppercase',
+    },
+    h5_blue: {
+      color: '#27278F',
+      fontFamily: "Roboto",
+      fontWeight: 400,
+      fontSize: '18px',
+    },
     h5: {
       fontFamily: "Roboto Condensed",
       fontWeight: 700,
@@ -242,16 +256,18 @@ const theme = createTheme({
       fontWeight: 500,
     },
     card_header: {
-      fontFamily: "Roboto",
-      fontWeight: 400,
-      color: '#626367',
-      fontSize: 16,
+      color: 'rgba(38, 38, 38, 0.80)',
+      fontFamily: 'Roboto Condensed',
+      fontSize: 26,
+      fontWeight: 700,
+      lineHeight: '138.462%',
+      textTransform: 'uppercase',
     },
-    card_header2: {
-      fontFamily: "Roboto",
-      fontWeight: 500,
+    card_subheader: {
       color: '#626367',
+      fontFamily: 'Roboto',
       fontSize: 16,
+      fontWeight: 500,
     },
     card_date: {
       fontFamily: "Roboto",
@@ -323,7 +339,37 @@ const theme = createTheme({
       fontWeight: 900,
       lineHeight: '70%',
     },
-
+    hit_text: {
+      color: '#870606',
+      textAlign: 'center',
+      fontFamily: 'Roboto',
+      fontSize: 14,
+      fontWeight: 700,
+      lineHeight: '114.286%',
+      textTransform: 'uppercase',
+    },
+    news_title: {
+      color: '#FFF',
+      fontFamily: 'Roboto',
+      fontSize: 60,
+      fontWeight: 700,
+      lineHeight: '133.333%',
+    },
+    about_heading: {
+      color: '#2A2AB4',
+      fontFamily: 'Roboto Condensed',
+      fontSize: 26,
+      fontWeight: 700,
+      lineHeight: '178.462%',
+      textTransform: 'uppercase',
+    },
+    about_subheading: {
+      color: '#2A2AB4',
+      opacity: .8,
+      fontFamily: 'Roboto',
+      fontSize: 16,
+      fontWeight: 300,
+    },
   }
 });
 

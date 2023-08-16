@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import { styled } from '@mui/system';
+import Wavy from './UI/Wavy';
 
 const StyledSecondContainer = styled(Box)`
     display: grid;
@@ -19,11 +20,12 @@ const StyledSecondContainer = styled(Box)`
 `;
 
 const StyledHeaderContainer = styled(Grid)`
-    grid-column: 1 / 3;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 20px;
+      grid-column: 1 / 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 20px;
 `;
 
 const About = ({ isEnglish, data }) => {
@@ -40,34 +42,35 @@ const About = ({ isEnglish, data }) => {
         <Typography variant="h4" gutterBottom color={'#F7BA21'}>
           {isEnglish ? 'What we are doing' : 'Що ми робимо'}
         </Typography>
+        <div>
+          <Wavy fill='#F7BA21' />
+        </div>
       </StyledHeaderContainer>
 
       {data.map((item, index) => (
         <div key={index} style={{ display: 'flex' }}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6} style={{ display: 'flex', flexWrap: 'nowrap' }}>
             <Image
               id='about'
               src={`${apiUrl.slice(0, apiUrl.length - 4)}${item.attributes.image.data.attributes.url}`}
               alt="About Us"
-              width={600}
-              height={900}
-              style={{
-                maxWidth: '100%',
-                height: 'auto'
-              }} />
-          </Grid>
-          <Grid item xs={12} sm={6} margin={'0 20px'}>
-            <Typography variant="subtitle2" gutterBottom>
-              {isEnglish ? item.EnglishSubtitle : item.subtitle}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              {isEnglish ? item.attributes.englishText : item.attributes.text}
-            </Typography>
+              width={180}
+              height={190} />
+            <Grid item xs={12} sm={6} margin={'0 20px'}>
+              <Typography variant="about_heading" gutterBottom>
+                {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
+              </Typography>
+              <br />
+              <Typography variant="about_subheading" gutterBottom>
+                {isEnglish ? item.attributes.englishText : item.attributes.text}
+              </Typography>
+            </Grid>
           </Grid>
 
         </div>
-      ))}
-    </StyledSecondContainer>
+      ))
+      }
+    </StyledSecondContainer >
   );
 };
 

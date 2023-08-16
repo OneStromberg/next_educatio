@@ -19,7 +19,6 @@ const StyledGrid = styled(Grid)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
     padding: 20px;
     max-width: 1200px;
 `;

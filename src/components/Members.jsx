@@ -7,8 +7,10 @@ import {
 import { styled } from '@mui/system';
 import Image from 'next/image';
 import SvgBack from './UI/SvgBack';
+import GeoPin from '../assets/geo_pin.svg';
 
 const StyledGrid = styled(Grid)`
+        cursor: pointer;
         display: flex;
         background: #fff;
         border-radius: 18px;
@@ -16,6 +18,17 @@ const StyledGrid = styled(Grid)`
         align-items: flex-start;
         justify-content: center;
         padding: 25px;
+        gap: 10px;
+        transition: .3s;
+        &:hover{
+            box-shadow: 0px 20px 60px 0px rgba(157, 166, 189, 0.80);
+            .text-element {
+                opacity: 0.5;
+            }
+            .button{
+                font-weight: 700;
+            }
+        }
         `;
 
 const Members = ({ isEnglish, data }) => {
@@ -47,20 +60,23 @@ const Members = ({ isEnglish, data }) => {
                 {data.map((item) => (
                     <Grid item xs={12} sm={6} md={4} key={item.id}>
                         <StyledGrid >
-                            <Typography variant='card_header'>{
-                                isEnglish ? item.attributes.EnglishAdress : item.attributes.adress
-                            }</Typography>
-                            <Typography variant='card_date'>{
+                            <div style={{ display: 'flex', gap: 15, alignItems: 'center' }} className="text-element">
+                                <Image src={GeoPin.src} width={24} height={24}></Image>
+                                <Typography variant='card_header' >{
+                                    isEnglish ? item.attributes.EnglishAdress : item.attributes.adress
+                                }</Typography>
+                            </div>
+                            <Typography variant='card_date' className="text-element">{
                                 isEnglish ? item.attributes.EnglishDate : item.attributes.date
                             }</Typography>
-                            <Typography variant='card_place'>{
+                            <Typography variant='card_place' className="text-element">{
                                 isEnglish ? item.attributes.EnglishPlace : item.attributes.place
                             }</Typography>
                             <Typography variant='card_event'>{
                                 isEnglish ? item.attributes.EnglishEvent : item.attributes.event
                             }</Typography>
-                            <div style={{ display: 'flex' }}>
-                                <div style={{ position: 'relative', display: 'inline-block' }}>
+                            <div style={{ display: 'flex', gap: 20 }}>
+                                <div style={{ position: 'relative', display: 'inline-block' }} className="text-element">
                                     <SvgBack fill={item.attributes.highlight_type} />
                                     <Typography
                                         variant='card_decorated_text'
@@ -71,13 +87,26 @@ const Members = ({ isEnglish, data }) => {
                                             transform: 'translate(-50%, -50%)',
                                             padding: '0.3em 0.7em'
                                         }}
+
                                     >
                                         {isEnglish ? item.attributes.EnglishType : item.attributes.type}
                                     </Typography>
                                 </div>
-                                <Typography>{item.attributes.hit ? isEnglish ? 'HIT' : 'ХІТ' : ''}</Typography>
+                                {item.attributes.hit && (
+                                    <Typography
+                                        style={{
+                                            borderRadius: 4,
+                                            background: '#FFD12F',
+                                            padding: '0.3em 0.7em',
+                                        }}
+                                        variant='hit_text'
+                                        className="text-element"
+                                    >
+                                        {isEnglish ? 'HIT' : 'ХІТ'}
+                                    </Typography>
+                                )}
                             </div>
-                            <Typography variant='card_link'>{isEnglish ? 'Registration →' : 'Реєстрація →'}</Typography>
+                            <Typography variant='card_link' className="button">{isEnglish ? 'Registration →' : 'Реєстрація →'}</Typography>
                         </StyledGrid>
                     </Grid>
                 ))}

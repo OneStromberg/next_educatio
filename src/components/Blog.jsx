@@ -7,6 +7,24 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
+import { styled } from '@mui/system';
+
+const StyledCard = styled(Card)`
+    cursor: pointer;
+    border-radius: 18px;
+    transition: .3s;
+    
+    &:hover {
+        box-shadow: 0px 20px 60px 0px rgba(157, 166, 189, 0.80);
+
+        .text-element {
+            color: rgba(98, 99, 103, 0.50);
+        }
+        .button{
+            font-weight: 700;
+        }
+    }
+`;
 
 
 const Blog = ({ isEnglish, data }) => {
@@ -41,7 +59,7 @@ const Blog = ({ isEnglish, data }) => {
             {data.map((post) => (
                 <Grid item xs={12} sm={6} key={post.id}>
                     <Link href={`/blog/${post.id}`} passHref style={{ textDecoration: 'none' }}>
-                        <Card style={{ height: '100%', borderRadius: 18 }}>
+                        <StyledCard style={{ height: '100%', borderRadius: 18 }}>
                             <CardContent style={{ padding: 0 }}>
                                 <Image
                                     src={`${apiUrl.slice(0, apiUrl.length - 4)}${post.attributes.headingImage.data.attributes.url}`}
@@ -53,14 +71,14 @@ const Blog = ({ isEnglish, data }) => {
                                     <Typography variant="news_title" gutterBottom>
                                         {isEnglish ? post.attributes.EnglishTitle : post.attributes.Title}
                                     </Typography>
-                                    <Typography variant="news_text">
+                                    <Typography variant="news_text" className="text-element">
                                         {isEnglish ? post.attributes.EnglishText : post.attributes.text}
                                     </Typography>
-                                    <Typography variant='card_link' paddingTop={5}>{isEnglish ? 'Read →' : 'Читати →'}</Typography>
+                                    <Typography variant='card_link' className='button' paddingTop={5}>{isEnglish ? 'Read →' : 'Читати →'}</Typography>
                                 </div>
 
                             </CardContent>
-                        </Card>
+                        </StyledCard>
                     </Link>
                 </Grid>
             ))

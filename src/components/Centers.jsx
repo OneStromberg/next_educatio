@@ -4,15 +4,20 @@ import {
     Typography,
 } from '@mui/material';
 import { styled } from '@mui/system';
+import Image from 'next/image';
+import Wavy from './UI/Wavy';
+import GeoPin from '../assets/geo_pin.svg';
 
 
-const StyledGrid = styled(Grid)`
+const CenterItem = styled(Box)`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin: 20px;
+    max-width: 220px;
+    gap: 10px;
 `;
 
 const Centers = ({ isEnglish, data }) => {
@@ -20,7 +25,8 @@ const Centers = ({ isEnglish, data }) => {
         return null;
     }
 
-    const pageTitle = isEnglish ? 'Our actions and education' : 'Наші події і навчання';
+    const pageTitle = isEnglish ? 'Centers of Education' : 'Центри Едукації';
+    const pageSubtitle = isEnglish ? 'acting in' : 'діють у';
 
     const chunks = [];
     for (let i = 0; i < data.length; i += 9) {
@@ -32,28 +38,41 @@ const Centers = ({ isEnglish, data }) => {
             display: 'flex',
             margin: '0 auto',
             flexDirection: 'column',
-            alignItems: 'center',
-            paddingBottom: '180px',
+            padding: '100px 160px',
             background: '#FBFBFB',
             paddingTop: '70px',
         }}>
-            <Typography variant="h4" gutterBottom style={{
-                textAlign: "center",
-                margin: '0 0 72px',
-            }}>
-                {pageTitle}
-            </Typography>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <Typography variant="h4_blue" gutterBottom >
+                    {pageTitle}
+                </Typography>
+                <Typography variant="h5_blue" style={{ display: 'flex', alignItems: 'center' }}>
+                    <Wavy fill='#1F1F71' /> {pageSubtitle}
+                </Typography>
+            </div>
             {chunks.map((chunk, index) => (
-                <Grid container spacing={2} style={{ maxWidth: '70%' }} key={index}>
+                <Grid container spacing={2} style={{
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }} key={index}>
                     {chunk.map((item) => (
-                        <StyledGrid item xs={4} key={item.id}>
-                            <Typography variant='h5'>{
-                                isEnglish ? item.attributes.EnglishAdress : item.attributes.adress
-                            }</Typography>
-                            <Typography variant='card_header2'>{
-                                isEnglish ? item.attributes.EnglishPlaceName : item.attributes.placeName
-                            }</Typography>
-                        </StyledGrid>
+                        <Grid item xs={4} key={item.id} style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}>
+                            <CenterItem >
+                                <Typography variant='card_header'>
+                                    {isEnglish ? item.attributes.EnglishPlace : item.attributes.place}
+                                </Typography>
+                                <Box display="flex" gap={5}>
+                                    <Image src={GeoPin.src} width={24} height={24} />
+                                    <Typography variant='card_subheader'>
+                                        {isEnglish ? item.attributes.EnglishAdress : item.attributes.adress}
+                                    </Typography>
+                                </Box>
+                            </CenterItem>
+                        </Grid>
                     ))}
                 </Grid>
             ))}
