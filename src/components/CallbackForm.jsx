@@ -5,7 +5,7 @@ import {
     Button,
     TextField,
 } from '@mui/material';
-
+import background from '../assets/questions_bg.svg';
 import axios from 'axios';
 
 const CallbackForm = ({ isEnglish }) => {
@@ -118,31 +118,39 @@ const CallbackForm = ({ isEnglish }) => {
             direction="column"
             justifyContent="center"
             alignItems="center"
-            style={{ background: '#ededed', padding: '130px 0' }}
+            style={{
+                background: `url(${background.src}) no-repeat center`,
+                backgroundSize: 'cover',  // Changed from 'contain'
+                // padding: '130px 0',
+                width: '80%',
+                height: 'auto',
+                margin: '10% auto',
+                paddingBottom: 50,
+            }}
         >
             <div style={{
                 paddingTop: '7%',
-                paddingBottom: '3.5%',
                 display: 'flex',
                 flexDirection: 'column',
+                alignItems: 'center',
                 width: '100%',
             }}>
-                <Typography id='contact' variant="title2" gutterBottom style={{
+                <Typography id='contact' variant="h4_light" gutterBottom style={{
                     textAlign: 'center',
-                    margin: '0 auto',
-                    paddingBottom: '41px',
                 }}>
                     {pageTitle}
                 </Typography>
-                <Typography variant='subtitle4'>{pageSubTitle}</Typography>
+                <Typography variant='subtitle_light'>{pageSubTitle}</Typography>
             </div>
             <form
                 onSubmit={handleSubmit}
                 style={{
                     display: 'flex',
+                    width: '80%',
+                    height: '100%',
                     flexDirection: 'column',
-                    alignItems: 'center',
-                    width: '50%',
+                    alignItems: 'flex-end',
+                    color: '#FFFFFFB2',
                 }}
             >
                 <TextField
@@ -153,9 +161,11 @@ const CallbackForm = ({ isEnglish }) => {
                     onChange={handleInputChange}
                     fullWidth
                     margin="normal"
+                    variant="standard"
+                    color='secondary'
                     required
-                    error={!!formErrors.name} // Add error prop
-                    helperText={<Typography variant='error_message'>{formErrors.name}</Typography>} // Add helperText prop
+                    error={!!formErrors.name}
+                    helperText={<Typography variant='error_message'>{formErrors.name}</Typography>}
                 />
                 <TextField
                     name="phone"
@@ -165,9 +175,11 @@ const CallbackForm = ({ isEnglish }) => {
                     onChange={handleInputChange}
                     fullWidth
                     margin="normal"
+                    variant="standard"
+                    color='secondary'
                     required
-                    error={!!formErrors.phone} // Add error prop
-                    helperText={<Typography variant='error_message'>{formErrors.phone}</Typography>} // Add helperText prop
+                    error={!!formErrors.phone}
+                    helperText={<Typography variant='error_message'>{formErrors.phone}</Typography>}
                 />
                 <TextField
                     name="email"
@@ -177,9 +189,11 @@ const CallbackForm = ({ isEnglish }) => {
                     onChange={handleInputChange}
                     fullWidth
                     margin="normal"
+                    variant="standard"
+                    color='secondary'
                     required
-                    error={!!formErrors.email} // Add error prop
-                    helperText={<Typography variant='error_message'>{formErrors.email}</Typography>} // Add helperText prop
+                    error={!!formErrors.email}
+                    helperText={<Typography variant='error_message'>{formErrors.email}</Typography>}
                 />
                 <TextField
                     name="message"
@@ -189,24 +203,29 @@ const CallbackForm = ({ isEnglish }) => {
                     onChange={handleInputChange}
                     fullWidth
                     margin="normal"
+                    variant="standard"
+                    color='secondary'
                     multiline
                     rows={4}
                     required
-                    error={!!formErrors.message} // Add error prop
-                    helperText={<Typography variant='error_message'>{formErrors.message}</Typography>} // Add helperText prop
+                    error={!!formErrors.message}
+                    helperText={<Typography variant='error_message'>{formErrors.message}</Typography>}
                 />
                 <Button
                     type="submit"
-                    variant="contained"
+                    variant="text"
                     style={{
                         cursor: 'pointer',
-                        background: '#ef4056',
-                        marginTop: '30px',
+                        color: '#FFC804',
+                        // margin: '4%',
+                        // height: 150,
                         width: '30%',
                         minWidth: 150,
+                        alignSelf: 'flex-end',
+                        padding: '4% 0',
                     }}
                 >
-                    {buttonText}
+                    {buttonText} →
                 </Button>
             </form>
         </Grid>

@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import '@fontsource/roboto';
 import '@fontsource/roboto-condensed';
 
@@ -18,6 +19,46 @@ const theme = createTheme({
           marginBottom: 16,
         },
       },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& .MuiInputBase-root': {
+            color: '#FFFFFFB2',
+            borderBottomColor: '#FFFFFFB2',
+          },
+          '& .MuiFormLabel-root': {
+            color: '#FFFFFFB2',
+          },
+          '& .MuiInputBase-root.Mui-focused': {
+            color: '#FFFFFFB2',
+          },
+          '& .MuiFormLabel-root.Mui-focused': {
+            color: '#FFFFFFB2',
+          },
+          '& .MuiInput-underline:before': {
+            borderBottomColor: '#FFFFFFB2',
+          },
+          '& .MuiInput-underline:after': {
+            borderBottomColor: '#FFFFFFB2',
+          },
+          '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+            borderBottomColor: '#FFFFFFB2',
+          },
+          // Добавьте другие состояния по необходимости
+        },
+      },
+    },
+  },
+
+  palette: {
+    primary: {
+      main: '#FF5733',  // основной цвет
+      contrastText: '#FFF',  // цвет текста
+    },
+    secondary: {
+      main: '#FFFFFFB2',
+      contrastText: '#FFFFFFB2'
     },
   },
   typography: {
@@ -125,14 +166,11 @@ const theme = createTheme({
       lineHeight: '175%',
       textAlign: 'center',
     },
-    subtitle4: {
+    subtitle_light: {
       fontFamily: "Roboto",
-      fontSize: 20,
-      color: "#241f55",
+      fontSize: 16,
       fontWeight: 300,
-      lineHeight: 1.55,
-      padding: "10 20",
-      textAlign: 'center',
+      color: '#FFFFFFB2',
     },
     news_page_title: {
       fontFamily: "Roboto Condensed",
@@ -249,7 +287,12 @@ const theme = createTheme({
       fontSize: 17,
       lineHeight: '165%',
     },
-
+    form_text: {
+      color: 'rgba(255, 255, 255, 0.70)',
+      fontFamily: 'Roboto',
+      fontSize: 18,
+      fontWeight: 400,
+    }
   }
 });
 

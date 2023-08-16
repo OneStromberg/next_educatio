@@ -5,15 +5,17 @@ import {
 } from '@mui/material';
 
 import { styled } from '@mui/system';
+import Image from 'next/image';
+import SvgBack from './UI/SvgBack';
+
 const StyledGrid = styled(Grid)`
         display: flex;
         background: #fff;
         border-radius: 18px;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
-        text-align: center;
-        padding: 20px;
+        padding: 25px;
         `;
 
 const Members = ({ isEnglish, data }) => {
@@ -24,7 +26,6 @@ const Members = ({ isEnglish, data }) => {
 
     const pageTitle = isEnglish ? 'Our actions and education' : 'Наші події і навчання'
 
-    console.log(data)
 
     return (
         <Box mt={5} mb={5} style={{
@@ -59,11 +60,21 @@ const Members = ({ isEnglish, data }) => {
                                 isEnglish ? item.attributes.EnglishEvent : item.attributes.event
                             }</Typography>
                             <div style={{ display: 'flex' }}>
-                                <Typography
-                                    variant='card_decorated_text'
-                                    backgroundColor={item.attributes.highlight_type}
-                                    padding={'0.3em 0.7em'}>{
-                                        isEnglish ? item.attributes.EnglishType : item.attributes.type}</Typography>
+                                <div style={{ position: 'relative', display: 'inline-block' }}>
+                                    <SvgBack fill={item.attributes.highlight_type} />
+                                    <Typography
+                                        variant='card_decorated_text'
+                                        style={{
+                                            position: 'absolute',
+                                            top: '50%',
+                                            left: '50%',
+                                            transform: 'translate(-50%, -50%)',
+                                            padding: '0.3em 0.7em'
+                                        }}
+                                    >
+                                        {isEnglish ? item.attributes.EnglishType : item.attributes.type}
+                                    </Typography>
+                                </div>
                                 <Typography>{item.attributes.hit ? isEnglish ? 'HIT' : 'ХІТ' : ''}</Typography>
                             </div>
                             <Typography variant='card_link'>{isEnglish ? 'Registration →' : 'Реєстрація →'}</Typography>

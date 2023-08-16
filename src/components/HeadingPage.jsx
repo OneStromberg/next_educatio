@@ -1,31 +1,17 @@
 import { Container, Typography, } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 import { styled } from '@mui/system';
+import background from '../assets/heading_bg.svg';
 import Image from 'next/image';
 
 
 const StyledContainer = styled(Container)`
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: white;
-  overflow: hidden;
-  max-width: none;
-`;
-
-const BackgroundImage = styled('div')`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  z-index: -1;
-  max-width: none;
+  color: #fff;
+  max-width: 100dvw;
+  padding: 10% 20%;
 `;
 
 
@@ -42,20 +28,25 @@ const HeadingPage = ({ isEnglish, data }) => {
   const bgURL = apiUrl.slice(0, apiUrl.length - 4) + backgroundImage
 
   return (
-    <StyledContainer>
-      <BackgroundImage
-        style={{
-          background: '#2B2B93',
-        }} />
-      <div>
-        <Typography variant="h1" component="h1" gutterBottom>
-          <ReactMarkdown>{text}</ReactMarkdown>
-        </Typography>
-        <Typography variant="h2" gutterBottom>
-          <ReactMarkdown>{subtext}</ReactMarkdown>
-        </Typography>
+    <StyledContainer style={{
+      background: `url(${background.src})`,
+      maxWidth: 'none',
+      justifyContent: 'center',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
+      backgroundRepeat: 'no-repeat no-repeat'
+    }}>
+      <div style={{ width: '80%', display: 'flex' }}>
+        <div>
+          <Typography variant="h1" component="h1" gutterBottom>
+            <ReactMarkdown>{text}</ReactMarkdown>
+          </Typography>
+          <Typography variant="h2" gutterBottom>
+            <ReactMarkdown>{subtext}</ReactMarkdown>
+          </Typography>
+        </div>
+        <Image src={bgURL} alt='image' width={300} height={300} />
       </div>
-      <Image src={bgURL} alt='image' width={300} height={300} />
     </StyledContainer>
   );
 };
