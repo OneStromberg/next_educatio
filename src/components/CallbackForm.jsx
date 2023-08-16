@@ -216,12 +216,11 @@ const CallbackForm = ({ isEnglish }) => {
                     style={{
                         cursor: 'pointer',
                         color: '#FFC804',
-                        // margin: '4%',
-                        // height: 150,
                         width: '30%',
                         minWidth: 150,
                         alignSelf: 'flex-end',
                         padding: '4% 0',
+                        transition: '.3s',
                     }}
                 >
                     {buttonText} →

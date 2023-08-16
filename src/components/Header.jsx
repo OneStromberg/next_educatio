@@ -10,6 +10,8 @@ import {
   List,
   ListItem,
   Hidden,
+  Divider,
+  Grid,
 } from '@mui/material';
 import { Menu, Close } from '@mui/icons-material';
 import { styled } from '@mui/system';
@@ -137,7 +139,7 @@ const DesktopHeader = ({
   </>
 );
 
-const MobileDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about, services, news, calendar, contact }) => (
+const MobileDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about, services, news, calendar, contact, adress }) => (
   <Drawer
     anchor="top"
     style={{
@@ -145,6 +147,7 @@ const MobileDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, abo
       zIndex: 4, top: '70px',
       height: 'fit-content',
       boxShadow: 'none',
+      justifyContent: 'center',
     }}
     open={isMenuOpen}
     onClose={handleMenuToggle}
@@ -162,7 +165,11 @@ const MobileDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, abo
     }}
     BackdropProps={{ invisible: true }}
   >
-    <List style={{ display: 'flex', flex: '1' }}>
+    <List style={{
+      display: 'flex',
+      flex: '1',
+      padding: '0 8%',
+    }}>
       <ListItem button style={{ justifyContent: 'center' }}>
         <StyledButton onClick={() => handleScrollToSection('about')}>
           {about}
@@ -189,7 +196,16 @@ const MobileDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, abo
         </StyledButton>
       </ListItem>
     </List>
-  </Drawer>
+    <Divider style={{ margin: '10px auto', width: '80%' }} />
+    <Grid container justifyContent="space-between" style={{ padding: '2% 10% 4% 10%' }}>
+      <Typography variant="header_subtext">
+        {adress}
+      </Typography>
+      <Typography variant="header_subtext" style={{ textDecoration: 'underline' }}>
+        info@ceducatio.com
+      </Typography>
+    </Grid>
+  </Drawer >
 );
 
 const Header = ({ onLanguageToggle, isEnglish }) => {
@@ -239,6 +255,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
   const news = isEnglish ? 'News' : 'Новини';
   const calendar = isEnglish ? 'Calendar' : 'Календар';
   const contact = isEnglish ? 'Contact' : 'Контакти';
+  const adress = isEnglish ? 'Ukraine, Lviv,\n Market Square 1, room. 110. Institute of the City' : 'Україна, Львів,\n Пл. Ринок 1, 110 каб';
 
   return (
     <>
@@ -272,6 +289,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
         news={news}
         calendar={calendar}
         contact={contact}
+        adress={adress}
       />
     </>
   );

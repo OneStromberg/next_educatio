@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import {
     Grid,
     Typography,
@@ -27,6 +28,29 @@ const StyledCard = styled(Card)`
     }
 `;
 
+const StyledButton = styled(Button)({
+    borderRadius: 55,
+    border: '1.4px solid #458FF6',
+    color: '#458FF6',
+    fontSize: 18,
+    fontWeight: 700,
+    lineHeight: '3.33',
+    width: 200,
+    cursor: 'pointer',
+    transition: '.3s',
+    '&:hover': {
+        background: '#458FF6',
+        color: '#fff',
+        border: 'none',
+    }
+});
+
+
+const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength) return text;
+    return `${text.slice(0, maxLength)}...`;
+};
+
 
 const Blog = ({ isEnglish, data }) => {
 
@@ -34,10 +58,18 @@ const Blog = ({ isEnglish, data }) => {
         return null;
     }
 
-    console.log(data)
+    const [showAll, setShowAll] = useState(false);
+    const [displayedPosts, setDisplayedPosts] = useState(data.slice(0, 3));
+
+    useEffect(() => {
+        if (showAll) {
+            setDisplayedPosts(data);
+        }
+    }, [showAll, data]);
 
     const pageTitle = isEnglish ? 'News' : 'Новини'
     const allNews = isEnglish ? 'All news' : 'Всi новини'
+    const loadMore = isEnglish ? 'Load more' : 'Завантажити бiльше'
     const apiUrl = process.env.API_URL;
     return (
         <Grid container spacing={3}
@@ -63,7 +95,7 @@ const Blog = ({ isEnglish, data }) => {
                 <Wavy fill='#7D7987' />
             </Grid>
 
-            {data.map((post) => (
+            {displayedPosts.map((post) => (
                 <Grid item xs={12} sm={6} key={post.id}>
                     <Link href={`/blog/${post.id}`} passHref style={{ textDecoration: 'none' }}>
                         <StyledCard style={{ height: '100%', borderRadius: 18 }}>
@@ -79,7 +111,9 @@ const Blog = ({ isEnglish, data }) => {
                                         {isEnglish ? post.attributes.EnglishTitle : post.attributes.Title}
                                     </Typography>
                                     <Typography variant="news_text" className="text-element">
-                                        {isEnglish ? post.attributes.EnglishText : post.attributes.text}
+                                        {isEnglish
+                                            ? truncateText(post.attributes.EnglishText, 150)
+                                            : truncateText(post.attributes.text, 150)}
                                     </Typography>
                                     <Typography variant='card_link' className='button' paddingTop={5}>{isEnglish ? 'Read →' : 'Читати →'}</Typography>
                                 </div>
@@ -90,17 +124,19 @@ const Blog = ({ isEnglish, data }) => {
                 </Grid>
             ))
             }
-            <Button variant='outlined' href='/blog' passHref
-                style={{
-                    borderRadius: 55,
-                    border: '1.4px solid #458FF6',
-                    color: '#458FF6',
-                    fontSize: 18,
-                    fontWeight: 700,
-                    lineHeight: 3.33,
-                    width: 200,
-                    cursor: 'pointer',
-                }}>{allNews}</Button>
+            {!showAll &&
+                <StyledButton
+                    variant='outlined'
+                    onClick={() => setShowAll(true)}>
+                    {loadMore}
+                </StyledButton>
+            }
+
+            {showAll &&
+                <StyledButton variant='outlined'>
+                    {allNews}
+                </StyledButton>
+            }
         </Grid >
     );
 };

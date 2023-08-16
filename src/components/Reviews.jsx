@@ -32,7 +32,13 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
     const pageTitle = isEnglish ? 'Reviews' : 'Відгуки';
     return (
         <>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'column',
+                marginBottom: 50
+            }}>
                 <Typography variant='h4'>
                     {pageTitle}
                 </Typography>

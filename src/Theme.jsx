@@ -19,6 +19,12 @@ const theme = createTheme({
           color: "#ef4056",
           marginBottom: 16,
         },
+        text: {
+          '&:hover': {
+            fontWeight: 700,
+            background: 'none',
+          }
+        }
       },
     },
     MuiTextField: {
@@ -79,8 +85,12 @@ const theme = createTheme({
       fontSize: 14,
       marginTop: 4,
     },
-    body2: {
-      fontSize: 12,
+    header_subtext: {
+      color: '#AFABB8',
+      fontFamily: 'Roboto',
+      fontSize: 18,
+      fontWeight: 400,
+
     },
     h1:
     {
