@@ -4,7 +4,7 @@ import { Facebook, Instagram } from '@mui/icons-material';
 
 const Footer = ({ isEnglish }) => {
   return (
-    <footer style={{ background: '#ededed' }}>
+    <footer style={{ background: '#4E5058' }}>
       <Grid container justifyContent="center" alignItems="center">
         <Grid item xs={12} sm={6}>
           <Typography

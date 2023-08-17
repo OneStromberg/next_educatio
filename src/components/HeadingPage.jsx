@@ -1,9 +1,8 @@
-import { Container, Typography, } from '@mui/material';
+import { Container, Typography, useMediaQuery, useTheme } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 import { styled } from '@mui/system';
 import background from '../assets/heading_bg.svg';
 import Image from 'next/image';
-
 
 const StyledContainer = styled(Container)`
   height: 100dvh;
@@ -12,10 +11,15 @@ const StyledContainer = styled(Container)`
   color: #fff;
   max-width: 100dvw;
   padding: 10% 20%;
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    flex-direction: column;
+  }
 `;
 
-
 const HeadingPage = ({ isEnglish, data }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const apiUrl = process.env.API_URL;
   if (!data) {
@@ -24,8 +28,8 @@ const HeadingPage = ({ isEnglish, data }) => {
 
   const text = isEnglish ? data.englishText : data.text;
   const subtext = isEnglish ? data.exnglishSubText : data.subtext;
-  const backgroundImage = data.BackgroundImage.data.attributes.url
-  const bgURL = apiUrl.slice(0, apiUrl.length - 4) + backgroundImage
+  const backgroundImage = data.BackgroundImage.data.attributes.url;
+  const bgURL = apiUrl.slice(0, apiUrl.length - 4) + backgroundImage;
 
   return (
     <StyledContainer style={{
@@ -36,19 +40,18 @@ const HeadingPage = ({ isEnglish, data }) => {
       backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat no-repeat'
     }}>
-      <div style={{ width: '80%', display: 'flex' }}>
-        <div>
-          <Typography variant="h1" component="h1" gutterBottom>
-            <ReactMarkdown>{text}</ReactMarkdown>
-          </Typography>
-          <Typography variant="h2" gutterBottom>
-            <ReactMarkdown>{subtext}</ReactMarkdown>
-          </Typography>
-        </div>
-        <Image src={bgURL} alt='image' width={300} height={300} />
+      {isMobile && <Image src={bgURL} alt='image' width={300} height={300} />}
+      <div style={{ width: isMobile ? '100%' : '50%' }}>
+        <Typography variant="h1" component="h1" gutterBottom>
+          <ReactMarkdown>{text}</ReactMarkdown>
+        </Typography>
+        <Typography variant="h2" gutterBottom>
+          <ReactMarkdown>{subtext}</ReactMarkdown>
+        </Typography>
       </div>
+      {!isMobile && <Image src={bgURL} alt='image' width={300} height={300} />}
     </StyledContainer>
   );
 };
 
-export default HeadingPage
+export default HeadingPage;

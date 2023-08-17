@@ -9,8 +9,9 @@ import Image from 'next/image';
 import SvgBack from './UI/SvgBack';
 import GeoPin from '../assets/geo_pin.svg';
 import Wavy from './UI/Wavy';
+import Link from 'next/link';
 
-const StyledGrid = styled(Grid)`
+const StyledGrid = styled(Link)`
         cursor: pointer;
         display: flex;
         background: #fff;
@@ -20,6 +21,7 @@ const StyledGrid = styled(Grid)`
         justify-content: center;
         padding: 25px;
         gap: 10px;
+        text-decoration: none;
         transition: .3s;
         &:hover{
             box-shadow: 0px 20px 60px 0px rgba(157, 166, 189, 0.80);
@@ -67,8 +69,8 @@ const Members = ({ isEnglish, data }) => {
             </div>
             <Grid container spacing={2} style={{ maxWidth: '70%' }}>
                 {data.map((item) => (
-                    <Grid item xs={12} sm={6} md={4} key={item.id}>
-                        <StyledGrid >
+                    <Grid item xs={12} sm={6} md={4} key={item.id} >
+                        <StyledGrid href={item.attributes.GoogleFormsLink} key={item.id} target='_blank'>
                             <div style={{ display: 'flex', gap: 15, alignItems: 'center' }} className="text-element">
                                 <Image src={GeoPin.src} width={24} height={24}></Image>
                                 <Typography variant='card_header' >{

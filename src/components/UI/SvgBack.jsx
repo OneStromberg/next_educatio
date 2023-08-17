@@ -3,7 +3,7 @@ import React from 'react'
 const SvgBack = ({ fill }) => {
     return (
         <svg width="85" height="24" viewBox="0 0 85 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="back_blue" clip-path="url(#clip0_99_1944)">
+            <g id="back_blue" clipPath="url(#clip0_99_1944)">
                 <path id="Vector" d="M2.14777 0.489039C2.38145 0.518651 2.61739 0.526297 2.8525 0.511878C2.64175 0.716088 2.55047 0.712058 2.14777 0.489039Z" fill={fill} />
                 <path id="Vector_2" d="M7.81915 0.0711921C8.1346 -0.0631563 8.38025 0.159861 8.64604 0.124931C8.37014 0.174583 8.08631 0.156137 7.81915 0.0711921Z" fill={fill} />
                 <path id="Vector_3" d="M23.5031 0.552172C23.6764 0.524464 23.8539 0.539686 24.0199 0.596508C23.8464 0.618227 23.6704 0.60312 23.5031 0.552172Z" fill={fill} />

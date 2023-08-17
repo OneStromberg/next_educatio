@@ -6,9 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HeadingPage from '@/components/HeadingPage';
 import About from '@/components/About';
-import Services from '@/components/Services';
 import EducationslAreas from '@/components/EducationslAreas';
-import DiscussionReg from '@/components/DiscussionReg';
 import Members from '@/components/Members';
 import CallbackForm from '@/components/CallbackForm';
 import CalendarContainer from '@/components/Calendar';
@@ -24,9 +22,7 @@ const Main = (
     {
         mainData,
         aboutData,
-        servicesData,
         areasData,
-        regOnData,
         membersData,
         reviewsData,
         achiewmentsData,

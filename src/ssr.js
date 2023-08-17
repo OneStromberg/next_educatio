@@ -17,19 +17,7 @@ export async function getServerSideProps() {
             }
         });
 
-        const servicesResponse = await axios.get(`${apiUrl}/our-actions/?populate=*`, {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-            }
-        })
-
         const areasResponse = await axios.get(`${apiUrl}/educational-areas/?populate=*`, {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-            }
-        });
-
-        const regOnResponse = await axios.get(`${apiUrl}/register-ons/1?populate=*`, {
             headers: {
                 Authorization: `Bearer ${apiKey}`,
             }
@@ -61,9 +49,7 @@ export async function getServerSideProps() {
 
         const mainData = mainResponse.data.data.attributes;
         const aboutData = aboutResponse.data.data;
-        const servicesData = servicesResponse.data.data;
         const areasData = areasResponse.data.data;
-        const regOnData = regOnResponse.data.data.attributes;
         const membersData = membersResponse.data.data;
         const reviewsData = reviewsResponse.data.data;
         const achiewmentsData = achiewmentsResponse.data.data;
@@ -73,9 +59,7 @@ export async function getServerSideProps() {
             props: {
                 mainData: mainData,
                 aboutData: aboutData,
-                servicesData: servicesData,
                 areasData: areasData,
-                regOnData: regOnData,
                 membersData: membersData,
                 reviewsData: reviewsData,
                 achiewmentsData: achiewmentsData,
