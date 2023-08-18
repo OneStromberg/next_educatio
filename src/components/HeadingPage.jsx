@@ -14,6 +14,7 @@ const StyledContainer = styled(Container)`
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
     flex-direction: column;
+    padding: 10% 4%;  // Уменьшаем паддинги для мобильных устройств
   }
 `;
 

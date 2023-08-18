@@ -1,5 +1,4 @@
-import { createTheme } from '@mui/material/styles';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import '@fontsource/roboto';
 import '@fontsource/roboto-condensed';
 import '@fontsource/roboto-slab';
@@ -116,7 +115,7 @@ const theme = createTheme({
       fontFamily: "Roboto Condensed",
       fontWeight: 700,
       fontSize: '32px',
-      lineHeight: '175%',
+      lineHeight: 1.75,
       textTransform: 'uppercase',
       color: "#262626",
     },
@@ -124,7 +123,7 @@ const theme = createTheme({
       fontFamily: "Roboto Condensed",
       fontWeight: 700,
       fontSize: '32px',
-      lineHeight: '175%',
+      lineHeight: 1.75,
       textTransform: 'uppercase',
       color: "#e8e7e0",
     },
@@ -133,14 +132,14 @@ const theme = createTheme({
       fontFamily: "Roboto Condensed",
       fontWeight: 700,
       fontSize: '32px',
-      lineHeight: '175%',
+      lineHeight: 1.75,
       textTransform: 'uppercase',
     },
     h4_pink: {
       fontFamily: "Roboto Condensed",
       fontWeight: 700,
       fontSize: 32,
-      lineHeight: '175%',
+      lineHeight: 1.75,
       color: "#FF9888",
       textTransform: 'uppercase',
     },
@@ -154,7 +153,7 @@ const theme = createTheme({
       fontFamily: "Roboto Condensed",
       fontWeight: 700,
       fontSize: '26px',
-      lineHeight: '140%',
+      lineHeight: 1.4,
       textTransform: 'uppercase',
       color: "#262626",
       opacity: .8,
@@ -196,7 +195,7 @@ const theme = createTheme({
       fontWeight: 700,
       fontSize: 32,
       color: "#262626",
-      lineHeight: '175%',
+      lineHeight: 1.75,
       textAlign: 'center',
     },
     subtitle_light: {
@@ -209,7 +208,7 @@ const theme = createTheme({
       fontFamily: "Roboto Condensed",
       fontWeight: 700,
       fontSize: 32,
-      lineHeight: '175%',
+      lineHeight: 1.75,
       color: "#7d7987",
       textAlign: 'center',
       marginTop: 70,
@@ -219,7 +218,7 @@ const theme = createTheme({
       fontFamily: "Roboto",
       fontWeight: 700,
       fontSize: 21,
-      lineHeight: '150%',
+      lineHeight: 1.5,
       color: "#000",
       marginTop: 20,
     },
@@ -227,7 +226,7 @@ const theme = createTheme({
       fontFamily: "Roboto",
       fontWeight: 300,
       fontSize: 16,
-      lineHeight: '175%',
+      lineHeight: 1.75,
       color: "#7d7987",
     },
     subtitle5: {
@@ -279,7 +278,7 @@ const theme = createTheme({
       fontFamily: 'Roboto Condensed',
       fontSize: 26,
       fontWeight: 700,
-      lineHeight: '138.462%',
+      lineHeight: 1.38,
       textTransform: 'uppercase',
     },
     card_subheader: {
@@ -293,35 +292,35 @@ const theme = createTheme({
       fontWeight: 600,
       color: '#313131',
       fontSize: 18,
-      lineHeight: '311.11%',
+      lineHeight: 3.11,
     },
     card_place: {
       fontFamily: "Roboto",
       fontWeight: 300,
       color: '#7D7987',
       fontSize: 16,
-      lineHeight: '175%',
+      lineHeight: 1.75,
     },
     card_event: {
       fontFamily: "Roboto",
       fontWeight: 700,
       color: '#242424',
       fontSize: 24,
-      lineHeight: '233.33%',
+      lineHeight: 2.33,
     },
     card_decorated_text: {
       fontFamily: "Roboto",
       fontWeight: 400,
       color: '#fff',
       fontSize: 14,
-      lineHeight: '115%',
+      lineHeight: 1.15,
     },
     card_link: {
       fontFamily: "Roboto",
       fontWeight: 400,
       color: '#4089ED',
       fontSize: 17,
-      lineHeight: '165%',
+      lineHeight: 1.65,
     },
     form_text: {
       color: 'rgba(255, 255, 255, 0.70)',
@@ -334,16 +333,16 @@ const theme = createTheme({
       fontFamily: 'Roboto',
       fontSize: 20,
       fontWeight: 400,
-      lineHeight: '120%'
+      lineHeight: 1.2,
     },
     member_title: {
       color: '#FFF1D0',
       fontFamily: 'Roboto Condensed',
       fontSize: 26,
       fontWeight: 700,
-      lineHeight: '138.462%',
+      lineHeight: 1.38,
       textTransform: 'uppercase',
-      flexBasis: '80%',
+      flexBasis: 0.8,
     },
     member_subtitle: {
       color: '#FFF1D0',
@@ -356,7 +355,7 @@ const theme = createTheme({
       fontFamily: 'Roboto Slab',
       fontSize: 80,
       fontWeight: 900,
-      lineHeight: '70%',
+      lineHeight: 0.7,
     },
     hit_text: {
       color: '#870606',
@@ -364,7 +363,7 @@ const theme = createTheme({
       fontFamily: 'Roboto',
       fontSize: 14,
       fontWeight: 700,
-      lineHeight: '114.286%',
+      lineHeight: 1.14,
       textTransform: 'uppercase',
     },
     news_title: {
@@ -372,14 +371,14 @@ const theme = createTheme({
       fontFamily: 'Roboto',
       fontSize: 60,
       fontWeight: 700,
-      lineHeight: '133.333%',
+      lineHeight: 1.33,
     },
     about_heading: {
       color: '#2A2AB4',
       fontFamily: 'Roboto Condensed',
       fontSize: 26,
       fontWeight: 700,
-      lineHeight: '178.462%',
+      lineHeight: 1.78,
       textTransform: 'uppercase',
     },
     about_subheading: {
@@ -392,4 +391,6 @@ const theme = createTheme({
   }
 });
 
-export default theme;
+const responsiveTheme = responsiveFontSizes(theme);
+
+export default responsiveTheme;

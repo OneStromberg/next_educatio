@@ -1,7 +1,9 @@
 import { Box, Grid, Typography } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { styled } from '@mui/system';
 import Wavy from './UI/Wavy';
 import educationalBg from '../assets/educational_bg.svg';
+
 
 const StyledGrid = styled(Grid)`
   background-image: url(${educationalBg});
@@ -25,13 +27,14 @@ const EducationalAreas = ({ isEnglish, data }) => {
     }
 
     const pageTitle = isEnglish ? 'Educational Areas' : 'Навчальні напрями';
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     return (
         <Box mt={5} mb={5} style={{
             background: `url(${educationalBg.src})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat, no-repeat',
-            padding: '160px 160px 120px 160px',
+            padding: isMobile ? '50px' : '160px 160px 120px 160px',
             display: 'flex',
             flexDirection: 'column',
             gap: '130px',
@@ -42,16 +45,21 @@ const EducationalAreas = ({ isEnglish, data }) => {
                 </Typography>
                 <Wavy fill={'#E8E7E0'} />
             </StyledTextContainer>
-            <Grid container spacing={2} direction="reverse">
+            <Grid container spacing={2} direction="reverse" style={{
+                display: isMobile ? 'flex' : 'grid',
+                flexDirection: isMobile ? 'column' : '',
+                padding: isMobile ? '5% 15%' : '',
+            }}>
                 {data.map((item, index) => (
                     <Grid
                         item xs={12} sm={6} md={4} key={item.id}
-                        style={{ marginTop: `${-index * 50}px` }}>
+                        style={{ marginTop: isMobile ? '0' : `${-index * 50}px` }}>
                         <StyledGrid
                             container
-                            alignItems="center"
+                            alignItems={isMobile ? "center" : 'fles-start'}
                             flexDirection={'row'}
-                            flexWrap={'nowrap'}>
+                            flexWrap={'nowrap'}
+                            marfin={0}>
                             <Typography variant='member_number'>{item.id}</Typography>
                             <Box>
                                 <Typography variant="member_title" paddingBottom={10}>

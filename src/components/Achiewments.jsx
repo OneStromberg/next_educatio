@@ -3,6 +3,7 @@ import {
     Grid,
     Typography,
 } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { styled } from '@mui/system';
 import background from '../assets/achiewments_bg.svg';
@@ -44,9 +45,11 @@ const Achiewments = ({ isEnglish, data }) => {
 
     const pageTitle = isEnglish ? 'Our achiewments' : 'Наші досягнення';
 
+    const isMobile = useMediaQuery('(max-width:600px)');
+
     return (
         <Box style={{
-            padding: '150px 10%',
+            padding: isMobile ? '30px 5%' : '150px 10%',
             margin: 0,
             backgroundImage: `url(${background.src})`,
             backgroundRepeat: 'no-repeat no-repeat',
@@ -60,7 +63,7 @@ const Achiewments = ({ isEnglish, data }) => {
                 <Wavy fill={'#E8E7E0'} />
             </StyledTextContainer>
 
-            <GridContainer dataLength={data.length}>
+            {isMobile ? <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                 {data.map((item, index) => (
                     <GridItem
                         item
@@ -84,7 +87,32 @@ const Achiewments = ({ isEnglish, data }) => {
                         </StyledGrid>
                     </GridItem>
                 ))}
-            </GridContainer>
+            </Box> :
+                <GridContainer dataLength={data.length}>
+                    {data.map((item, index) => (
+                        <GridItem
+                            item
+                            key={item.id}
+                            gap={20}
+                        >
+                            <StyledGrid>
+                                <div style={{
+                                    display: 'flex',
+                                    gap: '20px',
+                                    maxHeight: '70%',
+                                    alignItems: 'center',
+                                }}>
+                                    <Typography variant="h4_light" >
+                                        {item.attributes.number}
+                                    </Typography>
+                                    <Typography variant="text_light" gutterBottom>
+                                        {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
+                                    </Typography>
+                                </div>
+                            </StyledGrid>
+                        </GridItem>
+                    ))}
+                </GridContainer>}
         </Box >
     );
 };

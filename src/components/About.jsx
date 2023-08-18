@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import { styled } from '@mui/system';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Wavy from './UI/Wavy';
 
 const StyledSecondContainer = styled(Box)`
@@ -16,6 +17,7 @@ const StyledSecondContainer = styled(Box)`
 
     @media (max-width: 600px) {
         grid-template-columns: 1fr;
+        padding: 20% 10%;
     }
 `;
 
@@ -35,7 +37,7 @@ const About = ({ isEnglish, data }) => {
   if (!data) {
     return null;
   }
-
+  const isMobile = useMediaQuery('(max-width:600px)');
   return (
     <StyledSecondContainer>
       <StyledHeaderContainer>
@@ -48,14 +50,21 @@ const About = ({ isEnglish, data }) => {
       </StyledHeaderContainer>
 
       {data.map((item, index) => (
-        <div key={index} style={{ display: 'flex' }}>
-          <Grid item xs={12} sm={6} style={{ display: 'flex', flexWrap: 'nowrap' }}>
+        <div key={index} style={{
+          display: 'flex',
+          justifyContent: isMobile ? 'center' : 'flex-start'
+        }}>
+          <Grid item xs={12} sm={6} style={{
+            display: 'flex',
+            flexWrap: 'nowrap',
+            flexDirection: isMobile ? 'column' : 'row',
+          }}>
             <Image
               id='about'
               src={`${apiUrl.slice(0, apiUrl.length - 4)}${item.attributes.image.data.attributes.url}`}
               alt="About Us"
               width={180}
-              height={190} />
+              height={194} />
             <Grid item xs={12} sm={6} margin={'0 20px'}>
               <Typography variant="about_heading" gutterBottom>
                 {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}

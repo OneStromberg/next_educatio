@@ -5,6 +5,7 @@ import {
     Button,
     TextField,
 } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import background from '../assets/questions_bg.svg';
 import axios from 'axios';
 
@@ -111,6 +112,7 @@ const CallbackForm = ({ isEnglish }) => {
     const messageField = isEnglish ? 'Message' : "Повідомлення"
     const messagePalceholder = isEnglish ? 'Enter your message' : "Введіть своє повідомлення"
     const buttonText = isEnglish ? 'Complete' : "Заповнити"
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     return (
         <Grid
@@ -121,9 +123,9 @@ const CallbackForm = ({ isEnglish }) => {
             style={{
                 background: `url(${background.src}) no-repeat center`,
                 backgroundSize: 'cover',  // was 'contain'
-                width: '80%',
+                width: isMobile ? '100%' : '80%',
                 height: 'auto',
-                margin: '10% auto',
+                margin: isMobile ? '10% 0' : '10% auto',
                 paddingBottom: 50,
             }}
         >

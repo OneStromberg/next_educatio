@@ -3,6 +3,7 @@ import {
     Grid,
     Typography,
 } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { styled } from '@mui/system';
 import Image from 'next/image';
@@ -42,16 +43,16 @@ const Members = ({ isEnglish, data }) => {
 
     const pageTitle = isEnglish ? 'Our actions and education' : 'Наші події і навчання'
 
-
+    const isMobile = useMediaQuery('(max-width:600px)');
     return (
         <Box mt={5} mb={5} style={{
             display: 'flex',
             margin: '0 auto',
             flexDirection: 'column',
             alignItems: 'center',
-            paddingBottom: '180px',
             background: '#FBFBFB',
-            paddingTop: '70px',
+            paddingTop: isMobile ? '30px' : '70px',
+            paddingBottom: isMobile ? '50px' : '180px',
         }}>
             <div style={{
                 margin: '0 0 72px',
@@ -67,7 +68,7 @@ const Members = ({ isEnglish, data }) => {
                 </Typography>
                 <Wavy fill='#262626' />
             </div>
-            <Grid container spacing={2} style={{ maxWidth: '70%' }}>
+            <Grid container spacing={2} style={{ maxWidth: isMobile ? '95%' : '70%' }}>
                 {data.map((item) => (
                     <Grid item xs={12} sm={6} md={4} key={item.id} >
                         <StyledGrid href={item.attributes.GoogleFormsLink} key={item.id} target='_blank'>

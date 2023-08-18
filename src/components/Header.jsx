@@ -13,6 +13,8 @@ import {
   Divider,
   Grid,
 } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import ReactMarkdown from 'react-markdown';
 import { Menu, Close } from '@mui/icons-material';
 import { styled } from '@mui/system';
 import logo from '@/assets/logo.svg';
@@ -29,6 +31,7 @@ const TransparentAppBar = styled(AppBar)`
   border-radius: 0 0 18px 18px;
   box-shadow: none;
   position: fixed;
+  justify-content: center;
   z-index: 5;
   transition: 0.3s;
 `;
@@ -62,7 +65,7 @@ const MobileHeader = ({ languageIcon, toggleLanguage, handleMenuToggle, isMenuOp
     <Hidden mdUp>
       <Logo variant="h6" component="div">
         <Link href="/">
-          <Image src={logo.src} width={130} height={70} style={{ cursor: 'pointer' }}></Image>
+          <Image src={logo.src} width={80} height={35} style={{ cursor: 'pointer' }}></Image>
         </Link>
       </Logo>
       <Typography variant="header_text" onClick={toggleLanguage}>
@@ -139,74 +142,107 @@ const DesktopHeader = ({
   </>
 );
 
-const MobileDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about, services, news, calendar, contact, adress }) => (
-  <Drawer
-    anchor="top"
-    style={{
-      display: 'flex',
-      zIndex: 4, top: '70px',
-      height: 'fit-content',
-      boxShadow: 'none',
-      justifyContent: 'center',
-    }}
-    open={isMenuOpen}
-    onClose={handleMenuToggle}
-    PaperProps={{
-      sx: {
-        background: '#fff',
+const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about, services, news, calendar, contact, adress }) => {
+  const isMobile = useMediaQuery('(max-width:600px)');
+
+  return (
+    <Drawer
+      anchor="top"
+      style={{
         display: 'flex',
-        // flex: '1 2 50%',
-        borderRadius: '0 0 18px 18px',
-        textAlign: 'center',
-        position: 'static',
-        zIndex: 4,
+        zIndex: 4, top: '70px',
+        height: 'fit-content',
         boxShadow: 'none',
-      },
-    }}
-    BackdropProps={{ invisible: true }}
-  >
-    <List style={{
-      display: 'flex',
-      flex: '1',
-      padding: '0 8%',
-    }}>
-      <ListItem button style={{ justifyContent: 'center' }}>
-        <StyledButton onClick={() => handleScrollToSection('about')}>
-          {about}
-        </StyledButton>
-      </ListItem>
-      <ListItem button style={{ justifyContent: 'center' }}>
-        <StyledButton onClick={() => handleScrollToSection('services')}>
-          {services}
-        </StyledButton>
-      </ListItem>
-      <ListItem button style={{ justifyContent: 'center' }}>
-        <StyledButton onClick={() => handleScrollToSection('news')}>
-          {news}
-        </StyledButton>
-      </ListItem>
-      <ListItem button style={{ justifyContent: 'center' }}>
-        <StyledButton onClick={() => handleScrollToSection('calendar')}>
-          {calendar}
-        </StyledButton>
-      </ListItem>
-      <ListItem button style={{ justifyContent: 'center' }}>
-        <StyledButton onClick={() => handleScrollToSection('contact')}>
-          {contact}
-        </StyledButton>
-      </ListItem>
-    </List>
-    <Divider style={{ margin: '10px auto', width: '80%' }} />
-    <Grid container justifyContent="space-between" style={{ padding: '2% 10% 4% 10%' }}>
-      <Typography variant="header_subtext">
-        {adress}
-      </Typography>
-      <Typography variant="header_subtext" style={{ textDecoration: 'underline' }}>
-        info@ceducatio.com
-      </Typography>
-    </Grid>
-  </Drawer >
-);
+        justifyContent: 'center',
+      }}
+      open={isMenuOpen}
+      onClose={handleMenuToggle}
+      PaperProps={{
+        sx: {
+          background: '#fff',
+          display: 'flex',
+          borderRadius: '0 0 18px 18px',
+          position: 'static',
+          zIndex: 4,
+          boxShadow: 'none',
+        },
+      }}
+      BackdropProps={{ invisible: true }}
+    >
+      <List style={{
+        display: 'flex',
+        flexDirection: isMobile ? 'column' : 'row',
+        flex: '1',
+        padding: isMobile ? '0' : '0 8%',
+        width: '100vw',
+      }}>
+        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}>
+          <StyledButton onClick={() => handleScrollToSection('about')}>
+            {about}
+          </StyledButton>
+        </ListItem>
+        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}>
+          <StyledButton onClick={() => handleScrollToSection('services')}>
+            {services}
+          </StyledButton>
+        </ListItem>
+        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}>
+          <StyledButton onClick={() => handleScrollToSection('news')}>
+            {news}
+          </StyledButton>
+        </ListItem>
+        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}>
+          <StyledButton onClick={() => handleScrollToSection('calendar')}>
+            {calendar}
+          </StyledButton>
+        </ListItem>
+        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}>
+          <StyledButton onClick={() => handleScrollToSection('contact')}>
+            {contact}
+          </StyledButton>
+        </ListItem>
+      </List>
+      <Divider style={{ margin: '10px auto', width: isMobile ? '80%' : '90%' }} />
+      <Grid container direction="column" alignItems="center" style={{ paddingBottom: '2%' }}>
+        {isMobile && <div style={{ display: 'flex', gap: 45, padding: '50px 0' }}>
+          <Typography style={{ color: '#AFABB8' }} href="https://www.facebook.com">
+            <StyledImage src={Facebook.src} width={22.7} height={22.7} />
+          </Typography>
+          <Typography style={{ color: '#AFABB8' }} href="https://www.instagram.com">
+            <StyledImage src={Instagram.src} width={22.7} height={22.7} />
+          </Typography>
+          <Typography style={{ color: '#AFABB8' }} href="https://www.youtube.com">
+            <StyledImage src={YouTube.src} width={22.7} height={22.7} />
+          </Typography>
+          <Typography style={{ color: '#AFABB8' }} href="https://www.tiktok.com">
+            <StyledImage src={TikTok.src} width={22.7} height={22.7} />
+          </Typography>
+        </div>}
+        {isMobile ? <Grid container justifyContent="space-between" style={{
+          padding: '2% 10% 4% 10%',
+        }}>
+          <Typography variant="header_subtext" style={{ textDecoration: 'underline' }}>
+            info@ceducatio.com
+          </Typography>
+          <Typography variant="header_subtext">
+            <ReactMarkdown children={adress} />
+          </Typography>
+        </Grid> :
+          <Grid container justifyContent="space-between" style={{
+            padding: '2% 10% 4% 10%',
+          }}>
+            <Typography variant="header_subtext">
+              <ReactMarkdown children={adress} />
+            </Typography>
+            <Typography variant="header_subtext" style={{ textDecoration: 'underline' }}>
+              info@ceducatio.com
+            </Typography>
+          </Grid>
+        }
+      </Grid>
+    </Drawer >
+  )
+};
 
 const Header = ({ onLanguageToggle, isEnglish }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -255,7 +291,13 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
   const news = isEnglish ? 'News' : 'Новини';
   const calendar = isEnglish ? 'Calendar' : 'Календар';
   const contact = isEnglish ? 'Contact' : 'Контакти';
-  const adress = isEnglish ? 'Ukraine, Lviv,\n Market Square 1, room. 110. Institute of the City' : 'Україна, Львів,\n Пл. Ринок 1, 110 каб';
+
+  const adress = isEnglish ?
+    `Ukraine, Lviv, \n
+  Market Sq. 1, room 110`
+    :
+    `Україна, Львів, \n
+  Пл. Ринок 1, 110 каб`;
 
   return (
     <>
@@ -280,7 +322,7 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
           />
         </Toolbar>
       </TransparentAppBar>
-      <MobileDrawer
+      <MenuDrawer
         isMenuOpen={isMenuOpen}
         handleMenuToggle={handleMenuToggle}
         handleScrollToSection={handleScrollToSection}
