@@ -2,9 +2,8 @@ import {
     Box,
     Grid,
     Typography,
+    useMediaQuery
 } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
-
 import { styled } from '@mui/system';
 import background from '../assets/achiewments_bg.svg';
 import Wavy from './UI/Wavy';

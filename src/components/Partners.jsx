@@ -13,6 +13,7 @@ const PartnersCarousel = ({ isEnglish }) => {
     const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
     const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
+
     const [itemsPerSlide, setItemsPerSlide] = useState(8);
 
     useEffect(() => {

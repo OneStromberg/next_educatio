@@ -4,7 +4,8 @@ import {
     Typography,
     Card,
     CardContent,
-    Button
+    Button,
+    useMediaQuery
 } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -71,14 +72,16 @@ const Blog = ({ isEnglish, data }) => {
     const allNews = isEnglish ? 'All news' : 'Всi новини'
     const loadMore = isEnglish ? 'Load more' : 'Завантажити бiльше'
     const apiUrl = process.env.API_URL;
+
+    const isMobile = useMediaQuery('(max-width:600px)');
     return (
         <Grid container spacing={3}
             alignItems="center"
             justifyContent="center"
             style={{
-                padding: '80px 0',
-                width: '70%',
-                margin: '0 auto',
+                padding: isMobile ? 0 : '80px 0',
+                width: isMobile ? '100%' : '70%',
+                margin: isMobile ? '70px 0' : '70px auto',
                 flexDirection: 'column',
                 gap: 50,
             }}>
@@ -96,15 +99,15 @@ const Blog = ({ isEnglish, data }) => {
             </Grid>
 
             {displayedPosts.map((post) => (
-                <Grid item xs={12} sm={6} key={post.id}>
+                <Grid item xs={12} sm={6} key={post.id} style={{ padding: 15 }}>
                     <Link href={`/blog/${post.id}`} passHref style={{ textDecoration: 'none' }}>
                         <StyledCard style={{ height: '100%', borderRadius: 18 }}>
                             <CardContent style={{ padding: 0 }}>
                                 <Image
                                     src={`${apiUrl.slice(0, apiUrl.length - 4)}${post.attributes.headingImage.data.attributes.url}`}
                                     alt={post.attributes.Title}
-                                    width={600}
-                                    height={350}
+                                    width={380}
+                                    height={250}
                                 />
                                 <div style={{ display: 'flex', flexDirection: 'column', padding: '1em 2em' }}>
                                     <Typography variant="news_preview_title" gutterBottom>

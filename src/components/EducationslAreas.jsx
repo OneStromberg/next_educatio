@@ -1,5 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { Box, Grid, Typography, useMediaQuery } from '@mui/material';
 import { styled } from '@mui/system';
 import Wavy from './UI/Wavy';
 import educationalBg from '../assets/educational_bg.svg';

@@ -2,9 +2,8 @@ import {
     Box,
     Grid,
     Typography,
+    useMediaQuery
 } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
-
 import { styled } from '@mui/system';
 import Image from 'next/image';
 import SvgBack from './UI/SvgBack';

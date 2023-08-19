@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Grid, Typography, Button, Box } from '@mui/material';
+import useMediaQuery from '@mui/material';
 import Image from 'next/image';
 
 const BlogPost = ({ isEnglish, id }) => {

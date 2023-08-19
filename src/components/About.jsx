@@ -2,10 +2,10 @@ import {
   Box,
   Grid,
   Typography,
+  useMediaQuery
 } from '@mui/material';
 import Image from 'next/image';
 import { styled } from '@mui/system';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Wavy from './UI/Wavy';
 
 const StyledSecondContainer = styled(Box)`

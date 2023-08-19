@@ -4,8 +4,8 @@ import {
     Typography,
     Button,
     TextField,
+    useMediaQuery
 } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import background from '../assets/questions_bg.svg';
 import axios from 'axios';
 

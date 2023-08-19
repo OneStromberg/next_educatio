@@ -12,8 +12,8 @@ import {
   Hidden,
   Divider,
   Grid,
+  useMediaQuery
 } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import ReactMarkdown from 'react-markdown';
 import { Menu, Close } from '@mui/icons-material';
 import { styled } from '@mui/system';

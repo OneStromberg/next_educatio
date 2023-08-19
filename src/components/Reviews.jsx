@@ -3,11 +3,48 @@ import Carousel from 'react-material-ui-carousel';
 import { useState, useEffect } from 'react';
 import Wavy from './UI/Wavy';
 
+
+
+const NavButtonsMobile = ({ onClick, next, prev }) => (
+    <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginTop: 10
+    }}>
+        <IconButton onClick={onClick}>
+            {prev && '←'}
+        </IconButton>
+        <IconButton onClick={onClick}>
+            {next && '→'}
+        </IconButton>
+    </div>
+);
+
+const NavButtonsDesktop = ({ onClick, style, next, prev }) => (
+    <IconButton onClick={onClick} style={{
+        ...style,
+        position: 'absolute',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        zIndex: 1000,
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        color: '#b5d2fb',
+        fontSize: '2.5rem',
+        fontWeight: 700,
+        left: prev ? '-10px' : 'unset',
+        right: next ? '-10px' : 'unset'
+    }}>
+        {next && '→'}
+        {prev && '←'}
+    </IconButton>
+);
+
+
 const ReviewsCarousel = ({ isEnglish, data }) => {
 
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
     const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     const [itemsPerSlide, setItemsPerSlide] = useState(3);
 
@@ -48,10 +85,15 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                 <Carousel
                     navButtonsAlwaysVisible
                     indicators={false}
-                    NavButton={({ onClick, className, style, next, prev }) => {
+                    NavButton={({ onClick, style, next, prev }) => {
+                        if (isMobile) {
+                            return <></>;
+                        }
+
                         return (
                             <IconButton onClick={onClick} style={{
                                 ...style,
+                                position: 'absolute',
                                 top: '50%',
                                 transform: 'translateY(-50%)',
                                 zIndex: 1000,
@@ -84,8 +126,9 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                                 <div key={review.id} style={{
                                     marginBottom: '1.5rem',
                                     background: '#FFF',
-                                    maxWidth: '400px',
+                                    maxWidth: 400,
                                     maxHeight: 300,
+                                    width: '100%',
                                     borderRadius: 18,
                                     boxShadow: '10px 20px 50px 0px rgba(229, 233, 246, 0.40)',
                                     padding: '20px 30px',
@@ -119,6 +162,12 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                         </Paper>
                     ))}
                 </Carousel>
+                {isMobile && (
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10, }}>
+                        <IconButton style={{ color: '#b5d2fb', }}>←</IconButton>
+                        <IconButton style={{ color: '#b5d2fb', }}>→</IconButton>
+                    </div>
+                )}
             </div>
 
         </>
