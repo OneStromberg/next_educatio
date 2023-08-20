@@ -21,12 +21,13 @@ const StyledTextContainer = styled(Grid)`
 `;
 
 const EducationalAreas = ({ isEnglish, data }) => {
+
+    const isMobile = useMediaQuery('(max-width:600px)');
     if (!data) {
         return null;
     }
 
     const pageTitle = isEnglish ? 'Educational Areas' : 'Навчальні напрями';
-    const isMobile = useMediaQuery('(max-width:600px)');
 
     return (
         <Box mt={5} mb={5} style={{

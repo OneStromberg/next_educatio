@@ -80,10 +80,6 @@ const theme = createTheme({
       color: "#241f55",
       lineHeight: 1.55,
     },
-    body1: {
-      fontSize: 14,
-      marginTop: 4,
-    },
     header_subtext: {
       color: '#AFABB8',
       fontFamily: 'Roboto',
@@ -387,6 +383,12 @@ const theme = createTheme({
       fontFamily: 'Roboto',
       fontSize: 16,
       fontWeight: 300,
+    },
+    footer_text: {
+      color: '#FFF',
+      fontFamily: 'Roboto',
+      fontSize: 18,
+      fontWeight: 400,
     },
   }
 });

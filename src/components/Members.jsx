@@ -36,13 +36,14 @@ const StyledGrid = styled(Link)`
 
 const Members = ({ isEnglish, data }) => {
 
+    const isMobile = useMediaQuery('(max-width:600px)');
+
     if (!data) {
         return null;
     }
 
     const pageTitle = isEnglish ? 'Our actions and education' : 'Наші події і навчання'
 
-    const isMobile = useMediaQuery('(max-width:600px)');
     return (
         <Box mt={5} mb={5} style={{
             display: 'flex',

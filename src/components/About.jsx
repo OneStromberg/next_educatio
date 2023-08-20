@@ -33,11 +33,12 @@ const StyledHeaderContainer = styled(Grid)`
 const About = ({ isEnglish, data }) => {
 
   const apiUrl = process.env.API_URL;
+  const isMobile = useMediaQuery('(max-width:600px)');
 
   if (!data) {
     return null;
   }
-  const isMobile = useMediaQuery('(max-width:600px)');
+
   return (
     <StyledSecondContainer>
       <StyledHeaderContainer>

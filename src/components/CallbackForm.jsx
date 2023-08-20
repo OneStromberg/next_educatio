@@ -12,6 +12,7 @@ import axios from 'axios';
 const CallbackForm = ({ isEnglish }) => {
     const apiUrl = process.env.API_URL;
     const apiKey = process.env.API_TOKEN;
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     const [formData, setFormData] = useState({
         name: '',
@@ -112,7 +113,6 @@ const CallbackForm = ({ isEnglish }) => {
     const messageField = isEnglish ? 'Message' : "Повідомлення"
     const messagePalceholder = isEnglish ? 'Enter your message' : "Введіть своє повідомлення"
     const buttonText = isEnglish ? 'Complete' : "Заповнити"
-    const isMobile = useMediaQuery('(max-width:600px)');
 
     return (
         <Grid

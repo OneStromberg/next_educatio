@@ -54,11 +54,6 @@ const truncateText = (text, maxLength) => {
 
 
 const Blog = ({ isEnglish, data }) => {
-
-    if (!data) {
-        return null;
-    }
-
     const [showAll, setShowAll] = useState(false);
     const [displayedPosts, setDisplayedPosts] = useState(data.slice(0, 3));
 
@@ -67,13 +62,17 @@ const Blog = ({ isEnglish, data }) => {
             setDisplayedPosts(data);
         }
     }, [showAll, data]);
+    const isMobile = useMediaQuery('(max-width:600px)');
+
+    if (!data) {
+        return null;
+    }
 
     const pageTitle = isEnglish ? 'News' : 'Новини'
     const allNews = isEnglish ? 'All news' : 'Всi новини'
     const loadMore = isEnglish ? 'Load more' : 'Завантажити бiльше'
     const apiUrl = process.env.API_URL;
 
-    const isMobile = useMediaQuery('(max-width:600px)');
     return (
         <Grid container spacing={3}
             alignItems="center"

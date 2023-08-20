@@ -22,6 +22,8 @@ const CenterItem = styled(Box)`
 `;
 
 const Centers = ({ isEnglish, data }) => {
+
+    const isMobile = useMediaQuery('(max-width:600px)');
     if (!data) {
         return null;
     }
@@ -34,7 +36,6 @@ const Centers = ({ isEnglish, data }) => {
         chunks.push(data.slice(i, i + 9));
     }
 
-    const isMobile = useMediaQuery('(max-width:600px)');
 
     return (
         <Box mt={5} mb={5} style={{

@@ -67,6 +67,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
     );
 
     const pageTitle = isEnglish ? 'Reviews' : 'Відгуки';
+
     return (
         <>
             <div style={{
@@ -163,9 +164,9 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                     ))}
                 </Carousel>
                 {isMobile && (
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10, }}>
-                        <IconButton style={{ color: '#b5d2fb', }}>←</IconButton>
-                        <IconButton style={{ color: '#b5d2fb', }}>→</IconButton>
+                    <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: 10, }}>
+                        <IconButton style={{ color: '#458FF6', }}>←</IconButton>
+                        <IconButton style={{ color: '#458FF6', }}>→</IconButton>
                     </div>
                 )}
             </div>

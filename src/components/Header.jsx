@@ -20,10 +20,10 @@ import { styled } from '@mui/system';
 import logo from '@/assets/logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
-import Facebook from '../assets/Facebook.svg';
-import Instagram from '../assets/Instagram.svg';
-import TikTok from '../assets/TikTok.svg';
-import YouTube from '../assets/Youtube.svg';
+import Facebook from './UI/Facebook';
+import Instagram from './UI/Instagram';
+import TikTok from './UI/TikTok';
+import YouTube from './UI/Youtube';
 
 const TransparentAppBar = styled(AppBar)`
   background-color: #fff;
@@ -53,10 +53,21 @@ const Logo = styled(Typography)`
   color: #afabb8;
 `;
 
-const StyledImage = styled(Image)`
+const SocialWrapper = styled('div')`
+  display: flex;
+  width: 30%;
+  gap: 30px; 
+  align-items: center;
+  justify-content: center; 
+`;
+
+const StyledIcon = styled('svg')`
   cursor: pointer;
-  &:hover {
-   filter: brightness(0) saturate(100%) invert(84%) sepia(100%) saturate(6278%) hue-rotate(292deg) brightness(102%) contrast(132%);
+  width: 22.7px;
+  height: 22.7px;
+  transition: .3s;
+  &:hover{
+    color: #FFC4B7;
   }
 `;
 
@@ -65,7 +76,7 @@ const MobileHeader = ({ languageIcon, toggleLanguage, handleMenuToggle, isMenuOp
     <Hidden mdUp>
       <Logo variant="h6" component="div">
         <Link href="/">
-          <Image src={logo.src} width={80} height={35} style={{ cursor: 'pointer' }}></Image>
+          <Image src={logo.src} alt='logo' width={80} height={35} style={{ cursor: 'pointer' }}></Image>
         </Link>
       </Logo>
       <Typography variant="header_text" onClick={toggleLanguage}>
@@ -98,35 +109,27 @@ const DesktopHeader = ({
       </Logo>
       <div style={{ display: 'flex', width: '70%', gap: '5%', alignItems: 'center', justifyContent: 'flex-end' }}>
         <StyledButton onClick={toggleLanguage}>{languageIcon}</StyledButton>
-        <div style={{ display: 'flex', width: '30%', gap: 30, alignItems: 'center', justifyContent: 'center' }}>
-          <Typography style={{ color: '#AFABB8' }} href="https://www.facebook.com">
-            <StyledImage
-              src={Facebook.src}
-              width={22.7}
-              height={22.7}
+        <SocialWrapper>
+          <a href="https://www.facebook.com">
+            <StyledIcon as={Facebook}
+              fill={'#AFABB8'}
             />
-          </Typography>
-          <Typography style={{ color: '#AFABB8' }} href="https://www.instagram.com">
-            <StyledImage
-              src={Instagram.src}
-              width={22.7}
-              height={22.7}
+          </a>
+          <a href="https://www.instagram.com">
+            <StyledIcon as={Instagram}
+              fill={'#AFABB8'}
             />
-          </Typography>
-          <Typography style={{ color: '#AFABB8' }} href="https://www.youtube.com">
-            <StyledImage
-              src={YouTube.src}
-              width={22.7}
-              height={22.7}
+          </a>
+          <a href="https://www.youtube.com">
+            <StyledIcon as={YouTube}
+              fill={'#AFABB8'}
             />
-          </Typography>
-          <Typography style={{ color: '#AFABB8' }} href="https://www.tiktok.com">
-            <StyledImage
-              src={TikTok.src}
-              width={22.7}
-              height={22.7}
+          </a>
+          <a href="https://www.tiktok.com">
+            <StyledIcon as={TikTok}
+              fill={'#AFABB8'}
             />
-          </Typography>
+          </a>
           <IconButton
             color="inherit"
             onClick={handleMenuToggle}
@@ -136,7 +139,7 @@ const DesktopHeader = ({
           >
             {isMenuOpen ? <Close style={{ fontSize: '2.2rem' }} /> : <Menu style={{ fontSize: '2.2rem' }} />}
           </IconButton>
-        </div>
+        </SocialWrapper>
       </div>
     </Hidden>
   </>
@@ -205,18 +208,46 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
       <Divider style={{ margin: '10px auto', width: isMobile ? '80%' : '90%' }} />
       <Grid container direction="column" alignItems="center" style={{ paddingBottom: '2%' }}>
         {isMobile && <div style={{ display: 'flex', gap: 45, padding: '50px 0' }}>
-          <Typography style={{ color: '#AFABB8' }} href="https://www.facebook.com">
-            <StyledImage src={Facebook.src} width={22.7} height={22.7} />
-          </Typography>
-          <Typography style={{ color: '#AFABB8' }} href="https://www.instagram.com">
-            <StyledImage src={Instagram.src} width={22.7} height={22.7} />
-          </Typography>
-          <Typography style={{ color: '#AFABB8' }} href="https://www.youtube.com">
-            <StyledImage src={YouTube.src} width={22.7} height={22.7} />
-          </Typography>
-          <Typography style={{ color: '#AFABB8' }} href="https://www.tiktok.com">
-            <StyledImage src={TikTok.src} width={22.7} height={22.7} />
-          </Typography>
+          <a style={{ color: '#AFABB8' }} href="https://www.facebook.com">
+            <Facebook
+              fill={'#AFABB8'}
+              style={{
+                cursor: 'pointer',
+                width: '22.7px',
+                height: '22.7px',
+              }}
+            />
+          </a>
+          <a style={{ color: '#AFABB8' }} href="https://www.instagram.com">
+            <Instagram
+              fill={'#AFABB8'}
+              style={{
+                cursor: 'pointer',
+                width: '22.7px',
+                height: '22.7px',
+              }}
+            />
+          </a>
+          <a style={{ color: '#AFABB8' }} href="https://www.youtube.com">
+            <YouTube
+              fill={'#AFABB8'}
+              style={{
+                cursor: 'pointer',
+                width: '22.7px',
+                height: '22.7px',
+              }}
+            />
+          </a>
+          <a style={{ color: '#AFABB8' }} href="https://www.tiktok.com">
+            <TikTok
+              fill={'#AFABB8'}
+              style={{
+                cursor: 'pointer',
+                width: '22.7px',
+                height: '22.7px',
+              }}
+            />
+          </a>
         </div>}
         {isMobile ? <Grid container justifyContent="space-between" style={{
           padding: '2% 10% 4% 10%',
