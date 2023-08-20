@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 const nextConfig = {
-  output: "server",
+  output: "standalone",
   images: {
     domains: [process.env.APP_DOMAIN],
   },
