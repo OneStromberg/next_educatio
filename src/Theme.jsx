@@ -390,6 +390,13 @@ const theme = createTheme({
       fontSize: 18,
       fontWeight: 400,
     },
+    footer_subtext: {
+      color: 'rgba(255, 255, 255, 0.70)',
+      textAlign: 'right',
+      fontFamily: 'Roboto',
+      fontSize: 12,
+      fontWeight: 400,
+    }
   }
 });
 

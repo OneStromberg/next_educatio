@@ -12,10 +12,10 @@ const Footer = ({ isEnglish }) => {
   const isMobile = useMediaQuery('(max-width: 600px)');
 
   return (
-    <footer style={{ background: `url(${background.src})`, height: '100%' }}>
-      <Grid container alignItems="center" padding={'60px 20px'}>
+    <footer style={{ background: `url(${background.src})`, height: '100%', padding: '3% 8%' }}>
+      <Grid container alignItems="center" padding={'60px 0px'} gap={15}>
         {isMobile ? (
-          <Grid container direction="column" alignItems="center">
+          <Grid container direction="column" alignItems="center" gap={3}>
             <Image src={logo.src} width={80} height={35} />
             <Typography variant="footer_text" align="center" marginBottom={2}>
               {isEnglish ? 'Market Square 1, room. 110. Institute of the City' : "Площа Ринок 1, каб. 110. Інститут міста"}
@@ -65,8 +65,12 @@ const Footer = ({ isEnglish }) => {
             <Typography variant="footer_text" align="center" marginBottom={2} marginTop={3}>
               c.educatio.net@gmail.com
             </Typography>
-            <Typography variant="body2" align="center">
-              <Link href="/offer">Оферта</Link>
+            <Typography variant="footer_subtext" align="center" style={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}>
+              {isEnglish ? 'All rights reserved' : 'Всі права захищено 2023 ©'}
+              <Link href="https://laba.ua/offerta" style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
             </Typography>
           </Grid>
         ) : (
@@ -79,14 +83,18 @@ const Footer = ({ isEnglish }) => {
                 </Typography>
               </div>
             </Grid>
-            <Grid item>
+            <Grid item alignSelf={'center'} justifySelf={'center'}>
               <Typography variant="footer_text" align="center" marginBottom={2} marginTop={3}>
                 c.educatio.net@gmail.com
               </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body2" align="right">
-                <Link href="/offer">Оферта</Link>
+              <Typography variant="footer_subtext" align="center" style={{
+                display: 'flex',
+                flexDirection: 'column',
+              }}>
+                {isEnglish ? 'All rights reserved' : 'Всі права захищено 2023 ©'}
+                <Link href="https://laba.ua/offerta" style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
               </Typography>
               <Grid container justifyContent="flex-end" alignItems="center" style={{ gap: '20px' }}>
                 <a href="https://www.facebook.com">

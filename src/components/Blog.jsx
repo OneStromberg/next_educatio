@@ -11,6 +11,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { styled } from '@mui/system';
 import Wavy from './UI/Wavy';
+import { all } from 'axios';
 
 const StyledCard = styled(Card)`
     cursor: pointer;
@@ -37,6 +38,7 @@ const StyledButton = styled(Button)({
     fontWeight: 700,
     lineHeight: '3.33',
     width: 200,
+    height: 60,
     cursor: 'pointer',
     transition: '.3s',
     '&:hover': {
@@ -126,19 +128,11 @@ const Blog = ({ isEnglish, data }) => {
                 </Grid>
             ))
             }
-            {!showAll &&
-                <StyledButton
-                    variant='outlined'
-                    onClick={() => setShowAll(true)}>
-                    {loadMore}
-                </StyledButton>
-            }
-
-            {showAll &&
-                <StyledButton variant='outlined'>
-                    {allNews}
-                </StyledButton>
-            }
+            <StyledButton
+                variant='outlined'
+                onClick={() => setShowAll(true)}>
+                {allNews}
+            </StyledButton>
         </Grid >
     );
 };
