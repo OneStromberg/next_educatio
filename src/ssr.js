@@ -1,78 +1,50 @@
 import axios from 'axios';
 
 export async function getServerSideProps() {
-    try {
-        const apiUrl = process.env.API_URL;
-        const apiKey = process.env.API_TOKEN;
+    const apiUrl = process.env.API_URL;
+    const apiKey = process.env.API_TOKEN;
 
-        const mainResponse = await axios.get(`${apiUrl}/main-pages/1?populate=*`, {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-            },
-        });
+    const fetchData = async (url) => {
+        try {
+            const response = await axios.get(url, {
+                headers: {
+                    Authorization: `Bearer ${apiKey}`,
+                },
+            });
+            return response.data.data;
+        } catch (error) {
+            console.error(`Error fetching ${url}:`, error);
+            return null;
+        }
+    };
 
-        const aboutResponse = await axios.get(`${apiUrl}/about-uses/?populate=*`, {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-            }
-        });
+    const [
+        mainData,
+        aboutData,
+        areasData,
+        membersData,
+        reviewsData,
+        achiewmentsData,
+        blogData,
+    ] = await Promise.all([
+        fetchData(`${apiUrl}/main-pages/1?populate=*`),
+        fetchData(`${apiUrl}/about-uses/?populate=*`),
+        fetchData(`${apiUrl}/educational-areas/?populate=*`),
+        fetchData(`${apiUrl}/members`),
+        fetchData(`${apiUrl}/reviews`),
+        fetchData(`${apiUrl}/achiewments/?populate=*`),
+        fetchData(`${apiUrl}/blog-posts/?populate=*`),
+    ]);
 
-        const areasResponse = await axios.get(`${apiUrl}/educational-areas/?populate=*`, {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-            }
-        });
-
-        const membersResponse = await axios.get(`${apiUrl}/members`, {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-            }
-        });
-
-        const reviewsResponse = await axios.get(`${apiUrl}/reviews`, {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-            }
-        });
-
-        const achiewmentsResponse = await axios.get(`${apiUrl}/achiewments/?populate=*`, {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-            }
-        });
-
-        const blogResponse = await axios.get(`${apiUrl}/blog-posts/?populate=*`, {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-            }
-        });
-
-        const mainData = mainResponse.data.data.attributes;
-        const aboutData = aboutResponse.data.data;
-        const areasData = areasResponse.data.data;
-        const membersData = membersResponse.data.data;
-        const reviewsData = reviewsResponse.data.data;
-        const achiewmentsData = achiewmentsResponse.data.data;
-        const blogData = blogResponse.data.data;
-
-        return {
-            props: {
-                mainData: mainData,
-                aboutData: aboutData,
-                areasData: areasData,
-                membersData: membersData,
-                reviewsData: reviewsData,
-                achiewmentsData: achiewmentsData,
-                blogData: blogData,
-            },
-        };
-    } catch (error) {
-        console.error('Error fetching data:', error);
-
-        return {
-            props: {
-                data: null,
-            },
-        };
-    }
+    return {
+        props: {
+            mainData: mainData ? mainData.attributes : null,
+            aboutData: aboutData || null,
+            areasData: areasData || null,
+            membersData: membersData || null,
+            reviewsData: reviewsData || null,
+            achiewmentsData: achiewmentsData || null,
+            blogData: blogData || null,
+        },
+    };
 }

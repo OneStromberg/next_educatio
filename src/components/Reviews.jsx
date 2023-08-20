@@ -4,42 +4,6 @@ import { useState, useEffect } from 'react';
 import Wavy from './UI/Wavy';
 
 
-
-const NavButtonsMobile = ({ onClick, next, prev }) => (
-    <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginTop: 10
-    }}>
-        <IconButton onClick={onClick}>
-            {prev && '←'}
-        </IconButton>
-        <IconButton onClick={onClick}>
-            {next && '→'}
-        </IconButton>
-    </div>
-);
-
-const NavButtonsDesktop = ({ onClick, style, next, prev }) => (
-    <IconButton onClick={onClick} style={{
-        ...style,
-        position: 'absolute',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        zIndex: 1000,
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        color: '#b5d2fb',
-        fontSize: '2.5rem',
-        fontWeight: 700,
-        left: prev ? '-10px' : 'unset',
-        right: next ? '-10px' : 'unset'
-    }}>
-        {next && '→'}
-        {prev && '←'}
-    </IconButton>
-);
-
-
 const ReviewsCarousel = ({ isEnglish, data }) => {
 
     const theme = useTheme();
@@ -61,6 +25,11 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
     if (!data) {
         return null;
     }
+
+    const truncateText = (text, maxLength) => {
+        if (text.length <= maxLength) return text;
+        return `${text.slice(0, maxLength)}...`;
+    };
 
     const slides = Array.from({ length: Math.ceil(data.length / itemsPerSlide) }).map((_, index) =>
         data.slice(index * itemsPerSlide, (index + 1) * itemsPerSlide)
@@ -156,7 +125,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                                         value={Number(review.attributes.rating)}
                                         readOnly />
                                     <Typography variant="body1">
-                                        {review.attributes.ReviewText}
+                                        {truncateText(review.attributes.ReviewText, 120)}
                                     </Typography>
                                 </div>
                             ))}
