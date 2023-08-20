@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Grid, Typography, Button, Box } from '@mui/material';
-import useMediaQuery from '@mui/material';
+import { Grid, Typography, Button, Box, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 
 const BlogPost = ({ isEnglish, id }) => {
@@ -28,7 +27,7 @@ const BlogPost = ({ isEnglish, id }) => {
 
         fetchData();
     }, [id]);
-
+    const isMobile = useMediaQuery('(max-width: 600px)');
 
     if (!data) {
         return null;
@@ -36,7 +35,7 @@ const BlogPost = ({ isEnglish, id }) => {
 
 
     return (
-        <Grid item xs={12} sm={10} paddingBottom={5}>
+        <Grid item xs={12} sm={10} paddingBottom={5} marginTop={isMobile ? '70px' : ''}>
             <div style={{ position: 'relative' }}>
                 <Image
                     src={`${apiUrl.slice(0, apiUrl.length - 4)}${data.attributes.headingImage.data.attributes.url}`}
@@ -61,16 +60,16 @@ const BlogPost = ({ isEnglish, id }) => {
                         alignItems: 'center'
                     }}
                 >
-                    <Typography variant="news_title" style={{ zIndex: 1, color: 'white' }}>
+                    <Typography variant="news_title" style={{ zIndex: 1, color: '#fff', fontSize: isMobile ? '30px' : '' }}>
                         {isEnglish ? data.attributes.EnglishTitle : data.attributes.Title}
                     </Typography>
 
                     {/* Gradient line */}
                     <div style={{
-                        height: '3px',
+                        height: '1px',
                         width: '70%',
                         marginTop: '20px',
-                        backgroundImage: 'linear-gradient(to right, transparent, white, transparent)'
+                        backgroundImage: 'linear-gradient(to right, transparent, #fff, transparent)'
                     }}></div>
 
                     {/* Back to home button */}
@@ -82,7 +81,7 @@ const BlogPost = ({ isEnglish, id }) => {
                             color: 'white',
                             borderColor: 'white',
                             alignSelf: 'flex-start',
-                            margin: '60px 20%',
+                            margin: isMobile ? '10% 5%' : '60px 20%',
                         }}
                         variant="text">
                         {isEnglish ? 'Back to Home' : 'На головну'}
@@ -104,7 +103,7 @@ const BlogPost = ({ isEnglish, id }) => {
                 style={{ cursor: 'pointer', margin: '2% 5%', color: '#458FF6' }}>
                 {isEnglish ? 'Back to Home' : 'На головну'}
             </Button>
-        </Grid>
+        </Grid >
     );
 }
 
