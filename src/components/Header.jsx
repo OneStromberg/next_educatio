@@ -23,7 +23,7 @@ import Link from 'next/link';
 import Facebook from './UI/Facebook';
 import Instagram from './UI/Instagram';
 import TikTok from './UI/TikTok';
-import YouTube from './UI/Youtube';
+import Youtube from './UI/Youtube';
 
 const TransparentAppBar = styled(AppBar)`
   background-color: #fff;
@@ -121,7 +121,7 @@ const DesktopHeader = ({
             />
           </a>
           <a href="https://www.youtube.com">
-            <StyledIcon as={YouTube}
+            <StyledIcon as={Youtube}
               fill={'#AFABB8'}
             />
           </a>
@@ -229,7 +229,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
             />
           </a>
           <a style={{ color: '#AFABB8' }} href="https://www.youtube.com">
-            <YouTube
+            <Youtube
               fill={'#AFABB8'}
               style={{
                 cursor: 'pointer',
