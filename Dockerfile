@@ -9,7 +9,7 @@ ARG API_TOKEN
 ARG APP_DOMAIN
 
 RUN npm install
-
+COPY . .
 RUN [ "npm", "run", "build" ]
 COPY . .
 
