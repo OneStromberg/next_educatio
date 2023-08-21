@@ -1,6 +1,10 @@
 FROM node:18-alpine as builder
 WORKDIR /app
 
+ARG API_URL
+ARG API_TOKEN
+ARG APP_DOMAIN
+
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
