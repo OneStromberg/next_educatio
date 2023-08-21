@@ -15,7 +15,6 @@ RUN [ "npm", "run", "build" ]
 
 COPY ./public ./public
 COPY ./.next/standalone ./
-COPY ./.next/static ./.next/static
 
 EXPOSE 3000
 
