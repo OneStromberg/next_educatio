@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  API_TOKEN: ${{ secrets.API_TOKEN }} 
+  API_URL: ${{ secrets.API_URL }} 
+  APP_DOMAIN: ${{ secrets.APP_DOMAIN }} 
+
 jobs:
 
   build-publish:
