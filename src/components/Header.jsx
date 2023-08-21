@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 "use client";
 import { useState, useEffect } from 'react';
 import {
@@ -262,14 +261,14 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
             info@ceducatio.com
           </Typography>
           <Typography variant="header_subtext">
-            <ReactMarkdown children={adress} />
+            <ReactMarkdown >{adress}</ReactMarkdown>
           </Typography>
         </Grid> :
           <Grid container justifyContent="space-between" style={{
             padding: '2% 10% 4% 10%',
           }}>
             <Typography variant="header_subtext">
-              <ReactMarkdown children={adress} />
+              <ReactMarkdown>{adress}</ReactMarkdown>
             </Typography>
             <Typography variant="header_subtext" style={{ textDecoration: 'underline' }}>
               info@ceducatio.com

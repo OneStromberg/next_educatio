@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 import Link from 'next/link';
 import { useState } from 'react';
 import { Grid, Typography, useMediaQuery } from '@mui/material';
@@ -43,7 +42,7 @@ Market Sq. 1, room 110`
           <Grid container direction="column" alignItems="center" gap={3}>
             <Image src={logo.src} width={80} height={35} />
             <Typography variant="footer_text" align="center" marginBottom={2}>
-              <ReactMarkdown children={adress} />
+              <ReactMarkdown >{adress}</ReactMarkdown>
             </Typography>
             <Grid container justifyContent="center" alignItems="center" style={{ gap: '20px' }}>
               <a href="https://www.facebook.com">
@@ -83,7 +82,7 @@ Market Sq. 1, room 110`
             <Grid item style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
               <Image src={logo.src} width={80} height={35} />
               <Typography variant="footer_text" align="left" marginBottom={2}>
-                <ReactMarkdown children={adress} />
+                <ReactMarkdown>{adress}</ReactMarkdown>
               </Typography>
             </Grid>
             <Grid item alignSelf={'center'} justifySelf={'center'}>
