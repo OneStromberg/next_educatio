@@ -11,7 +11,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { styled } from '@mui/system';
 import Wavy from './UI/Wavy';
-import { all } from 'axios';
 
 const StyledCard = styled(Card)`
     cursor: pointer;
@@ -72,7 +71,6 @@ const Blog = ({ isEnglish, data }) => {
 
     const pageTitle = isEnglish ? 'News' : 'Новини'
     const allNews = isEnglish ? 'All news' : 'Всi новини'
-    const loadMore = isEnglish ? 'Load more' : 'Завантажити бiльше'
     const apiUrl = process.env.API_URL;
 
     return (

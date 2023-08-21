@@ -67,9 +67,6 @@ const StyledIcon = styled('svg')`
   width: 22.7px;
   height: 22.7px;
   transition: .3s;
-  &:hover{
-    color: #FFC4B7;
-  }
 `;
 
 const MobileHeader = ({ languageIcon, toggleLanguage, handleMenuToggle, isMenuOpen }) => (
@@ -111,32 +108,40 @@ const DesktopHeader = ({
       <div style={{ display: 'flex', width: '70%', gap: '5%', alignItems: 'center', justifyContent: 'flex-end' }}>
         <StyledButton onClick={toggleLanguage}>{languageIcon}</StyledButton>
         <SocialWrapper>
-          <a href="https://www.facebook.com">
+          <a href="https://www.facebook.com"
+            onMouseEnter={() => setHovered('Facebook')}
+            onMouseLeave={() => setHovered(null)}>
             <StyledIcon as={Facebook}
-              fill={'#AFABB8'}
+              fill={isHovered === 'Facebook' ? '#FFC4B7' : '#AFABB8'}
             />
           </a>
-          <a href="https://www.instagram.com">
+          <a href="https://www.instagram.com"
+            onMouseEnter={() => setHovered('Instagram')}
+            onMouseLeave={() => setHovered(null)}>
             <StyledIcon as={Instagram}
-              fill={'#AFABB8'}
+              fill={isHovered === 'Instagram' ? '#FFC4B7' : '#AFABB8'}
             />
           </a>
-          <a href="https://www.youtube.com">
+          <a href="https://www.youtube.com"
+            onMouseEnter={() => setHovered('Youtube')}
+            onMouseLeave={() => setHovered(null)}>
             <StyledIcon as={Youtube}
-              fill={'#AFABB8'}
+              fill={isHovered === 'Youtube' ? '#FFC4B7' : '#AFABB8'}
             />
           </a>
-          <a href="https://www.tiktok.com">
+          <a href="https://www.tiktok.com"
+            onMouseEnter={() => setHovered('Tiktok')}
+            onMouseLeave={() => setHovered(null)}>
             <StyledIcon as={TikTok}
-              fill={'#AFABB8'}
+              fill={isHovered === 'Tiktok' ? '#FFC4B7' : '#AFABB8'}
             />
           </a>
           <IconButton
             color="inherit"
             onClick={handleMenuToggle}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            style={{ color: isHovered ? '#1F1F71' : '#a9a9a9', height: '100%', marginLeft: 'auto' }}
+            onMouseEnter={() => setHovered('Burger')}
+            onMouseLeave={() => setHovered(null)}
+            style={{ color: isHovered === 'Burger' ? '#1F1F71' : '#a9a9a9', height: '100%', marginLeft: 'auto' }}
           >
             {isMenuOpen ? <Close style={{ fontSize: '2.2rem' }} /> : <Menu style={{ fontSize: '2.2rem' }} />}
           </IconButton>
@@ -278,7 +283,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
 
 const Header = ({ onLanguageToggle, isEnglish }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [isHovered, setHovered] = useState(false);
+  const [isHovered, setHovered] = useState(null)
 
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
