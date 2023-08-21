@@ -10,9 +10,10 @@ ARG APP_DOMAIN
 
 RUN npm install
 
+RUN [ "npm", "run", "build" ]
 COPY . .
 
 EXPOSE 3000
 
-RUN [ "npm", "run", "build" ]
+
 CMD [ "node", ".next/standalone/server.js" ]
