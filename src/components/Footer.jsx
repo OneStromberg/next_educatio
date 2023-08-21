@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import Link from 'next/link';
 import { useState } from 'react';
 import { Grid, Typography, useMediaQuery } from '@mui/material';
