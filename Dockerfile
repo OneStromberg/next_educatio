@@ -1,6 +1,7 @@
 FROM node:18-alpine
 
 WORKDIR /frontend
+ENV NODE_ENV="production"
 
 COPY package*.json ./
 
@@ -11,9 +12,12 @@ ARG APP_DOMAIN
 RUN npm install
 COPY . .
 RUN [ "npm", "run", "build" ]
-COPY . .
+
+COPY ./public ./public
+COPY ./.next/standalone ./
+COPY ./.next/static ./.next/static
 
 EXPOSE 3000
 
 
-CMD [ "node", ".next/standalone/server.js" ]
+CMD [ "node", "./server.js" ]
