@@ -6,13 +6,7 @@ on:
   pull_request:
     branches: [ "master" ]
 
-env:
-  API_TOKEN: ${{ secrets.API_TOKEN }} 
-  API_URL: ${{ secrets.API_URL }} 
-  APP_DOMAIN: ${{ secrets.APP_DOMAIN }} 
-
 jobs:
-
   build-publish:
     runs-on: ubuntu-latest
     steps:
@@ -24,6 +18,10 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the hello-docker Docker image
+      env:
+        API_TOKEN: ${{ secrets.API_TOKEN }} 
+        API_URL: ${{ secrets.API_URL }} 
+        APP_DOMAIN: ${{ secrets.APP_DOMAIN }} 
       run: |
         docker build . --tag ghcr.io/onestromberg/next_educatio:latest
         docker push ghcr.io/onestromberg/next_educatio:latest
