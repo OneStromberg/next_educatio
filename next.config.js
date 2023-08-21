@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-require('dotenv').config();
+require("dotenv").config();
 
 const nextConfig = {
   output: "standalone",
@@ -13,4 +13,6 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig
+console.log("nextConfig", nextConfig);
+
+module.exports = nextConfig;

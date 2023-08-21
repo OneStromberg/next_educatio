@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3000
 
 RUN [ "npm", "run", "build" ]
-CMD [ "npm", "run", "start" ]
+CMD [ "node", ".next/standalone/server.js" ]
