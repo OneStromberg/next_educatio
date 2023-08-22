@@ -74,7 +74,7 @@ const Achiewments = ({ isEnglish, data }) => {
                                 display: 'flex',
                                 gap: '20px',
                                 maxHeight: '70%',
-                                alignItems: 'flex-start',
+                                alignItems: 'center',
                             }}>
                                 <Typography variant="h3_light">
                                     {item.attributes.number}

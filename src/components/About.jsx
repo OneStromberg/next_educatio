@@ -14,10 +14,12 @@ const StyledSecondContainer = styled(Box)`
     grid-template-columns: 1fr 1fr;
     gap: 8%;
     padding: 5% 20%;
-    margin: 0 auto;
+    margin: 3% auto;
 
     @media (max-width: 600px) {
-        grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
         padding: 20% 10%;
     }
 `;

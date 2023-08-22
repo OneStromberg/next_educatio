@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Grid, Typography, Button, Box, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
 
 const BlogPost = ({ isEnglish, id }) => {
 
@@ -91,9 +92,9 @@ const BlogPost = ({ isEnglish, id }) => {
 
             {/* News post text */}
             <Box p={{ xs: 2, md: 10 }} py={5}>
-                <Typography variant="news_text">
+                <ReactMarkdown><Typography variant="news_text">
                     {isEnglish ? data.attributes.EnglishText : data.attributes.text}
-                </Typography>
+                </Typography></ReactMarkdown>
             </Box>
 
             <Button

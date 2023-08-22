@@ -39,9 +39,10 @@ const HeadingPage = ({ isEnglish, data }) => {
       justifyContent: 'center',
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
-      backgroundRepeat: 'no-repeat no-repeat'
+      backgroundRepeat: 'no-repeat no-repeat',
+      paddingTop: isMobile ? 70 : ''
     }}>
-      {isMobile && <Image src={bgURL} alt='image' width={300} height={300} />}
+      {isMobile && <Image src={bgURL} alt='image' width={isMobile ? 240 : 300} height={isMobile ? 240 : 300} style={{ marginBottom: 80 }} />}
       <div style={{ width: isMobile ? '100%' : '50%' }}>
         <Typography variant="h1" component="h1" gutterBottom>
           <ReactMarkdown>{text}</ReactMarkdown>

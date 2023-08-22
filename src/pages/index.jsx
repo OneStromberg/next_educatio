@@ -24,6 +24,7 @@ const Main = (
         aboutData,
         areasData,
         membersData,
+        centersData,
         reviewsData,
         achiewmentsData,
         blogData
@@ -55,7 +56,7 @@ const Main = (
                 <PartnersCarousel isEnglish={isEnglish} />
 
                 <EducationslAreas isEnglish={isEnglish} data={areasData} />
-                <Centers isEnglish={isEnglish} data={membersData} />
+                <Centers isEnglish={isEnglish} data={centersData} />
                 <CalendarContainer isEnglish={isEnglish} />
                 <Blog isEnglish={isEnglish} data={blogData} />
 

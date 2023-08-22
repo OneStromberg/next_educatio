@@ -11,6 +11,8 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
     const isMobile = useMediaQuery('(max-width:600px)');
 
     const [itemsPerSlide, setItemsPerSlide] = useState(3);
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
 
     useEffect(() => {
         if (isMobile) {
@@ -35,6 +37,22 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
         data.slice(index * itemsPerSlide, (index + 1) * itemsPerSlide)
     );
 
+    const goToPrevSlide = () => {
+        if (currentSlideIndex === 0) {
+            setCurrentSlideIndex(slides.length - 1);
+        } else {
+            setCurrentSlideIndex(currentSlideIndex - 1);
+        }
+    };
+
+    const goToNextSlide = () => {
+        if (currentSlideIndex === slides.length - 1) {
+            setCurrentSlideIndex(0);
+        } else {
+            setCurrentSlideIndex(currentSlideIndex + 1);
+        }
+    };
+
     const pageTitle = isEnglish ? 'Reviews' : 'Відгуки';
 
     return (
@@ -44,7 +62,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexDirection: 'column',
-                marginBottom: 50
+                margin: '80px 0'
             }}>
                 <Typography variant='h4'>
                     {pageTitle}
@@ -55,13 +73,15 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                 <Carousel
                     navButtonsAlwaysVisible
                     indicators={false}
+                    index={currentSlideIndex}
+                    onChange={(index) => setCurrentSlideIndex(index)}
                     NavButton={({ onClick, style, next, prev }) => {
                         if (isMobile) {
                             return <></>;
                         }
 
                         return (
-                            <IconButton onClick={onClick} style={{
+                            <IconButton onClick={next ? goToNextSlide : goToPrevSlide} style={{
                                 ...style,
                                 position: 'absolute',
                                 top: '50%',
@@ -133,12 +153,12 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                     ))}
                 </Carousel>
                 {isMobile && (
-                    <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: 10, }}>
-                        <IconButton style={{ color: '#458FF6', }}>←</IconButton>
-                        <IconButton style={{ color: '#458FF6', }}>→</IconButton>
+                    <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: 10 }}>
+                        <IconButton onClick={goToPrevSlide} style={{ color: '#458FF6' }}>←</IconButton>
+                        <IconButton onClick={goToNextSlide} style={{ color: '#458FF6' }}>→</IconButton>
                     </div>
                 )}
-            </div>
+            </div >
 
         </>
     );

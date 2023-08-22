@@ -15,9 +15,9 @@ const CenterItem = styled(Box)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: start;
     margin: 20px;
-    max-width: 220px;
+    max-width: 250px;
     gap: 10px;
 `;
 
@@ -42,7 +42,7 @@ const Centers = ({ isEnglish, data }) => {
             display: 'flex',
             margin: '0 auto',
             flexDirection: 'column',
-            padding: '4.5% 7%',
+            padding: isMobile ? '' : '4.5% 7%',
             background: '#FBFBFB',
             paddingTop: '70px',
         }}>
@@ -59,21 +59,24 @@ const Centers = ({ isEnglish, data }) => {
             </div>
             {chunks.map((chunk, index) => (
                 <Grid container spacing={2} style={{
-                    justifyContent: 'center',
                     alignItems: 'center',
                     flexDirection: isMobile ? 'column' : 'row',
+                    columnGap: 170,
+                    rowGap: 40,
+                    padding: isMobile ? '15% 0' : '5% 8%'
                 }} key={index}>
                     {chunk.map((item) => (
                         <Grid item xs={4} key={item.id} style={{
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
+                            maxWidth: 250,
                         }}>
                             <CenterItem>
                                 <Typography variant='card_header'>
-                                    {isEnglish ? item.attributes.EnglishPlace : item.attributes.place}
+                                    {isEnglish ? item.attributes.EnglishName : item.attributes.name}
                                 </Typography>
-                                <Box display="flex" gap={5}>
+                                <Box display="flex" gap={1} width={'120%'} style={{ textAlign: 'start' }}>
                                     <Image src={GeoPin.src} width={24} height={24} />
                                     <Typography variant='card_subheader'>
                                         {isEnglish ? item.attributes.EnglishAdress : item.attributes.adress}
