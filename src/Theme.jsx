@@ -91,14 +91,14 @@ const theme = createTheme({
     {
       fontFamily: "Roboto",
       fontWeight: 600,
-      fontSize: 65,
+      fontSize: 50,
       color: "#fff",
     },
     h2:
     {
       fontFamily: "Roboto",
       fontWeight: 300,
-      fontSize: 14,
+      fontSize: 18,
       color: "#fff",
     },
     h3: {
