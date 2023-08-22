@@ -296,6 +296,7 @@ const theme = createTheme({
       color: '#7D7987',
       fontSize: 16,
       lineHeight: 1.75,
+      textTransform: 'uppercase',
     },
     card_event: {
       fontFamily: "Roboto",

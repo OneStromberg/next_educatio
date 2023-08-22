@@ -88,7 +88,7 @@ const Members = ({ isEnglish, data }) => {
                                 isEnglish ? item.attributes.EnglishEvent : item.attributes.event
                             }</Typography>
                             <div style={{ display: 'flex', gap: 20 }}>
-                                <div style={{ position: 'relative', display: 'inline-block' }} className="text-element">
+                                <div style={{ position: 'relative', display: 'inline-block', height: '24px' }} className="text-element">
                                     <SvgBack fill={item.attributes.highlight_type} />
                                     <Typography
                                         variant='card_decorated_text'
@@ -97,12 +97,14 @@ const Members = ({ isEnglish, data }) => {
                                             top: '50%',
                                             left: '50%',
                                             transform: 'translate(-50%, -50%)',
-                                            padding: '0.3em 0.7em'
+                                            padding: '0.3em 0.7em',
+                                            zIndex: 2,
+                                            width: 'max-content',
                                         }}
-
                                     >
                                         {isEnglish ? item.attributes.EnglishType : item.attributes.type}
                                     </Typography>
+
                                 </div>
                                 {item.attributes.hit && (
                                     <Typography
