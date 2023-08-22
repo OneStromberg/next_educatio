@@ -55,10 +55,9 @@ const PartnersCarousel = ({ isEnglish }) => {
 
     return (
         <div style={{
-            marginTop: '3%',
             position: 'relative',
             width: '80%',
-            margin: '0 auto',
+            margin: '3.5% auto',
             justifyContent: 'center'
         }}>
             <div style={{

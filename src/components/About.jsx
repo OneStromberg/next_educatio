@@ -4,6 +4,7 @@ import {
   Typography,
   useMediaQuery
 } from '@mui/material';
+import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { styled } from '@mui/system';
 import Wavy from './UI/Wavy';
@@ -72,7 +73,7 @@ const About = ({ isEnglish, data }) => {
               </Typography>
               <br />
               <Typography variant="about_subheading" gutterBottom>
-                {isEnglish ? item.attributes.englishText : item.attributes.text}
+                <ReactMarkdown>{isEnglish ? item.attributes.englishText : item.attributes.text}</ReactMarkdown>
               </Typography>
             </Grid>
           </Grid>
