@@ -74,7 +74,7 @@ const Members = ({ isEnglish, data }) => {
                         <StyledGrid href={item.attributes.GoogleFormsLink} key={item.id} target='_blank'>
                             <div style={{ display: 'flex', gap: 15, alignItems: 'center' }} className="text-element">
                                 <Image src={GeoPin.src} width={24} height={24}></Image>
-                                <Typography variant='card_header' >{
+                                <Typography variant='card_subheader' >{
                                     isEnglish ? item.attributes.EnglishAdress : item.attributes.adress
                                 }</Typography>
                             </div>

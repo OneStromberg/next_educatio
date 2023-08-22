@@ -13,6 +13,7 @@ const CallbackForm = ({ isEnglish }) => {
     const apiUrl = process.env.API_URL;
     const apiKey = process.env.API_TOKEN;
     const isMobile = useMediaQuery('(max-width:600px)');
+    const isTablet = useMediaQuery('(max-width:1200px)');
 
     const [formData, setFormData] = useState({
         name: '',
@@ -122,7 +123,7 @@ const CallbackForm = ({ isEnglish }) => {
             alignItems="center"
             style={{
                 background: `url(${background.src}) no-repeat center`,
-                backgroundSize: 'cover',  // was 'contain'
+                backgroundSize: isTablet ? 'cover' : 'contain',  // was 'contain'
                 width: isMobile ? '100%' : '80%',
                 height: 'auto',
                 margin: isMobile ? '10% 0' : '10% auto',

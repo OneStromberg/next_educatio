@@ -20,17 +20,18 @@ const StyledGrid = styled(Grid)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
     max-width: 1200px;
 `;
 
 const GridContainer = styled('div')`
     display: grid;
-    grid-template-columns: ${props => props.dataLength > 3 ? "1fr 1fr" : "1fr"};
+    grid-template-columns: ${props => props.dataLength > 3 ? " 1fr 1fr" : "1fr 1fr 1fr"};
     justify-content: start;
     justify-items: start;
-    gap: 16px;
+    padding-left: 25%;
+    gap: 40px;
 `;
+
 
 const GridItem = styled(Grid)`
     max-width: 100%;
@@ -62,12 +63,13 @@ const Achiewments = ({ isEnglish, data }) => {
                 <Wavy fill={'#E8E7E0'} />
             </StyledTextContainer>
 
-            {isMobile ? <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            {isMobile ? <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 40 }}>
                 {data.map((item, index) => (
                     <GridItem
                         item
                         key={item.id}
-                        gap={20}
+                        gap={5}
+                        padding={0}
                     >
                         <StyledGrid>
                             <div style={{
@@ -75,6 +77,7 @@ const Achiewments = ({ isEnglish, data }) => {
                                 gap: '20px',
                                 maxHeight: '70%',
                                 alignItems: 'center',
+                                padding: 0
                             }}>
                                 <Typography variant="h3_light">
                                     {item.attributes.number}
@@ -92,7 +95,6 @@ const Achiewments = ({ isEnglish, data }) => {
                         <GridItem
                             item
                             key={item.id}
-                            gap={20}
                         >
                             <StyledGrid>
                                 <div style={{
@@ -101,7 +103,7 @@ const Achiewments = ({ isEnglish, data }) => {
                                     maxHeight: '70%',
                                     alignItems: 'center',
                                 }}>
-                                    <Typography variant="h3_light" >
+                                    <Typography variant="h3_light" style={{ lineHeight: 1 }}>
                                         {item.attributes.number}
                                     </Typography>
                                     <Typography variant="text_light" gutterBottom>

@@ -17,6 +17,7 @@ import Achiewments from '@/components/Achiewments';
 import Head from 'next/head';
 import { getServerSideProps } from '../ssr';
 import Centers from '@/components/Centers';
+import logo from '@/assets/footter_logo.svg';
 
 const Main = (
     {
@@ -39,13 +40,15 @@ const Main = (
     return (
         <>
             <Head>
-                <meta name="description" content="CE - Center of education" />
-                <meta
-                    name="keywords"
-                    content="Education, Educatio, Lviv, Center of education, CE, Освіта, Educatio, Львів, Центр освіти, ЦЕ, мережа ЦЕ —центрів едукації, центр едукації"
-                />
+                <title>Educatio: Leading Center of Education in Lviv</title>
+                <meta name="description" content="Educatio is the leading center of education in Lviv. We offer a wide range of educational services. Join us to redefine your future." />
+                <meta name="keywords" content="Education, Educatio, Lviv, Center of education, CE, Освіта, Educatio, Львів, Центр освіти, ЦЕ, мережа ЦЕ —центрів едукації, центр едукації" />
                 <meta name="author" content="Центр едукації" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="canonical" href="http://ceducatio.com/" />
+                <link rel="icon" href={logo.src} type="image/x-icon" />
             </Head>
+
 
             <ThemeProvider theme={theme}>
                 <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} />

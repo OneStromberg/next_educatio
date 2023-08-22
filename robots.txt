@@ -1,0 +1,11 @@
+User-agent: *
+Disallow:
+
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /admin/
+
+User-agent: Yandexbot
+Disallow: /no-yandex/
+
+Sitemap: http://ceducatio.com/sitemap.xml

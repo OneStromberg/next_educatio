@@ -11,6 +11,7 @@ const StyledContainer = styled(Container)`
   color: #fff;
   max-width: 100dvw;
   padding: 10% 20%;
+  column-gap: 10%;
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
     flex-direction: column;
@@ -42,7 +43,7 @@ const HeadingPage = ({ isEnglish, data }) => {
       backgroundRepeat: 'no-repeat no-repeat',
       paddingTop: isMobile ? 70 : ''
     }}>
-      {isMobile && <Image src={bgURL} alt='image' width={isMobile ? 240 : 300} height={isMobile ? 240 : 300} style={{ marginBottom: 80 }} />}
+      {isMobile && <Image src={bgURL} alt='image' width={240} height={240} style={{ marginBottom: '20%' }} />}
       <div style={{ width: isMobile ? '100%' : '50%' }}>
         <Typography variant="h1" component="h1" gutterBottom>
           <ReactMarkdown>{text}</ReactMarkdown>
