@@ -82,7 +82,7 @@ const Members = ({ isEnglish, data }) => {
                                 isEnglish ? item.attributes.EnglishDate : item.attributes.date
                             }</Typography>
                             <Typography variant='card_place' className="text-element">{
-                                isEnglish ? item.attributes.EnglishPlace : item.attributes.place
+                                isEnglish ? item.attributes.EnglishType : item.attributes.type
                             }</Typography>
                             <Typography variant='card_event'>{
                                 isEnglish ? item.attributes.EnglishEvent : item.attributes.event
@@ -102,7 +102,7 @@ const Members = ({ isEnglish, data }) => {
                                             width: 'max-content',
                                         }}
                                     >
-                                        {isEnglish ? item.attributes.EnglishType : item.attributes.type}
+                                        {isEnglish ? item.attributes.EnglishDesc : item.attributes.description}
                                     </Typography>
 
                                 </div>
