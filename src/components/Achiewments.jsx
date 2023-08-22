@@ -27,12 +27,13 @@ const StyledGrid = styled(Grid)`
 const GridContainer = styled('div')`
     display: grid;
     grid-template-columns: ${props => props.dataLength > 3 ? "1fr 1fr" : "1fr"};
+    justify-content: start;
+    justify-items: start;
     gap: 16px;
 `;
 
 const GridItem = styled(Grid)`
-    max-width: fit-content;
-    margin: 0 auto;
+    max-width: 100%;
 `;
 
 const Achiewments = ({ isEnglish, data }) => {
@@ -73,9 +74,9 @@ const Achiewments = ({ isEnglish, data }) => {
                                 display: 'flex',
                                 gap: '20px',
                                 maxHeight: '70%',
-                                alignItems: 'center',
+                                alignItems: 'flex-start',
                             }}>
-                                <Typography variant="h4_light" >
+                                <Typography variant="h3_light">
                                     {item.attributes.number}
                                 </Typography>
                                 <Typography variant="text_light" gutterBottom>
@@ -100,7 +101,7 @@ const Achiewments = ({ isEnglish, data }) => {
                                     maxHeight: '70%',
                                     alignItems: 'center',
                                 }}>
-                                    <Typography variant="h4_light" >
+                                    <Typography variant="h3_light" >
                                         {item.attributes.number}
                                     </Typography>
                                     <Typography variant="text_light" gutterBottom>
