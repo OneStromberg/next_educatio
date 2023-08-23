@@ -99,28 +99,29 @@ Market Sq. 1, room 110`
                 <Link href="https://laba.ua/offerta" style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
               </Typography>
               <Grid container justifyContent="flex-end" alignItems="center" style={{ gap: '20px' }}>
-                <a href="https://www.facebook.com"
+                <a href="https://www.facebook.com/C.Educatio"
                   onMouseEnter={() => setHovered('Facebook')}
                   onMouseLeave={() => setHovered(null)}>
                   <StyledIcon as={Facebook}
                     fill={isHovered === 'Facebook' ? '#FFC4B7' : '#fff'}
+                    style={{ height: '34px', width: '34px' }}
                   />
                 </a>
-                <a href="https://www.instagram.com"
+                <a href="ttps://www.instagram.com/c.educatio.lviv/"
                   onMouseEnter={() => setHovered('Instagram')}
                   onMouseLeave={() => setHovered(null)}>
                   <StyledIcon as={Instagram}
                     fill={isHovered === 'Instagram' ? '#FFC4B7' : '#fff'}
                   />
                 </a>
-                <a href="https://www.youtube.com"
+                <a href="https://www.youtube.com/@c.educatio"
                   onMouseEnter={() => setHovered('Youtube')}
                   onMouseLeave={() => setHovered(null)}>
                   <StyledIcon as={Youtube}
                     fill={isHovered === 'Youtube' ? '#FFC4B7' : '#fff'}
                   />
                 </a>
-                <a href="https://www.tiktok.com"
+                <a href="https://tiktok.com/@c.educatio"
                   onMouseEnter={() => setHovered('Tiktok')}
                   onMouseLeave={() => setHovered(null)}>
                   <StyledIcon as={TikTok}

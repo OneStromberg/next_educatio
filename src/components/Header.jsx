@@ -107,28 +107,28 @@ const DesktopHeader = ({
       <div style={{ display: 'flex', width: '70%', gap: '5%', alignItems: 'center', justifyContent: 'flex-end' }}>
         <StyledButton onClick={toggleLanguage}>{languageIcon}</StyledButton>
         <SocialWrapper>
-          <a href="https://www.facebook.com"
+          <a href="https://www.facebook.com/C.Educatio"
             onMouseEnter={() => setHovered('Facebook')}
             onMouseLeave={() => setHovered(null)}>
             <StyledIcon as={Facebook}
               fill={isHovered === 'Facebook' ? '#FFC4B7' : '#AFABB8'}
             />
           </a>
-          <a href="https://www.instagram.com"
+          <a href="ttps://www.instagram.com/c.educatio.lviv/"
             onMouseEnter={() => setHovered('Instagram')}
             onMouseLeave={() => setHovered(null)}>
             <StyledIcon as={Instagram}
               fill={isHovered === 'Instagram' ? '#FFC4B7' : '#AFABB8'}
             />
           </a>
-          <a href="https://www.youtube.com"
+          <a href="https://www.youtube.com/@c.educatio"
             onMouseEnter={() => setHovered('Youtube')}
             onMouseLeave={() => setHovered(null)}>
             <StyledIcon as={Youtube}
               fill={isHovered === 'Youtube' ? '#FFC4B7' : '#AFABB8'}
             />
           </a>
-          <a href="https://www.tiktok.com"
+          <a href="https://tiktok.com/@c.educatio"
             onMouseEnter={() => setHovered('Tiktok')}
             onMouseLeave={() => setHovered(null)}>
             <StyledIcon as={TikTok}
@@ -158,7 +158,8 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
       anchor="top"
       style={{
         display: 'flex',
-        zIndex: 4, top: '70px',
+        zIndex: 4,
+        top: '70px',
         height: 'fit-content',
         boxShadow: 'none',
         justifyContent: 'center',
@@ -213,7 +214,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
       <Divider style={{ margin: '10px auto', width: isMobile ? '80%' : '90%' }} />
       <Grid container direction="column" alignItems="center" style={{ paddingBottom: '2%' }}>
         {isMobile && <div style={{ display: 'flex', gap: 45, padding: '50px 0' }}>
-          <a style={{ color: '#AFABB8' }} href="https://www.facebook.com">
+          <a style={{ color: '#AFABB8' }} href="https://www.facebook.com/C.Educatio">
             <Facebook
               fill={'#AFABB8'}
               style={{
@@ -223,7 +224,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
               }}
             />
           </a>
-          <a style={{ color: '#AFABB8' }} href="https://www.instagram.com">
+          <a style={{ color: '#AFABB8' }} href="ttps://www.instagram.com/c.educatio.lviv/">
             <Instagram
               fill={'#AFABB8'}
               style={{
@@ -233,7 +234,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
               }}
             />
           </a>
-          <a style={{ color: '#AFABB8' }} href="https://www.youtube.com">
+          <a style={{ color: '#AFABB8' }} href="https://www.youtube.com/@c.educatio">
             <Youtube
               fill={'#AFABB8'}
               style={{
@@ -243,7 +244,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
               }}
             />
           </a>
-          <a style={{ color: '#AFABB8' }} href="https://www.tiktok.com">
+          <a style={{ color: '#AFABB8' }} href="https://tiktok.com/@c.educatio">
             <TikTok
               fill={'#AFABB8'}
               style={{
