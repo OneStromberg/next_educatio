@@ -32,10 +32,8 @@ const PartnersCarousel = ({ isEnglish }) => {
         { id: 6, logo: partner6 },
         { id: 7, logo: partner7 },
         { id: 8, logo: partner8 },
-        // Добавьте остальных партнеров
     ];
 
-    console.log(itemsPerSlide)
     const slides = Array.from({ length: Math.ceil(partnerData.length / itemsPerSlide) }).map((_, index) =>
         partnerData.slice(index * itemsPerSlide, (index + 1) * itemsPerSlide)
     );

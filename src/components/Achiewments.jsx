@@ -7,6 +7,9 @@ import {
 import { styled } from '@mui/system';
 import background from '../assets/achiewments_bg.svg';
 import Wavy from './UI/Wavy';
+import arrows from '../assets/arrows.svg';
+import lb_corner from '../assets/lb_corner.svg';
+import rt_corner from '../assets/rt_corner.svg';
 
 const StyledTextContainer = styled(Grid)`
     display: flex;
@@ -28,7 +31,7 @@ const GridContainer = styled('div')`
     grid-template-columns: ${props => props.dataLength > 3 ? " 1fr 1fr" : "1fr 1fr 1fr"};
     justify-content: start;
     justify-items: start;
-    padding-left: 25%;
+    margin-left: 25%;
     gap: 40px;
 `;
 
@@ -49,6 +52,7 @@ const Achiewments = ({ isEnglish, data }) => {
 
     return (
         <Box style={{
+            position: 'relative',
             padding: isMobile ? '30px 5%' : '150px 10%',
             margin: 0,
             backgroundImage: `url(${background.src})`,
@@ -56,6 +60,24 @@ const Achiewments = ({ isEnglish, data }) => {
             backgroundPosition: 'center center',
             backgroundSize: 'cover'
         }}>
+            <div style={{
+                background: `url(${arrows.src})`,
+                position: 'absolute',
+                left: 0,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                height: '100%',
+                width: '4%',
+            }} alt="Left arrow" />
+            <div style={{
+                background: `url(${arrows.src})`,
+                position: 'absolute',
+                right: 0,
+                top: '50%',
+                transform: 'translateY(-50%) scaleX(-1)',
+                height: '100%',
+                width: '4%',
+            }} alt="Right arrow" />
             <StyledTextContainer>
                 <Typography id='services' variant="h4_light" gutterBottom>
                     {pageTitle}
@@ -90,7 +112,9 @@ const Achiewments = ({ isEnglish, data }) => {
                     </GridItem>
                 ))}
             </Box> :
-                <GridContainer dataLength={data.length}>
+                <GridContainer dataLength={data.length} style={{ position: 'relative' }}>
+                    <div style={{ background: `url(${lb_corner.src})`, position: 'absolute', left: '-5%', bottom: '-15%', width: 57, height: 67 }} />
+                    <div style={{ background: `url(${rt_corner.src})`, position: 'absolute', right: '-5%', top: '-15%', width: 57, height: 67 }} />
                     {data.map((item, index) => (
                         <GridItem
                             item

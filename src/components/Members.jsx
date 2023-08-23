@@ -10,6 +10,7 @@ import SvgBack from './UI/SvgBack';
 import GeoPin from '../assets/geo_pin.svg';
 import Wavy from './UI/Wavy';
 import Link from 'next/link';
+import snake from '../assets/snake.svg';
 
 const StyledGrid = styled(Link)`
         cursor: pointer;
@@ -50,7 +51,8 @@ const Members = ({ isEnglish, data }) => {
             margin: '0 auto',
             flexDirection: 'column',
             alignItems: 'center',
-            background: '#FBFBFB',
+            background: `url(${snake.src}) center center no-repeat`,
+            backgroundColor: '#FBFBFB',
             paddingTop: isMobile ? '30px' : '70px',
             paddingBottom: isMobile ? '50px' : '180px',
         }}>

@@ -104,7 +104,6 @@ Market Sq. 1, room 110`
                   onMouseLeave={() => setHovered(null)}>
                   <StyledIcon as={Facebook}
                     fill={isHovered === 'Facebook' ? '#FFC4B7' : '#fff'}
-                    style={{ height: '34px', width: '34px' }}
                   />
                 </a>
                 <a href="ttps://www.instagram.com/c.educatio.lviv/"

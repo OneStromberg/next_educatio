@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import {
     Grid,
     Typography,
@@ -6,8 +7,9 @@ import {
     TextField,
     useMediaQuery
 } from '@mui/material';
+import Image from 'next/image';
 import background from '../assets/questions_bg.svg';
-import axios from 'axios';
+import scratch from '../assets/scratch.svg';
 
 const CallbackForm = ({ isEnglish }) => {
     const apiUrl = process.env.API_URL;
@@ -122,113 +124,137 @@ const CallbackForm = ({ isEnglish }) => {
             justifyContent="center"
             alignItems="center"
             style={{
-                background: `url(${background.src}) no-repeat center`,
-                backgroundSize: isTablet ? 'cover' : 'contain',  // was 'contain'
-                width: isMobile ? '100%' : '80%',
-                height: 'auto',
-                margin: isMobile ? '10% 0' : '10% auto',
-                paddingBottom: 50,
+                position: 'relative',
+                background: '#fff',
+                width: '100%',
             }}
         >
-            <div style={{
-                paddingTop: '7%',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                width: '100%',
-            }}>
-                <Typography id='contact' variant="h4_light" gutterBottom style={{
-                    textAlign: 'center',
-                }}>
-                    {pageTitle}
-                </Typography>
-                <Typography variant='subtitle_light'>{pageSubTitle}</Typography>
-            </div>
-            <form
-                onSubmit={handleSubmit}
+            <Image src={scratch.src}
+                alt="scratch"
+                width={300}
+                height={150}
+                style={{ position: 'absolute', transform: 'scaleX(-1)', bottom: 40, left: '-5%', }} />
+            <Image src={scratch.src}
+                alt="scratch"
+                width={300}
+                height={150}
+                style={{ position: 'absolute', top: 80, right: '-5%', }} />
+
+
+
+            <Grid
+                container
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
                 style={{
+                    background: `url(${background.src}) no-repeat center`,
+                    backgroundSize: isTablet ? 'cover' : 'contain',  // was 'contain'
+                    width: isMobile ? '100%' : '80%',
+                    height: 'auto',
+                    margin: isMobile ? '10% 0' : '10% auto',
+                    paddingBottom: 50,
+                }}>
+                <div style={{
+                    paddingTop: '7%',
                     display: 'flex',
-                    width: '80%',
-                    height: '100%',
                     flexDirection: 'column',
-                    alignItems: 'flex-end',
-                    color: '#FFFFFFB2',
-                }}
-            >
-                <TextField
-                    name="name"
-                    label={nameField}
-                    placeholder={namePalceholder}
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    fullWidth
-                    margin="normal"
-                    variant="standard"
-                    color='secondary'
-                    required
-                    error={!!formErrors.name}
-                    helperText={<Typography variant='error_message'>{formErrors.name}</Typography>}
-                />
-                <TextField
-                    name="phone"
-                    label={phoneField}
-                    placeholder={phonePalceholder}
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    fullWidth
-                    margin="normal"
-                    variant="standard"
-                    color='secondary'
-                    required
-                    error={!!formErrors.phone}
-                    helperText={<Typography variant='error_message'>{formErrors.phone}</Typography>}
-                />
-                <TextField
-                    name="email"
-                    label="Email"
-                    placeholder="example@site.com"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    fullWidth
-                    margin="normal"
-                    variant="standard"
-                    color='secondary'
-                    required
-                    error={!!formErrors.email}
-                    helperText={<Typography variant='error_message'>{formErrors.email}</Typography>}
-                />
-                <TextField
-                    name="message"
-                    label={messageField}
-                    placeholder={messagePalceholder}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    fullWidth
-                    margin="normal"
-                    variant="standard"
-                    color='secondary'
-                    multiline
-                    rows={4}
-                    required
-                    error={!!formErrors.message}
-                    helperText={<Typography variant='error_message'>{formErrors.message}</Typography>}
-                />
-                <Button
-                    type="submit"
-                    variant="text"
+                    alignItems: 'center',
+                    width: '100%',
+                }}>
+                    <Typography id='contact' variant="h4_light" gutterBottom style={{
+                        textAlign: 'center',
+                    }}>
+                        {pageTitle}
+                    </Typography>
+                    <Typography variant='subtitle_light'>{pageSubTitle}</Typography>
+                </div>
+                <form
+                    onSubmit={handleSubmit}
                     style={{
-                        cursor: 'pointer',
-                        color: '#FFC804',
-                        width: '30%',
-                        minWidth: 150,
-                        alignSelf: 'flex-end',
-                        padding: '4% 0',
-                        transition: '.3s',
+                        display: 'flex',
+                        width: '80%',
+                        height: '100%',
+                        flexDirection: 'column',
+                        alignItems: 'flex-end',
+                        color: '#FFFFFFB2',
                     }}
                 >
-                    {buttonText} →
-                </Button>
-            </form>
+                    <TextField
+                        name="name"
+                        label={nameField}
+                        placeholder={namePalceholder}
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        fullWidth
+                        margin="normal"
+                        variant="standard"
+                        color='secondary'
+                        required
+                        error={!!formErrors.name}
+                        helperText={<Typography variant='error_message'>{formErrors.name}</Typography>}
+                    />
+                    <TextField
+                        name="phone"
+                        label={phoneField}
+                        placeholder={phonePalceholder}
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        fullWidth
+                        margin="normal"
+                        variant="standard"
+                        color='secondary'
+                        required
+                        error={!!formErrors.phone}
+                        helperText={<Typography variant='error_message'>{formErrors.phone}</Typography>}
+                    />
+                    <TextField
+                        name="email"
+                        label="Email"
+                        placeholder="example@site.com"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        fullWidth
+                        margin="normal"
+                        variant="standard"
+                        color='secondary'
+                        required
+                        error={!!formErrors.email}
+                        helperText={<Typography variant='error_message'>{formErrors.email}</Typography>}
+                    />
+                    <TextField
+                        name="message"
+                        label={messageField}
+                        placeholder={messagePalceholder}
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        fullWidth
+                        margin="normal"
+                        variant="standard"
+                        color='secondary'
+                        multiline
+                        rows={4}
+                        required
+                        error={!!formErrors.message}
+                        helperText={<Typography variant='error_message'>{formErrors.message}</Typography>}
+                    />
+                    <Button
+                        type="submit"
+                        variant="text"
+                        style={{
+                            cursor: 'pointer',
+                            color: '#FFC804',
+                            width: '30%',
+                            minWidth: 150,
+                            alignSelf: 'flex-end',
+                            padding: '4% 0',
+                            transition: '.3s',
+                        }}
+                    >
+                        {buttonText} →
+                    </Button>
+                </form>
+            </Grid>
         </Grid>
     );
 };
