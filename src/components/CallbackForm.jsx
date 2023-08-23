@@ -129,16 +129,10 @@ const CallbackForm = ({ isEnglish }) => {
                 width: '100%',
             }}
         >
-            <Image src={scratch.src}
-                alt="scratch"
-                width={300}
-                height={150}
-                style={{ position: 'absolute', transform: 'scaleX(-1)', bottom: 40, left: '-5%', }} />
-            <Image src={scratch.src}
-                alt="scratch"
-                width={300}
-                height={150}
-                style={{ position: 'absolute', top: 80, right: '-5%', }} />
+            <div
+                style={{ background: `url(${scratch.src}) center center no-repeat no-repeat`, width: 90, height: 150, position: 'absolute', transform: 'scaleX(-1)', bottom: 40, left: 0, }} />
+            <div
+                style={{ background: `url(${scratch.src}) center center no-repeat no-repeat`, width: 90, height: 150, position: 'absolute', top: 80, right: 0, }} />
 
 
 

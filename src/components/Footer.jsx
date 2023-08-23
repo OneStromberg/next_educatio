@@ -14,8 +14,7 @@ import logo from '@/assets/footter_logo.svg';
 
 const StyledIcon = styled('svg')`
   cursor: pointer;
-  width: 34px;
-  height: 34px;
+  transform: scale(1.5);
   transition: .3s;
 `;
 
