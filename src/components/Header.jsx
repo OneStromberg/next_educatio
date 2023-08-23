@@ -160,7 +160,8 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
         display: 'flex',
         zIndex: 4,
         top: '70px',
-        height: 'fit-content',
+        maxHeight: isMobile ? 740 : 350,
+        height: '100%',
         boxShadow: 'none',
         justifyContent: 'center',
       }}
