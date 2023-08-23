@@ -101,7 +101,7 @@ const DesktopHeader = ({
     <Hidden mdDown style={{ display: 'flex', gap: '5%', alignItems: 'center' }}>
       <Logo variant="h6" component="div">
         <Link href="/" style={{ margin: 0, width: '10%' }}>
-          <Image src={logo.src} width={80} height={35} style={{ cursor: 'pointer', marginLeft: 40 }}></Image>
+          <Image src={logo.src} alt='logo' width={80} height={35} style={{ cursor: 'pointer', marginLeft: 40 }}></Image>
         </Link>
       </Logo>
       <div style={{ display: 'flex', width: '70%', gap: '5%', alignItems: 'center', justifyContent: 'flex-end' }}>

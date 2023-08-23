@@ -40,7 +40,7 @@ Market Sq. 1, room 110`
       <Grid container alignItems="center" padding={'60px 0px'} gap={15}>
         {isMobile ? (
           <Grid container direction="column" alignItems="center" gap={3}>
-            <Image src={logo.src} width={80} height={35} />
+            <Image src={logo.src} alt='logo' width={80} height={35} />
             <Typography variant="footer_text" align="center" marginBottom={2}>
               <ReactMarkdown >{adress}</ReactMarkdown>
             </Typography>
@@ -80,7 +80,7 @@ Market Sq. 1, room 110`
         ) : (
           <Grid container justifyContent="space-between">
             <Grid item style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
-              <Image src={logo.src} width={80} height={35} />
+              <Image src={logo.src} alt='logo' width={80} height={35} />
               <Typography variant="footer_text" align="left" marginBottom={2}>
                 <ReactMarkdown>{adress}</ReactMarkdown>
               </Typography>

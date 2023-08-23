@@ -32,7 +32,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
     const pageTitle = isEnglish ? 'Educational Areas' : 'Навчальні напрями';
 
     return (
-        <Box mt={5} mb={5} style={{
+        <Box mt={0} mb={5} style={{
             background: `url(${educationalBg.src})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat, no-repeat',

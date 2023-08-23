@@ -77,7 +77,7 @@ const Centers = ({ isEnglish, data }) => {
                                     {isEnglish ? item.attributes.EnglishName : item.attributes.name}
                                 </Typography>
                                 <Box display="flex" gap={1} width={'120%'} style={{ textAlign: 'start' }}>
-                                    <Image src={GeoPin.src} width={24} height={24} />
+                                    <Image src={GeoPin.src} alt='geo_pin' width={24} height={24} />
                                     <Typography variant='card_subheader'>
                                         {isEnglish ? item.attributes.EnglishAdress : item.attributes.adress}
                                     </Typography>
