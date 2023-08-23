@@ -13,7 +13,7 @@ import GeoPin from '../assets/geo_pin.svg';
 const CenterItem = styled(Box)`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     text-align: start;
     margin: 20px;
@@ -63,7 +63,7 @@ const Centers = ({ isEnglish, data }) => {
                     flexDirection: isMobile ? 'column' : 'row',
                     columnGap: 170,
                     rowGap: 40,
-                    padding: isMobile ? '15% 0' : '5% 8%'
+                    padding: isMobile ? '15% 0' : '1% 8%'
                 }} key={index}>
                     {chunk.map((item) => (
                         <Grid item xs={4} key={item.id} style={{
@@ -76,7 +76,7 @@ const Centers = ({ isEnglish, data }) => {
                                 <Typography variant='card_header'>
                                     {isEnglish ? item.attributes.EnglishName : item.attributes.name}
                                 </Typography>
-                                <Box display="flex" gap={1} width={'120%'} style={{ textAlign: 'start' }}>
+                                <Box display="flex" gap={1} style={{ textAlign: 'start' }}>
                                     <Image src={GeoPin.src} alt='geo_pin' width={24} height={24} />
                                     <Typography variant='card_subheader'>
                                         {isEnglish ? item.attributes.EnglishAdress : item.attributes.adress}

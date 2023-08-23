@@ -63,8 +63,8 @@ const SocialWrapper = styled('div')`
 
 const StyledIcon = styled('svg')`
   cursor: pointer;
-  width: 22.7px;
-  height: 22.7px;
+  width: 23px;
+  height: 23px;
   transition: .3s;
 `;
 
@@ -109,28 +109,28 @@ const DesktopHeader = ({
         <SocialWrapper>
           <a href="https://www.facebook.com/C.Educatio"
             onMouseEnter={() => setHovered('Facebook')}
-            onMouseLeave={() => setHovered(null)}>
+            onMouseLeave={() => setHovered(null)} style={{ height: 23, width: 23 }}>
             <StyledIcon as={Facebook}
               fill={isHovered === 'Facebook' ? '#FFC4B7' : '#AFABB8'}
             />
           </a>
           <a href="ttps://www.instagram.com/c.educatio.lviv/"
             onMouseEnter={() => setHovered('Instagram')}
-            onMouseLeave={() => setHovered(null)}>
+            onMouseLeave={() => setHovered(null)} style={{ height: 23, width: 23 }}>
             <StyledIcon as={Instagram}
               fill={isHovered === 'Instagram' ? '#FFC4B7' : '#AFABB8'}
             />
           </a>
           <a href="https://www.youtube.com/@c.educatio"
             onMouseEnter={() => setHovered('Youtube')}
-            onMouseLeave={() => setHovered(null)}>
+            onMouseLeave={() => setHovered(null)} style={{ height: 23, width: 23 }}>
             <StyledIcon as={Youtube}
               fill={isHovered === 'Youtube' ? '#FFC4B7' : '#AFABB8'}
             />
           </a>
           <a href="https://tiktok.com/@c.educatio"
             onMouseEnter={() => setHovered('Tiktok')}
-            onMouseLeave={() => setHovered(null)}>
+            onMouseLeave={() => setHovered(null)} style={{ height: 23, width: 23 }}>
             <StyledIcon as={TikTok}
               fill={isHovered === 'Tiktok' ? '#FFC4B7' : '#AFABB8'}
             />
@@ -161,7 +161,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
         zIndex: 4,
         top: '70px',
         maxHeight: isMobile ? 740 : 350,
-        height: '100%',
+        height: '80%',
         boxShadow: 'none',
         justifyContent: 'center',
       }}
@@ -184,30 +184,35 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
         flexDirection: isMobile ? 'column' : 'row',
         flex: '1',
         padding: isMobile ? '0' : '0 8%',
-        width: '100vw',
+        width: '100dvw',
       }}>
-        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}>
-          <StyledButton onClick={() => handleScrollToSection('about')}>
+        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
+          onClick={() => handleScrollToSection('about')}>
+          <StyledButton>
             {about}
           </StyledButton>
         </ListItem>
-        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}>
-          <StyledButton onClick={() => handleScrollToSection('services')}>
+        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
+          onClick={() => handleScrollToSection('services')}>
+          <StyledButton>
             {services}
           </StyledButton>
         </ListItem>
-        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}>
-          <StyledButton onClick={() => handleScrollToSection('news')}>
+        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
+          onClick={() => handleScrollToSection('news')}>
+          <StyledButton>
             {news}
           </StyledButton>
         </ListItem>
-        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}>
-          <StyledButton onClick={() => handleScrollToSection('calendar')}>
+        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
+          onClick={() => handleScrollToSection('calendar')}>
+          <StyledButton >
             {calendar}
           </StyledButton>
         </ListItem>
-        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}>
-          <StyledButton onClick={() => handleScrollToSection('contact')}>
+        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
+          onClick={() => handleScrollToSection('contact')}>
+          <StyledButton >
             {contact}
           </StyledButton>
         </ListItem>
@@ -215,44 +220,24 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
       <Divider style={{ margin: '10px auto', width: isMobile ? '80%' : '90%' }} />
       <Grid container direction="column" alignItems="center" style={{ paddingBottom: '2%' }}>
         {isMobile && <div style={{ display: 'flex', gap: 45, padding: '50px 0' }}>
-          <a style={{ color: '#AFABB8' }} href="https://www.facebook.com/C.Educatio">
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href="https://www.facebook.com/C.Educatio">
             <Facebook
               fill={'#AFABB8'}
-              style={{
-                cursor: 'pointer',
-                width: '22.7px',
-                height: '22.7px',
-              }}
             />
           </a>
-          <a style={{ color: '#AFABB8' }} href="ttps://www.instagram.com/c.educatio.lviv/">
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href="ttps://www.instagram.com/c.educatio.lviv/">
             <Instagram
               fill={'#AFABB8'}
-              style={{
-                cursor: 'pointer',
-                width: '22.7px',
-                height: '22.7px',
-              }}
             />
           </a>
-          <a style={{ color: '#AFABB8' }} href="https://www.youtube.com/@c.educatio">
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href="https://www.youtube.com/@c.educatio">
             <Youtube
               fill={'#AFABB8'}
-              style={{
-                cursor: 'pointer',
-                width: '22.7px',
-                height: '22.7px',
-              }}
             />
           </a>
-          <a style={{ color: '#AFABB8' }} href="https://tiktok.com/@c.educatio">
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href="https://tiktok.com/@c.educatio">
             <TikTok
               fill={'#AFABB8'}
-              style={{
-                cursor: 'pointer',
-                width: '22.7px',
-                height: '22.7px',
-              }}
             />
           </a>
         </div>}

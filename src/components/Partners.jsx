@@ -81,7 +81,7 @@ const PartnersCarousel = ({ isEnglish }) => {
                     indicators={false}
                     index={currentSlideIndex}
                     onChange={(index) => setCurrentSlideIndex(index)}
-                    style={{ height: '100%' }}
+                    style={{ height: '100%', minHeight: '80px' }}
                     NavButton={({ onClick, className, style, next = goToNextSlide, prev = goToPrevSlide }) => {
                         return (
 

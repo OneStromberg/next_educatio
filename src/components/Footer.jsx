@@ -14,7 +14,6 @@ import logo from '@/assets/footter_logo.svg';
 
 const StyledIcon = styled('svg')`
   cursor: pointer;
-  transform: scale(1.5);
   transition: .3s;
 `;
 
@@ -100,28 +99,32 @@ Market Sq. 1, room 110`
               <Grid container justifyContent="flex-end" alignItems="center" style={{ gap: '20px' }}>
                 <a href="https://www.facebook.com/C.Educatio"
                   onMouseEnter={() => setHovered('Facebook')}
-                  onMouseLeave={() => setHovered(null)}>
+                  onMouseLeave={() => setHovered(null)}
+                  style={{ height: 34, width: 34 }}>
                   <StyledIcon as={Facebook}
                     fill={isHovered === 'Facebook' ? '#FFC4B7' : '#fff'}
                   />
                 </a>
                 <a href="ttps://www.instagram.com/c.educatio.lviv/"
                   onMouseEnter={() => setHovered('Instagram')}
-                  onMouseLeave={() => setHovered(null)}>
+                  onMouseLeave={() => setHovered(null)}
+                  style={{ height: 34, width: 34 }}>
                   <StyledIcon as={Instagram}
                     fill={isHovered === 'Instagram' ? '#FFC4B7' : '#fff'}
                   />
                 </a>
                 <a href="https://www.youtube.com/@c.educatio"
                   onMouseEnter={() => setHovered('Youtube')}
-                  onMouseLeave={() => setHovered(null)}>
+                  onMouseLeave={() => setHovered(null)}
+                  style={{ height: 34, width: 34 }}>
                   <StyledIcon as={Youtube}
                     fill={isHovered === 'Youtube' ? '#FFC4B7' : '#fff'}
                   />
                 </a>
                 <a href="https://tiktok.com/@c.educatio"
                   onMouseEnter={() => setHovered('Tiktok')}
-                  onMouseLeave={() => setHovered(null)}>
+                  onMouseLeave={() => setHovered(null)}
+                  style={{ height: 34, width: 34 }}>
                   <StyledIcon as={TikTok}
                     fill={isHovered === 'Tiktok' ? '#FFC4B7' : '#fff'}
                   />
