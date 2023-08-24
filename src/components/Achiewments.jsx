@@ -100,7 +100,7 @@ const Achiewments = ({ isEnglish, data }) => {
                         padding={0}
                     >
                         <StyledGrid>
-                            <Typography variant="h3_light" >
+                            <Typography variant="h3_light" style={{ lineHeight: 1 }}>
                                 {item.attributes.number}
                             </Typography>
                             <Typography variant="text_light" gutterBottom>
