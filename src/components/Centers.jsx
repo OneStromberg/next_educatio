@@ -62,7 +62,7 @@ const Centers = ({ isEnglish, data }) => {
                     flexDirection: isMobile ? 'column' : 'row',
                     columnGap: 170,
                     rowGap: isMobile ? 40 : 10,
-                    padding: isMobile ? '15% 0' : '1% 8%'
+                    padding: isMobile ? '15% 0' : '1% 5%'
                 }} key={index}>
                     {chunk.map((item) => (
                         <Grid item xs={4} key={item.id} style={{
