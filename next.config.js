@@ -5,7 +5,6 @@ const nextConfig = {
   output: "standalone",
   images: {
     domains: [process.env.APP_DOMAIN],
-    optimized: true,
   },
   env: {
     API_URL: process.env.API_URL,

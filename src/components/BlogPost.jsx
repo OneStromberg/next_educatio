@@ -41,7 +41,6 @@ const BlogPost = ({ isEnglish, id }) => {
                 <Image
                     src={`${apiUrl.slice(0, apiUrl.length - 4)}${data.attributes.headingImage.data.attributes.url}`}
                     alt={data.attributes.Title}
-                    layout="responsive"
                     width={1440}
                     height={800}
                 />

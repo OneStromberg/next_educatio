@@ -115,14 +115,14 @@ const PartnersCarousel = ({ isEnglish }) => {
                                     <Image
                                         src={partner.logo}
                                         alt="Partner Logo"
-                                        layout='responsive'
-                                        objectFit='contain'
                                         width={'100%'}
                                         height={'100%'}
                                         style={{
                                             maxHeight: 85,
                                             maxWidth: 150,
-                                            margin: '0 auto'
+                                            margin: '0 auto',
+                                            height: '100%',
+                                            width: '100%',
                                         }} />
                                 </div>
                             ))}

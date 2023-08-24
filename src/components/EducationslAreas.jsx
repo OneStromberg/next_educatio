@@ -7,20 +7,17 @@ import num_bg from '../assets/num_bg.svg';
 
 
 const StyledGrid = styled(Grid)`
-  background-image: url(${educationalBg});
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat no-repeat;
   color: #fff;
-  padding: 20px;
-  gap: 20px;
 `;
 
 const StyledTextContainer = styled(Grid)`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-top: 5%;
-    padding-left: 9%;
+    padding-top: 2%;
+    padding-left: 6%;
 `;
 
 const EducationalAreas = ({ isEnglish, data }) => {
@@ -36,11 +33,11 @@ const EducationalAreas = ({ isEnglish, data }) => {
         <Box mt={0} mb={5} style={{
             background: `url(${educationalBg.src})`,
             backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat, no-repeat',
-            padding: isMobile ? '50px 50px 100px 0' : '160px 70px 120px 70px',
+            backgroundRepeat: 'no-repeat',
+            padding: isMobile ? '50px 50px 100px 0' : '60px 70px 120px 70px',
             display: 'flex',
             flexDirection: 'column',
-            gap: '130px',
+            gap: '90px',
         }}>
             <StyledTextContainer>
                 <Typography variant="h4_light" gutterBottom>
@@ -48,19 +45,18 @@ const EducationalAreas = ({ isEnglish, data }) => {
                 </Typography>
                 <Wavy fill={'#E8E7E0'} />
             </StyledTextContainer>
-            <Grid container spacing={2} direction="reverse" style={{
+            <Grid container spacing={2} style={{
                 display: isMobile ? 'flex' : 'flex',
                 flexDirection: isMobile ? 'column' : '',
-                padding: isMobile ? '2% 15% 2% 0' : '',
+                padding: isMobile ? '2% 15% 0% 2%' : '',
             }}>
                 {data.map((item, index) => (
                     <Grid
                         item xs={12} sm={6} md={4} key={item.id}
-                        style={{ marginTop: isMobile ? '0' : `${-index * 100}px` }}>
+                        style={{ marginTop: isMobile ? '0' : `${-index * 50}px`, padding: 0 }}>
                         <StyledGrid
                             container
                             alignItems={isMobile ? "center" : 'fles-start'}
-                            // flexDirection={'row'}
                             flexWrap={'nowrap'}
                             marfin={0}>
                             <Typography
@@ -73,14 +69,14 @@ const EducationalAreas = ({ isEnglish, data }) => {
                                     backgroundPosition: 'center',
                                     backgroundRepeat: 'no-repeat',
                                     backgroundSize: 'contain',
-                                    padding: '20%',
+                                    padding: '15% 0%',
                                     width: '100%',
                                     height: '100%',
                                 }}
                             >
                                 {item.id}
                             </Typography>
-                            <Box>
+                            <Box width={'100%'}>
                                 <Typography variant="member_title" paddingBottom={10}>
                                     {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
                                 </Typography>

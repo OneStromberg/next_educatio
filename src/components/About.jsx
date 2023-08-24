@@ -37,14 +37,6 @@ const About = ({ isEnglish, data }) => {
     return null;
   }
 
-  const modifiedData = isMobile ? data : [
-    data[0],
-    null,
-    ...data.slice(1, -1),
-    null,
-    data[data.length - 1],
-  ];
-
   return (
     <StyledContainer>
       <StyledHeaderContainer>
@@ -60,27 +52,17 @@ const About = ({ isEnglish, data }) => {
         display: isMobile ? 'flex' : 'grid',
         flexDirection: isMobile ? 'column' : '',
         gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-        gridTemplateRows: isMobile ? 'auto' : `repeat(${Math.ceil(modifiedData.length / 2)}, 1fr)`,
-        gap: isMobile ? '15px' : '15px 50px',
+        gap: isMobile ? '50px' : '10% 5%',
+        marginTop: '10%',
       }}>
-        {modifiedData.map((item, index) => {
-          if (item === null) {
-            return <div key={`invisible-${index}`} style={{ visibility: 'hidden' }} />;
-          }
-
-          const rowStart = Math.floor(index / 2) + 1;
-          const rowEnd = rowStart + 1;
-          const colStart = index % 2 + 1;
-          const colEnd = colStart + 1;
-          const gridArea = `${rowStart} / ${colStart} / ${rowEnd} / ${colEnd}`;
-
+        {data.map((item, index) => {
           return (
             <div
               key={index}
               style={{
                 display: 'flex',
-                gridArea: isMobile ? '' : gridArea,
-                justifyContent: isMobile ? 'center' : 'start'
+                justifyContent: isMobile ? 'center' : 'start',
+                marginTop: isMobile ? 0 : index % 2 === 0 ? '-15%' : '0',
               }}
             >
               <Grid item xs={12} sm={6} style={{
@@ -94,7 +76,7 @@ const About = ({ isEnglish, data }) => {
                   alt="About Us"
                   width={180}
                   height={194} />
-                <Grid item xs={12} sm={6} margin={'0 20px'}>
+                <Grid item xs={12} sm={6} margin={isMobile ? '15px 0 0 0' : '0 0 0 50px'} maxWidth={330}>
                   <Typography variant="about_heading" gutterBottom>
                     {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
                   </Typography>
@@ -104,7 +86,6 @@ const About = ({ isEnglish, data }) => {
                   </Typography>
                 </Grid>
               </Grid>
-
             </div>
           )
         })

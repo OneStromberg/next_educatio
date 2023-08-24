@@ -49,10 +49,10 @@ const HeadingPage = ({ isEnglish, data }) => {
       {isMobile && <Image src={bgURL} alt='image' width={240} height={240} style={{ margin: '5% 0' }} />}
       <div style={{ width: isMobile ? '100%' : '40%' }}>
         <Typography variant="h1" component="h1" gutterBottom>
-          <ReactMarkdown>{text}</ReactMarkdown>
+          <ReactMarkdown component='h1'>{text}</ReactMarkdown>
         </Typography>
         <Typography variant="h2" gutterBottom>
-          <ReactMarkdown>{subtext}</ReactMarkdown>
+          <ReactMarkdown component='h2'>{subtext}</ReactMarkdown>
         </Typography>
       </div>
       {!isMobile && <Image src={bgURL} alt='image' width={300} height={300} />}
