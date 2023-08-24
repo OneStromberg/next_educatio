@@ -19,7 +19,8 @@ const StyledTextContainer = styled(Grid)`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    padding-top: 5%;
+    padding-left: 9%;
 `;
 
 const EducationalAreas = ({ isEnglish, data }) => {
@@ -36,7 +37,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
             background: `url(${educationalBg.src})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat, no-repeat',
-            padding: isMobile ? '50px 50px 50px 0' : '160px 160px 120px 160px',
+            padding: isMobile ? '50px 50px 100px 0' : '160px 70px 120px 70px',
             display: 'flex',
             flexDirection: 'column',
             gap: '130px',
@@ -50,12 +51,12 @@ const EducationalAreas = ({ isEnglish, data }) => {
             <Grid container spacing={2} direction="reverse" style={{
                 display: isMobile ? 'flex' : 'flex',
                 flexDirection: isMobile ? 'column' : '',
-                padding: isMobile ? '5% 15% 5% 0' : '',
+                padding: isMobile ? '2% 15% 2% 0' : '',
             }}>
                 {data.map((item, index) => (
                     <Grid
                         item xs={12} sm={6} md={4} key={item.id}
-                        style={{ marginTop: isMobile ? '0' : `${-index * 50}px` }}>
+                        style={{ marginTop: isMobile ? '0' : `${-index * 100}px` }}>
                         <StyledGrid
                             container
                             alignItems={isMobile ? "center" : 'fles-start'}

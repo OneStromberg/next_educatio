@@ -37,14 +37,17 @@ const HeadingPage = ({ isEnglish, data }) => {
     <StyledContainer style={{
       background: `url(${background.src})`,
       maxWidth: 'none',
+      maxHeight: isMobile ? '850px' : 'none',
+      height: isMobile ? '100%' : '100dvh',
       justifyContent: 'center',
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat no-repeat',
-      paddingTop: isMobile ? 70 : ''
+      paddingTop: isMobile ? 70 : '',
+      rowGap: isMobile ? '50px' : '',
     }}>
-      {isMobile && <Image src={bgURL} alt='image' width={240} height={240} style={{ marginBottom: '20%' }} />}
-      <div style={{ width: isMobile ? '100%' : '50%' }}>
+      {isMobile && <Image src={bgURL} alt='image' width={240} height={240} style={{ margin: '5% 0' }} />}
+      <div style={{ width: isMobile ? '100%' : '40%' }}>
         <Typography variant="h1" component="h1" gutterBottom>
           <ReactMarkdown>{text}</ReactMarkdown>
         </Typography>

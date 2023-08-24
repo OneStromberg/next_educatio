@@ -34,7 +34,7 @@ Market Sq. 1, room 110`
   const [isHovered, setHovered] = useState(null)
 
   return (
-    <footer style={{ background: `url(${background.src})`, height: '100%', padding: '3% 8%' }}>
+    <footer style={{ background: `url(${background.src})`, height: '100%', padding: '3% 8% 0 8%' }}>
       <Grid container alignItems="center" padding={'60px 0px'} gap={15}>
         {isMobile ? (
           <Grid container direction="column" alignItems="center" gap={3}>
@@ -43,22 +43,26 @@ Market Sq. 1, room 110`
               <ReactMarkdown >{adress}</ReactMarkdown>
             </Typography>
             <Grid container justifyContent="center" alignItems="center" style={{ gap: '20px' }}>
-              <a href="https://www.facebook.com">
+              <a href="https://www.facebook.com"
+                style={{ height: 34, width: 34 }}>
                 <StyledIcon as={Facebook}
                   fill={'#fff'}
                 />
               </a>
-              <a href="https://www.instagram.com">
+              <a href="https://www.instagram.com"
+                style={{ height: 34, width: 34 }}>
                 <StyledIcon as={Instagram}
                   fill={'#fff'}
                 />
               </a>
-              <a href="https://www.youtube.com">
+              <a href="https://www.youtube.com"
+                style={{ height: 34, width: 34 }}>
                 <StyledIcon as={Youtube}
                   fill={'#fff'}
                 />
               </a>
-              <a href="https://www.tiktok.com">
+              <a href="https://www.tiktok.com"
+                style={{ height: 34, width: 34 }}>
                 <StyledIcon as={TikTok}
                   fill={'#fff'}
                 />
@@ -76,7 +80,7 @@ Market Sq. 1, room 110`
             </Typography>
           </Grid>
         ) : (
-          <Grid container justifyContent="space-between">
+          <Grid container justifyContent="space-between" alignItems={'center'}>
             <Grid item style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
               <Image src={logo.src} alt='logo' width={80} height={35} />
               <Typography variant="footer_text" align="left" marginBottom={2}>

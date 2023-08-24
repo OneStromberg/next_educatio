@@ -16,7 +16,6 @@ const CenterItem = styled(Box)`
     align-items: flex-start;
     justify-content: center;
     text-align: start;
-    margin: 20px;
     max-width: 250px;
     gap: 10px;
 `;
@@ -62,7 +61,7 @@ const Centers = ({ isEnglish, data }) => {
                     alignItems: 'center',
                     flexDirection: isMobile ? 'column' : 'row',
                     columnGap: 170,
-                    rowGap: 40,
+                    rowGap: isMobile ? 40 : 10,
                     padding: isMobile ? '15% 0' : '1% 8%'
                 }} key={index}>
                     {chunk.map((item) => (
@@ -71,6 +70,7 @@ const Centers = ({ isEnglish, data }) => {
                             justifyContent: 'center',
                             alignItems: 'center',
                             maxWidth: 250,
+                            margin: 0,
                         }}>
                             <CenterItem>
                                 <Typography variant='card_header'>

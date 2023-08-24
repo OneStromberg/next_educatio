@@ -15,7 +15,9 @@ const StyledTextContainer = styled(Grid)`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 89%;
     padding: 20px;
+    margin: 0 auto;
 `;
 
 const StyledGrid = styled(Grid)`
@@ -48,7 +50,7 @@ const Achiewments = ({ isEnglish, data }) => {
         return null;
     }
 
-    const pageTitle = isEnglish ? 'Our achiewments' : 'Наші досягнення';
+    const pageTitle = isEnglish ? 'Achiewments' : 'Досягнення';
 
     return (
         <Box style={{
