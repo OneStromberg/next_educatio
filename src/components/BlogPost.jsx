@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Grid, Typography, Button, Box, useMediaQuery } from '@mui/material';
-import Image from 'next/image';
+import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
+import logo from '../assets/footter_logo.svg';
 
 const BlogPost = ({ isEnglish, id }) => {
 
@@ -34,18 +35,27 @@ const BlogPost = ({ isEnglish, id }) => {
         return null;
     }
 
+    <Head>
+        <title>Educatio | News</title>
+        <meta name="description" content="Educatio is the leading center of education in Lviv. We offer a wide range of educational services. Join us to redefine your future." />
+        <meta name="keywords" content="Education, Educatio, Lviv, Center of education, CE, Освіта, Educatio, Львів, Центр освіти, ЦЕ, мережа ЦЕ — центрів едукації, центр едукації" />
+        <meta name="author" content="Центр едукації" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={`http://ceducatio.com/blog/${id}`} />
+        <link rel="icon" href={logo.src} type="image/x-icon" />
+    </Head>
+
 
     return (
         <Grid item xs={12} sm={10} paddingBottom={5} marginTop={isMobile ? '70px' : ''}>
-            <div style={{ position: 'relative' }}>
-                <Image
-                    src={`${apiUrl.slice(0, apiUrl.length - 4)}${data.attributes.headingImage.data.attributes.url}`}
-                    alt={data.attributes.Title}
-                    width={1440}
-                    height={800}
-                />
+            <div style={{
+                position: 'relative',
+                height: isMobile ? '260px' : '100dvh',
+                width: '100%',
+                margin: 0,
+                background: `url(${apiUrl.slice(0, apiUrl.length - 4)}${data.attributes.headingImage.data.attributes.url}) center center / cover no-repeat`
+            }}>
 
-                {/* Overlay */}
                 <Box
                     style={{
                         position: 'absolute',
@@ -60,19 +70,18 @@ const BlogPost = ({ isEnglish, id }) => {
                         alignItems: 'center'
                     }}
                 >
-                    <Typography variant="news_title" style={{ zIndex: 1, color: '#fff', fontSize: isMobile ? '30px' : '' }}>
+                    <Typography variant="news_title" style={{ zIndex: 1, color: '#fff', fontSize: isMobile ? '30px' : '', margin: isMobile ? '50px 15px 0px 15px' : '' }}>
                         {isEnglish ? data.attributes.EnglishTitle : data.attributes.Title}
                     </Typography>
 
-                    {/* Gradient line */}
                     <div style={{
-                        height: '1px',
+                        minHeight: '1px',
+                        maxHeight: '2px',
                         width: '70%',
                         marginTop: '20px',
                         backgroundImage: 'linear-gradient(to right, transparent, #fff, transparent)'
                     }}></div>
 
-                    {/* Back to home button */}
                     <Button
                         startIcon='←'
                         href='/'
@@ -89,11 +98,10 @@ const BlogPost = ({ isEnglish, id }) => {
                 </Box>
             </div>
 
-            {/* News post text */}
             <Box p={{ xs: 2, md: 10 }} py={5}>
-                <ReactMarkdown><Typography variant="news_text">
-                    {isEnglish ? data.attributes.EnglishText : data.attributes.text}
-                </Typography></ReactMarkdown>
+                <Typography variant="news_text">
+                    <ReactMarkdown>{isEnglish ? data.attributes.EnglishText : data.attributes.text}</ReactMarkdown>
+                </Typography>
             </Box>
 
             <Button

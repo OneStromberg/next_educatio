@@ -120,6 +120,7 @@ const PartnersCarousel = ({ isEnglish }) => {
                                         style={{
                                             maxHeight: 85,
                                             maxWidth: 150,
+                                            minHeight: 45,
                                             margin: '0 auto',
                                             height: '100%',
                                             width: '100%',
