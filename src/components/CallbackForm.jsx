@@ -160,7 +160,7 @@ const CallbackForm = ({ isEnglish }) => {
                     alignItems: 'center',
                     width: '100%',
                 }}>
-                    <Typography id='contact' variant="h4_light" gutterBottom style={{
+                    <Typography variant="h4_light" gutterBottom style={{
                         textAlign: 'center',
                     }}>
                         {pageTitle}

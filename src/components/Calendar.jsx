@@ -37,6 +37,7 @@ const CalendarContainer = ({ isEnglish }) => {
     return (
         <Grid
             container
+            id='calendar'
             direction="column"
             justifyContent="flex-start"
             alignItems="center"
@@ -49,7 +50,7 @@ const CalendarContainer = ({ isEnglish }) => {
                 flexDirection: 'column',
                 alignItems: 'center'
             }}>
-                <Typography id='calendar' variant='h4_pink'>{pageTitle}</Typography>
+                <Typography variant='h4_pink'>{pageTitle}</Typography>
                 <Wavy fill={'#FF9888'} />
             </div>            <Grid container spacing={2}
                 alignItems="center"

@@ -78,6 +78,7 @@ const Blog = ({ isEnglish, data }) => {
 
     return (
         <Grid container spacing={3}
+            id='news'
             alignItems="center"
             justifyContent="center"
             style={{
@@ -92,7 +93,7 @@ const Blog = ({ isEnglish, data }) => {
                 padding: 0,
                 marginBottom: 50,
             }}>
-                <Typography id='news' variant="news_page_title" gutterBottom>
+                <Typography variant="news_page_title" gutterBottom>
                     {pageTitle}
                 </Typography>
                 <Wavy fill='#7D7987' />

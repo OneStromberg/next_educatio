@@ -38,7 +38,7 @@ const About = ({ isEnglish, data }) => {
   }
 
   return (
-    <StyledContainer>
+    <StyledContainer id='about'>
       <StyledHeaderContainer>
         <Typography variant="h4" gutterBottom color={'#F7BA21'}>
           {isEnglish ? 'What we are doing' : 'Що ми робимо'}
@@ -71,7 +71,6 @@ const About = ({ isEnglish, data }) => {
                 flexDirection: isMobile ? 'column' : 'row',
               }}>
                 <Image
-                  id='about'
                   src={`${apiUrl.slice(0, apiUrl.length - 4)}${item.attributes.image.data.attributes.url}`}
                   alt="About Us"
                   width={180}
