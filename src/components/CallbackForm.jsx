@@ -142,7 +142,7 @@ const CallbackForm = ({ isEnglish }) => {
                 justifyContent="center"
                 alignItems="center"
                 style={{
-                    background: `url(${background.src}) no-repeat 0% 0% / cover`,
+                    background: `url(${background.src}) no-repeat center / cover`,
                     backgroundSize: isMobile ? 'cover' : '100%',  // was 'contain'
                     width: isMobile ? '100%' : '75%',
                     display: 'flex',
