@@ -48,7 +48,8 @@ const EducationalAreas = ({ isEnglish, data }) => {
             <Grid container spacing={2} style={{
                 display: isMobile ? 'flex' : 'flex',
                 flexDirection: isMobile ? 'column' : '',
-                padding: isMobile ? '2% 15% 0% 2%' : '',
+                padding: isMobile ? '' : '',
+                gap: isMobile ? 45 : '',
             }}>
                 {data.map((item, index) => (
                     <Grid

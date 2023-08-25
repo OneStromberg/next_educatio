@@ -41,17 +41,18 @@ const Centers = ({ isEnglish, data }) => {
             display: 'flex',
             margin: '0 auto',
             flexDirection: 'column',
-            padding: isMobile ? '' : '4.5% 7%',
+            padding: isMobile ? '' : '4.5% 9%',
             background: '#FBFBFB',
             paddingTop: '70px',
         }}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', padding: isMobile ? 15 : '' }}>
                 <Typography variant="h4_blue" gutterBottom >
                     {pageTitle}
                 </Typography>
                 <Typography variant="h5_blue" style={{
                     display: 'flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    gap: 30,
                 }}>
                     <Wavy fill='#1F1F71' /> {pageSubtitle}
                 </Typography>
@@ -60,9 +61,9 @@ const Centers = ({ isEnglish, data }) => {
                 <Grid container spacing={2} style={{
                     alignItems: 'center',
                     flexDirection: isMobile ? 'column' : 'row',
-                    columnGap: 170,
+                    columnGap: 160,
                     rowGap: isMobile ? 40 : 10,
-                    padding: isMobile ? '15% 0' : '1% 5%'
+                    padding: isMobile ? '15% 0' : '1% 7.5%'
                 }} key={index}>
                     {chunk.map((item) => (
                         <Grid item xs={4} key={item.id} style={{

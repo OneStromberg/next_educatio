@@ -51,7 +51,7 @@ const HeadingPage = ({ isEnglish, data }) => {
         <Typography variant="h1" component="h1" gutterBottom>
           <ReactMarkdown component='h1'>{text}</ReactMarkdown>
         </Typography>
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h2" gutterBottom style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '75%' }}>
           <ReactMarkdown component='h2'>{subtext}</ReactMarkdown>
         </Typography>
       </div>

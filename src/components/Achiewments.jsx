@@ -64,7 +64,7 @@ const Achiewments = ({ isEnglish, data }) => {
             backgroundImage: `url(${background.src})`,
             backgroundRepeat: 'no-repeat no-repeat',
             backgroundPosition: 'center center',
-            backgroundSize: 'cover'
+            backgroundSize: isMobile ? 'cover' : '100%',
         }}>
             <div style={{
                 background: `url(${arrows.src})`,

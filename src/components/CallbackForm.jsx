@@ -142,15 +142,19 @@ const CallbackForm = ({ isEnglish }) => {
                 justifyContent="center"
                 alignItems="center"
                 style={{
-                    background: `url(${background.src}) no-repeat center`,
-                    backgroundSize: isTablet ? 'cover' : 'contain',  // was 'contain'
-                    width: isMobile ? '100%' : '80%',
-                    height: 'auto',
+                    background: `url(${background.src}) no-repeat 0% 0% / cover`,
+                    backgroundSize: isMobile ? 'cover' : '100%',  // was 'contain'
+                    width: isMobile ? '100%' : '75%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
+                    minHeight: 500,
+                    // maxHeight: 700,
                     margin: isMobile ? '10% 0' : '10% auto',
                     paddingBottom: 50,
                 }}>
                 <div style={{
-                    paddingTop: '7%',
+                    padding: '50px 0 0 0',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -168,7 +172,7 @@ const CallbackForm = ({ isEnglish }) => {
                     style={{
                         display: 'flex',
                         width: '80%',
-                        height: '100%',
+                        // height: '100%',
                         flexDirection: 'column',
                         alignItems: 'flex-end',
                         color: '#FFFFFFB2',
@@ -227,7 +231,7 @@ const CallbackForm = ({ isEnglish }) => {
                         variant="standard"
                         color='secondary'
                         multiline
-                        rows={4}
+                        rows={1}
                         required
                         error={!!formErrors.message}
                         helperText={<Typography variant='error_message'>{formErrors.message}</Typography>}
@@ -241,7 +245,8 @@ const CallbackForm = ({ isEnglish }) => {
                             width: '30%',
                             minWidth: 150,
                             alignSelf: 'flex-end',
-                            padding: '4% 0',
+                            padding: '0 0 4% 0',
+                            margin: '2% 0',
                             transition: '.3s',
                         }}
                     >
@@ -249,7 +254,7 @@ const CallbackForm = ({ isEnglish }) => {
                     </Button>
                 </form>
             </Grid>
-        </Grid>
+        </Grid >
     );
 };
 
