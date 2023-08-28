@@ -142,16 +142,17 @@ const CallbackForm = ({ isEnglish }) => {
                 justifyContent="center"
                 alignItems="center"
                 style={{
-                    background: `url(${background.src}) no-repeat center / cover`,
-                    backgroundSize: isMobile ? 'cover' : '100%',  // was 'contain'
-                    width: isMobile ? '100%' : '75%',
+                    background: `url(${background.src}) no-repeat center`,
+                    backgroundSize: isTablet ? 'cover' : '100%',  // was 'contain'
+                    width: isTablet ? '100%' : '75%',
                     display: 'flex',
                     flexDirection: 'column',
                     height: '100%',
                     minHeight: 500,
+                    aspectRatio: isTablet ? 'auto' : '9.5/4.9',
                     // maxHeight: 700,
                     margin: isMobile ? '10% 0' : '10% auto',
-                    paddingBottom: 50,
+                    // paddingBottom: 50,
                 }}>
                 <div style={{
                     padding: '50px 0 0 0',

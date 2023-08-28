@@ -10,10 +10,10 @@ const StyledContainer = styled(Container)`
   align-items: center;
   color: #fff;
   max-width: 100dvw;
-  padding: 10% 20%;
+  padding: 25% 20%;
   column-gap: 10%;
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  @media (max-width: 600px) {
     flex-direction: column;
     padding: 10% 4%;  // Уменьшаем паддинги для мобильных устройств
   }
@@ -43,15 +43,23 @@ const HeadingPage = ({ isEnglish, data }) => {
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat no-repeat',
-      paddingTop: isMobile ? 70 : '',
+      paddingTop: isMobile ? 120 : '',
       rowGap: isMobile ? '50px' : '',
     }}>
       {isMobile && <Image src={bgURL} alt='image' width={240} height={240} style={{ margin: '5% 0' }} />}
       <div style={{ width: isMobile ? '100%' : '40%' }}>
-        <Typography variant="h1" component="h1" gutterBottom>
+        <Typography variant="h1" component="h1" gutterBottom style={{
+          fontSize: isMobile ? 30 : 50
+        }}>
           <ReactMarkdown component='h1'>{text}</ReactMarkdown>
         </Typography>
-        <Typography variant="h2" gutterBottom style={{ display: 'flex', flexDirection: 'column', gap: 20, width: '75%' }}>
+        <Typography variant="h2" gutterBottom style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 20,
+          width: '75%',
+          fontSize: isMobile ? 14 : 17
+        }}>
           <ReactMarkdown component='h2'>{subtext}</ReactMarkdown>
         </Typography>
       </div>

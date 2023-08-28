@@ -59,7 +59,7 @@ const Achiewments = ({ isEnglish, data }) => {
     return (
         <Box style={{
             position: 'relative',
-            padding: isMobile ? '30px 5%' : '90px 8% 130px 8%',
+            padding: isMobile ? '30px 5%' : '10% 8% 11% 8%',
             margin: 0,
             backgroundImage: `url(${background.src})`,
             backgroundRepeat: 'no-repeat no-repeat',
