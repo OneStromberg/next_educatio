@@ -26,6 +26,11 @@ const StyledGrid = styled(Grid)`
     align-items: center;
     padding: 0;
     width: 100%;
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 `;
 
 const GridContainer = styled('div')`

@@ -5,6 +5,7 @@ import { useRouter } from "next/router"
 import { ThemeProvider } from "@mui/material/styles"
 import BlogPost from '@/components/BlogPost'
 import theme from "@/Theme"
+import Footer from "@/components/Footer"
 
 export default function BlogPostPage() {
     const [isEnglish, setIsEnglish] = useState(false);
@@ -20,6 +21,7 @@ export default function BlogPostPage() {
             <ThemeProvider theme={theme}>
                 <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} />
                 <BlogPost isEnglish={isEnglish} id={id} />
+                <Footer isEnglish={isEnglish} />
             </ThemeProvider>
 
         </>

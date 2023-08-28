@@ -64,6 +64,7 @@ const truncateText = (text, maxLength) => {
 const Blog = ({ isEnglish, data }) => {
     const [showAll, setShowAll] = useState(false);
     const isMobile = useMediaQuery('(max-width:600px)');
+    const isSmallMobile = useMediaQuery('(max-width:370px)');
     const displayedPosts = isMobile ? showAll ? data : data.slice(0, 1) : data;
 
 
@@ -82,7 +83,7 @@ const Blog = ({ isEnglish, data }) => {
             alignItems="center"
             justifyContent="center"
             style={{
-                background: `url(${snake.src}) center center no-repeat`,
+                background: `url(${snake.src}) center center no-repeat / 100%`,
                 flexDirection: 'column',
             }}>
 
@@ -105,10 +106,11 @@ const Blog = ({ isEnglish, data }) => {
                     display: 'flex',
                     flexWrap: 'wrap',
                     // padding: isMobile ? 0 : '80px 0',
-                    width: isMobile ? '100%' : '90%',
+                    width: '100%',
                     height: '100%',
                     flexDirection: isMobile ? 'column' : 'row',
                     gap: 20,
+                    margin: isMobile ? '0 auto' : ''
                 }}>
                 {displayedPosts.map((post) => (
                     <Grid item xs={12} sm={6} key={post.id} style={{ maxHeight: 512, maxWidth: 360 }}>

@@ -54,7 +54,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
                 {data.map((item, index) => (
                     <Grid
                         item xs={12} sm={6} md={4} key={item.id}
-                        style={{ marginTop: isMobile ? '0' : `${-index * 50}px`, padding: 0 }}>
+                        style={{ marginTop: isMobile ? '0' : `${-index * 25}px`, padding: 0 }}>
                         <StyledGrid
                             container
                             alignItems={isMobile ? "center" : 'fles-start'}
