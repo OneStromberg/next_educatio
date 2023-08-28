@@ -45,25 +45,25 @@ const Centers = ({ isEnglish, data }) => {
             background: '#FBFBFB',
             paddingTop: '70px',
         }}>
-            <div style={{ display: 'flex', flexDirection: 'column', padding: isMobile ? 15 : '' }}>
+            <Box style={{ display: 'flex', flexDirection: 'column', padding: isMobile ? 15 : 0 }}>
                 <Typography variant="h4_blue" gutterBottom >
                     {pageTitle}
                 </Typography>
                 <Typography variant="h5_blue" style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 30,
+                    gap: '30px',
                 }}>
                     <Wavy fill='#1F1F71' /> {pageSubtitle}
                 </Typography>
-            </div>
+            </Box>
             {chunks.map((chunk, index) => (
                 <Grid container spacing={2} style={{
                     alignItems: 'center',
                     flexDirection: isMobile ? 'column' : 'row',
                     columnGap: 160,
                     rowGap: isMobile ? 40 : 10,
-                    padding: isMobile ? '15% 0' : '1% 7.5%'
+                    padding: isMobile ? '15% 0' : '1% 0 1% 92px',
                 }} key={index}>
                     {chunk.map((item) => (
                         <Grid item xs={4} key={item.id} style={{
