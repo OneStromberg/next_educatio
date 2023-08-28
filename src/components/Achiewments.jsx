@@ -49,6 +49,7 @@ const GridItem = styled(Grid)`
 const Achiewments = ({ isEnglish, data }) => {
     const apiUrl = process.env.API_URL;
     const isMobile = useMediaQuery('(max-width:600px)');
+    const isWide = useMediaQuery('(min-width:1450px)');
 
     if (!data) {
         return null;
@@ -59,7 +60,7 @@ const Achiewments = ({ isEnglish, data }) => {
     return (
         <Box style={{
             position: 'relative',
-            padding: isMobile ? '30px 5%' : '10% 8% 11% 8%',
+            padding: isMobile ? '30px 5%' : isWide ? '10% 8% 13% 8%' : '10% 8% 11% 8%',
             margin: 0,
             backgroundImage: `url(${background.src})`,
             backgroundRepeat: 'no-repeat no-repeat',
