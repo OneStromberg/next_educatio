@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HeadingPage from '@/components/HeadingPage';
 import About from '@/components/About';
-import EducationslAreas from '@/components/EducationslAreas';
+import EducationslAreas from '@/components/EducationalAreas';
 import Members from '@/components/Members';
 import CallbackForm from '@/components/CallbackForm';
 import CalendarContainer from '@/components/Calendar';
