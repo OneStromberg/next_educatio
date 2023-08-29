@@ -34,7 +34,7 @@ Market Sq. 1, room 110`
   const [isHovered, setHovered] = useState(null)
 
   return (
-    <footer id='contact' style={{ background: `url(${background.src})`, height: '100%', padding: '3% 8% 0 8%', zIndex: 2 }}>
+    <footer style={{ background: `url(${background.src})`, height: '100%', padding: '3% 8% 0 8%', zIndex: 2 }}>
       <Grid container alignItems="center" padding={'60px 0px'} gap={15}>
         {isMobile ? (
           <Grid container direction="column" alignItems="center" gap={3}>
@@ -71,7 +71,7 @@ Market Sq. 1, room 110`
             <Typography variant="footer_text" align="center" marginBottom={2} marginTop={3}>
               c.educatio.net@gmail.com
             </Typography>
-            <Typography variant="footer_subtext" align="center" style={{
+            <Typography variant="footer_subtext" align="end" style={{
               display: 'flex',
               flexDirection: 'column',
             }}>
