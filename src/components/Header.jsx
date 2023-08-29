@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import {
   AppBar,
   Toolbar,
@@ -270,6 +271,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
 const Header = ({ onLanguageToggle, isEnglish }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isHovered, setHovered] = useState(null)
+  const router = useRouter();
 
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
@@ -279,6 +281,8 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      router.push(`/`);
     }
   };
 
@@ -299,6 +303,16 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
     }
     return null;
   };
+
+  useEffect(() => {
+    const { hash } = window.location;
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 0);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const languageFromCookie = getLanguageFromCookie();
