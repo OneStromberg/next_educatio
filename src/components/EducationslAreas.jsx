@@ -50,6 +50,8 @@ const EducationalAreas = ({ isEnglish, data }) => {
                 flexDirection: isMobile ? 'column' : '',
                 padding: isMobile ? '' : '',
                 gap: isMobile ? 45 : '',
+                width: '90%',
+                margin: '0 auto'
             }}>
                 {data.map((item, index) => (
                     <Grid
