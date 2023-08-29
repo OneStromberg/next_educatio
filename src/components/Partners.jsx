@@ -61,7 +61,7 @@ const PartnersCarousel = ({ isEnglish }) => {
             paddingBottom: '4%',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '90%',
+            width: '80%',
             margin: '0 auto',
         }}>
             <div style={{
@@ -74,16 +74,16 @@ const PartnersCarousel = ({ isEnglish }) => {
                 <Typography variant='h4'>{pageTitle}</Typography>
                 <Wavy fill={'#262626'} />
             </div>
-            <Box height={150}>
+            <Box>
                 <Carousel
                     key={itemsPerSlide}
                     navButtonsAlwaysVisible
                     indicators={false}
                     index={currentSlideIndex}
                     onChange={(index) => setCurrentSlideIndex(index)}
-                    style={{ height: '100%', minHeight: '80px' }}
+                    style={{ height: '100%', minHeight: '100px', width: '90%' }}
                     NavButton={({ onClick, className, style, next = goToNextSlide, prev = goToPrevSlide }) => {
-                        return (
+                        return partnerData.length !== slides.length ? (
 
                             <IconButton onClick={onClick} style={{
                                 ...style,
@@ -100,7 +100,7 @@ const PartnersCarousel = ({ isEnglish }) => {
                                 {next && '→'}
                                 {prev && '←'}
                             </IconButton>
-                        )
+                        ) : null
                     }}
                 >
                     {slides.map((slide, index) => (
@@ -109,21 +109,23 @@ const PartnersCarousel = ({ isEnglish }) => {
                             justifyContent: 'center',
                             alignItems: 'center',
                             paddingBottom: 10,
+                            width: '90%',
+                            margin: '0 auto',
                         }}>
                             {slide.map((partner) => (
                                 <div key={partner.id} style={{ textAlign: 'center', margin: '0 20px' }}>
                                     <Image
                                         src={partner.logo}
                                         alt="Partner Logo"
-                                        width={'100%'}
-                                        height={'100%'}
+                                        width={150}
+                                        height={85}
                                         style={{
-                                            maxHeight: 85,
-                                            maxWidth: 150,
-                                            minHeight: 45,
+                                            maxHeight: '90px',
+                                            width: 'auto',
+                                            minHeight: '85px',
+                                            objectFit: 'contain',
+                                            objectPosition: 'center',
                                             margin: '0 auto',
-                                            height: '100%',
-                                            width: '100%',
                                         }} />
                                 </div>
                             ))}
@@ -131,7 +133,7 @@ const PartnersCarousel = ({ isEnglish }) => {
                     ))}
                 </Carousel>
             </Box>
-        </Box>
+        </Box >
     );
 };
 

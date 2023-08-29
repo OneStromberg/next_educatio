@@ -75,7 +75,7 @@ const About = ({ isEnglish, data }) => {
                   alt="About Us"
                   width={180}
                   height={194} />
-                <Grid item xs={12} sm={6} margin={isMobile ? '15px 0 0 0' : '0 0 0 50px'} maxWidth={330}>
+                <Grid item xs={12} sm={6} margin={isMobile ? '15px 0 0 0' : '0 0 0 50px'} maxWidth={290}>
                   <Typography variant="about_heading" gutterBottom>
                     {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
                   </Typography>

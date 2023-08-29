@@ -37,12 +37,12 @@ Market Sq. 1, room 110`
     <footer style={{ background: `url(${background.src})`, height: '100%', padding: '3% 8% 0 8%', zIndex: 2 }}>
       <Grid container alignItems="center" padding={'60px 0px'} gap={15}>
         {isMobile ? (
-          <Grid container direction="column" alignItems="center" gap={3}>
+          <Grid container direction="column" alignItems="start" gap={3}>
             <Image src={logo.src} alt='logo' width={80} height={35} />
-            <Typography variant="footer_text" align="center" marginBottom={2}>
+            <Typography variant="footer_text" align="start" marginBottom={2}>
               <ReactMarkdown >{adress}</ReactMarkdown>
             </Typography>
-            <Grid container justifyContent="center" alignItems="center" style={{ gap: '20px' }}>
+            <Grid container justifyContent="start" alignItems="center" style={{ gap: 45 }}>
               <a href="https://www.facebook.com"
                 style={{ height: 34, width: 34 }}>
                 <StyledIcon as={Facebook}
@@ -68,10 +68,10 @@ Market Sq. 1, room 110`
                 />
               </a>
             </Grid>
-            <Typography variant="footer_text" align="center" marginBottom={2} marginTop={3}>
+            <Typography variant="footer_text" align="start" marginBottom={2} marginTop={3} style={{ textDecoration: 'underline' }}>
               c.educatio.net@gmail.com
             </Typography>
-            <Typography variant="footer_subtext" align="end" style={{
+            <Typography variant="footer_subtext" align="start" style={{
               display: 'flex',
               flexDirection: 'column',
             }}>
@@ -81,26 +81,26 @@ Market Sq. 1, room 110`
           </Grid>
         ) : (
           <Grid container justifyContent="space-between" alignItems={'center'}>
-            <Grid item style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
+            <Grid item style={{ display: 'flex', flexDirection: 'column', gap: 45 }}>
               <Image src={logo.src} alt='logo' width={80} height={35} />
               <Typography variant="footer_text" align="left" marginBottom={2}>
                 <ReactMarkdown>{adress}</ReactMarkdown>
               </Typography>
             </Grid>
-            <Grid item alignSelf={'center'} justifySelf={'center'}>
-              <Typography variant="footer_text" align="center" marginBottom={2} marginTop={3}>
+            <Grid item height={'100%'} alignSelf={'flex-end'} justifySelf={'center'} paddingBottom={2}>
+              <Typography variant="footer_text" align="center" marginBottom={2} marginTop={3} style={{ textDecoration: 'underline' }}>
                 c.educatio.net@gmail.com
               </Typography>
             </Grid>
             <Grid item style={{ display: 'flex', flexDirection: 'column', gap: 45, alignItems: 'flex-end' }}>
-              <Typography variant="footer_subtext" align="center" style={{
+              <Typography variant="footer_subtext" align="end" style={{
                 display: 'flex',
                 flexDirection: 'column',
               }}>
                 {isEnglish ? 'All rights reserved' : 'Всі права захищено 2023 ©'}
                 <Link href="https://laba.ua/offerta" style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
               </Typography>
-              <Grid container justifyContent="flex-end" alignItems="center" style={{ gap: '20px' }}>
+              <Grid container justifyContent="flex-end" alignItems="center" style={{ gap: 30 }}>
                 <a href="https://www.facebook.com/C.Educatio"
                   onMouseEnter={() => setHovered('Facebook')}
                   onMouseLeave={() => setHovered(null)}
