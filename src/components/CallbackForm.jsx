@@ -244,7 +244,7 @@ const CallbackForm = ({ isEnglish }) => {
                         style={{
                             cursor: 'pointer',
                             color: '#FFC804',
-                            width: '30%',
+                            width: '10%',
                             minWidth: 150,
                             alignSelf: 'flex-end',
                             padding: '0 0 4% 0',

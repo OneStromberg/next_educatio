@@ -118,7 +118,7 @@ const Achiewments = ({ isEnglish, data }) => {
             </Box> :
                 <GridContainer dataLength={data.length} style={{ position: 'relative' }}>
                     <div style={{ background: `url(${lb_corner.src}) center center no-repeat`, position: 'absolute', left: '-5%', bottom: '-15%', width: 57, height: 67 }} />
-                    <div style={{ background: `url(${rt_corner.src}) center center no-repeat`, position: 'absolute', right: '-5%', top: '-15%', width: 57, height: 67 }} />
+                    <div style={{ background: `url(${rt_corner.src}) center center no-repeat`, position: 'absolute', right: '0%', top: '-15%', width: 57, height: 67 }} />
                     {data.map((item, index) => (
                         <GridItem
                             item

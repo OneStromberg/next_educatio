@@ -83,7 +83,7 @@ const Blog = ({ isEnglish, data }) => {
             alignItems="center"
             justifyContent="center"
             style={{
-                background: `url(${snake.src}) center center no-repeat / 100%`,
+                background: `url(${snake.src}) center / 100% no-repeat `,
                 flexDirection: 'column',
             }}>
 
@@ -113,24 +113,31 @@ const Blog = ({ isEnglish, data }) => {
                     margin: isMobile ? '0 auto' : ''
                 }}>
                 {displayedPosts.map((post) => (
-                    <Grid item xs={12} sm={6} key={post.id} style={{ maxHeight: 512, maxWidth: 360 }}>
+                    <Grid item xs={12} sm={6} key={post.id} style={{ maxHeight: 512, maxWidth: 360, alignItems: 'space-between' }}>
                         <Link href={`/blog/${post.id}`} passHref style={{ textDecoration: 'none' }}>
                             <StyledCard>
-                                <CardContent style={{ padding: 0 }}>
+                                <CardContent style={{ padding: 0, height: '100%' }}>
                                     <Image
                                         src={`${apiUrl.slice(0, apiUrl.length - 4)}${post.attributes.headingImage.data.attributes.url}`}
                                         alt={post.attributes.Title}
                                         width={380}
                                         height={250}
                                     />
-                                    <div style={{ display: 'flex', flexDirection: 'column', padding: '1em 2em' }}>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        padding: '1em 2em 35px',
+                                        minHeight: '260px',
+                                        height: '100%',
+                                        justifyContent: 'space-between',
+                                    }}>
                                         <Typography variant="news_preview_title" gutterBottom>
                                             {isEnglish ? post.attributes.EnglishTitle : post.attributes.Title}
                                         </Typography>
                                         <Typography variant="news_text" className="text-element">
                                             <ReactMarkdown>{isEnglish
-                                                ? truncateText(post.attributes.EnglishText, 85)
-                                                : truncateText(post.attributes.text, 85)}</ReactMarkdown>
+                                                ? truncateText(post.attributes.EnglishText, 35)
+                                                : truncateText(post.attributes.text, 35)}</ReactMarkdown>
                                         </Typography>
                                         <Typography variant='card_link' className='button' paddingTop={3}>{isEnglish ? 'Read →' : 'Читати →'}</Typography>
                                     </div>

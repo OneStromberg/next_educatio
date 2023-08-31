@@ -52,7 +52,7 @@ const About = ({ isEnglish, data }) => {
         display: isMobile ? 'flex' : 'grid',
         flexDirection: isMobile ? 'column' : '',
         gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-        gap: isMobile ? '50px' : '10% 5%',
+        gap: isMobile ? '50px' : '80px 5%',
         marginTop: '10%',
       }}>
         {data.map((item, index) => {
@@ -69,13 +69,16 @@ const About = ({ isEnglish, data }) => {
                 display: 'flex',
                 flexWrap: 'nowrap',
                 flexDirection: isMobile ? 'column' : 'row',
+                // paddingTop: 40,
               }}>
                 <Image
                   src={`${apiUrl.slice(0, apiUrl.length - 4)}${item.attributes.image.data.attributes.url}`}
                   alt="About Us"
                   width={180}
                   height={194} />
-                <Grid item xs={12} sm={6} margin={isMobile ? '15px 0 0 0' : '0 0 0 50px'} maxWidth={290}>
+                <Grid item xs={12} sm={6}
+                  margin={isMobile ? '15px 0 0 0' : '0 0 0 50px'}
+                  maxWidth={290}>
                   <Typography variant="about_heading" gutterBottom>
                     {isEnglish ? item.attributes.EnglishTitle : item.attributes.title}
                   </Typography>

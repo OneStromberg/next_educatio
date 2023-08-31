@@ -51,7 +51,7 @@ const Members = ({ isEnglish, data }) => {
             margin: '0 auto',
             flexDirection: 'column',
             alignItems: 'center',
-            background: `url(${snake.src}) center center no-repeat`,
+            background: `url(${snake.src}) center / 100% no-repeat`,
             backgroundColor: '#FBFBFB',
             paddingTop: isMobile ? '30px' : '70px',
             paddingBottom: isMobile ? '50px' : '180px',

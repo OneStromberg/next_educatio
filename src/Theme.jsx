@@ -22,7 +22,7 @@ const theme = createTheme({
           '&:hover': {
             fontWeight: 700,
             background: 'none',
-          }
+          },
         }
       },
     },
@@ -54,6 +54,25 @@ const theme = createTheme({
           // Добавьте другие состояния по необходимости
         },
       },
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: '#0000000',
+          },
+        }
+      }
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: 'transparent',
+            color: ' #1F1F71'
+          },
+        }
+      }
     },
   },
 

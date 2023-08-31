@@ -44,8 +44,7 @@ const StyledButton = styled(Button)`
   margin-right: 10px;
   transition: .3s;
   &:hover{
-    color: #1F1F71
-    background: none;
+    color: #1F1F71;
   }
 `;
 
@@ -253,7 +252,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
           </Typography>
         </Grid> :
           <Grid container justifyContent="space-between" style={{
-            padding: '2% 10% 4% 10%',
+            padding: '2% 13% 4% 13%',
           }}>
             <Typography variant="header_subtext">
               <ReactMarkdown>{adress}</ReactMarkdown>

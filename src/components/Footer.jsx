@@ -22,12 +22,13 @@ const StyledIcon = styled('svg')`
 const Footer = ({ isEnglish }) => {
 
   const adress = isEnglish ?
-    `Education Centers Network \n
-    Ukraine, Lviv, \n
+    `Education Centers Network  
+    Ukraine, Lviv,  
 Market Sq. 1, room 110`
     :
-    `Мережа Центрів Едукації\n
-    Україна, Львів,\nПл. Ринок 1, 110 каб
+    `Мережа Центрів Едукації  
+      Україна, Львів,  
+    Пл. Ринок 1, 110 каб
     `;
 
   const isMobile = useMediaQuery('(max-width: 600px)');
@@ -40,7 +41,7 @@ Market Sq. 1, room 110`
           <Grid container direction="column" alignItems="start" gap={3}>
             <Image src={logo.src} alt='logo' width={80} height={35} />
             <Typography variant="footer_text" align="start" marginBottom={2}>
-              <ReactMarkdown >{adress}</ReactMarkdown>
+              <ReactMarkdown variant="footer_text">{adress}</ReactMarkdown>
             </Typography>
             <Grid container justifyContent="start" alignItems="center" style={{ gap: 45 }}>
               <a href="https://www.facebook.com"
@@ -84,7 +85,7 @@ Market Sq. 1, room 110`
             <Grid item style={{ display: 'flex', flexDirection: 'column', gap: 45 }}>
               <Image src={logo.src} alt='logo' width={80} height={35} />
               <Typography variant="footer_text" align="left" marginBottom={2}>
-                <ReactMarkdown>{adress}</ReactMarkdown>
+                <ReactMarkdown variant="footer_text">{adress}</ReactMarkdown>
               </Typography>
             </Grid>
             <Grid item height={'100%'} alignSelf={'flex-end'} justifySelf={'center'} paddingBottom={2}>

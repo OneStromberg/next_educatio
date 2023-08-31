@@ -42,8 +42,7 @@ const CalendarContainer = ({ isEnglish }) => {
             justifyContent="flex-start"
             alignItems="center"
             style={{
-                // background: '#ededed',
-                // padding: '130px 0'
+                background: '#fbfbfb',
             }}>
             <div style={{
                 display: 'flex',
