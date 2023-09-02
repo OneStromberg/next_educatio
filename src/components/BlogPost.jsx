@@ -52,14 +52,15 @@ const BlogPost = ({ isEnglish, id }) => {
     }
 
     <Head>
-        <title>Educatio | News</title>
-        <meta name="description" content="Educatio is the leading center of education in Lviv. We offer a wide range of educational services. Join us to redefine your future." />
+        <title>Educatio | {isEnglish ? data?.attributes?.EnglishTitle : data?.attributes?.Title || 'News'}</title>
+        <meta name="description" content={isEnglish ? data?.attributes?.EnglishTitle : data?.attributes?.Title} />
         <meta name="keywords" content="Education, Educatio, Lviv, Center of education, CE, Освіта, Educatio, Львів, Центр освіти, ЦЕ, мережа ЦЕ — центрів едукації, центр едукації" />
         <meta name="author" content="Центр едукації" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href={`http://ceducatio.com/blog/${id}`} />
+        <link rel="canonical" href={`http://ceducatio.com/news/${id}`} />
         <link rel="icon" href={logo.src} type="image/x-icon" />
-    </Head >
+    </Head>
+
 
 
     return (

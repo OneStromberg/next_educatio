@@ -281,7 +281,12 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     } else {
-      router.push(`/`);
+      router.push(`/`).then(() => {
+        const elementAfterNavigation = document.getElementById(sectionId);
+        if (elementAfterNavigation) {
+          elementAfterNavigation.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
     }
   };
 

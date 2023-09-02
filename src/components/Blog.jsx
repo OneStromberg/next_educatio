@@ -90,6 +90,8 @@ const Blog = ({ isEnglish, data }) => {
     const hideNews = isEnglish ? 'Hide news' : 'Скрити новини'
     const apiUrl = process.env.API_URL;
 
+    console.log(data)
+
     return (
         <Grid container spacing={3}
             id='news'
@@ -127,7 +129,7 @@ const Blog = ({ isEnglish, data }) => {
                 }}>
                 {displayedPosts.map((post) => (
                     <Grid item xs={12} sm={6} key={post.id} style={{ maxHeight: 512, maxWidth: 360, alignItems: 'space-between' }}>
-                        <Link href={`/blog/${post.id}`} passHref style={{ textDecoration: 'none' }}>
+                        <Link href={`/news/${post.id}`} passHref style={{ textDecoration: 'none' }}>
                             <StyledCard>
                                 <CardContent style={{ padding: 0, height: '100%' }}>
                                     <Image
