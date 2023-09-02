@@ -7,15 +7,28 @@ import {
     TextField,
     useMediaQuery
 } from '@mui/material';
-import Image from 'next/image';
+import { styled } from '@mui/system';
 import background from '../assets/questions_bg.svg';
 import scratch from '../assets/scratch.svg';
+import Arrow from './UI/Arrow';
+
+const StyledButton = styled(Button)`
+&:hover{
+    color: #E3B30A;
+    svg{
+        transition: all 0.3s ease;
+        transform: translateX(15px);
+    }
+}
+`;
 
 const CallbackForm = ({ isEnglish }) => {
     const apiUrl = process.env.API_URL;
     const apiKey = process.env.API_TOKEN;
     const isMobile = useMediaQuery('(max-width:600px)');
     const isTablet = useMediaQuery('(max-width:1200px)');
+    const [isHovered, setHovered] = useState(false);
+
 
     const [formData, setFormData] = useState({
         name: '',
@@ -115,7 +128,7 @@ const CallbackForm = ({ isEnglish }) => {
     const phonePalceholder = isEnglish ? 'Enter your phone number' : "Введіть свій номер телефону"
     const messageField = isEnglish ? 'Message' : "Повідомлення"
     const messagePalceholder = isEnglish ? 'Enter your message' : "Введіть своє повідомлення"
-    const buttonText = isEnglish ? 'Complete' : "Заповнити"
+    const buttonText = isEnglish ? 'Send' : "Надіслати"
 
     return (
         <Grid
@@ -238,11 +251,16 @@ const CallbackForm = ({ isEnglish }) => {
                         error={!!formErrors.message}
                         helperText={<Typography variant='error_message'>{formErrors.message}</Typography>}
                     />
-                    <Button
+                    <StyledButton
                         type="submit"
                         variant="text"
+                        onMouseEnter={() => setHovered(true)}
+                        onMouseLeave={() => setHovered(false)}
                         style={{
                             cursor: 'pointer',
+                            display: 'flex',
+                            gap: 10,
+                            alignItems: 'center',
                             color: '#FFC804',
                             width: '10%',
                             minWidth: 150,
@@ -252,8 +270,9 @@ const CallbackForm = ({ isEnglish }) => {
                             transition: '.3s',
                         }}
                     >
-                        {buttonText} →
-                    </Button>
+                        {buttonText}
+                        <div style={{ width: 14, height: 9 }}><Arrow fill={isHovered ? '#E3B30A' : '#FFC804'} /></div>
+                    </StyledButton>
                 </form>
             </Grid>
         </Grid >

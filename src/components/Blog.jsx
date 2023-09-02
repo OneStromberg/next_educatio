@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { styled } from '@mui/system';
 import Wavy from './UI/Wavy';
 import snake from '../assets/snake.svg'
+import Arrow from './UI/Arrow.jsx';
 
 const StyledCard = styled(Card)`
     cursor: pointer;
@@ -32,6 +33,18 @@ const StyledCard = styled(Card)`
         .button{
             font-weight: 700;
         }
+    }
+    .read__wrapper {
+        transition: .3s;
+        &:hover{
+        .button{
+            font-weight: 700;
+        }
+        svg{
+            transition: all 0.3s ease;
+            transform: translateX(15px);
+        }
+    }
     }
 `;
 
@@ -139,7 +152,12 @@ const Blog = ({ isEnglish, data }) => {
                                                 ? truncateText(post.attributes.EnglishText, 35)
                                                 : truncateText(post.attributes.text, 35)}</ReactMarkdown>
                                         </Typography>
-                                        <Typography variant='card_link' className='button' paddingTop={3}>{isEnglish ? 'Read →' : 'Читати →'}</Typography>
+                                        <div className='read__wrapper' paddingTop={3} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                            <Typography variant='card_link' className='button'>{isEnglish ? 'Read' : 'Читати'}</Typography>
+                                            <div style={{ width: 14, height: 9 }}>
+                                                <Arrow fill={'#4089ED'} />
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </CardContent>

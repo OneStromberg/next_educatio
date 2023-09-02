@@ -1,9 +1,25 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Grid, Typography, Button, Box, useMediaQuery } from '@mui/material';
+import Link from 'next/link';
 import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
+import { styled } from '@mui/system';
 import logo from '../assets/footter_logo.svg';
+import Arrow from './UI/Arrow'
+
+const StyledWrapper = styled(Link)`
+text-decoration: none;
+.arrow {
+    transition: all 0.3s ease;
+    transform: rotate(180deg) translateX(0);
+}
+&:hover {
+    text-decoration: none;
+    .arrow {
+        transform: rotate(180deg) translateX(10px);
+    }
+}`
 
 const BlogPost = ({ isEnglish, id }) => {
 
@@ -43,7 +59,7 @@ const BlogPost = ({ isEnglish, id }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href={`http://ceducatio.com/blog/${id}`} />
         <link rel="icon" href={logo.src} type="image/x-icon" />
-    </Head>
+    </Head >
 
 
     return (
@@ -70,7 +86,7 @@ const BlogPost = ({ isEnglish, id }) => {
                         alignItems: 'center'
                     }}
                 >
-                    <Typography variant="news_title" style={{ zIndex: 1, color: '#fff', fontSize: isMobile ? '30px' : '', margin: isMobile ? '50px 15px 0px 15px' : '' }}>
+                    <Typography variant="news_title" style={{ zIndex: 1, color: '#fff', fontSize: isMobile ? '30px' : '', margin: isMobile ? '50px 15px 0px 15px' : '0 15%' }}>
                         {isEnglish ? data.attributes.EnglishTitle : data.attributes.Title}
                     </Typography>
 
@@ -81,20 +97,34 @@ const BlogPost = ({ isEnglish, id }) => {
                         marginTop: '20px',
                         backgroundImage: 'linear-gradient(to right, transparent, #fff, transparent)'
                     }}></div>
-
-                    <Button
-                        startIcon='←'
+                    <StyledWrapper
+                        className='back-to-home'
                         href='/'
                         style={{
-                            cursor: 'pointer',
-                            color: 'white',
-                            borderColor: 'white',
-                            alignSelf: 'flex-start',
-                            margin: isMobile ? '10% 5%' : '60px 20%',
-                        }}
-                        variant="text">
-                        {isEnglish ? 'Back to Home' : 'На головну'}
-                    </Button>
+                            display: 'flex',
+                            alignItems: 'center',
+                            width: '20%',
+                            margin: isMobile ? '10% 5%' : '60px 45% 0 0',
+                            gap: 15
+                        }}>
+                        <div className='arrow'
+                            style={{
+                                width: 30,
+                            }}>
+                            <Arrow fill={'#fff'} />
+                        </div>
+                        <Button
+                            href='/'
+                            style={{
+                                cursor: 'pointer',
+                                color: 'white',
+                                borderColor: 'white',
+                                alignSelf: 'flex-start',
+                            }}
+                            variant="text">
+                            {isEnglish ? 'Back to Home' : 'На головну'}
+                        </Button>
+                    </StyledWrapper>
                 </Box>
             </div>
 
@@ -103,14 +133,28 @@ const BlogPost = ({ isEnglish, id }) => {
                     <ReactMarkdown>{isEnglish ? data.attributes.EnglishText : data.attributes.text}</ReactMarkdown>
                 </Typography>
             </Box>
-
-            <Button
+            <StyledWrapper
+                className='back-to-home'
                 href='/'
-                startIcon='←'
-                variant="text"
-                style={{ cursor: 'pointer', margin: '2% 5%', color: '#458FF6' }}>
-                {isEnglish ? 'Back to Home' : 'На головну'}
-            </Button>
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                    width: '20%',
+                    margin: '2% 5%',
+                    gap: 15,
+                    textDecoration: 'none'
+                }}>
+                <div className='arrow' style={{ width: 30 }}>
+                    <Arrow fill={'#458FF6'} />
+                </div>
+                <Button
+                    href='/'
+                    variant="text"
+                    style={{ cursor: 'pointer', color: '#458FF6' }}>
+                    {isEnglish ? 'Back to Home' : 'На головну'}
+                </Button>
+            </StyledWrapper>
         </Grid >
     );
 }

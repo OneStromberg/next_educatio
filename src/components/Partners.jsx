@@ -11,10 +11,11 @@ import partner7 from '@/assets/partners/7.png'
 import partner8 from '@/assets/partners/8.png'
 import { useState, useEffect } from 'react';
 import Wavy from './UI/Wavy';
+import Arrow from './UI/Arrow';
 
 
 const PartnersCarousel = ({ isEnglish }) => {
-    const theme = useTheme();
+    const [isHovered, setHovered] = useState(null);
     const isMobile = useMediaQuery('(max-width:600px)');
     const isTablet = useMediaQuery('(min-width:601px) and (max-width:1200px)');
 
@@ -85,20 +86,29 @@ const PartnersCarousel = ({ isEnglish }) => {
                     NavButton={({ onClick, className, style, next = goToNextSlide, prev = goToPrevSlide }) => {
                         return partnerData.length !== slides.length ? (
 
-                            <IconButton onClick={onClick} style={{
-                                ...style,
-                                top: '50%',
-                                transform: 'translateY(-50%)',
-                                zIndex: 1000,
-                                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                                color: '#b5d2fb',
-                                fontSize: '2.5rem',
-                                fontWeight: 700,
-                                left: prev ? '-10px' : 'unset',
-                                right: next ? '-10px' : 'unset'
-                            }}>
-                                {next && '→'}
-                                {prev && '←'}
+                            <IconButton onClick={onClick}
+                                onMouseEnter={() => setHovered(prev ? 'prev' : 'next')}
+                                onMouseLeave={() => setHovered(null)}
+                                style={{
+                                    ...style,
+                                    top: '33%',
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 1000,
+                                    backgroundColor: 'rgba(255, 255, 255, 0)',
+                                    fontSize: '2.5rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    width: 40,
+                                    left: prev ? '0px' : 'unset',
+                                    right: next ? '0px' : 'unset',
+                                    transform: prev ? 'rotate(180deg)' : 'unset',
+                                    transition: 'all 0.3s ease',
+                                    opacity: 1,
+                                }}>
+                                {next && <Arrow
+                                    fill={isHovered === 'next' ? '#458FF6' : '#b5d2fb'} />}
+                                {prev && <Arrow
+                                    fill={isHovered === 'prev' ? '#458FF6' : '#b5d2fb'} />}
                             </IconButton>
                         ) : null
                     }}

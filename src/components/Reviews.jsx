@@ -2,6 +2,7 @@ import { Typography, Paper, Rating, IconButton, useTheme, useMediaQuery } from '
 import Carousel from 'react-material-ui-carousel';
 import { useState, useEffect } from 'react';
 import Wavy from './UI/Wavy';
+import Arrow from './UI/Arrow';
 
 
 const ReviewsCarousel = ({ isEnglish, data }) => {
@@ -12,6 +13,8 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
 
     const [itemsPerSlide, setItemsPerSlide] = useState(3);
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+    const [isHovered, setHovered] = useState(null);
+
 
 
     useEffect(() => {
@@ -81,21 +84,27 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                         }
 
                         return (
-                            <IconButton onClick={next ? goToNextSlide : goToPrevSlide} style={{
-                                ...style,
-                                position: 'absolute',
-                                top: '50%',
-                                transform: 'translateY(-50%)',
-                                zIndex: 1000,
-                                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                                color: '#b5d2fb',
-                                fontSize: '2.5rem',
-                                fontWeight: 700,
-                                left: prev ? '-10px' : 'unset',
-                                right: next ? '-10px' : 'unset'
-                            }}>
-                                {next && '→'}
-                                {prev && '←'}
+                            <IconButton onClick={onClick}
+                                onMouseEnter={() => setHovered(prev ? 'prev' : 'next')}
+                                onMouseLeave={() => setHovered(null)}
+                                style={{
+                                    ...style,
+                                    top: '37%',
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 1000,
+                                    backgroundColor: 'rgba(255, 255, 255, 0)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    width: 40,
+                                    left: prev ? '0px' : 'unset',
+                                    right: next ? '0px' : 'unset',
+                                    transform: prev ? 'rotate(180deg)' : 'unset',
+                                    opacity: 1,
+                                }}>
+                                {next && <Arrow
+                                    fill={isHovered === 'next' ? '#458FF6' : '#b5d2fb'} />}
+                                {prev && <Arrow
+                                    fill={isHovered === 'prev' ? '#458FF6' : '#b5d2fb'} />}
                             </IconButton>
                         );
                     }}
@@ -154,8 +163,14 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                 </Carousel>
                 {isMobile && (
                     <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: 10 }}>
-                        <IconButton onClick={goToPrevSlide} style={{ color: '#458FF6' }}>←</IconButton>
-                        <IconButton onClick={goToNextSlide} style={{ color: '#458FF6' }}>→</IconButton>
+                        <IconButton onClick={goToPrevSlide} style={{ width: 40, transform: 'rotate(180deg)' }}>
+                            <Arrow
+                                fill={isHovered === 'prev' ? '#458FF6' : '#b5d2fb'} />
+                        </IconButton>
+
+                        <IconButton onClick={goToNextSlide} style={{ width: 40, color: '#458FF6' }}><Arrow
+                            fill={isHovered === 'next' ? '#458FF6' : '#b5d2fb'} />
+                        </IconButton>
                     </div>
                 )}
             </div >

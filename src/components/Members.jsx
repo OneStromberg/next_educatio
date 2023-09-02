@@ -11,6 +11,7 @@ import GeoPin from '../assets/geo_pin.svg';
 import Wavy from './UI/Wavy';
 import Link from 'next/link';
 import snake from '../assets/snake.svg';
+import Arrow from './UI/Arrow.jsx';
 
 const StyledGrid = styled(Link)`
         cursor: pointer;
@@ -23,15 +24,25 @@ const StyledGrid = styled(Link)`
         padding: 25px;
         gap: 10px;
         text-decoration: none;
-        transition: .3s;
+        transition: all 0.3s ease;
         &:hover{
             box-shadow: 0px 20px 60px 0px rgba(157, 166, 189, 0.80);
             .text-element {
+                transition: all 0.3s ease;
                 opacity: 0.5;
             }
+        }
+        .reg__wrapper {
+            transition: all 0.3s ease;
+            &:hover{
             .button{
                 font-weight: 700;
             }
+            svg{
+                transition: all 0.3s ease;
+                transform: translateX(15px);
+            }
+        }
         }
         `;
 
@@ -122,7 +133,12 @@ const Members = ({ isEnglish, data }) => {
                                     </Typography>
                                 )}
                             </div>
-                            <Typography variant='card_link' className="button">{isEnglish ? 'Registration →' : 'Реєстрація →'}</Typography>
+                            <div className='reg__wrapper' style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                <Typography variant='card_link' className="button">{isEnglish ? 'Registration' : 'Реєстрація'} </Typography>
+                                <div style={{ width: 14, height: 9 }}>
+                                    <Arrow fill={'#4089ED'} className="arrow" />
+                                </div>
+                            </div>
                         </StyledGrid>
                     </Grid>
                 ))}
