@@ -36,8 +36,8 @@ const BlogPost = ({ isEnglish, slug }) => {
                             Authorization: `Bearer ${apiKey} `,
                         }
                     });
-                    console.log(response)
-                    setData(response.data.data);
+                    console.log(response.data)
+                    setData(response.data);
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -53,8 +53,8 @@ const BlogPost = ({ isEnglish, slug }) => {
     }
 
     <Head>
-        <title>Educatio | {isEnglish ? data?.attributes?.EnglishTitle : data?.attributes?.Title || 'News'}</title>
-        <meta name="description" content={isEnglish ? data?.attributes?.EnglishTitle : data?.attributes?.Title} />
+        <title>Educatio | {isEnglish ? data?.EnglishTitle : data?.Title || 'News'}</title>
+        <meta name="description" content={isEnglish ? data?.EnglishTitle : data?.Title} />
         <meta name="keywords" content="Education, Educatio, Lviv, Center of education, CE, Освіта, Educatio, Львів, Центр освіти, ЦЕ, мережа ЦЕ — центрів едукації, центр едукації" />
         <meta name="author" content="Центр едукації" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -69,7 +69,7 @@ const BlogPost = ({ isEnglish, slug }) => {
                 height: isMobile ? '260px' : '100dvh',
                 width: '100%',
                 margin: 0,
-                background: `url(${apiUrl.slice(0, apiUrl.length - 4)}${data.attributes.headingImage.data.attributes.url}) center center / cover no-repeat`
+                background: `url(${apiUrl.slice(0, apiUrl.length - 4)}${data.headingImage.url}) center center / cover no-repeat`
             }}>
 
                 <Box
@@ -87,7 +87,7 @@ const BlogPost = ({ isEnglish, slug }) => {
                     }}
                 >
                     <Typography variant="news_title" style={{ zIndex: 1, color: '#fff', fontSize: isMobile ? '30px' : '', margin: isMobile ? '50px 15px 0px 15px' : '0 15%' }}>
-                        {isEnglish ? data.attributes.EnglishTitle : data.attributes.Title}
+                        {isEnglish ? data.EnglishTitle : data.Title}
                     </Typography>
 
                     <div style={{
@@ -130,7 +130,7 @@ const BlogPost = ({ isEnglish, slug }) => {
 
             <Box p={{ xs: 2, md: 10 }} py={5}>
                 <Typography variant="news_text">
-                    <ReactMarkdown>{isEnglish ? data.attributes.EnglishText : data.attributes.text}</ReactMarkdown>
+                    <ReactMarkdown>{isEnglish ? data.EnglishText : data.text}</ReactMarkdown>
                 </Typography>
             </Box>
             <StyledWrapper
