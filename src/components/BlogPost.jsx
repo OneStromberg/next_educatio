@@ -21,7 +21,7 @@ text-decoration: none;
     }
 }`
 
-const BlogPost = ({ isEnglish, id }) => {
+const BlogPost = ({ isEnglish, slug }) => {
 
     const [data, setData] = useState(null);
     const apiUrl = process.env.API_URL;
@@ -30,12 +30,13 @@ const BlogPost = ({ isEnglish, id }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                if (id) {
-                    const response = await axios.get(`${apiUrl}/blog-posts/${id}?populate=*`, {
+                if (slug) {
+                    const response = await axios.get(`${apiUrl}/blog-posts/${slug}`, {
                         headers: {
                             Authorization: `Bearer ${apiKey} `,
                         }
                     });
+                    console.log(response)
                     setData(response.data.data);
                 }
             } catch (error) {
@@ -44,7 +45,7 @@ const BlogPost = ({ isEnglish, id }) => {
         };
 
         fetchData();
-    }, [id]);
+    }, [slug]);
     const isMobile = useMediaQuery('(max-width: 600px)');
 
     if (!data) {
@@ -57,11 +58,9 @@ const BlogPost = ({ isEnglish, id }) => {
         <meta name="keywords" content="Education, Educatio, Lviv, Center of education, CE, Освіта, Educatio, Львів, Центр освіти, ЦЕ, мережа ЦЕ — центрів едукації, центр едукації" />
         <meta name="author" content="Центр едукації" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href={`http://ceducatio.com/news/${id}`} />
+        <link rel="canonical" href={`http://ceducatio.com/news/${slug}`} />
         <link rel="icon" href={logo.src} type="image/x-icon" />
     </Head>
-
-
 
     return (
         <Grid item xs={12} sm={10} paddingBottom={5} marginTop={isMobile ? '70px' : ''}>

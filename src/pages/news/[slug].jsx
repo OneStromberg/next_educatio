@@ -14,13 +14,13 @@ export default function BlogPostPage() {
         setIsEnglish(!isEnglish);
     };
     const router = useRouter();
-    const { id } = router.query;
+    const { slug } = router.query;
 
     return (
         <>
             <ThemeProvider theme={theme}>
                 <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} />
-                <BlogPost isEnglish={isEnglish} id={id} />
+                <BlogPost isEnglish={isEnglish} slug={slug} />
                 <Footer isEnglish={isEnglish} />
             </ThemeProvider>
 
