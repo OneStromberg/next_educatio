@@ -23,6 +23,7 @@ const StyledTextContainer = styled(Grid)`
 const EducationalAreas = ({ isEnglish, data }) => {
 
     const isMobile = useMediaQuery('(max-width:600px)');
+    const isWide = useMediaQuery('(min-width: 1280px)');
     if (!data) {
         return null;
     }
@@ -33,11 +34,13 @@ const EducationalAreas = ({ isEnglish, data }) => {
         <Box mt={0} mb={5} style={{
             background: `url(${educationalBg.src})`,
             backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            padding: isMobile ? '50px 50px 100px 0' : '4% 70px 15% 70px',
+            backgroundRepeat: 'no-repeat no-repeat',
+            padding: isMobile ? '50px 50px 100px 0' : '4% 70px 8% 70px',
+            paddingBottom: isWide ? '13%' : '8%',
             display: 'flex',
             flexDirection: 'column',
             gap: '90px',
+            margin: 0,
         }}>
             <StyledTextContainer>
                 <Typography variant="h4_light" gutterBottom>
