@@ -113,7 +113,6 @@ const CallbackForm = ({ isEnglish }) => {
                     email: '',
                     message: ''
                 });
-                console.log('Form submitted successfully');
             } catch (error) {
                 console.error('Error submitting form:', error);
             }
