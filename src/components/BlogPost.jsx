@@ -36,7 +36,6 @@ const BlogPost = ({ isEnglish, slug }) => {
                             Authorization: `Bearer ${apiKey} `,
                         }
                     });
-                    console.log(response.data)
                     setData(response.data);
                 }
             } catch (error) {
