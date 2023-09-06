@@ -68,7 +68,7 @@ const BlogPost = ({ isEnglish, slug }) => {
                 height: isMobile ? '260px' : '100dvh',
                 width: '100%',
                 margin: 0,
-                background: `url(${apiUrl.slice(0, apiUrl.length - 4)}${data.headingImage.url}) center center / cover no-repeat`
+                background: `url(${apiUrl.slice(0, apiUrl.length - 4)}${data?.headingImage?.url}) center center / cover no-repeat`
             }}>
 
                 <Box

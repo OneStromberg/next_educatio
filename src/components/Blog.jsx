@@ -131,7 +131,7 @@ const Blog = ({ isEnglish, data }) => {
                             <StyledCard>
                                 <CardContent style={{ padding: 0, height: '100%' }}>
                                     <Image
-                                        src={`${apiUrl.slice(0, apiUrl.length - 4)}${post.attributes.headingImage.data.attributes.url}`}
+                                        src={`${apiUrl.slice(0, apiUrl.length - 4)}${post?.attributes?.headingImage?.data?.attributes?.url}`}
                                         alt={post.attributes.Title}
                                         width={380}
                                         height={250}

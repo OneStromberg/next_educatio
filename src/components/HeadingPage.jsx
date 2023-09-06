@@ -30,7 +30,7 @@ const HeadingPage = ({ isEnglish, data }) => {
 
   const text = isEnglish ? data.englishText : data.text;
   const subtext = isEnglish ? data.exnglishSubText : data.subtext;
-  const backgroundImage = data.BackgroundImage.data.attributes.url;
+  const backgroundImage = data?.BackgroundImage?.data?.attributes?.url;
   const bgURL = apiUrl.slice(0, apiUrl.length - 4) + backgroundImage;
 
   return (

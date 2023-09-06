@@ -72,7 +72,7 @@ const About = ({ isEnglish, data }) => {
                 // paddingTop: 40,
               }}>
                 <Image
-                  src={`${apiUrl.slice(0, apiUrl.length - 4)}${item.attributes.image.data.attributes.url}`}
+                  src={`${apiUrl.slice(0, apiUrl.length - 4)}${item?.attributes?.image?.data?.attributes?.url}`}
                   alt="About Us"
                   width={180}
                   height={194} />
