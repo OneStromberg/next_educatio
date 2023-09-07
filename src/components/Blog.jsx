@@ -92,7 +92,6 @@ const Blog = ({ isEnglish, data }) => {
 
     return (
         <Grid container spacing={3}
-            id='news'
             alignItems="center"
             justifyContent="center"
             style={{
@@ -115,6 +114,7 @@ const Blog = ({ isEnglish, data }) => {
 
             <Grid alignItems="center"
                 justifyContent="center"
+                id='news'
                 style={{
                     display: 'flex',
                     flexWrap: 'wrap',
