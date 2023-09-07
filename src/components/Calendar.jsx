@@ -41,6 +41,7 @@ const CalendarContainer = ({ isEnglish }) => {
             direction="column"
             justifyContent="flex-start"
             alignItems="center"
+            minHeight={600}
             style={{
                 background: '#fbfbfb',
             }}>
