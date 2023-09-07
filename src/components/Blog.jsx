@@ -78,7 +78,7 @@ const Blog = ({ isEnglish, data }) => {
     const [showAll, setShowAll] = useState(false);
     const isMobile = useMediaQuery('(max-width:600px)');
     const isSmallMobile = useMediaQuery('(max-width:370px)');
-    const displayedPosts = isMobile ? showAll ? data : data.slice(0, 1) : data;
+    const displayedPosts = isMobile ? showAll ? data : data.slice(0, 1) : showAll ? data : data.slice(0, 3)
 
 
     if (!data) {
@@ -119,7 +119,7 @@ const Blog = ({ isEnglish, data }) => {
                     display: 'flex',
                     flexWrap: 'wrap',
                     // padding: isMobile ? 0 : '80px 0',
-                    width: '100%',
+                    width: '90%',
                     height: '100%',
                     flexDirection: isMobile ? 'column' : 'row',
                     gap: 20,
