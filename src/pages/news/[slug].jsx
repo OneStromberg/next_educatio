@@ -3,11 +3,14 @@ import '@/styles/reset.css'
 import { useState } from 'react'
 import { useRouter } from "next/router"
 import { ThemeProvider } from "@mui/material/styles"
-import BlogPost from '@/components/BlogPost'
+import { getServerSideProps } from '../../ssr';
 import theme from "@/Theme"
+import BlogPost from '@/components/BlogPost'
 import Footer from "@/components/Footer"
 
-export default function BlogPostPage() {
+const BlogPostPage = ({
+    footerData,
+}) => {
     const [isEnglish, setIsEnglish] = useState(false);
 
     const handleLanguageToggle = () => {
@@ -19,11 +22,13 @@ export default function BlogPostPage() {
     return (
         <>
             <ThemeProvider theme={theme}>
-                <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} />
+                <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} socials={footerData} />
                 <BlogPost isEnglish={isEnglish} slug={slug} />
-                <Footer isEnglish={isEnglish} />
+                <Footer isEnglish={isEnglish} data={footerData} />
             </ThemeProvider>
 
         </>
     )
 }
+export { getServerSideProps };
+export default BlogPostPage
