@@ -133,7 +133,6 @@ const CallbackForm = ({ isEnglish }) => {
     return (
         <Grid
             container
-            id='contact'
             direction="column"
             justifyContent="center"
             alignItems="center"
@@ -175,9 +174,10 @@ const CallbackForm = ({ isEnglish }) => {
                     alignItems: 'center',
                     width: '100%',
                 }}>
-                    <Typography variant="h4_light" gutterBottom style={{
-                        textAlign: 'center',
-                    }}>
+                    <Typography id='contact' variant="h4_light" gutterBottom
+                        style={{
+                            textAlign: 'center',
+                        }}>
                         {pageTitle}
                     </Typography>
                     <Typography variant='subtitle_light'>{pageSubTitle}</Typography>

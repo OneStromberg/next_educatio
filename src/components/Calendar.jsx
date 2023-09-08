@@ -28,7 +28,7 @@ const CalendarContainer = ({ isEnglish }) => {
 
 
     if (!data) {
-        return (<div id='calendar' />);
+        return (<div id='calendar'><div style={{ height: 700, background: '#fbfbfb' }}></div></div>);
     }
 
     const calendar = data.CalendarURL
