@@ -46,14 +46,16 @@ const StyledGrid = styled(Link)`
         }
         `;
 
-const Members = ({ isEnglish, data }) => {
+const Members = ({ isEnglish, data, preferences }) => {
 
     const isMobile = useMediaQuery('(max-width:600px)');
 
     if (!data) {
         return null;
     }
-
+    if (preferences.attributes.isShort) {
+        return <></>
+    }
     const pageTitle = isEnglish ? 'Our actions and education' : 'Наші події і навчання'
 
     return (

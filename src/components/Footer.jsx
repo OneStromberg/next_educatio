@@ -18,18 +18,9 @@ const StyledIcon = styled('svg')`
 `;
 
 
+const Footer = ({ isEnglish, data }) => {
 
-const Footer = ({ isEnglish }) => {
-
-  const adress = isEnglish ?
-    `Education Centers Network  
-    Ukraine, Lviv,  
-Market Sq. 1, room 110`
-    :
-    `Мережа Центрів Едукації  
-      Україна, Львів,  
-    Пл. Ринок 1, 110 каб
-    `;
+  console.log(data)
 
   const isMobile = useMediaQuery('(max-width: 600px)');
   const [isHovered, setHovered] = useState(null)
@@ -41,28 +32,28 @@ Market Sq. 1, room 110`
           <Grid container direction="column" alignItems="start" gap={3}>
             <Image src={logo.src} alt='logo' width={80} height={35} />
             <Typography variant="footer_text" align="start" marginBottom={2}>
-              <ReactMarkdown variant="footer_text">{adress}</ReactMarkdown>
+              <ReactMarkdown variant="footer_text">{isEnglish ? data?.attributes.EnglishAdress : data?.attributes.adress}</ReactMarkdown>
             </Typography>
             <Grid container justifyContent="start" alignItems="center" style={{ gap: 45 }}>
-              <a href="https://www.facebook.com"
+              <a href={data.attributes.facebook_link}
                 style={{ height: 34, width: 34 }}>
                 <StyledIcon as={Facebook}
                   fill={'#fff'}
                 />
               </a>
-              <a href="https://www.instagram.com"
+              <a href={data.attributes.instagram_link}
                 style={{ height: 34, width: 34 }}>
                 <StyledIcon as={Instagram}
                   fill={'#fff'}
                 />
               </a>
-              <a href="https://www.youtube.com"
+              <a href={data.attributes.youtube_link}
                 style={{ height: 34, width: 34 }}>
                 <StyledIcon as={Youtube}
                   fill={'#fff'}
                 />
               </a>
-              <a href="https://www.tiktok.com"
+              <a href={data.attributes.tiktok_link}
                 style={{ height: 34, width: 34 }}>
                 <StyledIcon as={TikTok}
                   fill={'#fff'}
@@ -70,14 +61,14 @@ Market Sq. 1, room 110`
               </a>
             </Grid>
             <Typography variant="footer_text" align="start" marginBottom={2} marginTop={3} style={{ textDecoration: 'underline' }}>
-              c.educatio.net@gmail.com
+              {data.attributes.email}
             </Typography>
             <Typography variant="footer_subtext" align="start" style={{
               display: 'flex',
               flexDirection: 'column',
             }}>
               {isEnglish ? 'All rights reserved' : 'Всі права захищено 2023 ©'}
-              <Link href="/" style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
+              <Link href={data.attributes.oferta_link} style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
             </Typography>
           </Grid>
         ) : (
@@ -85,12 +76,12 @@ Market Sq. 1, room 110`
             <Grid item style={{ display: 'flex', flexDirection: 'column', gap: 45 }}>
               <Image src={logo.src} alt='logo' width={80} height={35} />
               <Typography variant="footer_text" align="left" marginBottom={2}>
-                <ReactMarkdown variant="footer_text">{adress}</ReactMarkdown>
+                <ReactMarkdown variant="footer_text">{isEnglish ? data?.attributes.EnglishAdress : data?.attributes.adress}</ReactMarkdown>
               </Typography>
             </Grid>
             <Grid item height={'100%'} alignSelf={'flex-end'} justifySelf={'center'} paddingBottom={2}>
               <Typography variant="footer_text" align="center" marginBottom={2} marginTop={3} style={{ textDecoration: 'underline' }}>
-                c.educatio.net@gmail.com
+                {data.attributes.email}
               </Typography>
             </Grid>
             <Grid item style={{ display: 'flex', flexDirection: 'column', gap: 45, alignItems: 'flex-end' }}>
@@ -99,10 +90,10 @@ Market Sq. 1, room 110`
                 flexDirection: 'column',
               }}>
                 {isEnglish ? 'All rights reserved' : 'Всі права захищено 2023 ©'}
-                <Link href="/" style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
+                <Link href={data.attributes.oferta_link} style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
               </Typography>
               <Grid container justifyContent="flex-end" alignItems="center" style={{ gap: 30 }}>
-                <a href="https://www.facebook.com/C.Educatio"
+                <a href={data.attributes.facebook_link}
                   onMouseEnter={() => setHovered('Facebook')}
                   onMouseLeave={() => setHovered(null)}
                   style={{ height: 34, width: 34 }}>
@@ -110,7 +101,7 @@ Market Sq. 1, room 110`
                     fill={isHovered === 'Facebook' ? '#FFC4B7' : '#fff'}
                   />
                 </a>
-                <a href="ttps://www.instagram.com/c.educatio.lviv/"
+                <a href={data.attributes.instagram_link}
                   onMouseEnter={() => setHovered('Instagram')}
                   onMouseLeave={() => setHovered(null)}
                   style={{ height: 34, width: 34 }}>
@@ -118,7 +109,7 @@ Market Sq. 1, room 110`
                     fill={isHovered === 'Instagram' ? '#FFC4B7' : '#fff'}
                   />
                 </a>
-                <a href="https://www.youtube.com/@c.educatio"
+                <a href={data.attributes.youtube_link}
                   onMouseEnter={() => setHovered('Youtube')}
                   onMouseLeave={() => setHovered(null)}
                   style={{ height: 34, width: 34 }}>
@@ -126,7 +117,7 @@ Market Sq. 1, room 110`
                     fill={isHovered === 'Youtube' ? '#FFC4B7' : '#fff'}
                   />
                 </a>
-                <a href="https://tiktok.com/@c.educatio"
+                <a href={data.attributes.tiktok_link}
                   onMouseEnter={() => setHovered('Tiktok')}
                   onMouseLeave={() => setHovered(null)}
                   style={{ height: 34, width: 34 }}>

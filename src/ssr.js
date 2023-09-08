@@ -27,6 +27,8 @@ export async function getServerSideProps() {
         reviewsData,
         achiewmentsData,
         blogData,
+        preferencesData,
+        footerData
     ] = await Promise.all([
         fetchData(`${apiUrl}/main-pages/1?populate=*`),
         fetchData(`${apiUrl}/about-uses/?populate=*`),
@@ -36,6 +38,8 @@ export async function getServerSideProps() {
         fetchData(`${apiUrl}/reviews`),
         fetchData(`${apiUrl}/achiewments/?populate=*`),
         fetchData(`${apiUrl}/blog-posts/?populate=*`),
+        fetchData(`${apiUrl}/site-preferences/1?populate=*`),
+        fetchData(`${apiUrl}/footers/1?populate=*`)
     ]);
 
     return {
@@ -48,6 +52,8 @@ export async function getServerSideProps() {
             reviewsData: reviewsData || null,
             achiewmentsData: achiewmentsData || null,
             blogData: blogData || null,
+            preferencesData: preferencesData || null,
+            footerData: footerData || null,
         },
     };
 }

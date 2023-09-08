@@ -65,7 +65,7 @@ const BlogPost = ({ isEnglish, slug }) => {
         <Grid item xs={12} sm={10} paddingBottom={5} marginTop={isMobile ? '70px' : ''}>
             <div style={{
                 position: 'relative',
-                height: isMobile ? '260px' : '100dvh',
+                height: isMobile ? '260px' : '80dvh',
                 width: '100%',
                 margin: 0,
                 background: `url(${apiUrl.slice(0, apiUrl.length - 4)}${data?.headingImage?.url}) center center / cover no-repeat`

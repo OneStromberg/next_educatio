@@ -78,7 +78,7 @@ const Blog = ({ isEnglish, data }) => {
     const [showAll, setShowAll] = useState(false);
     const isMobile = useMediaQuery('(max-width:600px)');
     const isSmallMobile = useMediaQuery('(max-width:370px)');
-    const displayedPosts = isMobile ? showAll ? data : data.slice(0, 1) : showAll ? data : data.slice(0, 3)
+    const displayedPosts = isMobile ? showAll ? data : data?.slice(0, 1) : showAll ? data : data?.slice(0, 3)
 
 
     if (!data) {

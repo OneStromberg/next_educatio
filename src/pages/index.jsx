@@ -28,7 +28,9 @@ const Main = (
         centersData,
         reviewsData,
         achiewmentsData,
-        blogData
+        blogData,
+        preferencesData,
+        footerData,
     }) => {
 
     const [isEnglish, setIsEnglish] = useState(false);
@@ -51,22 +53,25 @@ const Main = (
 
 
             <ThemeProvider theme={theme}>
-                <Header onLanguageToggle={handleLanguageToggle} isEnglish={isEnglish} />
+                <Header onLanguageToggle={handleLanguageToggle}
+                    isEnglish={isEnglish}
+                    preferences={preferencesData}
+                    socials={footerData} />
                 <HeadingPage isEnglish={isEnglish} data={mainData} />
-                <Members isEnglish={isEnglish} data={membersData} />
+                <Members isEnglish={isEnglish} data={membersData} preferences={preferencesData} />
                 <Achiewments isEnglish={isEnglish} data={achiewmentsData} />
                 <About isEnglish={isEnglish} data={aboutData} />
                 <PartnersCarousel isEnglish={isEnglish} />
 
                 <EducationslAreas isEnglish={isEnglish} data={areasData} />
                 <Centers isEnglish={isEnglish} data={centersData} />
-                <CalendarContainer isEnglish={isEnglish} />
+                <CalendarContainer isEnglish={isEnglish} preferences={preferencesData} />
                 <Blog isEnglish={isEnglish} data={blogData} />
 
                 <ReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
                 <CallbackForm isEnglish={isEnglish} />
-                <Footer isEnglish={isEnglish} />
-            </ThemeProvider>
+                <Footer isEnglish={isEnglish} data={footerData} />
+            </ThemeProvider >
         </>
     );
 };

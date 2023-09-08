@@ -150,7 +150,18 @@ const DesktopHeader = ({
   </>
 );
 
-const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about, services, news, calendar, contact, adress }) => {
+const MenuDrawer = ({
+  isMenuOpen,
+  handleMenuToggle,
+  handleScrollToSection,
+  about,
+  services,
+  news,
+  calendar,
+  contact,
+  adress,
+  preferences,
+  socials }) => {
   const isMobile = useMediaQuery('(max-width:600px)');
 
   return (
@@ -186,12 +197,13 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
         padding: isMobile ? '0' : '0 8%',
         width: '100dvw',
       }}>
-        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
-          onClick={() => handleScrollToSection('about')}>
-          <StyledButton>
-            {about}
-          </StyledButton>
-        </ListItem>
+        {preferences.attributes.isShort ? <></> :
+          <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
+            onClick={() => handleScrollToSection('about')}>
+            <StyledButton>
+              {about}
+            </StyledButton>
+          </ListItem>}
         <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
           onClick={() => handleScrollToSection('services')}>
           <StyledButton>
@@ -204,12 +216,13 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
             {news}
           </StyledButton>
         </ListItem>
-        <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
-          onClick={() => handleScrollToSection('calendar')}>
-          <StyledButton >
-            {calendar}
-          </StyledButton>
-        </ListItem>
+        {preferences.attributes.isShort ? <></> :
+          <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
+            onClick={() => handleScrollToSection('calendar')}>
+            <StyledButton >
+              {calendar}
+            </StyledButton>
+          </ListItem>}
         <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
           onClick={() => handleScrollToSection('contact')}>
           <StyledButton >
@@ -220,22 +233,22 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
       <Divider style={{ margin: '10px auto', width: isMobile ? '80%' : '90%' }} />
       <Grid container direction="column" alignItems="center" style={{ paddingBottom: '2%' }}>
         {isMobile && <div style={{ display: 'flex', gap: 45, padding: '50px 0' }}>
-          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href="https://www.facebook.com/C.Educatio">
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials.attributes.facebook_link}>
             <Facebook
               fill={'#AFABB8'}
             />
           </a>
-          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href="ttps://www.instagram.com/c.educatio.lviv/">
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials.attributes.instagram_link}>
             <Instagram
               fill={'#AFABB8'}
             />
           </a>
-          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href="https://www.youtube.com/@c.educatio">
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials.attributes.youtube_link}>
             <Youtube
               fill={'#AFABB8'}
             />
           </a>
-          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href="https://tiktok.com/@c.educatio">
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials.attributes.tiktok_link}>
             <TikTok
               fill={'#AFABB8'}
             />
@@ -245,7 +258,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
           padding: '2% 10% 4% 10%',
         }}>
           <Typography variant="header_subtext" style={{ textDecoration: 'underline' }}>
-            info@ceducatio.com
+            {socials.attributes.email}
           </Typography>
           <Typography variant="header_subtext">
             <ReactMarkdown >{adress}</ReactMarkdown>
@@ -258,7 +271,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
               <ReactMarkdown>{adress}</ReactMarkdown>
             </Typography>
             <Typography variant="header_subtext" style={{ textDecoration: 'underline' }}>
-              info@ceducatio.com
+              {socials.attributes.email}
             </Typography>
           </Grid>
         }
@@ -267,7 +280,7 @@ const MenuDrawer = ({ isMenuOpen, handleMenuToggle, handleScrollToSection, about
   )
 };
 
-const Header = ({ onLanguageToggle, isEnglish }) => {
+const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isHovered, setHovered] = useState(null)
   const router = useRouter();
@@ -373,6 +386,8 @@ const Header = ({ onLanguageToggle, isEnglish }) => {
         calendar={calendar}
         contact={contact}
         adress={adress}
+        preferences={preferences}
+        socials={socials}
       />
     </>
   );

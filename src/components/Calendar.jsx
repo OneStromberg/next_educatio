@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Grid, Typography } from '@mui/material';
 import Wavy from './UI/Wavy';
 
-const CalendarContainer = ({ isEnglish }) => {
+const CalendarContainer = ({ isEnglish, preferences }) => {
 
     const [data, setData] = useState(null);
     const apiUrl = process.env.API_URL;
@@ -29,6 +29,9 @@ const CalendarContainer = ({ isEnglish }) => {
 
     if (!data) {
         return (<div id='calendar'><div style={{ height: 700, background: '#fbfbfb' }}></div></div>);
+    }
+    if (preferences.attributes.isShort) {
+        return <></>
     }
 
     const calendar = data.CalendarURL

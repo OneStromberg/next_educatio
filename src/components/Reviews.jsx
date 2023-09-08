@@ -1,4 +1,5 @@
 import { Typography, Paper, Rating, IconButton, useTheme, useMediaQuery } from '@mui/material';
+import Link from 'next/link';
 import Carousel from 'react-material-ui-carousel';
 import { useState, useEffect } from 'react';
 import Wavy from './UI/Wavy';
@@ -110,6 +111,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                     }}
                 >
                     {slides.map((slide, slideIndex) => (
+
                         <Paper
                             key={slideIndex}
                             elevation={0}
@@ -122,19 +124,21 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                                 margin: '0 auto',
                             }}>
                             {slide.map(review => (
-                                <div key={review.id} style={{
-                                    marginBottom: '1.5rem',
-                                    background: '#FFF',
-                                    maxWidth: 400,
-                                    maxHeight: 300,
-                                    width: '100%',
-                                    borderRadius: 18,
-                                    boxShadow: '10px 20px 50px 0px rgba(229, 233, 246, 0.40)',
-                                    padding: '20px 30px',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: 20,
-                                }}>
+                                <Link href={'https://www.google.com/maps/place/%D0%A6%D0%95+-+%D0%A6%D0%B5%D0%BD%D1%82%D1%80%D0%B8+%D0%95%D0%B4%D1%83%D0%BA%D0%B0%D1%86%D1%96%D1%97/@49.832689,24.0122356,12z/data=!4m8!3m7!1s0x473add32088aee89:0xac4ea9a7960ede46!8m2!3d49.832689!4d24.0122356!9m1!1b1!16s%2Fg%2F11r7w1cp8_?entry=ttu'}
+                                    target='_blank' key={review.id} style={{
+                                        marginBottom: '1.5rem',
+                                        background: '#FFF',
+                                        maxWidth: 400,
+                                        maxHeight: 300,
+                                        width: '100%',
+                                        borderRadius: 18,
+                                        boxShadow: '10px 20px 50px 0px rgba(229, 233, 246, 0.40)',
+                                        padding: '20px 30px',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        textDecoration: 'none',
+                                        gap: 20,
+                                    }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                                         <div style={{
                                             borderRadius: '50%',
@@ -156,7 +160,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
                                     <Typography variant="body1">
                                         {truncateText(review.attributes.ReviewText, 120)}
                                     </Typography>
-                                </div>
+                                </Link>
                             ))}
                         </Paper>
                     ))}
