@@ -197,7 +197,7 @@ const MenuDrawer = ({
         padding: isMobile ? '0' : '0 8%',
         width: '100dvw',
       }}>
-        {preferences.attributes.isShort ? <></> :
+        {preferences?.attributes?.isShort ? <></> :
           <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
             onClick={() => handleScrollToSection('about')}>
             <StyledButton>
@@ -216,7 +216,7 @@ const MenuDrawer = ({
             {news}
           </StyledButton>
         </ListItem>
-        {preferences.attributes.isShort ? <></> :
+        {preferences?.attributes?.isShort ? <></> :
           <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
             onClick={() => handleScrollToSection('calendar')}>
             <StyledButton >
@@ -233,22 +233,22 @@ const MenuDrawer = ({
       <Divider style={{ margin: '10px auto', width: isMobile ? '80%' : '90%' }} />
       <Grid container direction="column" alignItems="center" style={{ paddingBottom: '2%' }}>
         {isMobile && <div style={{ display: 'flex', gap: 45, padding: '50px 0' }}>
-          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials?.attributes.facebook_link}>
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials?.attributes?.facebook_link}>
             <Facebook
               fill={'#AFABB8'}
             />
           </a>
-          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials?.attributes.instagram_link}>
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials?.attributes?.instagram_link}>
             <Instagram
               fill={'#AFABB8'}
             />
           </a>
-          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials?.attributes.youtube_link}>
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials?.attributes?.youtube_link}>
             <Youtube
               fill={'#AFABB8'}
             />
           </a>
-          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials?.attributes.tiktok_link}>
+          <a style={{ color: '#AFABB8', height: 23, width: 23 }} href={socials?.attributes?.tiktok_link}>
             <TikTok
               fill={'#AFABB8'}
             />
@@ -258,7 +258,7 @@ const MenuDrawer = ({
           padding: '2% 10% 4% 10%',
         }}>
           <Typography variant="header_subtext" style={{ textDecoration: 'underline' }}>
-            {socials?.attributes.email}
+            {socials?.attributes?.email}
           </Typography>
           <Typography variant="header_subtext">
             <ReactMarkdown >{adress}</ReactMarkdown>
@@ -271,7 +271,7 @@ const MenuDrawer = ({
               <ReactMarkdown>{adress}</ReactMarkdown>
             </Typography>
             <Typography variant="header_subtext" style={{ textDecoration: 'underline' }}>
-              {socials?.attributes.email}
+              {socials?.attributes?.email}
             </Typography>
           </Grid>
         }
