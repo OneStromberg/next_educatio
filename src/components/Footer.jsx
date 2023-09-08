@@ -77,7 +77,7 @@ Market Sq. 1, room 110`
               flexDirection: 'column',
             }}>
               {isEnglish ? 'All rights reserved' : 'Всі права захищено 2023 ©'}
-              <Link href="https://laba.ua/offerta" style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
+              <Link href="/" style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
             </Typography>
           </Grid>
         ) : (
@@ -99,7 +99,7 @@ Market Sq. 1, room 110`
                 flexDirection: 'column',
               }}>
                 {isEnglish ? 'All rights reserved' : 'Всі права захищено 2023 ©'}
-                <Link href="https://laba.ua/offerta" style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
+                <Link href="/" style={{ color: 'rgba(255, 255, 255, 0.70)', }}>{isEnglish ? 'Offer agreement' : 'Договір оферти'}</Link>
               </Typography>
               <Grid container justifyContent="flex-end" alignItems="center" style={{ gap: 30 }}>
                 <a href="https://www.facebook.com/C.Educatio"
