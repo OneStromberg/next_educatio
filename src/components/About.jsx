@@ -33,8 +33,8 @@ const About = ({ isEnglish, data }) => {
   const apiUrl = process.env.API_URL;
   const isMobile = useMediaQuery('(max-width:600px)');
 
-  if (!data) {
-    return null;
+  if (data.length < 1 || !data) {
+    return <></>;
   }
 
   return (

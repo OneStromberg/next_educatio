@@ -23,8 +23,8 @@ const CenterItem = styled(Box)`
 const Centers = ({ isEnglish, data }) => {
 
     const isMobile = useMediaQuery('(max-width:600px)');
-    if (!data) {
-        return null;
+    if (!data || data.length < 1) {
+        return <></>;
     }
 
     const pageTitle = isEnglish ? 'Centers of Education' : 'Центри Едукації';

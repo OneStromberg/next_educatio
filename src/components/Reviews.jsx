@@ -28,7 +28,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
         }
     }, [isMobile, isTablet]);
 
-    if (!data) {
+    if (!data || data.length < 1) {
         return null;
     }
 

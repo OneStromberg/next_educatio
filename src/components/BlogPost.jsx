@@ -47,8 +47,10 @@ const BlogPost = ({ isEnglish, slug }) => {
     }, [slug]);
     const isMobile = useMediaQuery('(max-width: 600px)');
 
-    if (!data) {
-        return null;
+    if (!data || data.length < 1) {
+        return <>
+            <Typography variant='h1'>{isEnglish ? "sorry, post doesn't exist" : 'Вибачте, новини не існує'}</Typography>
+        </>;
     }
 
     <Head>

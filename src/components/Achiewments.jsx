@@ -56,8 +56,8 @@ const Achiewments = ({ isEnglish, data }) => {
     const isMobile = useMediaQuery('(max-width:600px)');
     const isWide = useMediaQuery('(min-width:1450px)');
 
-    if (!data) {
-        return null;
+    if (data.length < 1 || !data) {
+        return <></>;
     }
 
     const pageTitle = isEnglish ? 'Achiewments' : 'Досягнення';

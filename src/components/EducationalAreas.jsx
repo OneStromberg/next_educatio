@@ -24,8 +24,8 @@ const EducationalAreas = ({ isEnglish, data }) => {
 
     const isMobile = useMediaQuery('(max-width:600px)');
     const isWide = useMediaQuery('(min-width: 1280px)');
-    if (!data) {
-        return null;
+    if (!data || data.length < 1) {
+        return <></>;
     }
 
     const pageTitle = isEnglish ? 'Educational Areas' : 'Навчальні напрями';

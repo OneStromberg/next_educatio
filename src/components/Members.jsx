@@ -50,10 +50,10 @@ const Members = ({ isEnglish, data, preferences }) => {
 
     const isMobile = useMediaQuery('(max-width:600px)');
 
-    if (!data) {
-        return null;
-    }
-    if (preferences.attributes.isShort) {
+    // if (!data) {
+    //     return null;
+    // }
+    if (preferences.attributes.isShort || !data) {
         return <></>
     }
     const pageTitle = isEnglish ? 'Our actions and education' : 'Наші події і навчання'

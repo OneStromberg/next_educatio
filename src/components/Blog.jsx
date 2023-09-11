@@ -81,8 +81,8 @@ const Blog = ({ isEnglish, data }) => {
     const displayedPosts = isMobile ? showAll ? data : data?.slice(0, 1) : showAll ? data : data?.slice(0, 3)
 
 
-    if (!data) {
-        return null;
+    if (!data || data.length < 1) {
+        return <></>;
     }
 
     const pageTitle = isEnglish ? 'News' : 'Новини'
