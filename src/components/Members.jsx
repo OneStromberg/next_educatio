@@ -49,11 +49,8 @@ const StyledGrid = styled(Link)`
 const Members = ({ isEnglish, data, preferences }) => {
 
     const isMobile = useMediaQuery('(max-width:600px)');
-
-    // if (!data) {
-    //     return null;
-    // }
-    if (preferences.attributes.isShort || !data) {
+    
+    if (preferences.attributes.isShort || !data || data.length < 1) {
         return <></>
     }
     const pageTitle = isEnglish ? 'Our actions and education' : 'Наші події і навчання'

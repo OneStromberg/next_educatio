@@ -67,10 +67,14 @@ const StyledButton = styled(Button)({
     }
 })
 
+const removeMarkdown = (str) => {
+    return str.replace(/([_*\[\]()~>#+-])/g, '');
+  };
 
 const truncateText = (text, maxLength) => {
-    if (text.length <= maxLength) return text;
-    return `${text.slice(0, maxLength)}...`;
+    const cleanText = removeMarkdown(text);
+    if (cleanText.length <= maxLength) return cleanText;
+    return `${cleanText.slice(0, maxLength)}...`;
 };
 
 

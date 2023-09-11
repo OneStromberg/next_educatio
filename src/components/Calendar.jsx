@@ -30,7 +30,7 @@ const CalendarContainer = ({ isEnglish, preferences }) => {
     if (!data) {
         return (<div id='calendar'><div style={{ height: 700, background: '#fbfbfb' }}></div></div>);
     }
-    if (preferences.attributes.isShort || data.length < 1) {
+    if (preferences.attributes.isShort || data.length < 1 || preferences.attributes.HideCalendar) {
         return <></>
     }
 

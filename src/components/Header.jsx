@@ -216,7 +216,7 @@ const MenuDrawer = ({
             {news}
           </StyledButton>
         </ListItem>
-        {preferences?.attributes?.isShort ? <></> :
+        {preferences?.attributes?.isShort || preferences.attributes.HideCalendar ? <></> :
           <ListItem button style={{ justifyContent: isMobile ? 'start' : 'center' }}
             onClick={() => handleScrollToSection('calendar')}>
             <StyledButton >
@@ -346,12 +346,7 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
   const calendar = isEnglish ? 'Calendar' : 'Календар';
   const contact = isEnglish ? 'Contact' : 'Контакти';
 
-  const adress = isEnglish ?
-    `Ukraine, Lviv, \n
-  Market Sq. 1, room 110`
-    :
-    `Україна, Львів, \n
-  Пл. Ринок 1, 110 каб`;
+  const adress = isEnglish ? socials?.attributes?.EnglishAdress : socials?.attributes?.adress;
 
   return (
     <>
