@@ -55,7 +55,7 @@ const About = ({ isEnglish, data }) => {
         gap: isMobile ? '50px' : '80px 5%',
         marginTop: '10%',
       }}>
-        {data.map((item, index) => {
+        {data.sort((a, b) => a.id - b.id).map((item, index) => {
           return (
             <div
               key={index}

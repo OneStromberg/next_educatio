@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 require("dotenv").config();
 
+console.log(process.env.APP_DOMAIN)
+
 const nextConfig = {
   output: "standalone",
   images: {

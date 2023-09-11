@@ -98,7 +98,7 @@ const Achiewments = ({ isEnglish, data }) => {
             </StyledTextContainer>
 
             {isMobile ? <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 40 }}>
-                {data.map((item, index) => (
+                {data.sort((a, b) => a.id - b.id).map((item, index) => (
                     <GridItem
                         item
                         key={item.id}
