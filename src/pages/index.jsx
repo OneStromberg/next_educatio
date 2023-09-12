@@ -43,6 +43,10 @@ const Main = ({
 				{/* Общие мета-теги */}
 				<title>ЦЕ — Центри Едукації у Львові</title>
 				<meta charset='utf-8' />
+				<meta
+					name='google-site-verification'
+					content='m0XG5guu5Fn0f5jy9wLDqsMcjhlPFkIPuOVHXnWiyPw'
+				/>
 				<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 				<meta
