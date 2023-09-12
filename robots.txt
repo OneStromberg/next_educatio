@@ -1,9 +1,8 @@
 User-agent: *
-Disallow:
-
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /admin/
+Disallow: /api/
 
 User-agent: Yandexbot
 Disallow: /no-yandex/

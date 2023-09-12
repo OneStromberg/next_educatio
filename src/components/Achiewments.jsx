@@ -60,7 +60,7 @@ const Achiewments = ({ isEnglish, data }) => {
         return <></>;
     }
 
-    const pageTitle = isEnglish ? 'Achiewments' : 'Досягнення';
+    const pageTitle = isEnglish ? 'Achievements' : 'Досягнення';
 
     return (
         <Box style={{

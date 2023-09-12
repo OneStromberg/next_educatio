@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 import '@/styles/reset.css'
-import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
 import axios from 'axios'
 import Head from 'next/head'
@@ -33,17 +33,19 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 							Authorization: `Bearer ${apiKey} `,
 						},
 					})
-					setData(response.data)
+					if (response.data) {
+						setData(response.data)
+					} else {
+						router.push('/') // Перенаправляем на главную страницу
+					}
 				}
 			} catch (error) {
 				console.error('Error fetching data:', error)
+				router.push('/')
 			}
 		}
-
 		fetchData()
 	}, [slug])
-
-	console.log(data)
 
 	return (
 		<>
