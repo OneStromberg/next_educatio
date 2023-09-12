@@ -1,5 +1,5 @@
 import '@/styles/reset.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/Theme'
 import Header from '@/components/Header'
@@ -33,14 +33,22 @@ const Main = ({
 }) => {
 	const [isEnglish, setIsEnglish] = useState(false)
 
+	useEffect(() => {
+		const savedLanguage = localStorage.getItem('language')
+		if (savedLanguage) {
+			setIsEnglish(savedLanguage === 'en')
+		}
+	}, [])
+
 	const handleLanguageToggle = () => {
+		const newLanguage = isEnglish ? 'ua' : 'en'
+		localStorage.setItem('language', newLanguage)
 		setIsEnglish(!isEnglish)
 	}
 
 	return (
 		<>
 			<Head>
-				{/* Общие мета-теги */}
 				<title>ЦЕ — Центри Едукації у Львові</title>
 				<meta charset='utf-8' />
 				<meta
@@ -58,7 +66,6 @@ const Main = ({
 					content='Курси Навчання Освіта Львів Центри Едукації Центр Навчання Львівська міська рада Інститут міста Центри едукації Центри зайнястоті безкоштовна освіта безкоштовно розвиток'
 				/>
 				<meta name='author' content='Центр едукації' />
-				{/* Open Graph мета-теги */}
 				<meta property='og:url' content='https://ceducatio.com/' />
 				<meta property='og:type' content='website' />
 				<meta property='og:title' content='ЦЕ — Центри Едукації' />

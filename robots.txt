@@ -4,7 +4,7 @@ Disallow: /tmp/
 Disallow: /admin/
 Disallow: /api/
 
-User-agent: Yandexbot
-Disallow: /no-yandex/
+User-agent: Yandex
+Disallow: /
 
 Sitemap: http://ceducatio.com/sitemap.xml

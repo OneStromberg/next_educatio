@@ -402,7 +402,7 @@ const theme = createTheme({
       fontFamily: 'Roboto Condensed',
       fontSize: 26,
       fontWeight: 700,
-      lineHeight: 1.78,
+      lineHeight: 1.38,
       textTransform: 'uppercase',
     },
     about_subheading: {
