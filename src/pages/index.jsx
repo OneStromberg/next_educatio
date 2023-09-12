@@ -40,19 +40,37 @@ const Main = ({
 	return (
 		<>
 			<Head>
+				{/* Общие мета-теги */}
 				<title>ЦЕ — Центри Едукації у Львові</title>
+				<meta charset='utf-8' />
+				<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 				<meta
 					name='description'
-					content='Educatio is the leading center of education in Lviv. We offer a wide range of educational services. Join us to redefine your future.'
+					content='Мережа неформального навчання у Львові. Центри Едукації на базі місцевих бібліотек. Безкоштовні та малокоштовні довготривалі навчальні курси. Розвиток Львова як міста, що навчається'
 				/>
 				<meta
 					name='keywords'
-					content='Education, Educatio, Lviv, Center of education, CE, Освіта, Educatio, Львів, Центр освіти, ЦЕ, мережа ЦЕ —центрів едукації, центр едукації'
+					content='Курси Навчання Освіта Львів Центри Едукації Центр Навчання Львівська міська рада Інститут міста Центри едукації Центри зайнястоті безкоштовна освіта безкоштовно розвиток'
 				/>
 				<meta name='author' content='Центр едукації' />
-				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+				{/* Open Graph мета-теги */}
+				<meta property='og:url' content='https://ceducatio.com/' />
+				<meta property='og:type' content='website' />
+				<meta property='og:title' content='ЦЕ — Центри Едукації' />
+				<meta
+					property='og:description'
+					content='Мережа неформального навчання у Львові'
+				/>
+				<meta property='og:image' content={logo.src} />{' '}
 				<link rel='canonical' href='http://ceducatio.com/' />
 				<link rel='icon' href={logo.src} type='image/x-icon' />
+				<link
+					rel='alternate'
+					type='application/rss+xml'
+					title='ЦЕ - Центри Едукації'
+					href='https://ceducatio.com/'
+				/>
 			</Head>
 
 			<ThemeProvider theme={theme}>
