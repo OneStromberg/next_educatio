@@ -16,6 +16,7 @@ const CenterItem = styled(Box)`
 
 const Centers = ({ isEnglish, data }) => {
 	const isMobile = useMediaQuery('(max-width:600px)')
+	const isTablet = useMediaQuery('(max-width:1250px)')
 	if (!data || data.length < 1) {
 		return <></>
 	}
@@ -72,7 +73,7 @@ const Centers = ({ isEnglish, data }) => {
 							style={{
 								alignItems: 'center',
 								flexDirection: isMobile ? 'column' : 'row',
-								columnGap: 160,
+								columnGap: isTablet ? '5%' : '10%',
 								rowGap: isMobile ? 40 : 10,
 								padding: isMobile ? '15% 0' : '1% 0 1% 92px',
 							}}

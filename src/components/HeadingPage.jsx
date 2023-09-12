@@ -12,17 +12,21 @@ const StyledContainer = styled(Container)`
 	max-width: 100dvw;
 	padding: 25% 20%;
 	column-gap: 10%;
+	margin-top: 50px;
 
 	@media (max-width: 600px) {
 		flex-direction: column;
 		padding: 10% 4%;
+	}
+	@media (max-width: 1250px) {
+		padding: 15% 8%;
 	}
 `
 
 const HeadingPage = ({ isEnglish, data }) => {
 	const theme = useTheme()
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-	const isTablet = useMediaQuery('(max-width:970px)')
+	const isTablet = useMediaQuery('(max-width:1250px)')
 
 	const apiUrl = process.env.API_URL
 	if (!data) {
@@ -40,7 +44,7 @@ const HeadingPage = ({ isEnglish, data }) => {
 				background: `url(${background.src})`,
 				maxWidth: 'none',
 				maxHeight: isMobile ? '850px' : 'none',
-				height: isMobile ? '100dvh' : '100vh',
+				height: isTablet ? '100%' : '100vh',
 				justifyContent: 'center',
 				backgroundSize: 'cover',
 				backgroundPosition: 'center center',
@@ -58,7 +62,7 @@ const HeadingPage = ({ isEnglish, data }) => {
 					style={{ margin: '5% 0' }}
 				/>
 			)}
-			<div style={{ width: isMobile ? '100%' : isTablet ? '55%' : '40%' }}>
+			<div style={{ width: isMobile ? '100%' : isTablet ? '50%' : '40%' }}>
 				<Typography
 					variant='h1'
 					component='h1'
@@ -83,7 +87,14 @@ const HeadingPage = ({ isEnglish, data }) => {
 					<ReactMarkdown component='h2'>{subtext}</ReactMarkdown>
 				</Typography>
 			</div>
-			{!isMobile && <Image src={bgURL} alt='image' width={300} height={300} />}
+			{!isMobile && (
+				<Image
+					src={bgURL}
+					alt='image'
+					width={isTablet ? 250 : 300}
+					height={isTablet ? 250 : 300}
+				/>
+			)}
 		</StyledContainer>
 	)
 }

@@ -25,7 +25,7 @@ const StyledButton = styled(Button)`
 const CallbackForm = ({ isEnglish }) => {
 	const apiUrl = process.env.API_URL
 	const apiKey = process.env.API_TOKEN
-	const isMobile = useMediaQuery('(max-width:600px)')
+	const isMobile = useMediaQuery('(max-width:850px)')
 	const isTablet = useMediaQuery('(max-width:1345px)')
 	const [isHovered, setHovered] = useState(false)
 
@@ -178,13 +178,13 @@ const CallbackForm = ({ isEnglish }) => {
 				alignItems='center'
 				style={{
 					background: `url(${background.src}) no-repeat center`,
-					backgroundSize: isTablet ? 'cover' : isMobile ? 'contain' : '100%', // was 'contain'
-					width: isMobile ? '100%' : isTablet ? '80%' : '75%',
+					backgroundSize: isMobile ? 'cover' : '100%', // was 'contain'
+					width: isMobile ? '100%' : isTablet ? '85%' : '75%',
 					display: 'flex',
 					flexDirection: 'column',
 					height: '100%',
 					minHeight: 500,
-					aspectRatio: isTablet ? 'auto' : '9.5/4.9',
+					aspectRatio: isMobile ? 'auto' : '9.5/4.9',
 					// maxHeight: 700,
 					margin: isMobile ? '10% 0 -10% 0' : '10% auto',
 					// paddingBottom: 50,
@@ -219,6 +219,7 @@ const CallbackForm = ({ isEnglish }) => {
 						// height: '100%',
 						flexDirection: 'column',
 						alignItems: 'flex-end',
+						gap: isMobile ? '' : 10,
 						color: '#FFFFFFB2',
 					}}
 				>
@@ -229,7 +230,7 @@ const CallbackForm = ({ isEnglish }) => {
 						value={formData.name}
 						onChange={handleInputChange}
 						fullWidth
-						margin='normal'
+						margin='0'
 						variant='standard'
 						color='secondary'
 						required
@@ -245,7 +246,7 @@ const CallbackForm = ({ isEnglish }) => {
 						value={formData.phone}
 						onChange={handleInputChange}
 						fullWidth
-						margin='normal'
+						margin='0'
 						variant='standard'
 						color='secondary'
 						required
@@ -263,7 +264,7 @@ const CallbackForm = ({ isEnglish }) => {
 						value={formData.email}
 						onChange={handleInputChange}
 						fullWidth
-						margin='normal'
+						margin='0'
 						variant='standard'
 						color='secondary'
 						required
@@ -281,7 +282,7 @@ const CallbackForm = ({ isEnglish }) => {
 						value={formData.message}
 						onChange={handleInputChange}
 						fullWidth
-						margin='normal'
+						margin='0'
 						variant='standard'
 						color='secondary'
 						multiline
@@ -308,8 +309,8 @@ const CallbackForm = ({ isEnglish }) => {
 							width: '10%',
 							minWidth: 150,
 							alignSelf: 'flex-end',
-							padding: '0 0 4% 0',
-							margin: '2% 0',
+							padding: '0 0 1% 0',
+							margin: '2% 0 1% 0',
 							transition: '.3s',
 						}}
 					>
