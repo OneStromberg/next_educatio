@@ -35,7 +35,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
             background: `url(${educationalBg.src})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat no-repeat',
-            padding: isMobile ? '50px 50px 100px 0' : '4% 70px 8% 70px',
+            padding: isMobile ? '120px 50px 100px 0' : '6% 70px 8% 70px',
             paddingBottom: isWide ? '13%' : '8%',
             display: 'flex',
             flexDirection: 'column',

@@ -38,9 +38,8 @@ const Centers = ({ isEnglish, data }) => {
 					display: 'flex',
 					margin: '0 auto',
 					flexDirection: 'column',
-					padding: isMobile ? '' : '4.5% 0%',
+					padding: isMobile ? '50px 0 0 0' : '4.5% 0%',
 					width: '80%',
-					paddingTop: '70px',
 				}}
 			>
 				<Box

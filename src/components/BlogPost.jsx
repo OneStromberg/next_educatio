@@ -94,7 +94,7 @@ const BlogPost = ({ isEnglish, data }) => {
 						style={{
 							display: 'flex',
 							alignItems: 'center',
-							width: '20%',
+							width: isMobile ? '50%' : '20%',
 							margin: isMobile ? '10% 5%' : '60px 45% 0 0',
 							gap: 15,
 						}}
@@ -137,7 +137,7 @@ const BlogPost = ({ isEnglish, data }) => {
 					display: 'flex',
 					alignItems: 'center',
 					cursor: 'pointer',
-					width: '20%',
+					width: isMobile ? '50%' : '20%',
 					margin: '2% 5%',
 					gap: 15,
 					textDecoration: 'none',

@@ -14,7 +14,16 @@ import logo from '@/assets/footter_logo.svg'
 const BlogPostPage = ({ footerData, preferencesData }) => {
 	const [isEnglish, setIsEnglish] = useState(false)
 
+	useEffect(() => {
+		const savedLanguage = localStorage.getItem('language')
+		if (savedLanguage) {
+			setIsEnglish(savedLanguage === 'en')
+		}
+	}, [])
+
 	const handleLanguageToggle = () => {
+		const newLanguage = isEnglish ? 'ua' : 'en'
+		localStorage.setItem('language', newLanguage)
 		setIsEnglish(!isEnglish)
 	}
 	const router = useRouter()
@@ -36,7 +45,7 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 					if (response.data) {
 						setData(response.data)
 					} else {
-						router.push('/') // Перенаправляем на главную страницу
+						router.push('/')
 					}
 				}
 			} catch (error) {

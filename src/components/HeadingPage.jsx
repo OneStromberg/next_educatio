@@ -69,6 +69,7 @@ const HeadingPage = ({ isEnglish, data }) => {
 					gutterBottom
 					style={{
 						fontSize: isMobile ? 30 : '',
+						lineHeight: isMobile ? '1.2' : '',
 					}}
 				>
 					<ReactMarkdown component='h1'>{text}</ReactMarkdown>

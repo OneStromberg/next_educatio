@@ -20,9 +20,9 @@ const StyledCard = styled(Card)`
 	border-radius: 18px;
 	transition: 0.3s;
 	min-height: 512px;
-	max-height: 512px;
-	min-width: 360px;
+	width: 100%;
 	max-width: 360px;
+	align-self: center;
 
 	&:hover {
 		box-shadow: 0px 20px 60px 0px rgba(157, 166, 189, 0.8);
@@ -102,11 +102,11 @@ const Blog = ({ isEnglish, data }) => {
 		<Grid
 			container
 			spacing={3}
-			alignItems='center'
-			justifyContent='center'
 			style={{
 				background: `url(${snake.src}) center / 100% no-repeat `,
 				flexDirection: 'column',
+				alignItems: 'center',
+				justifyContent: 'center',
 			}}
 		>
 			<Grid
@@ -135,11 +135,10 @@ const Blog = ({ isEnglish, data }) => {
 					display: 'flex',
 					flexWrap: 'wrap',
 					// padding: isMobile ? 0 : '80px 0',
-					width: '90%',
+					width: '100%',
 					height: '100%',
 					flexDirection: isMobile ? 'column' : 'row',
 					gap: 20,
-					margin: isMobile ? '0 auto' : '',
 				}}
 			>
 				{displayedPosts
@@ -151,9 +150,11 @@ const Blog = ({ isEnglish, data }) => {
 							sm={6}
 							key={post.id}
 							style={{
-								maxHeight: 512,
-								maxWidth: 360,
+								width: '100%',
+								display: 'flex',
+								justifyContent: 'center',
 								alignItems: 'space-between',
+								margin: isMobile ? '0 auto' : '',
 							}}
 						>
 							<Link
@@ -161,7 +162,7 @@ const Blog = ({ isEnglish, data }) => {
 								passHref
 								style={{ textDecoration: 'none' }}
 							>
-								<StyledCard>
+								<StyledCard style={{ marginLeft: isMobile ? 20 : 0 }}>
 									<CardContent style={{ padding: 0, height: '100%' }}>
 										<Image
 											src={`${apiUrl.slice(0, apiUrl.length - 4)}${
@@ -176,7 +177,7 @@ const Blog = ({ isEnglish, data }) => {
 												display: 'flex',
 												flexDirection: 'column',
 												padding: '1em 2em 35px',
-												minHeight: '260px',
+												maxHeight: '260px',
 												height: '100%',
 												justifyContent: 'space-between',
 											}}

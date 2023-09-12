@@ -148,12 +148,12 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
 									key={review.id}
 									style={{
 										marginBottom: '1.5rem',
-										background: '#FFF',
+										background: '#FFF, lightgray 50% / contain no-repeat',
 										maxWidth: 400,
 										maxHeight: 300,
 										width: '100%',
 										borderRadius: 18,
-										boxShadow: '10px 20px 50px 0px rgba(229, 233, 246, 0.15)',
+										boxShadow: '10px 20px 50px 0px rgba(229, 233, 246, 0.4)',
 										padding: '20px 30px',
 										display: 'flex',
 										flexDirection: 'column',
