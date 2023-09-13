@@ -170,7 +170,12 @@ const Members = ({ isEnglish, data, preferences }) => {
 								</div>
 								<div
 									className='reg__wrapper'
-									style={{ display: 'flex', alignItems: 'center', gap: 10 }}
+									style={{
+										display: 'flex',
+										alignItems: 'center',
+										gap: 10,
+										marginTop: 10,
+									}}
 								>
 									<Typography variant='card_link' className='button'>
 										{isEnglish ? 'Registration' : 'Реєстрація'}{' '}

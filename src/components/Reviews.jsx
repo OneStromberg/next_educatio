@@ -153,7 +153,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
 										maxHeight: 300,
 										width: '100%',
 										borderRadius: 18,
-										boxShadow: '10px 20px 50px 0px rgba(229, 233, 246, 0.4)',
+										boxShadow: '10px 20px 50px 0px rgba(229, 233, 246, 0.1)',
 										padding: '20px 30px',
 										display: 'flex',
 										flexDirection: 'column',
