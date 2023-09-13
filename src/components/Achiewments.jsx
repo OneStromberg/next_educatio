@@ -91,7 +91,7 @@ const Achiewments = ({ isEnglish, data }) => {
                 width: '4.5%',
             }} alt="Right arrow" />
             <StyledTextContainer>
-                <Typography id='services' variant="h4_light" gutterBottom>
+                <Typography id='achievements' variant="h4_light" gutterBottom>
                     {pageTitle}
                 </Typography>
                 <Wavy fill={'#E8E7E0'} />

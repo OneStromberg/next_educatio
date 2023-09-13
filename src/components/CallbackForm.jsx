@@ -315,7 +315,7 @@ const CallbackForm = ({ isEnglish }) => {
 						}}
 					>
 						{buttonText}
-						<div style={{ width: 14, height: 9 }}>
+						<div style={{ width: 15, height: 10 }}>
 							<Arrow fill={isHovered ? '#E3B30A' : '#FFC804'} />
 						</div>
 					</StyledButton>

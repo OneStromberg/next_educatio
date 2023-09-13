@@ -27,6 +27,7 @@ const HeadingPage = ({ isEnglish, data }) => {
 	const theme = useTheme()
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 	const isTablet = useMediaQuery('(max-width:1250px)')
+	const isWide = useMediaQuery('(min-width:1600px)')
 
 	const apiUrl = process.env.API_URL
 	if (!data) {
@@ -92,8 +93,8 @@ const HeadingPage = ({ isEnglish, data }) => {
 				<Image
 					src={bgURL}
 					alt='image'
-					width={isTablet ? 250 : 300}
-					height={isTablet ? 250 : 300}
+					width={isTablet ? 250 : isWide ? 420 : 300}
+					height={isTablet ? 250 : isWide ? 420 : 300}
 				/>
 			)}
 		</StyledContainer>

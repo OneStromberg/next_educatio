@@ -34,6 +34,7 @@ const Centers = ({ isEnglish, data }) => {
 			<Box
 				mt={5}
 				mb={5}
+				id='centers'
 				style={{
 					display: 'flex',
 					margin: '0 auto',

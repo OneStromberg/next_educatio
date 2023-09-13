@@ -38,13 +38,17 @@ const TransparentAppBar = styled(AppBar)`
 `
 
 const StyledButton = styled(Button)`
-	cursor: pointer;
-	color: #afabb8;
-	text-decoration: none;
-	margin-right: 10px;
-	transition: 0.3s;
-	&:hover {
-		color: #1f1f71;
+	&& {
+		cursor: pointer;
+		color: #afabb8;
+		font-size: 16px;
+		text-transform: uppercase;
+		text-decoration: none;
+		margin-right: 10px;
+		transition: 0.3s;
+		&:hover {
+			color: #1f1f71;
+		}
 	}
 `
 
@@ -204,11 +208,12 @@ const MenuDrawer = ({
 	isMenuOpen,
 	handleMenuToggle,
 	handleScrollToSection,
-	about,
-	services,
+	actions,
+	achievements,
 	news,
 	calendar,
-	contact,
+	areas,
+	centers,
 	adress,
 	preferences,
 	socials,
@@ -247,7 +252,7 @@ const MenuDrawer = ({
 					flexDirection: isMobile ? 'column' : 'row',
 					flex: '1',
 					padding: isMobile ? '0' : '0 8%',
-					width: '100dvw',
+					width: '100%',
 				}}
 			>
 				{preferences?.attributes?.isShort ? (
@@ -256,25 +261,35 @@ const MenuDrawer = ({
 					<ListItem
 						button
 						style={{ justifyContent: isMobile ? 'start' : 'center' }}
-						onClick={() => handleScrollToSection('about')}
+						onClick={() => handleScrollToSection('actions')}
 					>
-						<StyledButton>{about}</StyledButton>
+						<StyledButton>{actions}</StyledButton>
 					</ListItem>
 				)}
 				<ListItem
 					button
 					style={{ justifyContent: isMobile ? 'start' : 'center' }}
-					onClick={() => handleScrollToSection('services')}
+					onClick={() => handleScrollToSection('achievements')}
 				>
-					<StyledButton>{services}</StyledButton>
+					<StyledButton>{achievements}</StyledButton>
 				</ListItem>
+
 				<ListItem
 					button
 					style={{ justifyContent: isMobile ? 'start' : 'center' }}
-					onClick={() => handleScrollToSection('news')}
+					onClick={() => handleScrollToSection('areas')}
 				>
-					<StyledButton>{news}</StyledButton>
+					<StyledButton>{areas}</StyledButton>
 				</ListItem>
+
+				<ListItem
+					button
+					style={{ justifyContent: isMobile ? 'start' : 'center' }}
+					onClick={() => handleScrollToSection('centers')}
+				>
+					<StyledButton>{centers}</StyledButton>
+				</ListItem>
+
 				{preferences?.attributes?.isShort ||
 				preferences.attributes.HideCalendar ? (
 					<></>
@@ -287,16 +302,17 @@ const MenuDrawer = ({
 						<StyledButton>{calendar}</StyledButton>
 					</ListItem>
 				)}
+
 				<ListItem
 					button
 					style={{ justifyContent: isMobile ? 'start' : 'center' }}
-					onClick={() => handleScrollToSection('contact')}
+					onClick={() => handleScrollToSection('news')}
 				>
-					<StyledButton>{contact}</StyledButton>
+					<StyledButton>{news}</StyledButton>
 				</ListItem>
 			</List>
 			<Divider
-				style={{ margin: '10px auto', width: isMobile ? '80%' : '90%' }}
+				style={{ margin: '10px auto', width: isMobile ? '80%' : '81%' }}
 			/>
 			<Grid
 				container
@@ -355,7 +371,8 @@ const MenuDrawer = ({
 						container
 						justifyContent='space-between'
 						style={{
-							padding: '2% 13% 4% 13%',
+							padding: '2% 0 4% 0',
+							width: '81%'
 						}}
 					>
 						<Typography variant='header_subtext'>
@@ -414,11 +431,12 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
 	}
 
 	const languageIcon = isEnglish ? 'ENG' : 'UA'
-	const about = isEnglish ? 'About us' : 'Про нас'
-	const services = isEnglish ? 'Services' : 'Послуги'
+	const actions = isEnglish ? 'About us' : 'НАШІ ПОДІЇ ТА НАВЧАННЯ'
+	const achievements = isEnglish ? 'achievements' : 'досягнення'
 	const news = isEnglish ? 'News' : 'Новини'
 	const calendar = isEnglish ? 'Calendar' : 'Календар'
-	const contact = isEnglish ? 'Contact' : 'Контакти'
+	const areas = isEnglish ? 'Educational areas' : 'НАВЧАЛЬНІ НАПРЯМИ'
+	const centers = isEnglish ? 'centers of Education' : 'ЦЕНТРИ ЕДУКАЦІЇ'
 
 	const adress = isEnglish
 		? socials?.attributes?.EnglishAdress
@@ -451,11 +469,12 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
 				isMenuOpen={isMenuOpen}
 				handleMenuToggle={handleMenuToggle}
 				handleScrollToSection={handleScrollToSection}
-				about={about}
-				services={services}
+				actions={actions}
+				achievements={achievements}
 				news={news}
 				calendar={calendar}
-				contact={contact}
+				areas={areas}
+				centers={centers}
 				adress={adress}
 				preferences={preferences}
 				socials={socials}
