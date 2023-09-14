@@ -326,7 +326,7 @@ const theme = createTheme({
 			fontWeight: 700,
 			color: '#242424',
 			fontSize: 24,
-			lineHeight: 2.33,
+			lineHeight: 1.15,
 		},
 		card_decorated_text: {
 			fontFamily: 'Roboto',
@@ -424,6 +424,9 @@ const theme = createTheme({
 	},
 })
 
-const responsiveTheme = responsiveFontSizes(theme)
+const responsiveTheme = responsiveFontSizes(theme, {
+	breakpoints: ['xs', 'sm', 'md', 'lg', 'xl'],
+	factor: 2,
+})
 
 export default responsiveTheme

@@ -23,15 +23,13 @@ const StyledCard = styled(Card)`
 	width: 100%;
 	max-width: 360px;
 	align-self: center;
+	box-shadow: 10px 40px 50px 0px rgba(229, 233, 246, 0.4);
 
 	&:hover {
 		box-shadow: 0px 20px 60px 0px rgba(157, 166, 189, 0.8);
 
 		.text-element {
 			color: rgba(98, 99, 103, 0.5);
-		}
-		.button {
-			font-weight: 700;
 		}
 	}
 	.read__wrapper {

@@ -19,7 +19,7 @@ const StyledContainer = styled(Container)`
 		padding: 10% 4%;
 	}
 	@media (max-width: 1250px) {
-		padding: 15% 8%;
+		padding: 15% 4%;
 	}
 `
 
@@ -44,13 +44,13 @@ const HeadingPage = ({ isEnglish, data }) => {
 			style={{
 				background: `url(${background.src})`,
 				maxWidth: 'none',
-				maxHeight: isMobile ? '850px' : 'none',
+				minHeight: isMobile ? '850px' : 'none',
 				height: isTablet ? '100%' : '100vh',
 				justifyContent: 'center',
 				backgroundSize: 'cover',
 				backgroundPosition: 'center center',
 				backgroundRepeat: 'no-repeat no-repeat',
-				paddingTop: isMobile ? 120 : '',
+				paddingTop: isMobile ? 20 : '',
 				rowGap: isMobile ? '50px' : '',
 			}}
 		>
@@ -63,7 +63,7 @@ const HeadingPage = ({ isEnglish, data }) => {
 					style={{ margin: '5% 0' }}
 				/>
 			)}
-			<div style={{ width: isMobile ? '100%' : isTablet ? '50%' : '40%' }}>
+			<div style={{ width: isMobile ? '100%' : isTablet ? '60%' : '40%' }}>
 				<Typography
 					variant='h1'
 					component='h1'

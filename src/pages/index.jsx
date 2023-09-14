@@ -1,7 +1,7 @@
 import '@/styles/reset.css'
 import { useState, useEffect } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
-import theme from '@/Theme'
+import responsiveTheme from '@/Theme'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import HeadingPage from '@/components/HeadingPage'
@@ -84,7 +84,7 @@ const Main = ({
 				/>
 			</Head>
 
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={responsiveTheme}>
 				<Header
 					onLanguageToggle={handleLanguageToggle}
 					isEnglish={isEnglish}

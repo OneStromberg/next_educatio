@@ -16,7 +16,7 @@ const CenterItem = styled(Box)`
 
 const Centers = ({ isEnglish, data }) => {
 	const isMobile = useMediaQuery('(max-width:600px)')
-	const isTablet = useMediaQuery('(max-width:1250px)')
+	const isTablet = useMediaQuery('(max-width:1300px)')
 	if (!data || data.length < 1) {
 		return <></>
 	}
