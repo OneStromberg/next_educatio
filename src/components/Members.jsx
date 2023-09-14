@@ -14,7 +14,8 @@ const StyledGrid = styled(Link)`
 	background: #fff;
 	border-radius: 18px;
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: stretch;
+	aspect-ratio: 1.2/1;
 	justify-content: center;
 	padding: 25px;
 	gap: 10px;
@@ -90,7 +91,7 @@ const Members = ({ isEnglish, data, preferences }) => {
 			<Grid
 				container
 				spacing={2}
-				style={{ maxWidth: isMobile ? '95%' : '70%' }}
+				style={{ width: isMobile ? '95%' : '80%', alignItems: 'stretch' }}
 			>
 				{data
 					.sort((a, b) => b.id - a.id)
