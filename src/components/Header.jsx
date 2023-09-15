@@ -63,6 +63,12 @@ const SocialWrapper = styled('div')`
 	gap: 30px;
 	align-items: center;
 	justify-content: center;
+	@media (max-width: 1280px) {
+		width: 35%;
+	}
+	@media (max-width: 1100px) {
+		width: 45%;
+	}
 `
 
 const StyledIcon = styled('svg')`
@@ -372,7 +378,7 @@ const MenuDrawer = ({
 						justifyContent='space-between'
 						style={{
 							padding: '2% 0 4% 0',
-							width: '81%'
+							width: '81%',
 						}}
 					>
 						<Typography variant='header_subtext'>

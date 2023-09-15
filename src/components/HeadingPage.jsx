@@ -5,12 +5,12 @@ import background from '../assets/heading_bg.svg'
 import Image from 'next/image'
 
 const StyledContainer = styled(Container)`
-	height: 100dvh;
+	max-height: 100dvh;
 	display: flex;
 	align-items: center;
 	color: #fff;
 	max-width: 100dvw;
-	padding: 25% 20%;
+	padding: 5% 20%;
 	column-gap: 10%;
 	margin-top: 50px;
 
@@ -19,7 +19,7 @@ const StyledContainer = styled(Container)`
 		padding: 10% 4%;
 	}
 	@media (max-width: 1280px) {
-		padding: 12% 4%;
+		padding: 10% 4%;
 	}
 `
 

@@ -66,8 +66,7 @@ const PartnersCarousel = ({ isEnglish }) => {
 	return (
 		<Box
 			style={{
-				paddingTop: '6%',
-				paddingBottom: '4%',
+				padding: '6% 0',
 				flexDirection: 'column',
 				alignItems: 'center',
 				width: '80%',

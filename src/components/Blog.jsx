@@ -133,7 +133,7 @@ const Blog = ({ isEnglish, data }) => {
 					display: 'flex',
 					flexWrap: 'wrap',
 					// padding: isMobile ? 0 : '80px 0',
-					width: '100%',
+					width: '90%',
 					height: '100%',
 					flexDirection: isMobile ? 'column' : 'row',
 					gap: 20,
@@ -148,6 +148,7 @@ const Blog = ({ isEnglish, data }) => {
 							sm={6}
 							key={post.id}
 							style={{
+								maxWidth: '360px',
 								width: '100%',
 								display: 'flex',
 								justifyContent: 'center',
@@ -160,16 +161,31 @@ const Blog = ({ isEnglish, data }) => {
 								passHref
 								style={{ textDecoration: 'none' }}
 							>
-								<StyledCard style={{ marginLeft: isMobile ? 20 : 0 }}>
+								<StyledCard
+									style={{
+										marginLeft: isMobile ? 20 : 0,
+										aspectRatio: '1.42/1',
+									}}
+								>
 									<CardContent style={{ padding: 0, height: '100%' }}>
-										<Image
-											src={`${apiUrl.slice(0, apiUrl.length - 4)}${
-												post?.attributes?.headingImage?.data?.attributes?.url
-											}`}
-											alt={post?.attributes?.Title}
-											width={380}
-											height={250}
-										/>
+										{post?.attributes?.headingImage?.data?.attributes?.url ? (
+											<Image
+												src={`${apiUrl.slice(0, apiUrl.length - 4)}${
+													post?.attributes?.headingImage?.data?.attributes?.url
+												}`}
+												alt={post?.attributes?.Title}
+												width={380}
+												height={250}
+											/>
+										) : (
+											<div
+												style={{
+													width: '380px',
+													height: '250px',
+													backgroundColor: '#fbfbfb',
+												}}
+											></div>
+										)}
 										<div
 											style={{
 												display: 'flex',
@@ -185,7 +201,10 @@ const Blog = ({ isEnglish, data }) => {
 													? post?.attributes?.EnglishTitle
 													: post?.attributes?.Title}
 											</Typography>
-											<Typography variant='news_text' className='text-element'>
+											<Typography
+												variant='news_preview_text'
+												className='text-element'
+											>
 												<ReactMarkdown>
 													{isEnglish
 														? truncateText(post?.attributes?.EnglishText, 35)
@@ -198,6 +217,7 @@ const Blog = ({ isEnglish, data }) => {
 												style={{
 													display: 'flex',
 													alignItems: 'center',
+													justifySelf: 'end',
 													gap: 10,
 												}}
 											>
@@ -215,9 +235,13 @@ const Blog = ({ isEnglish, data }) => {
 						</Grid>
 					))}
 			</Grid>
-			<StyledButton variant='outlined' onClick={() => setShowAll(!showAll)}>
-				{showAll ? hideNews : allNews}
-			</StyledButton>
+			{data.length > 3 ? (
+				<StyledButton variant='outlined' onClick={() => setShowAll(!showAll)}>
+					{showAll ? hideNews : allNews}
+				</StyledButton>
+			) : (
+				<></>
+			)}
 		</Grid>
 	)
 }

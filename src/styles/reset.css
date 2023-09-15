@@ -23,3 +23,7 @@
   #root, #__next {
     /* isolation: isolate; */
   }
+  .my-markdown p, pre, pre code {
+    max-width: 100svw;
+    word-wrap: break-word;
+}

@@ -27,6 +27,7 @@ const Footer = ({ isEnglish, data }) => {
 				height: '100%',
 				padding: '3% 8% 0 8%',
 				zIndex: 2,
+				border:'none'
 			}}
 		>
 			<Grid container alignItems='center' padding={'60px 0px'} gap={15}>

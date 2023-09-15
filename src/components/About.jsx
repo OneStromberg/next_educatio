@@ -1,43 +1,36 @@
-import {
-  Box,
-  Grid,
-  Typography,
-  useMediaQuery
-} from '@mui/material';
-import ReactMarkdown from 'react-markdown';
-import Image from 'next/image';
-import { styled } from '@mui/system';
-import Wavy from './UI/Wavy';
+import { Box, Grid, Typography, useMediaQuery } from '@mui/material'
+import ReactMarkdown from 'react-markdown'
+import Image from 'next/image'
+import { styled } from '@mui/system'
+import Wavy from './UI/Wavy'
 
 const StyledContainer = styled(Box)`
-    padding: 5% 10%;
-    margin: 0 auto;
+	padding: 5% 10%;
+	margin: 0 auto;
 
-    @media (max-width: 600px) {
-      padding: 20% 10%;
-    }
-`;
-
+	@media (max-width: 600px) {
+		padding: 20% 10%;
+	}
+`
 
 const StyledHeaderContainer = styled(Grid)`
-      grid-column: 1 / 3;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;
-      padding: 20px;
-`;
+	grid-column: 1 / 3;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	padding: 20px;
+`
 
 const About = ({ isEnglish, data }) => {
+	const apiUrl = process.env.API_URL
+	const isMobile = useMediaQuery('(max-width:1000px)')
 
-  const apiUrl = process.env.API_URL;
-  const isMobile = useMediaQuery('(max-width:600px)');
+	if (data.length < 1 || !data) {
+		return <></>
+	}
 
-  if (data.length < 1 || !data) {
-    return <></>;
-  }
-
-  return (
+	return (
 		<StyledContainer id='actions'>
 			<StyledHeaderContainer>
 				<Typography variant='h4' gutterBottom color={'#F7BA21'}>
@@ -51,6 +44,7 @@ const About = ({ isEnglish, data }) => {
 			<Box
 				style={{
 					display: isMobile ? 'flex' : 'grid',
+					alignItems: 'center',
 					flexDirection: isMobile ? 'column' : '',
 					gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
 					gap: isMobile ? '50px' : '80px 5%',
@@ -65,7 +59,8 @@ const About = ({ isEnglish, data }) => {
 								key={index}
 								style={{
 									display: 'flex',
-									justifyContent: isMobile ? 'center' : 'start',
+									justifyContent: 'center',
+									maxWidth: '100%',
 									marginTop: isMobile ? 0 : index % 2 === 0 ? '-15%' : '0',
 								}}
 							>
@@ -76,6 +71,10 @@ const About = ({ isEnglish, data }) => {
 									style={{
 										display: 'flex',
 										flexWrap: 'nowrap',
+										justifyContent: 'center',
+										alignItems: 'center',
+										width: '100%',
+										aspectRatio: '2.5/1',
 										flexDirection: isMobile ? 'column' : 'row',
 										// paddingTop: 40,
 									}}
@@ -93,14 +92,17 @@ const About = ({ isEnglish, data }) => {
 										xs={12}
 										sm={6}
 										margin={isMobile ? '15px 0 0 0' : '0 0 0 50px'}
-										maxWidth={290}
+										style={{
+											display: 'flex',
+											flexDirection: 'column',
+											gap: 5,
+										}}
 									>
 										<Typography variant='about_heading' gutterBottom>
 											{isEnglish
 												? item.attributes.EnglishTitle
 												: item.attributes.title}
 										</Typography>
-										<br />
 										<Typography variant='about_subheading' gutterBottom>
 											<ReactMarkdown>
 												{isEnglish
@@ -116,6 +118,6 @@ const About = ({ isEnglish, data }) => {
 			</Box>
 		</StyledContainer>
 	)
-};
+}
 
-export default About;
+export default About

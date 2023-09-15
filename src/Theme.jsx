@@ -241,12 +241,19 @@ const theme = createTheme({
 			color: '#000',
 			marginTop: 20,
 		},
-		news_text: {
+		news_preview_text: {
 			fontFamily: 'Roboto',
 			fontWeight: 300,
 			fontSize: 16,
 			lineHeight: 1.75,
 			color: '#7d7987',
+		},
+		news_text: {
+			fontFamily: 'Roboto',
+			fontWeight: 400,
+			fontSize: 18,
+			lineHeight: 1.75,
+			color: '#000',
 		},
 		subtitle5: {
 			fontFamily: 'Roboto',
@@ -407,6 +414,7 @@ const theme = createTheme({
 			fontFamily: 'Roboto',
 			fontSize: 16,
 			fontWeight: 300,
+			lineHeight: 1.5,
 		},
 		footer_text: {
 			color: '#FFF',

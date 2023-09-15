@@ -43,7 +43,7 @@ const BlogPost = ({ isEnglish, data }) => {
 			<div
 				style={{
 					position: 'relative',
-					height: isMobile ? '260px' : '75dvh',
+					height: isMobile ? '300px' : '80dvh',
 					width: '100%',
 					margin: 0,
 					background: `url(${apiUrl.slice(0, apiUrl.length - 4)}${
@@ -94,8 +94,8 @@ const BlogPost = ({ isEnglish, data }) => {
 						style={{
 							display: 'flex',
 							alignItems: 'center',
-							width: isMobile ? '50%' : '20%',
-							margin: isMobile ? '10% 5%' : '60px 45% 0 0',
+							width: isMobile ? '70%' : '20%',
+							margin: isMobile ? '4% 5%' : '60px 45% 0 0',
 							gap: 15,
 						}}
 					>
@@ -123,11 +123,19 @@ const BlogPost = ({ isEnglish, data }) => {
 				</Box>
 			</div>
 
-			<Box p={{ xs: 2, md: 10 }} py={5}>
+			<Box
+				p={{ xs: 2, md: 10 }}
+				py={6}
+				style={{
+					maxWidth: '100%',
+				}}
+			>
 				<Typography variant='news_text'>
-					<ReactMarkdown>
-						{isEnglish ? data.EnglishText : data.text}
-					</ReactMarkdown>
+					<Box className='my-markdown'>
+						<ReactMarkdown>
+							{isEnglish ? data.EnglishText : data.text}
+						</ReactMarkdown>
+					</Box>
 				</Typography>
 			</Box>
 			<StyledWrapper

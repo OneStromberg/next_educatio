@@ -16,7 +16,6 @@ const StyledTextContainer = styled(Grid)`
 	flex-direction: column;
 	align-items: flex-start;
 	padding-top: 2%;
-	padding-left: 6%;
 `
 
 const EducationalAreas = ({ isEnglish, data }) => {
@@ -38,98 +37,105 @@ const EducationalAreas = ({ isEnglish, data }) => {
 				background: `url(${educationalBg.src})`,
 				backgroundSize: 'cover',
 				backgroundRepeat: 'no-repeat no-repeat',
-				padding: isMobile ? '120px 50px 100px 0' : '6% 70px 8% 70px',
+				padding: isMobile ? '120px 0 100px 0' : '6% 0 8% 0',
 				paddingBottom: isWide ? '13%' : isShrink ? '5%' : '8%',
-				display: 'flex',
-				flexDirection: 'column',
-				gap: '90px',
-				margin: 0,
 			}}
 		>
-			<StyledTextContainer>
-				<Typography variant='h4_light' gutterBottom>
-					{pageTitle}
-				</Typography>
-				<Wavy fill={'#E8E7E0'} />
-			</StyledTextContainer>
-			<Grid
-				container
-				spacing={2}
+			<Box
 				style={{
-					display: isMobile ? 'flex' : 'flex',
-					flexDirection: isMobile ? 'column' : '',
-					padding: isMobile ? '' : '',
-					gap: isMobile ? 45 : '',
-					width: isShrink ? '100%' : '90%',
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '50px',
+					maxWidth: isMobile ? '90%' : '80%',
 					margin: '0 auto',
 				}}
 			>
-				{data.map((item, index) => (
-					<Grid
-						item
-						xs={12}
-						sm={6}
-						md={4}
-						key={item.id}
-						style={{
-							marginTop: isMobile ? '0' : `${-index * 25}px`,
-							padding: 0,
-						}}
-					>
-						<StyledGrid
-							container
-							alignItems={isMobile ? 'center' : 'flex-start'}
-							flexWrap={'nowrap'}
-							margin={0}
+				<StyledTextContainer>
+					<Typography variant='h4_light' gutterBottom>
+						{pageTitle}
+					</Typography>
+					<Wavy fill={'#E8E7E0'} />
+				</StyledTextContainer>
+				<Grid
+					container
+					spacing={2}
+					style={{
+						display: isMobile ? 'flex' : 'flex',
+						flexDirection: isMobile ? 'column' : '',
+						padding: isMobile ? '' : '',
+						gap: isMobile ? 45 : '',
+						width: '100%',
+						margin: '0 auto',
+					}}
+				>
+					{data.map((item, index) => (
+						<Grid
+							item
+							xs={12}
+							sm={6}
+							md={4}
+							key={item.id}
+							style={{
+								marginTop: isMobile ? '0' : `${index * -35}px`,
+								padding: 0,
+							}}
 						>
-							<Typography
-								variant='member_number'
-								style={{
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center',
-									justifySelf: 'center',
-									backgroundImage: `url(${num_bg.src})`,
-									backgroundPosition: 'center',
-									backgroundRepeat: 'no-repeat',
-									backgroundSize: 'contain',
-									padding: '10% 0% 20% 0',
-									width: '100%',
-									height: '100%',
-									zIndex: 0,
-								}}
+							<StyledGrid
+								container
+								position='relative'
+								alignItems='center'
+								flexWrap={'nowrap'}
+								margin={0}
 							>
-								{item.id}
-							</Typography>
-							<Box
-								width={'100%'}
-								style={{
-									display: 'flex',
-									flexDirection: 'column',
-									justifyContent: 'center',
-								}}
-							>
-								<Typography variant='member_title'>
-									{isEnglish
-										? item.attributes.EnglishTitle
-										: item.attributes.title}
-								</Typography>
-								{/* <br /> */}
 								<Typography
-									variant='member_subtitle'
-									style={{ width: isMobile ? '100%' : '135%', zIndex: 1 }}
+									variant='member_number'
+									style={{
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+										justifySelf: 'center',
+										backgroundImage: `url(${num_bg.src})`,
+										backgroundPosition: 'center',
+										backgroundRepeat: 'no-repeat',
+										backgroundSize: '180px 180px',
+										width: '100%',
+										height: '180px',
+										zIndex: 0,
+									}}
 								>
-									<ReactMarkdown>
-										{isEnglish
-											? item.attributes.EnglishText
-											: item.attributes.text}
-									</ReactMarkdown>
+									{index + 1}
 								</Typography>
-							</Box>
-						</StyledGrid>
-					</Grid>
-				))}
-			</Grid>
+								<Box
+									width={'100%'}
+									style={{
+										display: 'flex',
+										flexDirection: 'column',
+										justifyContent: 'center',
+										zIndex: 1,
+									}}
+								>
+									<Typography variant='member_title'>
+										{isEnglish
+											? item.attributes.EnglishTitle
+											: item.attributes.title}
+									</Typography>
+									{/* <br /> */}
+									<Typography
+										variant='member_subtitle'
+										style={{ width: isMobile ? '100%' : '130%' }}
+									>
+										<ReactMarkdown>
+											{isEnglish
+												? item.attributes.EnglishText
+												: item.attributes.text}
+										</ReactMarkdown>
+									</Typography>
+								</Box>
+							</StyledGrid>
+						</Grid>
+					))}
+				</Grid>
+			</Box>
 		</Box>
 	)
 }
