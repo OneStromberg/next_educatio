@@ -21,7 +21,8 @@ const StyledTextContainer = styled(Grid)`
 
 const EducationalAreas = ({ isEnglish, data }) => {
 	const isMobile = useMediaQuery('(max-width:600px)')
-	const isWide = useMediaQuery('(min-width: 1280px)')
+	const isWide = useMediaQuery('(min-width: 1300px)')
+	const isShrink = useMediaQuery('(max-width: 1250px)')
 	if (!data || data.length < 1) {
 		return <></>
 	}
@@ -38,7 +39,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 				backgroundSize: 'cover',
 				backgroundRepeat: 'no-repeat no-repeat',
 				padding: isMobile ? '120px 50px 100px 0' : '6% 70px 8% 70px',
-				paddingBottom: isWide ? '13%' : '8%',
+				paddingBottom: isWide ? '13%' : isShrink ? '5%' : '8%',
 				display: 'flex',
 				flexDirection: 'column',
 				gap: '90px',
@@ -59,7 +60,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 					flexDirection: isMobile ? 'column' : '',
 					padding: isMobile ? '' : '',
 					gap: isMobile ? 45 : '',
-					width: '90%',
+					width: isShrink ? '100%' : '90%',
 					margin: '0 auto',
 				}}
 			>
@@ -77,9 +78,9 @@ const EducationalAreas = ({ isEnglish, data }) => {
 					>
 						<StyledGrid
 							container
-							alignItems={isMobile ? 'center' : 'fles-start'}
+							alignItems={isMobile ? 'center' : 'flex-start'}
 							flexWrap={'nowrap'}
-							marfin={0}
+							margin={0}
 						>
 							<Typography
 								variant='member_number'
@@ -95,6 +96,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 									padding: '10% 0% 20% 0',
 									width: '100%',
 									height: '100%',
+									zIndex: 0,
 								}}
 							>
 								{item.id}
@@ -112,8 +114,11 @@ const EducationalAreas = ({ isEnglish, data }) => {
 										? item.attributes.EnglishTitle
 										: item.attributes.title}
 								</Typography>
-								<br />
-								<Typography variant='member_subtitle'>
+								{/* <br /> */}
+								<Typography
+									variant='member_subtitle'
+									style={{ width: isMobile ? '100%' : '135%', zIndex: 1 }}
+								>
 									<ReactMarkdown>
 										{isEnglish
 											? item.attributes.EnglishText

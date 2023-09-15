@@ -251,7 +251,7 @@ const MenuDrawer = ({
 					display: 'flex',
 					flexDirection: isMobile ? 'column' : 'row',
 					flex: '1',
-					padding: isMobile ? '0' : '0 8%',
+					padding: isMobile ? '0 0 0 5%' : '0 8%',
 					width: '100%',
 				}}
 			>
