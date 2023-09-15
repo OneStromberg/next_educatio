@@ -106,7 +106,7 @@ const Members = ({ isEnglish, data, preferences }) => {
 									style={{ display: 'flex', gap: 15, alignItems: 'center' }}
 									className='text-element'
 								>
-									<Image src={GeoPin.src} width={24} height={24}></Image>
+									<Image src={GeoPin.src} width={24} height={24} alt='geo_pin'></Image>
 									<Typography variant='card_subheader'>
 										{isEnglish
 											? item.attributes.EnglishAdress
