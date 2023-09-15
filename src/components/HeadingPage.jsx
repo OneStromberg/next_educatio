@@ -1,3 +1,4 @@
+import React from 'react'
 import { Container, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ReactMarkdown from 'react-markdown'
 import { styled } from '@mui/system'
@@ -73,8 +74,11 @@ const HeadingPage = ({ isEnglish, data }) => {
 						lineHeight: isMobile ? '1.2' : '',
 					}}
 				>
-					<ReactMarkdown component='h1'>{text}</ReactMarkdown>
+					<ReactMarkdown components={{ p: React.Fragment }}>
+						{text}
+					</ReactMarkdown>
 				</Typography>
+
 				<Typography
 					variant='h2'
 					gutterBottom
@@ -86,7 +90,9 @@ const HeadingPage = ({ isEnglish, data }) => {
 						fontSize: isMobile ? 14 : '',
 					}}
 				>
-					<ReactMarkdown component='h2'>{subtext}</ReactMarkdown>
+					<ReactMarkdown components={{ p: 'h2' }}>
+						{subtext}
+					</ReactMarkdown>
 				</Typography>
 			</div>
 			{!isMobile && (
