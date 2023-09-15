@@ -18,15 +18,15 @@ const StyledContainer = styled(Container)`
 		flex-direction: column;
 		padding: 10% 4%;
 	}
-	@media (max-width: 1250px) {
-		padding: 15% 4%;
+	@media (max-width: 1280px) {
+		padding: 12% 4%;
 	}
 `
 
 const HeadingPage = ({ isEnglish, data }) => {
 	const theme = useTheme()
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-	const isTablet = useMediaQuery('(max-width:1250px)')
+	const isTablet = useMediaQuery('(max-width:1280px)')
 	const isWide = useMediaQuery('(min-width:1600px)')
 
 	const apiUrl = process.env.API_URL
@@ -82,7 +82,7 @@ const HeadingPage = ({ isEnglish, data }) => {
 						display: 'flex',
 						flexDirection: 'column',
 						gap: 20,
-						width: '75%',
+						width: isTablet ? '90%' : '75%',
 						fontSize: isMobile ? 14 : '',
 					}}
 				>

@@ -426,7 +426,7 @@ const theme = createTheme({
 
 const responsiveTheme = responsiveFontSizes(theme, {
 	breakpoints: ['xs', 'sm', 'md', 'lg', 'xl'],
-	factor: 3,
+	factor: 4,
 })
 
 export default responsiveTheme
