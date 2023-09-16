@@ -103,7 +103,7 @@ const Main = ({
 					preferences={preferencesData}
 				/>
 
-				{preferencesData?.attributes.isShort ? (
+				{preferencesData?.attributes?.isShort ? (
 					<>
 						<DynamicAbout isEnglish={isEnglish} data={aboutData} />
 						<DynamicAchiewments isEnglish={isEnglish} data={achiewmentsData} />

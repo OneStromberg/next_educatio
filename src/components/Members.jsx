@@ -45,7 +45,7 @@ const StyledGrid = styled(Link)`
 const Members = ({ isEnglish, data, preferences }) => {
 	const isMobile = useMediaQuery('(max-width:600px)')
 
-	if (preferences.attributes.isShort || !data || data.length < 1) {
+	if (preferences?.attributes?.isShort || !data || data.length < 1) {
 		return <></>
 	}
 	const pageTitle = isEnglish
@@ -106,13 +106,18 @@ const Members = ({ isEnglish, data, preferences }) => {
 									style={{ display: 'flex', gap: 15, alignItems: 'center' }}
 									className='text-element'
 								>
-									<Image src={GeoPin.src} width={24} height={24} alt='geo_pin'></Image>
+									<Image
+										src={GeoPin.src}
+										width={24}
+										height={24}
+										alt='geo_pin'
+									></Image>
 									<Typography variant='card_subheader'>
 										{item.attributes.adress}
 									</Typography>
 								</div>
 								<Typography variant='card_date' className='text-element'>
-									{ item.attributes.date}
+									{item.attributes.date}
 								</Typography>
 								<Typography variant='card_place' className='text-element'>
 									{item.attributes.type}

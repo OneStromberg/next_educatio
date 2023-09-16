@@ -297,7 +297,7 @@ const MenuDrawer = ({
 				</ListItem>
 
 				{preferences?.attributes?.isShort ||
-				preferences.attributes.hideCalendar ? (
+				preferences?.attributes?.hideCalendar ? (
 					<></>
 				) : (
 					<ListItem
@@ -401,6 +401,8 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
 	const [isMenuOpen, setMenuOpen] = useState(false)
 	const [isHovered, setHovered] = useState(null)
 	const router = useRouter()
+
+	console.log(preferences, socials)
 
 	const handleMenuToggle = () => {
 		setMenuOpen(!isMenuOpen)

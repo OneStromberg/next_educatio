@@ -7,7 +7,7 @@ export async function getServerSideProps(context) {
 
 	const fetchData = async url => {
 		try {
-			const response = await axios.get(`${url}?locale=${locale}&populate=*`, {
+			const response = await axios.get(`${url}?_locale=${locale}&populate=*`, {
 				headers: {
 					Authorization: `Bearer ${apiKey}`,
 				},
