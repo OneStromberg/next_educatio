@@ -41,7 +41,7 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 			try {
 				if (slug) {
 					const response = await axios.get(
-						`${apiUrl}/blog-posts/${slug}?locale=${locale}`,
+						`${apiUrl}/blog-posts/${slug}?_locale=${locale}`,
 						{
 							headers: {
 								Authorization: `Bearer ${apiKey} `,
