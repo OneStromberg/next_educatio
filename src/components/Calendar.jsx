@@ -8,25 +8,23 @@ const CalendarContainer = ({ isEnglish, preferences }) => {
 	const apiUrl = process.env.API_URL
 	const apiKey = process.env.API_TOKEN
 
-	if (!preferences.isShort || !preferences.hideCalendar) {
-		useEffect(() => {
-			const fetchData = async () => {
-				try {
-					const response = await axios.get(`${apiUrl}/calendar`, {
-						headers: {
-							Authorization: `Bearer ${apiKey}`,
-						},
-					})
-					setData(response.data.data.attributes)
-				} catch (error) {
-					console.error('Error fetching data:', error)
-				}
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await axios.get(`${apiUrl}/calendar`, {
+					headers: {
+						Authorization: `Bearer ${apiKey}`,
+					},
+				})
+				setData(response.data.data.attributes)
+			} catch (error) {
+				console.error('Error fetching data:', error)
 			}
+		}
 
-			fetchData()
-		}, [])
-	}
-	
+		fetchData()
+	}, [])
+
 	if (!data) {
 		return (
 			<div id='calendar'>

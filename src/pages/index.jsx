@@ -21,7 +21,6 @@ const DynamicAchiewments = dynamic(() => import('@/components/Achiewments'))
 const DynamicCenters = dynamic(() => import('@/components/Centers'))
 import Head from 'next/head'
 import { getServerSideProps } from '../ssr'
-import Centers from '@/components/Centers'
 import logo from '@/assets/footter_logo.svg'
 
 const Main = ({
