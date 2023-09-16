@@ -24,9 +24,8 @@ const StyledContainer = styled(Container)`
 	}
 `
 
-const HeadingPage = ({ isEnglish, data }) => {
-	const theme = useTheme()
-	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+const HeadingPage = ({ isEnglish, data, preferences }) => {
+	const isMobile = useMediaQuery('(max-width:600px)')
 	const isTablet = useMediaQuery('(max-width:1280px)')
 	const isWide = useMediaQuery('(min-width:1600px)')
 
@@ -34,16 +33,18 @@ const HeadingPage = ({ isEnglish, data }) => {
 	if (!data) {
 		return null
 	}
-
-	const text = isEnglish ? data.englishText : data.text
-	const subtext = isEnglish ? data.exnglishSubText : data.subtext
+	const isShort = preferences?.attributes?.isShort
+	const text = data.text
+	const subtext = data.subtext
+	// const backgroundImage = null
 	const backgroundImage = data?.BackgroundImage?.data?.attributes?.url
 	const bgURL = apiUrl.slice(0, apiUrl.length - 4) + backgroundImage
 
 	return (
 		<StyledContainer
 			style={{
-				background: `url(${background.src})`,
+				backgroundImage: `url(${background.src})`,
+				backgroundColor: ` ${isShort ? '#fff' : '#FBFBFB'}`,
 				maxWidth: 'none',
 				minHeight: isMobile ? '850px' : 'none',
 				height: isTablet ? '100%' : '100vh',
@@ -55,15 +56,9 @@ const HeadingPage = ({ isEnglish, data }) => {
 				rowGap: isMobile ? '50px' : '',
 			}}
 		>
-			{isMobile && (
-				<Image
-					src={bgURL}
-					alt='image'
-					width={240}
-					height={240}
-					style={{ margin: '5% 0' }}
-				/>
-			)}
+			<div style={{ display: isMobile ? 'block' : 'none' }}>
+				<Image src={bgURL} alt='image' width={240} height={240} />
+			</div>
 			<div style={{ width: isMobile ? '100%' : isTablet ? '60%' : '40%' }}>
 				<Typography
 					variant='h1'
@@ -81,6 +76,7 @@ const HeadingPage = ({ isEnglish, data }) => {
 
 				<Typography
 					variant='h2'
+					component={'span'}
 					gutterBottom
 					style={{
 						display: 'flex',
@@ -90,19 +86,17 @@ const HeadingPage = ({ isEnglish, data }) => {
 						fontSize: isMobile ? 14 : '',
 					}}
 				>
-					<ReactMarkdown components={{ p: 'h2' }}>
-						{subtext}
-					</ReactMarkdown>
+					<ReactMarkdown components={{ p: 'h2' }}>{subtext}</ReactMarkdown>
 				</Typography>
 			</div>
-			{!isMobile && (
+			<div style={{ display: isMobile ? 'none' : 'block' }}>
 				<Image
 					src={bgURL}
 					alt='image'
 					width={isTablet ? 250 : isWide ? 420 : 300}
 					height={isTablet ? 250 : isWide ? 420 : 300}
 				/>
-			)}
+			</div>
 		</StyledContainer>
 	)
 }

@@ -2,7 +2,7 @@ import { Box, Grid, Typography, useMediaQuery } from '@mui/material'
 import { styled } from '@mui/system'
 import ReactMarkdown from 'react-markdown'
 import Wavy from './UI/Wavy'
-import educationalBg from '../assets/educational_bg.svg'
+import educationalBg from '../assets/ed_areas.svg'
 import num_bg from '../assets/num_bg.svg'
 
 const StyledGrid = styled(Grid)`
@@ -31,10 +31,10 @@ const EducationalAreas = ({ isEnglish, data }) => {
 	return (
 		<Box
 			mt={0}
-			mb={5}
+			mb={0}
 			id='areas'
 			style={{
-				background: `url(${educationalBg.src})`,
+				background: `url(${educationalBg.src}), linear-gradient(to bottom, #FFFFFF, #FBFBFB)`,
 				backgroundSize: 'cover',
 				backgroundRepeat: 'no-repeat no-repeat',
 				padding: isMobile ? '120px 0 100px 0' : '6% 0 8% 0',
@@ -115,20 +115,14 @@ const EducationalAreas = ({ isEnglish, data }) => {
 									}}
 								>
 									<Typography variant='member_title'>
-										{isEnglish
-											? item.attributes.EnglishTitle
-											: item.attributes.title}
+										{item.attributes.title}
 									</Typography>
 									{/* <br /> */}
 									<Typography
 										variant='member_subtitle'
 										style={{ width: isMobile ? '100%' : '130%' }}
 									>
-										<ReactMarkdown>
-											{isEnglish
-												? item.attributes.EnglishText
-												: item.attributes.text}
-										</ReactMarkdown>
+										<ReactMarkdown>{item.attributes.text}</ReactMarkdown>
 									</Typography>
 								</Box>
 							</StyledGrid>

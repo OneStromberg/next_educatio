@@ -297,7 +297,7 @@ const MenuDrawer = ({
 				</ListItem>
 
 				{preferences?.attributes?.isShort ||
-				preferences.attributes.HideCalendar ? (
+				preferences.attributes.hideCalendar ? (
 					<></>
 				) : (
 					<ListItem
@@ -369,7 +369,7 @@ const MenuDrawer = ({
 							{socials?.attributes?.email}
 						</Typography>
 						<Typography variant='header_subtext'>
-							<ReactMarkdown>{adress}</ReactMarkdown>
+							{adress ? <ReactMarkdown>{adress}</ReactMarkdown> : <></>}
 						</Typography>
 					</Grid>
 				) : (
@@ -382,7 +382,7 @@ const MenuDrawer = ({
 						}}
 					>
 						<Typography variant='header_subtext'>
-							<ReactMarkdown>{adress}</ReactMarkdown>
+							{adress ? <ReactMarkdown>{adress}</ReactMarkdown> : <></>}
 						</Typography>
 						<Typography
 							variant='header_subtext'
@@ -430,10 +430,21 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
 		}
 	}, [])
 
+	useEffect(() => {
+		const savedLocale = localStorage.getItem('locale')
+		if (savedLocale) {
+			router.push(router.pathname, router.asPath, { locale: savedLocale })
+		} else {
+			localStorage.setItem('locale', 'uk-UA')
+			router.push(router.pathname, router.asPath, { locale: 'uk-UA' })
+		}
+	}, [])
+
 	const toggleLanguage = () => {
+		const newLocale = isEnglish ? 'uk-UA' : 'en'
+		localStorage.setItem('locale', newLocale)
 		onLanguageToggle()
-		const newLanguage = isEnglish ? 'ua' : 'en'
-		localStorage.setItem('language', newLanguage)
+		router.push(router.asPath, router.asPath, { locale: newLocale })
 	}
 
 	const languageIcon = isEnglish ? 'ENG' : 'UA'
@@ -444,9 +455,7 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
 	const areas = isEnglish ? 'Educational areas' : 'НАВЧАЛЬНІ НАПРЯМИ'
 	const centers = isEnglish ? 'centers of Education' : 'ЦЕНТРИ ЕДУКАЦІЇ'
 
-	const adress = isEnglish
-		? socials?.attributes?.EnglishAdress
-		: socials?.attributes?.adress
+	const adress = socials?.attributes?.adress
 
 	return (
 		<>

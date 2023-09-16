@@ -19,6 +19,7 @@ const StyledIcon = styled('svg')`
 const Footer = ({ isEnglish, data }) => {
 	const isMobile = useMediaQuery('(max-width: 600px)')
 	const [isHovered, setHovered] = useState(null)
+	const adress = data?.attributes?.adress
 
 	return (
 		<footer
@@ -27,7 +28,7 @@ const Footer = ({ isEnglish, data }) => {
 				height: '100%',
 				padding: '3% 8% 0 8%',
 				zIndex: 2,
-				border:'none'
+				border: 'none',
 			}}
 		>
 			<Grid container alignItems='center' padding={'60px 0px'} gap={15}>
@@ -35,11 +36,7 @@ const Footer = ({ isEnglish, data }) => {
 					<Grid container direction='column' alignItems='start' gap={3}>
 						<Image src={logo.src} alt='logo' width={80} height={35} />
 						<Typography variant='footer_text' align='start' marginBottom={2}>
-							<ReactMarkdown variant='footer_text'>
-								{isEnglish
-									? data?.attributes?.EnglishAdress
-									: data?.attributes?.adress}
-							</ReactMarkdown>
+							{adress ? <ReactMarkdown>{adress}</ReactMarkdown> : <></>}
 						</Typography>
 						<Grid
 							container
@@ -106,11 +103,7 @@ const Footer = ({ isEnglish, data }) => {
 						>
 							<Image src={logo.src} alt='logo' width={80} height={35} />
 							<Typography variant='footer_text' align='left' marginBottom={2}>
-								<ReactMarkdown variant='footer_text'>
-									{isEnglish
-										? data?.attributes?.EnglishAdress
-										: data?.attributes?.adress}
-								</ReactMarkdown>
+								{adress ? <ReactMarkdown>{adress}</ReactMarkdown> : <></>}
 							</Typography>
 						</Grid>
 						<Grid
@@ -141,7 +134,6 @@ const Footer = ({ isEnglish, data }) => {
 						>
 							<Typography
 								variant='footer_subtext'
-								align='end'
 								style={{
 									display: 'flex',
 									flexDirection: 'column',

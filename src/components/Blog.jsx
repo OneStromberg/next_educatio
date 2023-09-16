@@ -197,23 +197,18 @@ const Blog = ({ isEnglish, data }) => {
 											}}
 										>
 											<Typography variant='news_preview_title' gutterBottom>
-												{isEnglish
-													? post?.attributes?.EnglishTitle
-													: post?.attributes?.Title}
+												{ post?.attributes?.title}
 											</Typography>
 											<Typography
 												variant='news_preview_text'
 												className='text-element'
 											>
 												<ReactMarkdown>
-													{isEnglish
-														? truncateText(post?.attributes?.EnglishText, 35)
-														: truncateText(post?.attributes?.text, 35)}
+													{truncateText(post?.attributes?.text, 35)}
 												</ReactMarkdown>
 											</Typography>
 											<div
 												className='read__wrapper'
-												paddingTop={3}
 												style={{
 													display: 'flex',
 													alignItems: 'center',

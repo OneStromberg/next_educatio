@@ -1,12 +1,13 @@
 import axios from 'axios'
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
 	const apiUrl = process.env.API_URL
 	const apiKey = process.env.API_TOKEN
+	const locale = context.locale
 
 	const fetchData = async url => {
 		try {
-			const response = await axios.get(url, {
+			const response = await axios.get(`${url}?locale=${locale}&populate=*`, {
 				headers: {
 					Authorization: `Bearer ${apiKey}`,
 				},
@@ -30,16 +31,16 @@ export async function getServerSideProps() {
 		preferencesData,
 		footerData,
 	] = await Promise.all([
-		fetchData(`${apiUrl}/main-pages/1?populate=*`),
-		fetchData(`${apiUrl}/about-uses/?populate=*`),
+		fetchData(`${apiUrl}/main-page`),
+		fetchData(`${apiUrl}/about-uses`),
 		fetchData(`${apiUrl}/educational-areas/?populate=*`),
 		fetchData(`${apiUrl}/members`),
 		fetchData(`${apiUrl}/centers`),
-		fetchData(`${apiUrl}/reviews`),
-		fetchData(`${apiUrl}/achiewments/?populate=*`),
-		fetchData(`${apiUrl}/blog-posts/?populate=*`),
-		fetchData(`${apiUrl}/site-preferences/1?populate=*`),
-		fetchData(`${apiUrl}/footers/1?populate=*`),
+		fetchData(`${apiUrl}/reviews/`),
+		fetchData(`${apiUrl}/achiewments`),
+		fetchData(`${apiUrl}/blog-posts`),
+		fetchData(`${apiUrl}/site-preference`),
+		fetchData(`${apiUrl}/footer`),
 	])
 
 	if (
@@ -64,6 +65,7 @@ export async function getServerSideProps() {
 
 	return {
 		props: {
+			locale: locale,
 			mainData: mainData ? mainData.attributes : null,
 			aboutData: aboutData || null,
 			areasData: areasData || null,

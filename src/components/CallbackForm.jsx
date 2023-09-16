@@ -230,7 +230,6 @@ const CallbackForm = ({ isEnglish }) => {
 						value={formData.name}
 						onChange={handleInputChange}
 						fullWidth
-						margin='0'
 						variant='standard'
 						color='secondary'
 						required
@@ -246,7 +245,6 @@ const CallbackForm = ({ isEnglish }) => {
 						value={formData.phone}
 						onChange={handleInputChange}
 						fullWidth
-						margin='0'
 						variant='standard'
 						color='secondary'
 						required
@@ -264,7 +262,6 @@ const CallbackForm = ({ isEnglish }) => {
 						value={formData.email}
 						onChange={handleInputChange}
 						fullWidth
-						margin='0'
 						variant='standard'
 						color='secondary'
 						required
@@ -282,7 +279,6 @@ const CallbackForm = ({ isEnglish }) => {
 						value={formData.message}
 						onChange={handleInputChange}
 						fullWidth
-						margin='0'
 						variant='standard'
 						color='secondary'
 						multiline

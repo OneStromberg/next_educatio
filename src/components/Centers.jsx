@@ -78,9 +78,7 @@ const Centers = ({ isEnglish, data }) => {
 									}}
 								>
 									<Typography variant='card_header'>
-										{isEnglish
-											? item.attributes.EnglishName
-											: item.attributes.name}
+										{item.attributes.name}
 									</Typography>
 									<Box display='flex' gap={1} style={{ textAlign: 'start' }}>
 										<Image
@@ -91,9 +89,7 @@ const Centers = ({ isEnglish, data }) => {
 										/>
 										<Typography variant='card_subheader'>
 											<ReactMarkdown>
-												{isEnglish
-													? item.attributes.EnglishAdress
-													: item.attributes.adress}
+												{item.attributes.adress}
 											</ReactMarkdown>
 										</Typography>
 									</Box>

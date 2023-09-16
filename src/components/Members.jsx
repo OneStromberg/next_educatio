@@ -108,25 +108,17 @@ const Members = ({ isEnglish, data, preferences }) => {
 								>
 									<Image src={GeoPin.src} width={24} height={24} alt='geo_pin'></Image>
 									<Typography variant='card_subheader'>
-										{isEnglish
-											? item.attributes.EnglishAdress
-											: item.attributes.adress}
+										{item.attributes.adress}
 									</Typography>
 								</div>
 								<Typography variant='card_date' className='text-element'>
-									{isEnglish
-										? item.attributes.EnglishDate
-										: item.attributes.date}
+									{ item.attributes.date}
 								</Typography>
 								<Typography variant='card_place' className='text-element'>
-									{isEnglish
-										? item.attributes.EnglishType
-										: item.attributes.type}
+									{item.attributes.type}
 								</Typography>
 								<Typography variant='card_event'>
-									{isEnglish
-										? item.attributes.EnglishEvent
-										: item.attributes.event}
+									{item.attributes.event}
 								</Typography>
 								<div style={{ display: 'flex', gap: 20 }}>
 									<div
@@ -150,9 +142,7 @@ const Members = ({ isEnglish, data, preferences }) => {
 												width: 'max-content',
 											}}
 										>
-											{isEnglish
-												? item.attributes.EnglishDesc
-												: item.attributes.description}
+											{item.attributes.description}
 										</Typography>
 									</div>
 									{item.attributes.hit && (

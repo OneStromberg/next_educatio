@@ -75,7 +75,7 @@ const BlogPost = ({ isEnglish, data }) => {
 							margin: isMobile ? '50px 15px 0px 15px' : '0 15%',
 						}}
 					>
-						{isEnglish ? data.EnglishTitle : data.Title}
+						{ data.title}
 					</Typography>
 
 					<div
@@ -133,7 +133,7 @@ const BlogPost = ({ isEnglish, data }) => {
 				<Typography variant='news_text'>
 					<Box className='my-markdown'>
 						<ReactMarkdown>
-							{isEnglish ? data.EnglishText : data.text}
+							{data.text}
 						</ReactMarkdown>
 					</Box>
 				</Typography>

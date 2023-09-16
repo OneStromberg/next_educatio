@@ -99,15 +99,11 @@ const About = ({ isEnglish, data }) => {
 										}}
 									>
 										<Typography variant='about_heading' gutterBottom>
-											{isEnglish
-												? item.attributes.EnglishTitle
-												: item.attributes.title}
+											{item.attributes.title}
 										</Typography>
 										<Typography variant='about_subheading' gutterBottom>
 											<ReactMarkdown>
-												{isEnglish
-													? item.attributes.englishText
-													: item.attributes.text}
+												{item.attributes.text}
 											</ReactMarkdown>
 										</Typography>
 									</Grid>

@@ -13,21 +13,24 @@ import logo from '@/assets/footter_logo.svg'
 
 const BlogPostPage = ({ footerData, preferencesData }) => {
 	const [isEnglish, setIsEnglish] = useState(false)
+	const router = useRouter()
 
 	useEffect(() => {
-		const savedLanguage = localStorage.getItem('language')
-		if (savedLanguage) {
-			setIsEnglish(savedLanguage === 'en')
+		const savedLocale = localStorage.getItem('locale')
+		if (savedLocale) {
+			setIsEnglish(savedLocale === 'en')
+			router.push(router.pathname, router.asPath, { locale: savedLocale })
 		}
-	}, [])
+	}, [router.locale])
 
 	const handleLanguageToggle = () => {
-		const newLanguage = isEnglish ? 'ua' : 'en'
-		localStorage.setItem('language', newLanguage)
-		setIsEnglish(!isEnglish)
+		const newLocale = isEnglish ? 'uk-UA' : 'en'
+		localStorage.setItem('locale', newLocale)
+		router.push(router.pathname, router.asPath, { locale: newLocale })
 	}
-	const router = useRouter()
+
 	const { slug } = router.query
+	const locale = isEnglish ? 'en' : 'uk-UA'
 
 	const [data, setData] = useState(null)
 	const apiUrl = process.env.API_URL
@@ -37,11 +40,14 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 		const fetchData = async () => {
 			try {
 				if (slug) {
-					const response = await axios.get(`${apiUrl}/blog-posts/${slug}`, {
-						headers: {
-							Authorization: `Bearer ${apiKey} `,
-						},
-					})
+					const response = await axios.get(
+						`${apiUrl}/blog-posts/${slug}?locale=${locale}`,
+						{
+							headers: {
+								Authorization: `Bearer ${apiKey} `,
+							},
+						}
+					)
 					if (response.data) {
 						setData(response.data)
 					} else {
@@ -54,7 +60,7 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 			}
 		}
 		fetchData()
-	}, [slug])
+	}, [slug, locale])
 
 	return (
 		<>

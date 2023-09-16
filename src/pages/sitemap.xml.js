@@ -24,6 +24,9 @@ function generateSiteMap(blogData) {
        <url>
          <loc>https://ceducatio.com</loc>
        </url>
+			  <url>
+         <loc>https://ceducatio.com/en</loc>
+       </url>
        ${blogData
 					.map(slug => {
 						slug = slug.attributes.slug

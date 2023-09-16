@@ -1,25 +1,31 @@
 import '@/styles/reset.css'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
 import responsiveTheme from '@/Theme'
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import HeadingPage from '@/components/HeadingPage'
-import About from '@/components/About'
-import EducationslAreas from '@/components/EducationalAreas'
-import Members from '@/components/Members'
-import CallbackForm from '@/components/CallbackForm'
-import CalendarContainer from '@/components/Calendar'
-import PartnersCarousel from '@/components/Partners'
-import ReviewsCarousel from '@/components/Reviews'
-import Blog from '@/components/Blog'
-import Achiewments from '@/components/Achiewments'
+const DynamicFooter = dynamic(() => import('@/components/Footer'))
+const DynamicHeadingPage = dynamic(() => import('@/components/HeadingPage'))
+const DynamicAbout = dynamic(() => import('@/components/About'))
+const DynamicEducationalAreas = dynamic(() =>
+	import('@/components/EducationalAreas')
+)
+const DynamicMembers = dynamic(() => import('@/components/Members'))
+const DynamicCallbackForm = dynamic(() => import('@/components/CallbackForm'))
+const DynamicCalendarContainer = dynamic(() => import('@/components/Calendar'))
+const DynamicPartnersCarousel = dynamic(() => import('@/components/Partners'))
+const DynamicReviewsCarousel = dynamic(() => import('@/components/Reviews'))
+const DynamicBlog = dynamic(() => import('@/components/Blog'))
+const DynamicAchiewments = dynamic(() => import('@/components/Achiewments'))
+const DynamicCenters = dynamic(() => import('@/components/Centers'))
 import Head from 'next/head'
 import { getServerSideProps } from '../ssr'
 import Centers from '@/components/Centers'
 import logo from '@/assets/footter_logo.svg'
 
 const Main = ({
+	locale,
 	mainData,
 	aboutData,
 	areasData,
@@ -31,31 +37,32 @@ const Main = ({
 	preferencesData,
 	footerData,
 }) => {
-	const [isEnglish, setIsEnglish] = useState(false)
+	const router = useRouter()
+	const [isEnglish, setIsEnglish] = useState(router.locale === 'en')
 
 	useEffect(() => {
-		const savedLanguage = localStorage.getItem('language')
-		if (savedLanguage) {
-			setIsEnglish(savedLanguage === 'en')
+		const savedLocale = localStorage.getItem('locale')
+		if (savedLocale) {
+			setIsEnglish(savedLocale === 'en')
+			router.push(router.pathname, router.asPath, { locale: savedLocale })
 		}
-	}, [])
+	}, [router.locale])
 
 	const handleLanguageToggle = () => {
-		const newLanguage = isEnglish ? 'ua' : 'en'
-		localStorage.setItem('language', newLanguage)
-		setIsEnglish(!isEnglish)
+		const newLocale = isEnglish ? 'uk-UA' : 'en'
+		localStorage.setItem('locale', newLocale)
+		router.push(router.pathname, router.asPath, { locale: newLocale })
 	}
-
 	return (
 		<>
 			<Head>
 				<title>ЦЕ — Центри Едукації у Львові</title>
-				<meta charset='utf-8' />
+				<meta charSet='utf-8' />
 				<meta
 					name='google-site-verification'
 					content='m0XG5guu5Fn0f5jy9wLDqsMcjhlPFkIPuOVHXnWiyPw'
 				/>
-				<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+				<meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 				<meta
 					name='description'
@@ -91,39 +98,43 @@ const Main = ({
 					preferences={preferencesData}
 					socials={footerData}
 				/>
-				<HeadingPage isEnglish={isEnglish} data={mainData} />
+				<DynamicHeadingPage
+					isEnglish={isEnglish}
+					data={mainData}
+					preferences={preferencesData}
+				/>
 
 				{preferencesData?.attributes.isShort ? (
 					<>
-						<About isEnglish={isEnglish} data={aboutData} />
-						<Achiewments isEnglish={isEnglish} data={achiewmentsData} />
-						<PartnersCarousel isEnglish={isEnglish} />
-						<EducationslAreas isEnglish={isEnglish} data={areasData} />
-						<Centers isEnglish={isEnglish} data={centersData} />
+						<DynamicAbout isEnglish={isEnglish} data={aboutData} />
+						<DynamicAchiewments isEnglish={isEnglish} data={achiewmentsData} />
+						<DynamicPartnersCarousel isEnglish={isEnglish} />
+						<DynamicEducationalAreas isEnglish={isEnglish} data={areasData} />
+						<DynamicCenters isEnglish={isEnglish} data={centersData} />
 					</>
 				) : (
 					<>
-						<Members
+						<DynamicMembers
 							isEnglish={isEnglish}
 							data={membersData}
 							preferences={preferencesData}
 						/>
-						<Achiewments isEnglish={isEnglish} data={achiewmentsData} />
-						<About isEnglish={isEnglish} data={aboutData} />
-						<PartnersCarousel isEnglish={isEnglish} />
-						<EducationslAreas isEnglish={isEnglish} data={areasData} />
-						<Centers isEnglish={isEnglish} data={centersData} />
+						<DynamicAchiewments isEnglish={isEnglish} data={achiewmentsData} />
+						<DynamicAbout isEnglish={isEnglish} data={aboutData} />
+						<DynamicPartnersCarousel isEnglish={isEnglish} />
+						<DynamicEducationalAreas isEnglish={isEnglish} data={areasData} />
+						<DynamicCenters isEnglish={isEnglish} data={centersData} />
 					</>
 				)}
 
-				<CalendarContainer
+				<DynamicCalendarContainer
 					isEnglish={isEnglish}
 					preferences={preferencesData}
 				/>
-				<Blog isEnglish={isEnglish} data={blogData} />
-				<ReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
-				<CallbackForm isEnglish={isEnglish} />
-				<Footer isEnglish={isEnglish} data={footerData} />
+				<DynamicBlog isEnglish={isEnglish} data={blogData} />
+				<DynamicReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
+				<DynamicCallbackForm isEnglish={isEnglish} />
+				<DynamicFooter isEnglish={isEnglish} data={footerData} />
 			</ThemeProvider>
 		</>
 	)
