@@ -36,7 +36,6 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 	const isShort = preferences?.attributes?.isShort
 	const text = data.text
 	const subtext = data.subtext
-	// const backgroundImage = null
 	const backgroundImage = data?.BackgroundImage?.data?.attributes?.url
 	const bgURL = apiUrl.slice(0, apiUrl.length - 4) + backgroundImage
 
@@ -64,10 +63,6 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 					variant='h1'
 					component='h1'
 					gutterBottom
-					style={{
-						fontSize: isMobile ? 30 : '',
-						lineHeight: isMobile ? '1.2' : '',
-					}}
 				>
 					<ReactMarkdown components={{ p: React.Fragment }}>
 						{text}
@@ -83,7 +78,6 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 						flexDirection: 'column',
 						gap: 20,
 						width: isTablet ? '90%' : '75%',
-						fontSize: isMobile ? 14 : '',
 					}}
 				>
 					<ReactMarkdown components={{ p: 'h2' }}>{subtext}</ReactMarkdown>

@@ -41,7 +41,7 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 			try {
 				if (slug) {
 					const response = await axios.get(
-						`${apiUrl}/blog-posts/${slug}?_locale=${locale}`,
+						`${apiUrl}/blog-posts/${slug}?locale=${locale}`,
 						{
 							headers: {
 								Authorization: `Bearer ${apiKey} `,
@@ -50,6 +50,7 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 					)
 					if (response.data) {
 						setData(response.data)
+						console.log(data)
 					} else {
 						router.push('/')
 					}

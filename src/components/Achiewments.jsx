@@ -46,7 +46,7 @@ const GridItem = styled(Grid)`
 	justify-content: space-between;
 `
 
-const Achiewments = ({ isEnglish, data }) => {
+const Achiewments = ({ isEnglish, data, preferences }) => {
 	const apiUrl = process.env.API_URL
 	const isMobile = useMediaQuery('(max-width:600px)')
 	const isWide = useMediaQuery('(min-width:1450px)')
@@ -56,6 +56,7 @@ const Achiewments = ({ isEnglish, data }) => {
 	}
 
 	const pageTitle = isEnglish ? 'Achievements' : 'Досягнення'
+	const isShort = preferences?.attributes?.isShort
 
 	return (
 		<Box
@@ -67,7 +68,9 @@ const Achiewments = ({ isEnglish, data }) => {
 					? '10% 8% 13% 8%'
 					: '10% 8% 11% 8%',
 				margin: 0,
-				backgroundImage: `url(${background.src}), linear-gradient(to bottom,#FBFBFB, #FFFFFF)`,
+				background: isShort
+					? `url(${background.src}), #fff`
+					: `url(${background.src}), linear-gradient(to bottom,  #FBFBFB, #FFFFFF)`,
 				backgroundRepeat: 'no-repeat no-repeat',
 				backgroundPosition: 'center center',
 				backgroundSize: isMobile ? 'cover' : '100%',

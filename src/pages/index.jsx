@@ -106,7 +106,11 @@ const Main = ({
 				{preferencesData?.attributes?.isShort ? (
 					<>
 						<DynamicAbout isEnglish={isEnglish} data={aboutData} />
-						<DynamicAchiewments isEnglish={isEnglish} data={achiewmentsData} />
+						<DynamicAchiewments
+							isEnglish={isEnglish}
+							data={achiewmentsData}
+							preferences={preferencesData}
+						/>
 						<DynamicPartnersCarousel isEnglish={isEnglish} />
 						<DynamicEducationalAreas isEnglish={isEnglish} data={areasData} />
 						<DynamicCenters isEnglish={isEnglish} data={centersData} />
@@ -118,7 +122,11 @@ const Main = ({
 							data={membersData}
 							preferences={preferencesData}
 						/>
-						<DynamicAchiewments isEnglish={isEnglish} data={achiewmentsData} />
+						<DynamicAchiewments
+							isEnglish={isEnglish}
+							data={achiewmentsData}
+							preferences={preferencesData}
+						/>
 						<DynamicAbout isEnglish={isEnglish} data={aboutData} />
 						<DynamicPartnersCarousel isEnglish={isEnglish} />
 						<DynamicEducationalAreas isEnglish={isEnglish} data={areasData} />

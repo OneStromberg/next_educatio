@@ -402,8 +402,6 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
 	const [isHovered, setHovered] = useState(null)
 	const router = useRouter()
 
-	console.log(preferences, socials)
-
 	const handleMenuToggle = () => {
 		setMenuOpen(!isMenuOpen)
 	}
