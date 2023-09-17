@@ -1,26 +1,23 @@
 import '@/styles/reset.css'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
+import Head from 'next/head'
 import { ThemeProvider } from '@mui/material/styles'
+import { getServerSideProps } from '../ssr'
 import responsiveTheme from '@/Theme'
 import Header from '@/components/Header'
-const DynamicFooter = dynamic(() => import('@/components/Footer'))
-const DynamicHeadingPage = dynamic(() => import('@/components/HeadingPage'))
-const DynamicAbout = dynamic(() => import('@/components/About'))
-const DynamicEducationalAreas = dynamic(() =>
-	import('@/components/EducationalAreas')
-)
-const DynamicMembers = dynamic(() => import('@/components/Members'))
-const DynamicCallbackForm = dynamic(() => import('@/components/CallbackForm'))
-const DynamicCalendarContainer = dynamic(() => import('@/components/Calendar'))
-const DynamicPartnersCarousel = dynamic(() => import('@/components/Partners'))
-const DynamicReviewsCarousel = dynamic(() => import('@/components/Reviews'))
-const DynamicBlog = dynamic(() => import('@/components/Blog'))
-const DynamicAchiewments = dynamic(() => import('@/components/Achiewments'))
-const DynamicCenters = dynamic(() => import('@/components/Centers'))
-import Head from 'next/head'
-import { getServerSideProps } from '../ssr'
+import Footer from '@/components/Footer'
+import HeadingPage from '@/components/HeadingPage'
+import About from '@/components/About'
+import EducationalAreas from '@/components/EducationalAreas'
+import Members from '@/components/Members'
+import CallbackForm from '@/components/CallbackForm'
+import CalendarContainer from '@/components/Calendar'
+import PartnersCarousel from '@/components/Partners'
+import ReviewsCarousel from '@/components/Reviews'
+import Blog from '@/components/Blog'
+import Achiewments from '@/components/Achiewments'
+import Centers from '@/components/Centers'
 import logo from '@/assets/footter_logo.svg'
 
 const Main = ({
@@ -97,7 +94,7 @@ const Main = ({
 					preferences={preferencesData}
 					socials={footerData}
 				/>
-				<DynamicHeadingPage
+				<HeadingPage
 					isEnglish={isEnglish}
 					data={mainData}
 					preferences={preferencesData}
@@ -105,43 +102,43 @@ const Main = ({
 
 				{preferencesData?.attributes?.isShort ? (
 					<>
-						<DynamicAbout isEnglish={isEnglish} data={aboutData} />
-						<DynamicAchiewments
+						<About isEnglish={isEnglish} data={aboutData} />
+						<Achiewments
 							isEnglish={isEnglish}
 							data={achiewmentsData}
 							preferences={preferencesData}
 						/>
-						<DynamicPartnersCarousel isEnglish={isEnglish} />
-						<DynamicEducationalAreas isEnglish={isEnglish} data={areasData} />
-						<DynamicCenters isEnglish={isEnglish} data={centersData} />
+						<PartnersCarousel isEnglish={isEnglish} />
+						<EducationalAreas isEnglish={isEnglish} data={areasData} />
+						<Centers isEnglish={isEnglish} data={centersData} />
 					</>
 				) : (
 					<>
-						<DynamicMembers
+						<Members
 							isEnglish={isEnglish}
 							data={membersData}
 							preferences={preferencesData}
 						/>
-						<DynamicAchiewments
+						<Achiewments
 							isEnglish={isEnglish}
 							data={achiewmentsData}
 							preferences={preferencesData}
 						/>
-						<DynamicAbout isEnglish={isEnglish} data={aboutData} />
-						<DynamicPartnersCarousel isEnglish={isEnglish} />
-						<DynamicEducationalAreas isEnglish={isEnglish} data={areasData} />
-						<DynamicCenters isEnglish={isEnglish} data={centersData} />
+						<About isEnglish={isEnglish} data={aboutData} />
+						<PartnersCarousel isEnglish={isEnglish} />
+						<EducationalAreas isEnglish={isEnglish} data={areasData} />
+						<Centers isEnglish={isEnglish} data={centersData} />
 					</>
 				)}
 
-				<DynamicCalendarContainer
+				<CalendarContainer
 					isEnglish={isEnglish}
 					preferences={preferencesData}
 				/>
-				<DynamicBlog isEnglish={isEnglish} data={blogData} />
-				<DynamicReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
-				<DynamicCallbackForm isEnglish={isEnglish} />
-				<DynamicFooter isEnglish={isEnglish} data={footerData} />
+				<Blog isEnglish={isEnglish} data={blogData} />
+				<ReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
+				<CallbackForm isEnglish={isEnglish} />
+				<Footer isEnglish={isEnglish} data={footerData} />
 			</ThemeProvider>
 		</>
 	)
