@@ -52,12 +52,12 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 						setData(response.data)
 						console.log(data)
 					} else {
-						router.push('/')
+						// router.push('/')
 					}
 				}
 			} catch (error) {
 				console.error('Error fetching data:', error)
-				router.push('/')
+				// router.push('/')
 			}
 		}
 		fetchData()
