@@ -34,6 +34,9 @@ function generateSiteMap(blogData) {
          <url>
              <loc>${`https://ceducatio.com/blog-posts/${slug}`}</loc>
          </url>
+				  <url>
+             <loc>${`https://ceducatio.com/en/blog-posts/${slug}`}</loc>
+         </url>
        `
 					})
 					.join('')}

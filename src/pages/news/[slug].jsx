@@ -30,7 +30,7 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 	}
 
 	const { slug } = router.query
-	const locale = isEnglish ? 'en' : 'uk-UA'
+	const locale = isEnglish ? 'en' : 'uk'
 
 	const [data, setData] = useState(null)
 	const apiUrl = process.env.API_URL
