@@ -102,7 +102,7 @@ const MobileHeader = ({
 			</Typography>
 			<IconButton
 				color='inherit'
-				ariaLabel='Burger menu'
+				aria-label='Burger menu'
 				onClick={handleMenuToggle}
 				style={{ color: '#a9a9a9', height: '100%', marginLeft: 'auto' }}
 			>
@@ -142,7 +142,7 @@ const DesktopHeader = ({
 					justifyContent: 'flex-end',
 				}}
 			>
-				<StyledButton ariaLabel='change language' onClick={toggleLanguage}>
+				<StyledButton aria-label='change language' onClick={toggleLanguage}>
 					{languageIcon}
 				</StyledButton>
 				<SocialWrapper>
@@ -192,7 +192,7 @@ const DesktopHeader = ({
 					</a>
 					<IconButton
 						color='inherit'
-						ariaLabel='Burger menu'
+						aria-label='Burger menu'
 						onClick={handleMenuToggle}
 						onMouseEnter={() => setHovered('Burger')}
 						onMouseLeave={() => setHovered(null)}
@@ -273,7 +273,7 @@ const MenuDrawer = ({
 						style={{ justifyContent: isMobile ? 'start' : 'center' }}
 						onClick={() => handleScrollToSection('actions')}
 					>
-						<StyledButton ariaLabel='actions'>{actions}</StyledButton>
+						<StyledButton aria-label='actions'>{actions}</StyledButton>
 					</ListItem>
 				)}
 				<ListItem
@@ -281,7 +281,7 @@ const MenuDrawer = ({
 					style={{ justifyContent: isMobile ? 'start' : 'center' }}
 					onClick={() => handleScrollToSection('achievements')}
 				>
-					<StyledButton ariaLabel='achievements'>{achievements}</StyledButton>
+					<StyledButton aria-label='achievements'>{achievements}</StyledButton>
 				</ListItem>
 
 				<ListItem
@@ -289,7 +289,7 @@ const MenuDrawer = ({
 					style={{ justifyContent: isMobile ? 'start' : 'center' }}
 					onClick={() => handleScrollToSection('areas')}
 				>
-					<StyledButton ariaLabel='areas'>{areas}</StyledButton>
+					<StyledButton aria-label='areas'>{areas}</StyledButton>
 				</ListItem>
 
 				<ListItem
@@ -297,7 +297,7 @@ const MenuDrawer = ({
 					style={{ justifyContent: isMobile ? 'start' : 'center' }}
 					onClick={() => handleScrollToSection('centers')}
 				>
-					<StyledButton ariaLabel='centers'>{centers}</StyledButton>
+					<StyledButton aria-label='centers'>{centers}</StyledButton>
 				</ListItem>
 
 				{preferences?.attributes?.isShort ||
@@ -309,7 +309,7 @@ const MenuDrawer = ({
 						style={{ justifyContent: isMobile ? 'start' : 'center' }}
 						onClick={() => handleScrollToSection('calendar')}
 					>
-						<StyledButton ariaLabel='calendars'>{calendar}</StyledButton>
+						<StyledButton aria-label='calendars'>{calendar}</StyledButton>
 					</ListItem>
 				)}
 
@@ -318,7 +318,7 @@ const MenuDrawer = ({
 					style={{ justifyContent: isMobile ? 'start' : 'center' }}
 					onClick={() => handleScrollToSection('news')}
 				>
-					<StyledButton ariaLabel='news'>{news}</StyledButton>
+					<StyledButton aria-label='news'>{news}</StyledButton>
 				</ListItem>
 			</List>
 			<Divider

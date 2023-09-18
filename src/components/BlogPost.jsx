@@ -109,7 +109,7 @@ const BlogPost = ({ isEnglish, data }) => {
 						</div>
 						<Button
 							href='/'
-							ariaLabel='Go to home screen'
+							aria-label='Go to home screen'
 							style={{
 								cursor: 'pointer',
 								color: 'white',
@@ -155,7 +155,7 @@ const BlogPost = ({ isEnglish, data }) => {
 				</div>
 				<Button
 					href='/'
-					ariaLabel='Go to home screen'
+					aria-label='Go to home screen'
 					variant='text'
 					style={{ cursor: 'pointer', color: '#458FF6' }}
 				>

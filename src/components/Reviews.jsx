@@ -101,7 +101,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
 								onClick={onClick}
 								onMouseEnter={() => setHovered(prev ? 'prev' : 'next')}
 								onMouseLeave={() => setHovered(null)}
-								ariaLabel='reviews navigation'
+								aria-label='reviews navigation'
 								style={{
 									...style,
 									top: '37%',
@@ -207,7 +207,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
 					>
 						<IconButton
 							onClick={goToPrevSlide}
-							ariaLabel='previous review'
+							aria-label='previous review'
 							style={{ width: 40, transform: 'rotate(180deg)' }}
 						>
 							<Arrow fill={isHovered === 'prev' ? '#458FF6' : '#b5d2fb'} />
@@ -215,7 +215,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
 
 						<IconButton
 							onClick={goToNextSlide}
-							ariaLabel='next review'
+							aria-label='next review'
 							style={{ width: 40, color: '#458FF6' }}
 						>
 							<Arrow fill={isHovered === 'next' ? '#458FF6' : '#b5d2fb'} />

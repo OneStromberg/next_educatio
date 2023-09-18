@@ -19,40 +19,56 @@ export async function getServerSideProps(context) {
 		}
 	}
 
+	const preferencesData = await fetchData(`${apiUrl}/site-preference`)
+
+	if (!preferencesData) {
+		return {
+			redirect: {
+				destination: '/',
+				permanent: false,
+			},
+		}
+	}
+
+	const fetchList = [
+		fetchData(`${apiUrl}/main-page`),
+		fetchData(`${apiUrl}/about-uses`),
+		fetchData(`${apiUrl}/educational-areas/?populate=*`),
+		fetchData(`${apiUrl}/centers`),
+		fetchData(`${apiUrl}/reviews/`),
+		fetchData(`${apiUrl}/achiewments`),
+		fetchData(`${apiUrl}/footer`),
+	]
+
+	if (preferencesData.attributes.hideCalendar !== true) {
+		fetchList.push(fetchData(`${apiUrl}/blog-posts`))
+	}
+
+	if (preferencesData.attributes.isShort !== true) {
+		fetchList.push(fetchData(`${apiUrl}/calendar`))
+		fetchList.push(fetchData(`${apiUrl}/members`))
+	}
+
 	const [
 		mainData,
 		aboutData,
 		areasData,
-		membersData,
 		centersData,
 		reviewsData,
 		achiewmentsData,
-		blogData,
-		preferencesData,
 		footerData,
-	] = await Promise.all([
-		fetchData(`${apiUrl}/main-page`),
-		fetchData(`${apiUrl}/about-uses`),
-		fetchData(`${apiUrl}/educational-areas/?populate=*`),
-		fetchData(`${apiUrl}/members`),
-		fetchData(`${apiUrl}/centers`),
-		fetchData(`${apiUrl}/reviews/`),
-		fetchData(`${apiUrl}/achiewments`),
-		fetchData(`${apiUrl}/blog-posts`),
-		fetchData(`${apiUrl}/site-preference`),
-		fetchData(`${apiUrl}/footer`),
-	])
+		blogData,
+		calendarData,
+		membersData,
+	] = await Promise.all(fetchList)
 
 	if (
 		!mainData ||
 		!aboutData ||
 		!areasData ||
-		!membersData ||
 		!centersData ||
 		!reviewsData ||
 		!achiewmentsData ||
-		!blogData ||
-		!preferencesData ||
 		!footerData
 	) {
 		return {
@@ -69,13 +85,14 @@ export async function getServerSideProps(context) {
 			mainData: mainData ? mainData.attributes : null,
 			aboutData: aboutData || null,
 			areasData: areasData || null,
-			membersData: membersData || null,
 			centersData: centersData || null,
 			reviewsData: reviewsData || null,
 			achiewmentsData: achiewmentsData || null,
 			blogData: blogData || null,
 			preferencesData: preferencesData || null,
 			footerData: footerData || null,
+			calendarData: calendarData || null,
+			membersData: membersData || null,
 		},
 	}
 }

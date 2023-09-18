@@ -232,7 +232,7 @@ const Blog = ({ isEnglish, data }) => {
 			</Grid>
 			{data.length > 3 ? (
 				<StyledButton
-					ariaLabel='Show all news'
+					aria-label='Show all news'
 					variant='outlined'
 					onClick={() => setShowAll(!showAll)}
 				>

@@ -294,7 +294,7 @@ const CallbackForm = ({ isEnglish }) => {
 					<StyledButton
 						type='submit'
 						variant='text'
-						ariaLabel='submit form'
+						aria-label='submit form'
 						onMouseEnter={() => setHovered(true)}
 						onMouseLeave={() => setHovered(false)}
 						style={{

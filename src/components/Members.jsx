@@ -176,7 +176,7 @@ const Members = ({ isEnglish, data, preferences }) => {
 									<Typography
 										variant='card_link'
 										className='button'
-										ariaLabel='register on course'
+										aria-label='register on course'
 									>
 										{isEnglish ? 'Registration' : 'Реєстрація'}{' '}
 									</Typography>
