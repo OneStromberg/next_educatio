@@ -37,7 +37,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 				background: `url(${educationalBg.src}), linear-gradient(to bottom, #FFFFFF, #FBFBFB)`,
 				backgroundSize: 'cover',
 				backgroundRepeat: 'no-repeat no-repeat',
-				padding: isMobile ? '120px 0 100px 0' : '6% 0 8% 0',
+				padding: isMobile ? '120px 0 120px 0' : '6% 0 % 0',
 				paddingBottom: isWide ? '13%' : isShrink ? '5%' : '8%',
 			}}
 		>

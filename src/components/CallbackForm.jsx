@@ -25,7 +25,8 @@ const StyledButton = styled(Button)`
 const CallbackForm = ({ isEnglish }) => {
 	const apiUrl = process.env.API_URL
 	const apiKey = process.env.API_TOKEN
-	const isMobile = useMediaQuery('(max-width:850px)')
+	const isMobile = useMediaQuery('(max-width:600px)')
+	const isSmall = useMediaQuery('(max-width:1010px)')
 	const isTablet = useMediaQuery('(max-width:1345px)')
 	const [isHovered, setHovered] = useState(false)
 
@@ -179,15 +180,14 @@ const CallbackForm = ({ isEnglish }) => {
 				style={{
 					background: `url(${background.src}) no-repeat center`,
 					backgroundSize: isMobile ? 'cover' : '100%', // was 'contain'
-					width: isMobile ? '100%' : isTablet ? '85%' : '75%',
+					width: isMobile ? '100%' : isSmall ? '95%' : isTablet ? '85%' : '75%',
 					display: 'flex',
 					flexDirection: 'column',
 					height: '100%',
 					minHeight: 500,
 					aspectRatio: isMobile ? 'auto' : '9.5/4.9',
-					// maxHeight: 700,
-					margin: isMobile ? '10% 0 -10% 0' : '10% auto',
-					// paddingBottom: 50,
+					margin: isMobile ? '10% 0 -9% 0' : '10% auto',
+					paddingBottom: isMobile ? 50 : '',
 				}}
 			>
 				<div
@@ -219,7 +219,7 @@ const CallbackForm = ({ isEnglish }) => {
 						// height: '100%',
 						flexDirection: 'column',
 						alignItems: 'flex-end',
-						gap: isMobile ? '' : 10,
+						gap: isMobile ? 8 : 15,
 						color: '#FFFFFFB2',
 					}}
 				>
