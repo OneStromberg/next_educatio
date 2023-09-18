@@ -173,7 +173,11 @@ const Members = ({ isEnglish, data, preferences }) => {
 										marginTop: 10,
 									}}
 								>
-									<Typography variant='card_link' className='button'>
+									<Typography
+										variant='card_link'
+										className='button'
+										ariaLabel='register on course'
+									>
 										{isEnglish ? 'Registration' : 'Реєстрація'}{' '}
 									</Typography>
 									<div style={{ width: 14, height: 9 }}>

@@ -80,9 +80,10 @@ const CalendarContainer = ({ isEnglish, preferences }) => {
 				<iframe
 					src={calendar}
 					style={{ borderWidth: 0 }}
+					title='calendar'
 					width='100%'
 					height='100%'
-					minheight='600px'
+					minHeight='600px'
 				></iframe>
 			</Grid>
 		</Grid>

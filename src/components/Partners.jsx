@@ -1,7 +1,6 @@
 import {
 	Paper,
 	IconButton,
-	useTheme,
 	useMediaQuery,
 	Box,
 	Typography,

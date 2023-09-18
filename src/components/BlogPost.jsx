@@ -75,7 +75,7 @@ const BlogPost = ({ isEnglish, data }) => {
 							margin: isMobile ? '50px 15px 0px 15px' : '0 15%',
 						}}
 					>
-						{ data.title}
+						{data.title}
 					</Typography>
 
 					<div
@@ -109,6 +109,7 @@ const BlogPost = ({ isEnglish, data }) => {
 						</div>
 						<Button
 							href='/'
+							ariaLabel='Go to home screen'
 							style={{
 								cursor: 'pointer',
 								color: 'white',
@@ -132,9 +133,7 @@ const BlogPost = ({ isEnglish, data }) => {
 			>
 				<Typography variant='news_text'>
 					<Box className='my-markdown'>
-						<ReactMarkdown>
-							{data.text}
-						</ReactMarkdown>
+						<ReactMarkdown>{data.text}</ReactMarkdown>
 					</Box>
 				</Typography>
 			</Box>
@@ -156,6 +155,7 @@ const BlogPost = ({ isEnglish, data }) => {
 				</div>
 				<Button
 					href='/'
+					ariaLabel='Go to home screen'
 					variant='text'
 					style={{ cursor: 'pointer', color: '#458FF6' }}
 				>

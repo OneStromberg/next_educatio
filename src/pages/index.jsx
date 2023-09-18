@@ -1,23 +1,27 @@
 import '@/styles/reset.css'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { ThemeProvider } from '@mui/material/styles'
 import { getServerSideProps } from '../ssr'
 import responsiveTheme from '@/Theme'
+import React, { Suspense } from 'react'
+
+import AnimatedLoader from '@/components/UI/AnimatedLoader'
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import HeadingPage from '@/components/HeadingPage'
-import About from '@/components/About'
-import EducationalAreas from '@/components/EducationalAreas'
-import Members from '@/components/Members'
-import CallbackForm from '@/components/CallbackForm'
-import CalendarContainer from '@/components/Calendar'
-import PartnersCarousel from '@/components/Partners'
-import ReviewsCarousel from '@/components/Reviews'
-import Blog from '@/components/Blog'
-import Achiewments from '@/components/Achiewments'
-import Centers from '@/components/Centers'
+const About = dynamic(() => import('@/components/About'))
+const EducationalAreas = dynamic(() => import('@/components/EducationalAreas'))
+const Members = dynamic(() => import('@/components/Members'))
+const CallbackForm = dynamic(() => import('@/components/CallbackForm'))
+const CalendarContainer = dynamic(() => import('@/components/Calendar'))
+const PartnersCarousel = dynamic(() => import('@/components/Partners'))
+const ReviewsCarousel = dynamic(() => import('@/components/Reviews'))
+const Blog = dynamic(() => import('@/components/Blog'))
+const Achiewments = dynamic(() => import('@/components/Achiewments'))
+const Centers = dynamic(() => import('@/components/Centers'))
+const Footer = dynamic(() => import('@/components/Footer'))
 import logo from '@/assets/footter_logo.svg'
 
 const Main = ({
@@ -102,43 +106,75 @@ const Main = ({
 
 				{preferencesData?.attributes?.isShort ? (
 					<>
-						<About isEnglish={isEnglish} data={aboutData} />
-						<Achiewments
-							isEnglish={isEnglish}
-							data={achiewmentsData}
-							preferences={preferencesData}
-						/>
-						<PartnersCarousel isEnglish={isEnglish} />
-						<EducationalAreas isEnglish={isEnglish} data={areasData} />
-						<Centers isEnglish={isEnglish} data={centersData} />
+						<Suspense fallback={<AnimatedLoader />}>
+							<About isEnglish={isEnglish} data={aboutData} />
+						</Suspense>
+						<Suspense fallback={<AnimatedLoader />}>
+							<Achiewments
+								isEnglish={isEnglish}
+								data={achiewmentsData}
+								preferences={preferencesData}
+							/>
+						</Suspense>
+						<Suspense fallback={<AnimatedLoader />}>
+							<PartnersCarousel isEnglish={isEnglish} />
+						</Suspense>
+						<Suspense fallback={<AnimatedLoader />}>
+							<EducationalAreas isEnglish={isEnglish} data={areasData} />
+						</Suspense>
+						<Suspense fallback={<AnimatedLoader />}>
+							<Centers isEnglish={isEnglish} data={centersData} />
+						</Suspense>
 					</>
 				) : (
 					<>
-						<Members
-							isEnglish={isEnglish}
-							data={membersData}
-							preferences={preferencesData}
-						/>
-						<Achiewments
-							isEnglish={isEnglish}
-							data={achiewmentsData}
-							preferences={preferencesData}
-						/>
-						<About isEnglish={isEnglish} data={aboutData} />
-						<PartnersCarousel isEnglish={isEnglish} />
-						<EducationalAreas isEnglish={isEnglish} data={areasData} />
-						<Centers isEnglish={isEnglish} data={centersData} />
+						<Suspense fallback={<AnimatedLoader />}>
+							<Members
+								isEnglish={isEnglish}
+								data={membersData}
+								preferences={preferencesData}
+							/>
+						</Suspense>
+						<Suspense fallback={<AnimatedLoader />}>
+							<Achiewments
+								isEnglish={isEnglish}
+								data={achiewmentsData}
+								preferences={preferencesData}
+							/>
+						</Suspense>
+						<Suspense fallback={<AnimatedLoader />}>
+							<About isEnglish={isEnglish} data={aboutData} />
+						</Suspense>
+						<Suspense fallback={<AnimatedLoader />}>
+							<PartnersCarousel isEnglish={isEnglish} />
+						</Suspense>
+						<Suspense fallback={<AnimatedLoader />}>
+							<EducationalAreas isEnglish={isEnglish} data={areasData} />
+						</Suspense>
+						<Suspense fallback={<AnimatedLoader />}>
+							<Centers isEnglish={isEnglish} data={centersData} />
+						</Suspense>
 					</>
 				)}
 
-				<CalendarContainer
-					isEnglish={isEnglish}
-					preferences={preferencesData}
-				/>
-				<Blog isEnglish={isEnglish} data={blogData} />
-				<ReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
-				<CallbackForm isEnglish={isEnglish} />
-				<Footer isEnglish={isEnglish} data={footerData} />
+				<Suspense fallback={<AnimatedLoader />}>
+					<CalendarContainer
+						isEnglish={isEnglish}
+						preferences={preferencesData}
+					/>
+				</Suspense>
+				<Suspense fallback={<AnimatedLoader />}>
+					<Blog isEnglish={isEnglish} data={blogData} />
+				</Suspense>
+				<Suspense fallback={<AnimatedLoader />}>
+					<ReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
+				</Suspense>
+				<Suspense fallback={<AnimatedLoader />}>
+					<CallbackForm isEnglish={isEnglish} />
+				</Suspense>
+				<Suspense fallback={<AnimatedLoader />}>
+					<Footer isEnglish={isEnglish} data={footerData} />
+				</Suspense>
 			</ThemeProvider>
 		</>
 	)

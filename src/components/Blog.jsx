@@ -173,7 +173,7 @@ const Blog = ({ isEnglish, data }) => {
 												src={`${apiUrl.slice(0, apiUrl.length - 4)}${
 													post?.attributes?.headingImage?.data?.attributes?.url
 												}`}
-												alt={post?.attributes?.Title}
+												alt={post?.attributes?.title}
 												width={380}
 												height={250}
 											/>
@@ -197,7 +197,7 @@ const Blog = ({ isEnglish, data }) => {
 											}}
 										>
 											<Typography variant='news_preview_title' gutterBottom>
-												{ post?.attributes?.title}
+												{post?.attributes?.title}
 											</Typography>
 											<Typography
 												variant='news_preview_text'
@@ -231,7 +231,11 @@ const Blog = ({ isEnglish, data }) => {
 					))}
 			</Grid>
 			{data.length > 3 ? (
-				<StyledButton variant='outlined' onClick={() => setShowAll(!showAll)}>
+				<StyledButton
+					ariaLabel='Show all news'
+					variant='outlined'
+					onClick={() => setShowAll(!showAll)}
+				>
 					{showAll ? hideNews : allNews}
 				</StyledButton>
 			) : (
