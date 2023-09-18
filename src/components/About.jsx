@@ -9,7 +9,7 @@ const StyledContainer = styled(Box)`
 	margin: 0 auto;
 
 	@media (max-width: 600px) {
-		padding: 20% 10%;
+		padding: 10%;
 	}
 `
 
@@ -33,7 +33,7 @@ const About = ({ isEnglish, data }) => {
 	return (
 		<StyledContainer id='actions'>
 			<StyledHeaderContainer>
-				<Typography variant='h4' gutterBottom color={'#F7BA21'}>
+				<Typography variant='h4_about' gutterBottom color={'#F7BA21'}>
 					{isEnglish ? 'What we are doing' : 'Що ми робимо'}
 				</Typography>
 				<div>
@@ -102,9 +102,7 @@ const About = ({ isEnglish, data }) => {
 											{item.attributes.title}
 										</Typography>
 										<Typography variant='about_subheading' gutterBottom>
-											<ReactMarkdown>
-												{item.attributes.text}
-											</ReactMarkdown>
+											<ReactMarkdown>{item.attributes.text}</ReactMarkdown>
 										</Typography>
 									</Grid>
 								</Grid>

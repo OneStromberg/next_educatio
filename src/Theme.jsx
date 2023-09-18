@@ -130,7 +130,7 @@ const theme = createTheme({
 			textTransform: 'uppercase',
 			color: '#e8e7e0',
 		},
-		h4: {
+		h4_about: {
 			fontFamily: 'Roboto Condensed',
 			fontWeight: 700,
 			fontSize: 32,

@@ -46,7 +46,7 @@ const Main = ({
 	}, [router.locale])
 
 	const handleLanguageToggle = () => {
-		const newLocale = isEnglish ? 'uk-UA' : 'en'
+		const newLocale = isEnglish ? 'uk' : 'en'
 		localStorage.setItem('locale', newLocale)
 		router.push(router.pathname, router.asPath, { locale: newLocale })
 	}

@@ -30,14 +30,13 @@ const EducationalAreas = ({ isEnglish, data }) => {
 
 	return (
 		<Box
-			mt={0}
-			mb={0}
 			id='areas'
 			style={{
 				background: `url(${educationalBg.src}), linear-gradient(to bottom, #FFFFFF, #FBFBFB)`,
 				backgroundSize: 'cover',
 				backgroundRepeat: 'no-repeat no-repeat',
-				padding: isMobile ? '120px 0 120px 0' : '6% 0 % 0',
+				backgroundPosition: 'center center',
+				padding: isMobile ? '120px 0 150px 0' : '6% 0 6% 0',
 				paddingBottom: isWide ? '13%' : isShrink ? '5%' : '8%',
 			}}
 		>

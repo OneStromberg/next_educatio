@@ -72,7 +72,7 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 					? `url(${background.src}), #fff`
 					: `url(${background.src}), linear-gradient(to bottom,  #FBFBFB, #FFFFFF)`,
 				backgroundRepeat: 'no-repeat no-repeat',
-				backgroundPosition: 'center center',
+				backgroundPosition: isMobile ? '' : 'center center',
 				backgroundSize: isMobile ? 'cover' : '100%',
 			}}
 		>

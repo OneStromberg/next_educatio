@@ -439,13 +439,13 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
 		if (savedLocale) {
 			router.push(router.pathname, router.asPath, { locale: savedLocale })
 		} else {
-			localStorage.setItem('locale', 'uk-UA')
-			router.push(router.pathname, router.asPath, { locale: 'uk-UA' })
+			localStorage.setItem('locale', 'uk')
+			router.push(router.pathname, router.asPath, { locale: 'uk' })
 		}
 	}, [])
 
 	const toggleLanguage = () => {
-		const newLocale = isEnglish ? 'uk-UA' : 'en'
+		const newLocale = isEnglish ? 'uk' : 'en'
 		localStorage.setItem('locale', newLocale)
 		onLanguageToggle()
 		router.push(router.asPath, router.asPath, { locale: newLocale })

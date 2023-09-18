@@ -49,7 +49,7 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 				height: isTablet ? '100%' : '100vh',
 				justifyContent: 'center',
 				backgroundSize: 'cover',
-				backgroundPosition: 'center center',
+				backgroundPosition: isMobile ? '' : 'center center',
 				backgroundRepeat: 'no-repeat no-repeat',
 				paddingTop: isMobile ? 20 : '',
 				rowGap: isMobile ? '50px' : '',
@@ -59,11 +59,7 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 				<Image src={bgURL} alt='image' width={240} height={240} />
 			</div>
 			<div style={{ width: isMobile ? '100%' : isTablet ? '60%' : '40%' }}>
-				<Typography
-					variant='h1'
-					component='h1'
-					gutterBottom
-				>
+				<Typography variant='h1' component='h1' gutterBottom>
 					<ReactMarkdown components={{ p: React.Fragment }}>
 						{text}
 					</ReactMarkdown>

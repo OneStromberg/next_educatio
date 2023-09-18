@@ -6,8 +6,8 @@ console.log(process.env.APP_DOMAIN)
 const nextConfig = {
 	output: 'standalone',
 	i18n: {
-		locales: ['uk-UA', 'en'],
-		defaultLocale: 'uk-UA',
+		locales: ['uk', 'en'],
+		defaultLocale: 'uk',
 		localeDetection: false,
 	},
 	images: {
