@@ -2,7 +2,8 @@ import { Grid, Typography } from '@mui/material'
 import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
 
-export default function AboutElement({ index, item }) {
+export default function AboutElement({ index, item, isMobile = { isMobile } }) {
+	const apiUrl = process.env.API_URL
 	return (
 		<div
 			key={index}

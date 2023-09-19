@@ -23,7 +23,6 @@ const StyledHeaderContainer = styled(Grid)`
 `
 
 const About = ({ isEnglish, data }) => {
-	const apiUrl = process.env.API_URL
 	const isMobile = useMediaQuery('(max-width:1000px)')
 
 	if (data.length < 1 || !data) {
@@ -54,7 +53,7 @@ const About = ({ isEnglish, data }) => {
 				{data
 					.sort((a, b) => a.id - b.id)
 					.map((item, index) => {
-						return <AboutElement key={index} item={item} index={index} />
+						return <AboutElement key={index} item={item} index={index} isMobile={isMobile}/>
 					})}
 			</Box>
 		</StyledContainer>
