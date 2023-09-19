@@ -1,5 +1,6 @@
 import { Grid, Typography, Button, Box, useMediaQuery } from '@mui/material'
 import Link from 'next/link'
+import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import { styled } from '@mui/system'
 import Arrow from './UI/Arrow'
@@ -43,14 +44,18 @@ const BlogPost = ({ isEnglish, data }) => {
 			<div
 				style={{
 					position: 'relative',
-					height: isMobile ? '300px' : '80dvh',
+					height: isMobile ? '300px' : '80vh',
 					width: '100%',
-					margin: 0,
-					background: `url(${apiUrl.slice(0, apiUrl.length - 4)}${
-						data?.headingImage?.url
-					}) center center / cover no-repeat`,
+					overflow: 'hidden',
 				}}
 			>
+				<Image
+					src={`${apiUrl.slice(0, apiUrl.length - 4)}${
+						data?.headingImage?.url
+					}`}
+					layout='fill'
+					objectFit='cover'
+				/>
 				<Box
 					style={{
 						position: 'absolute',

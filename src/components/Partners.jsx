@@ -175,4 +175,6 @@ const PartnersCarousel = memo(({ isEnglish }) => {
 	)
 })
 
+PartnersCarousel.displayName = 'PartnersCarousel'
+
 export default PartnersCarousel

@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import Header from '@/components/Header'
 import '@/styles/reset.css'
 import { useRouter } from 'next/router'
@@ -7,8 +8,8 @@ import axios from 'axios'
 import Head from 'next/head'
 import { getServerSideProps } from '../../ssr'
 import theme from '@/Theme'
-import BlogPost from '@/components/BlogPost'
-import Footer from '@/components/Footer'
+const BlogPost = dynamic(() => import('@/components/BlogPost'))
+const Footer = dynamic(() => import('@/components/Footer'))
 import logo from '@/assets/footter_logo.svg'
 
 const BlogPostPage = ({ footerData, preferencesData }) => {
@@ -57,7 +58,7 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 				}
 			} catch (error) {
 				console.error('Error fetching data:', error)
-				// router.push('/')
+				router.push('/')
 			}
 		}
 		fetchData()
