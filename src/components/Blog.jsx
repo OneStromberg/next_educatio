@@ -176,6 +176,7 @@ const Blog = ({ isEnglish, data }) => {
 												alt={post?.attributes?.title}
 												width={380}
 												height={250}
+												loading='lazy'
 											/>
 										) : (
 											<div

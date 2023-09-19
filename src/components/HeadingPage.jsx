@@ -56,7 +56,13 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 			}}
 		>
 			<div style={{ display: isMobile ? 'block' : 'none' }}>
-				<Image src={bgURL} alt='image' width={240} height={240} />
+				<Image
+					src={bgURL}
+					alt='image'
+					width={240}
+					height={240}
+					loading='lazy'
+				/>
 			</div>
 			<div style={{ width: isMobile ? '100%' : isTablet ? '60%' : '40%' }}>
 				<Typography variant='h1' component='h1' gutterBottom>
@@ -85,6 +91,7 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 					alt='image'
 					width={isTablet ? 250 : isWide ? 420 : 300}
 					height={isTablet ? 250 : isWide ? 420 : 300}
+					loading='lazy'
 				/>
 			</div>
 		</StyledContainer>
