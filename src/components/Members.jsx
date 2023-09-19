@@ -78,7 +78,7 @@ const Members = ({ isEnglish, data, preferences }) => {
 				}}
 			>
 				<Typography
-					variant='h4'
+					variant='h4_about'
 					gutterBottom
 					style={{
 						textAlign: 'center',
