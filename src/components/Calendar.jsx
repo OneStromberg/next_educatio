@@ -11,12 +11,17 @@ const CalendarContainer = ({ isEnglish, preferences }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get(`${apiUrl}/calendar`, {
-					headers: {
-						Authorization: `Bearer ${apiKey}`,
-					},
-				})
-				setData(response.data.data.attributes)
+				if (
+					!preferences.attributes.isShort ||
+					!preferences.attributes.hideCalendar
+				) {
+					const response = await axios.get(`${apiUrl}/calendar`, {
+						headers: {
+							Authorization: `Bearer ${apiKey}`,
+						},
+					})
+					setData(response.data.data.attributes)
+				}
 			} catch (error) {
 				console.error('Error fetching data:', error)
 			}
