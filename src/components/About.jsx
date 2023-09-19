@@ -86,6 +86,7 @@ const About = ({ isEnglish, data }) => {
 										alt='About Us'
 										width={180}
 										height={194}
+										style={{ width: '100%' }}
 									/>
 									<Grid
 										item

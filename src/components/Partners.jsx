@@ -1,3 +1,4 @@
+import React, { memo } from 'react'
 import {
 	Paper,
 	IconButton,
@@ -19,7 +20,7 @@ import { useState, useEffect } from 'react'
 import Wavy from './UI/Wavy'
 import Arrow from './UI/Arrow'
 
-const PartnersCarousel = ({ isEnglish }) => {
+const PartnersCarousel = memo(({ isEnglish }) => {
 	const [isHovered, setHovered] = useState(null)
 	const isMobile = useMediaQuery('(max-width:600px)')
 	const isTablet = useMediaQuery('(min-width:601px) and (max-width:1200px)')
@@ -81,7 +82,7 @@ const PartnersCarousel = ({ isEnglish }) => {
 					marginBottom: '50px',
 				}}
 			>
-				<Typography variant='h4'>{pageTitle}</Typography>
+				<Typography variant='h4_about'>{pageTitle}</Typography>
 				<Wavy fill={'#262626'} />
 			</div>
 			<Box>
@@ -154,6 +155,7 @@ const PartnersCarousel = ({ isEnglish }) => {
 										alt='Partner Logo'
 										width={150}
 										height={85}
+										loading='lazy'
 										style={{
 											maxHeight: '90px',
 											width: 'auto',
@@ -171,6 +173,6 @@ const PartnersCarousel = ({ isEnglish }) => {
 			</Box>
 		</Box>
 	)
-}
+})
 
 export default PartnersCarousel

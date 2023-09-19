@@ -19,9 +19,9 @@ const StyledTextContainer = styled(Grid)`
 `
 
 const EducationalAreas = ({ isEnglish, data }) => {
-	const isMobile = useMediaQuery('(max-width:600px)')
 	const isWide = useMediaQuery('(min-width: 1300px)')
 	const isShrink = useMediaQuery('(max-width: 1250px)')
+	const isMobile = useMediaQuery('(max-width:600px)')
 	if (!data || data.length < 1) {
 		return <></>
 	}
@@ -35,9 +35,15 @@ const EducationalAreas = ({ isEnglish, data }) => {
 				background: `url(${educationalBg.src}), linear-gradient(to bottom, #FFFFFF, #FBFBFB)`,
 				backgroundSize: 'cover',
 				backgroundRepeat: 'no-repeat no-repeat',
-				backgroundPosition: 'center center',
-				padding: isMobile ? '120px 0 150px 0' : '6% 0 6% 0',
-				paddingBottom: isWide ? '13%' : isShrink ? '5%' : '8%',
+				backgroundPosition: isMobile ? '50% 50%' : 'center center',
+				padding: isMobile ? '120px 0 150px' : '6% 0 6% 0',
+				paddingBottom: isWide
+					? '13%'
+					: isMobile
+					? '15%'
+					: isShrink
+					? '5%'
+					: '8%',
 			}}
 		>
 			<Box
@@ -67,66 +73,68 @@ const EducationalAreas = ({ isEnglish, data }) => {
 						margin: '0 auto',
 					}}
 				>
-					{data.map((item, index) => (
-						<Grid
-							item
-							xs={12}
-							sm={6}
-							md={4}
-							key={item.id}
-							style={{
-								marginTop: isMobile ? '0' : `${index * -35}px`,
-								padding: 0,
-							}}
-						>
-							<StyledGrid
-								container
-								position='relative'
-								alignItems='center'
-								flexWrap={'nowrap'}
-								margin={0}
+					{data
+						.sort((a, b) => a.id - b.id)
+						.map((item, index) => (
+							<Grid
+								item
+								xs={12}
+								sm={6}
+								md={4}
+								key={item.id}
+								style={{
+									marginTop: isMobile ? '0' : `${index * -35}px`,
+									padding: 0,
+								}}
 							>
-								<Typography
-									variant='member_number'
-									style={{
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center',
-										justifySelf: 'center',
-										backgroundImage: `url(${num_bg.src})`,
-										backgroundPosition: 'center',
-										backgroundRepeat: 'no-repeat',
-										backgroundSize: '180px 180px',
-										width: '100%',
-										height: '180px',
-										zIndex: 0,
-									}}
+								<StyledGrid
+									container
+									position='relative'
+									alignItems='center'
+									flexWrap={'nowrap'}
+									margin={0}
 								>
-									{index + 1}
-								</Typography>
-								<Box
-									width={'100%'}
-									style={{
-										display: 'flex',
-										flexDirection: 'column',
-										justifyContent: 'center',
-										zIndex: 1,
-									}}
-								>
-									<Typography variant='member_title'>
-										{item.attributes.title}
-									</Typography>
-									{/* <br /> */}
 									<Typography
-										variant='member_subtitle'
-										style={{ width: isMobile ? '100%' : '130%' }}
+										variant='member_number'
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'center',
+											justifySelf: 'center',
+											backgroundImage: `url(${num_bg.src})`,
+											backgroundPosition: 'center',
+											backgroundRepeat: 'no-repeat',
+											backgroundSize: '180px 180px',
+											width: '100%',
+											height: '180px',
+											zIndex: 0,
+										}}
 									>
-										<ReactMarkdown>{item.attributes.text}</ReactMarkdown>
+										{index + 1}
 									</Typography>
-								</Box>
-							</StyledGrid>
-						</Grid>
-					))}
+									<Box
+										width={'100%'}
+										style={{
+											display: 'flex',
+											flexDirection: 'column',
+											justifyContent: 'center',
+											zIndex: 1,
+										}}
+									>
+										<Typography variant='member_title'>
+											{item.attributes.title}
+										</Typography>
+										{/* <br /> */}
+										<Typography
+											variant='member_subtitle'
+											style={{ width: isMobile ? '100%' : '130%' }}
+										>
+											<ReactMarkdown>{item.attributes.text}</ReactMarkdown>
+										</Typography>
+									</Box>
+								</StyledGrid>
+							</Grid>
+						))}
 				</Grid>
 			</Box>
 		</Box>

@@ -88,19 +88,19 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 				<meta property='og:type' content='article' />
 				<meta
 					property='og:title'
-					content={isEnglish ? data?.EnglishTitle : data?.Title || 'Новини'}
+					content={`Новини | ${isEnglish ? data?.EnglishTitle : data?.Title}`}
 				/>
 				<meta
 					property='og:description'
-					content={
-						isEnglish
-							? data?.EnglishDescription
-							: data?.Description || 'Опис новини'
-					}
+					content={`Новина |
+						${isEnglish ? data?.EnglishDescription : data?.Description} `}
 				/>
 				<meta property='og:image' content={data?.imageUrl || 'image'} />
 
-				<link rel='canonical' href={`http://ceducatio.com/news/${slug}`} />
+				<link
+					rel='canonical'
+					href={`http://ceducatio.com${isEnglish ? '/en' : ''}/news/${slug}`}
+				/>
 				<link rel='icon' href={logo.src} type='image/x-icon' />
 			</Head>
 

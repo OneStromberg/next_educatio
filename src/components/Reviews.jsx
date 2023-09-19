@@ -75,7 +75,7 @@ const ReviewsCarousel = ({ isEnglish, data }) => {
 					margin: '80px 0',
 				}}
 			>
-				<Typography variant='h4'>{pageTitle}</Typography>
+				<Typography variant='h4_about'>{pageTitle}</Typography>
 				<Wavy fill={'#262626'} />
 			</div>
 			<div
