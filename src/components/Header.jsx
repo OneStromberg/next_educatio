@@ -230,6 +230,7 @@ const MenuDrawer = ({
 	socials,
 }) => {
 	const isMobile = useMediaQuery('(max-width:600px)')
+	const isSmallMobile = useMediaQuery('(max-width:400px)')
 
 	return (
 		<Drawer
@@ -262,11 +263,12 @@ const MenuDrawer = ({
 					style={{
 						display: 'flex',
 						flexDirection: isMobile ? 'column' : 'row',
-						gap: isMobile ? 15 : 0,
+						gap: isMobile ? 15 : 5,
 						justifyContent: 'space-between',
 						padding: isMobile ? '3% 5%' : '3% 0',
 						flex: '1',
-						width: '100%',
+						width: isSmallMobile ? '70%' : '100%',
+						margin: '0 auto',
 					}}
 				>
 					{preferences?.attributes?.isShort ? (
@@ -332,7 +334,11 @@ const MenuDrawer = ({
 					container
 					direction='column'
 					alignItems='center'
-					style={{ paddingBottom: '2%' }}
+					style={{
+						paddingBottom: '2%',
+						width: isSmallMobile ? '70%' : '100%',
+						margin: '0 auto',
+					}}
 				>
 					{isMobile && (
 						<div style={{ display: 'flex', gap: 45, padding: '50px 0' }}>

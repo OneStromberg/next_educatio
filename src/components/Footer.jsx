@@ -42,7 +42,7 @@ const Footer = ({ isEnglish, data }) => {
 							container
 							justifyContent='start'
 							alignItems='center'
-							style={{ gap: 45 }}
+							style={{ gap: '12%', flexWrap: 'nowrap' }}
 						>
 							<a
 								href={data?.attributes?.facebook_link}
