@@ -62,7 +62,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 							display: isMobile ? 'flex' : 'flex',
 							flexDirection: isMobile ? 'column' : '',
 							padding: isMobile ? '' : '',
-							gap: isMobile ? 45 : '',
+							gap: isMobile ? 45 : 0,
 							width: '100%',
 							margin: '0 auto',
 						}}
@@ -96,7 +96,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 												alignItems: 'center',
 												justifyContent: 'center',
 												justifySelf: 'center',
-												width: '50%',
+												width: '30%',
 												height: '180px',
 												zIndex: 1,
 											}}
@@ -105,12 +105,17 @@ const EducationalAreas = ({ isEnglish, data }) => {
 										</Typography>
 										<Image
 											src={num_bg.src}
+											alt='educational area number background star'
 											width={180}
 											height={180}
 											style={{
 												position: 'absolute',
-												left: '-10%',
-												top: '${index * -40}px',
+												left: isMobile ? '-12%' : '-15%',
+												top: index === 0 ? '20px' : '',
+												transform:
+													index === 0
+														? 'rotate(0deg)'
+														: `rotate(${235 * index - 65}deg)`,
 											}}
 										/>
 										<Box

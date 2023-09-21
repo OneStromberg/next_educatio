@@ -43,7 +43,7 @@ const About = ({ isEnglish, data }) => {
 					alignItems: 'center',
 					flexDirection: isMobile ? 'column' : '',
 					gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-					gap: isMobile ? '50px' : '80px 5%',
+					gap: isMobile ? '50px' : '30px 5%',
 					marginTop: '10%',
 				}}
 			>
