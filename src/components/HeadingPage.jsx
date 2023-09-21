@@ -55,21 +55,14 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 				rowGap: isMobile ? '50px' : '',
 			}}
 		>
-			<div style={{ display: isMobile ? 'block' : 'none' }}>
-				<Image
-					src={bgURL}
-					alt='image'
-					width={240}
-					height={240}
-					loading='lazy'
-				/>
-			</div>
-			<div style={{ width: isMobile ? '100%' : isTablet ? '60%' : '40%' }}>
-				<Typography variant='h1' component='h1' gutterBottom>
-					<ReactMarkdown components={{ p: React.Fragment }}>
-						{text}
-					</ReactMarkdown>
-				</Typography>
+			
+			<StyledContainer>
+				<div>
+					<Typography variant='h1' component='h1' gutterBottom>
+						<ReactMarkdown components={{ p: React.Fragment }}>
+							{text}
+						</ReactMarkdown>
+					</Typography>
 
 				<Typography
 					variant='h2'
