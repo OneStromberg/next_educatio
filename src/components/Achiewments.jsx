@@ -19,7 +19,7 @@ const StyledGrid = styled(Grid)`
 	gap: 20px;
 	padding: 0;
 	width: 100%;
-	@media (max-width: 600px) {
+	@media (max-width: 800px) {
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 10px;
@@ -35,7 +35,7 @@ const GridContainer = styled('div')`
 	@media (max-width: 1150px) {
 		grid-template-columns: 12fr; // Desktop view
 	}
-	@media (max-width: 700px) {
+	@media (max-width: 800px) {
 		grid-template-columns: 1fr; // Mobile view
 		grid-template-rows: auto;
 	}
@@ -50,7 +50,7 @@ const GridContent = styled('div')`
 	column-gap: 5%;
 	row-gap: 10%;
 
-	@media (max-width: 600px) {
+	@media (max-width: 800px) {
 		grid-template-columns: 1fr; // Mobile view
 		grid-template-rows: auto;
 	}
@@ -65,7 +65,7 @@ const GridItem = styled(Grid)`
 
 const Achiewments = ({ isEnglish, data, preferences }) => {
 	const apiUrl = process.env.API_URL
-	const isMobile = useMediaQuery('(max-width:600px)')
+	const isMobile = useMediaQuery('(max-width:800px)')
 	const isShrink = useMediaQuery('(max-width: 1170px)')
 	const isWide = useMediaQuery('(min-width:1450px)')
 

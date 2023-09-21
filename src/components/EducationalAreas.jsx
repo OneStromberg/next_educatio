@@ -21,7 +21,7 @@ const StyledTextContainer = styled(Grid)`
 const EducationalAreas = ({ isEnglish, data }) => {
 	const isWide = useMediaQuery('(min-width: 1300px)')
 	const isShrink = useMediaQuery('(max-width: 1250px)')
-	const isMobile = useMediaQuery('(max-width:600px)')
+	const isMobile = useMediaQuery('(max-width:800px)')
 	if (!data || data.length < 1) {
 		return <></>
 	}
