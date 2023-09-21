@@ -12,13 +12,6 @@ const StyledGrid = styled(Grid)`
 	color: #fff;
 `
 
-const StyledTextContainer = styled(Grid)`
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	padding-top: 2%;
-`
-
 const EducationalAreas = ({ isEnglish, data }) => {
 	const isWide = useMediaQuery('(min-width: 1300px)')
 	const isShrink = useMediaQuery('(max-width: 1250px)')
@@ -41,28 +34,30 @@ const EducationalAreas = ({ isEnglish, data }) => {
 			}}
 		>
 			<Container>
-				<Box
+				<Typography variant='h4_light' component={'h2'} gutterBottom>
+					{pageTitle}
+				</Typography>
+				<Grid
 					style={{
-						display: 'flex',
+						display: isMobile ? 'grid' : 'flex',
 						flexDirection: 'column',
-						gap: '50px',
+						gridTemplateColumns: isMobile ? '1fr 4fr' : '1fr',
+						gap: isMobile ? '45px' : '15vh',
 						margin: '0 auto',
 					}}
 				>
-					<StyledTextContainer>
-						<Typography variant='h4_light' component={'h2'} gutterBottom>
-							{pageTitle}
-						</Typography>
-						<Wavy fill={'#E8E7E0'} />
-					</StyledTextContainer>
+					<Wavy fill={'#E8E7E0'} />
+					{isMobile && <div />}
+					{isMobile && <div />}
 					<Grid
 						container
 						spacing={2}
 						style={{
-							display: isMobile ? 'flex' : 'flex',
-							flexDirection: isMobile ? 'column' : '',
+							display: isMobile ? 'grid' : 'flex',
+							flexDirection: isMobile ? 'column' : 'row',
 							padding: isMobile ? '' : '',
-							gap: isMobile ? 45 : 0,
+							gap: isMobile ? 45 : 25,
+							flexWrap: 'nowrap',
 							width: '100%',
 							margin: '0 auto',
 						}}
@@ -77,15 +72,16 @@ const EducationalAreas = ({ isEnglish, data }) => {
 									md={4}
 									key={item.id}
 									style={{
-										marginTop: isMobile ? '0' : `${index * -35}px`,
+										marginTop: isMobile ? '0' : `${index * -50}px`,
 										padding: 0,
 									}}
 								>
 									<StyledGrid
 										container
 										position='relative'
-										alignItems='center'
+										alignItems='flex-start'
 										flexWrap={'nowrap'}
+										gap={3}
 										margin={0}
 									>
 										<Typography
@@ -96,8 +92,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 												alignItems: 'center',
 												justifyContent: 'center',
 												justifySelf: 'center',
-												width: '30%',
-												height: '180px',
+												width: '15%',
 												zIndex: 1,
 											}}
 										>
@@ -110,8 +105,14 @@ const EducationalAreas = ({ isEnglish, data }) => {
 											height={180}
 											style={{
 												position: 'absolute',
-												left: isMobile ? '-12%' : '-15%',
-												top: index === 0 ? '20px' : '',
+												left: isMobile ? '-30%' : '-20%',
+												top: isMobile
+													? index === 0
+														? '-20%'
+														: '-35%'
+													: index === 0
+													? '-33%'
+													: '-45%',
 												transform:
 													index === 0
 														? 'rotate(0deg)'
@@ -125,12 +126,12 @@ const EducationalAreas = ({ isEnglish, data }) => {
 												flexDirection: 'column',
 												justifyContent: 'center',
 												zIndex: 1,
+												gap: '15px',
 											}}
 										>
 											<Typography variant='member_title'>
 												{item.attributes.title}
 											</Typography>
-											{/* <br /> */}
 											<Typography variant='member_subtitle'>
 												<ReactMarkdown>{item.attributes.text}</ReactMarkdown>
 											</Typography>
@@ -139,7 +140,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 								</Grid>
 							))}
 					</Grid>
-				</Box>
+				</Grid>
 			</Container>
 		</Box>
 	)
