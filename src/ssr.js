@@ -61,7 +61,6 @@ export async function getServerSideProps(context) {
 		membersData,
 	] = await Promise.all(fetchList)
 
-	console.log(mainData)
 
 	if (
 		!mainData ||

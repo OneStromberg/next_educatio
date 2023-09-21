@@ -23,7 +23,7 @@ const Centers = ({ isEnglish, data }) => {
 					margin: '0 auto',
 				}}
 			>
-				<Typography variant='h4_blue' gutterBottom>
+				<Typography variant='h4_blue' component={'h2'} gutterBottom>
 					{pageTitle}
 				</Typography>
 				<div

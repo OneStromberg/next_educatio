@@ -82,7 +82,9 @@ const PartnersCarousel = memo(({ isEnglish }) => {
 					marginBottom: '50px',
 				}}
 			>
-				<Typography variant='h4_about'>{pageTitle}</Typography>
+				<Typography variant='h4_about' component={'h2'}>
+					{pageTitle}
+				</Typography>
 				<Wavy fill={'#262626'} />
 			</div>
 			<Box>

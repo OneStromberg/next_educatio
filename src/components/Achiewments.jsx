@@ -10,7 +10,6 @@ const StyledTextContainer = styled(Grid)`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	padding: 20px;
 `
 
 const StyledGrid = styled(Grid)`
@@ -18,7 +17,6 @@ const StyledGrid = styled(Grid)`
 	align-items: center;
 	justify-content: flex-start;
 	gap: 20px;
-	align-items: center;
 	padding: 0;
 	width: 100%;
 	@media (max-width: 600px) {
@@ -30,18 +28,36 @@ const StyledGrid = styled(Grid)`
 
 const GridContainer = styled('div')`
 	display: grid;
-	grid-template-columns: ${props =>
-		props.dataLength > 3 ? ' 1fr 1fr' : '1fr 1fr 1fr'};
-	justify-content: start;
-	justify-items: start;
-	max-width: 75%;
+	grid-template-columns: 3fr 9fr; // Desktop view
+	grid-template-rows: 2fr auto;
 	gap: 20px;
-	margin: 0 0 0 30%;
+
+	@media (max-width: 1050px) {
+		grid-template-columns: 12fr; // Desktop view
+	}
+	@media (max-width: 700px) {
+		grid-template-columns: 1fr; // Mobile view
+		grid-template-rows: auto;
+	}
+`
+
+const GridContent = styled('div')`
+	display: grid;
+	width: 100%;
+	grid-template-columns: 4fr 4fr; // Desktop view
+	grid-template-rows: 2fr auto;
+	column-gap: 5%;
+	row-gap: 10%;
+
+	@media (max-width: 600px) {
+		grid-template-columns: 1fr; // Mobile view
+		grid-template-rows: auto;
+	}
 `
 
 const GridItem = styled(Grid)`
-	max-width: 410px;
-	width: 100%;
+	max-width: 100%;
+	width: fit-content;
 	align-items: center;
 	justify-content: space-between;
 `
@@ -49,6 +65,7 @@ const GridItem = styled(Grid)`
 const Achiewments = ({ isEnglish, data, preferences }) => {
 	const apiUrl = process.env.API_URL
 	const isMobile = useMediaQuery('(max-width:600px)')
+	const isShrink = useMediaQuery('(max-width: 1150px)')
 	const isWide = useMediaQuery('(min-width:1450px)')
 
 	if (data.length < 1 || !data) {
@@ -73,7 +90,7 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 					: `url(${background.src}), linear-gradient(to bottom,  #FBFBFB, #FFFFFF)`,
 				backgroundRepeat: 'no-repeat no-repeat',
 				backgroundPosition: isMobile ? '' : 'center center',
-				backgroundSize: isMobile ? 'cover' : '100%',
+				backgroundSize: isShrink ? 'cover' : '100%',
 			}}
 		>
 			<div
@@ -100,88 +117,97 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 				}}
 				alt='Right arrow'
 			/>
-			<StyledTextContainer>
-				<Typography id='achievements' variant='h4_light' gutterBottom>
-					{pageTitle}
-				</Typography>
-				<Wavy fill={'#E8E7E0'} />
-			</StyledTextContainer>
+			<GridContainer>
+				<StyledTextContainer>
+					<Typography
+						id='achievements'
+						variant='h4_light'
+						component={'h2'}
+						gutterBottom
+					>
+						{pageTitle}
+					</Typography>
+					<Wavy fill={'#E8E7E0'} />
+				</StyledTextContainer>
+				<div style={{ height: '100%' }} />
+				<div style={{ height: '100%' }} />
 
-			{isMobile ? (
-				<Box
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'flex-start',
-						gap: 40,
-					}}
-				>
-					{data
-						.sort((a, b) => a.id - b.id)
-						.map((item, index) => (
-							<GridItem item key={item.id} gap={5} padding={0}>
+				{isMobile ? (
+					<Box
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'flex-start',
+							gap: 40,
+						}}
+					>
+						{data
+							.sort((a, b) => a.id - b.id)
+							.map((item, index) => (
+								<GridItem item key={item.id} gap={5} padding={0}>
+									<StyledGrid>
+										<Typography variant='h3_light' style={{ lineHeight: 1 }}>
+											{item.attributes.number}
+										</Typography>
+										<Typography variant='text_light' gutterBottom>
+											{item.attributes.title}
+										</Typography>
+									</StyledGrid>
+								</GridItem>
+							))}
+					</Box>
+				) : (
+					<GridContent
+						dataLength={data.length}
+						style={{ position: 'relative' }}
+					>
+						<div
+							style={{
+								background: `url(${lb_corner.src}) center center no-repeat`,
+								position: 'absolute',
+								left: '-10%',
+								bottom: '-15%',
+								width: 57,
+								height: 67,
+							}}
+						/>
+						<div
+							style={{
+								background: `url(${rt_corner.src}) center center no-repeat`,
+								position: 'absolute',
+								right: '5%',
+								top: '-15%',
+								width: 57,
+								height: 67,
+							}}
+						/>
+						{data.map((item, index) => (
+							<GridItem item key={item.id}>
 								<StyledGrid>
-									<Typography variant='h3_light' style={{ lineHeight: 1 }}>
+									<Typography
+										variant='h3_light'
+										style={{
+											lineHeight: 1,
+											width: 'fit-content',
+											display: 'flex',
+											justifyContent: 'flex-start',
+										}}
+									>
 										{item.attributes.number}
 									</Typography>
-									<Typography variant='text_light' gutterBottom>
+									<Typography
+										variant='text_light'
+										gutterBottom
+										style={{ maxWidth: '230px' }}
+									>
 										{item.attributes.title}
 									</Typography>
 								</StyledGrid>
 							</GridItem>
 						))}
-				</Box>
-			) : (
-				<GridContainer
-					dataLength={data.length}
-					style={{ position: 'relative' }}
-				>
-					<div
-						style={{
-							background: `url(${lb_corner.src}) center center no-repeat`,
-							position: 'absolute',
-							left: '-5%',
-							bottom: '-15%',
-							width: 57,
-							height: 67,
-						}}
-					/>
-					<div
-						style={{
-							background: `url(${rt_corner.src}) center center no-repeat`,
-							position: 'absolute',
-							right: '0%',
-							top: '-15%',
-							width: 57,
-							height: 67,
-						}}
-					/>
-					{data.map((item, index) => (
-						<GridItem item key={item.id}>
-							<StyledGrid>
-								<Typography
-									variant='h3_light'
-									style={{
-										lineHeight: 1,
-										width: '30%',
-										display: 'flex',
-										justifyContent: 'flex-end',
-									}}
-								>
-									{item.attributes.number}
-								</Typography>
-								<Typography
-									variant='text_light'
-									gutterBottom
-									style={{ maxWidth: '230px' }}
-								>
-									{item.attributes.title}
-								</Typography>
-							</StyledGrid>
-						</GridItem>
-					))}
-				</GridContainer>
-			)}
+					</GridContent>
+				)}
+			</GridContainer>
 		</Box>
 	)
 }

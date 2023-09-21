@@ -56,7 +56,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 				}}
 			>
 				<StyledTextContainer>
-					<Typography variant='h4_light' gutterBottom>
+					<Typography variant='h4_light' component={'h2'} gutterBottom>
 						{pageTitle}
 					</Typography>
 					<Wavy fill={'#E8E7E0'} />

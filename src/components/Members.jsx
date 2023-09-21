@@ -79,6 +79,7 @@ const Members = ({ isEnglish, data, preferences }) => {
 			>
 				<Typography
 					variant='h4_about'
+					component={'h2'}
 					gutterBottom
 					style={{
 						textAlign: 'center',

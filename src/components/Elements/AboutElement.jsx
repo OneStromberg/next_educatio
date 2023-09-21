@@ -1,4 +1,5 @@
 import { Grid, Typography } from '@mui/material'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
 
@@ -36,7 +37,7 @@ export default function AboutElement({ index, item, isMobile = { isMobile } }) {
 					alt='About Us'
 					width={180}
 					height={194}
-					style={{ width: '100%' }}
+					style={{ width: isMobile ? '100%' : '' }}
 					loading='lazy'
 				/>
 				<Grid
@@ -50,11 +51,13 @@ export default function AboutElement({ index, item, isMobile = { isMobile } }) {
 						gap: 5,
 					}}
 				>
-					<Typography variant='about_heading' gutterBottom>
+					<Typography variant='about_heading' component='h3' gutterBottom>
 						{item.attributes.title}
 					</Typography>
-					<Typography variant='about_subheading' gutterBottom>
-						<ReactMarkdown>{item.attributes.text}</ReactMarkdown>
+					<Typography variant='about_subheading' component='p' gutterBottom>
+						<ReactMarkdown components={{ p: React.Fragment }}>
+							{item.attributes.text}
+						</ReactMarkdown>
 					</Typography>
 				</Grid>
 			</Grid>

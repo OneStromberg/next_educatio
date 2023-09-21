@@ -32,7 +32,12 @@ const About = ({ isEnglish, data }) => {
 	return (
 		<StyledContainer id='actions'>
 			<StyledHeaderContainer>
-				<Typography variant='h4_about' gutterBottom color={'#F7BA21'}>
+				<Typography
+					variant='h4_about'
+					component={'h2'}
+					gutterBottom
+					color={'#F7BA21'}
+				>
 					{isEnglish ? 'What we are doing' : 'Що ми робимо'}
 				</Typography>
 				<div>
@@ -53,7 +58,14 @@ const About = ({ isEnglish, data }) => {
 				{data
 					.sort((a, b) => a.id - b.id)
 					.map((item, index) => {
-						return <AboutElement key={index} item={item} index={index} isMobile={isMobile}/>
+						return (
+							<AboutElement
+								key={index}
+								item={item}
+								index={index}
+								isMobile={isMobile}
+							/>
+						)
 					})}
 			</Box>
 		</StyledContainer>

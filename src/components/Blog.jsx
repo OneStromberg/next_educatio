@@ -68,7 +68,7 @@ const Blog = ({ isEnglish, data }) => {
 					marginBottom: 50,
 				}}
 			>
-				<Typography variant='news_page_title' gutterBottom>
+				<Typography variant='news_page_title' component={'h2'} gutterBottom>
 					{pageTitle}
 				</Typography>
 				<Wavy fill='#7D7987' />
