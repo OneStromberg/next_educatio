@@ -1,17 +1,8 @@
 import dynamic from 'next/dynamic'
-import { Box, Grid, Typography, useMediaQuery } from '@mui/material'
+import { Box, Grid, Typography, useMediaQuery, Container } from '@mui/material'
 import { styled } from '@mui/system'
 import Wavy from './UI/Wavy'
 const AboutElement = dynamic(() => import('./Elements/AboutElement'))
-
-const StyledContainer = styled(Box)`
-	padding: 5% 10%;
-	margin: 0 auto;
-
-	@media (max-width: 600px) {
-		padding: 10%;
-	}
-`
 
 const StyledHeaderContainer = styled(Grid)`
 	grid-column: 1 / 3;
@@ -20,6 +11,7 @@ const StyledHeaderContainer = styled(Grid)`
 	justify-content: flex-end;
 	align-items: flex-end;
 	padding: 20px;
+	margin-top: 5%;
 `
 
 const About = ({ isEnglish, data }) => {
@@ -30,7 +22,7 @@ const About = ({ isEnglish, data }) => {
 	}
 
 	return (
-		<StyledContainer id='actions'>
+		<Container id='actions'>
 			<StyledHeaderContainer>
 				<Typography
 					variant='h4_about'
@@ -68,7 +60,7 @@ const About = ({ isEnglish, data }) => {
 						)
 					})}
 			</Box>
-		</StyledContainer>
+		</Container>
 	)
 }
 

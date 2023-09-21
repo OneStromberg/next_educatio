@@ -1,4 +1,11 @@
-import { Grid, Typography, Button, Box, useMediaQuery } from '@mui/material'
+import {
+	Grid,
+	Typography,
+	Button,
+	Box,
+	Container,
+	useMediaQuery,
+} from '@mui/material'
 import Link from 'next/link'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
@@ -129,44 +136,45 @@ const BlogPost = ({ isEnglish, data }) => {
 				</Box>
 			</div>
 
-			<Box
-				p={{ xs: 2, md: 10 }}
-				py={6}
-				style={{
-					maxWidth: '100%',
-				}}
-			>
-				<Typography variant='news_text'>
-					<Box className='my-markdown'>
-						<ReactMarkdown>{data.text}</ReactMarkdown>
-					</Box>
-				</Typography>
-			</Box>
-			<StyledWrapper
-				className='back-to-home'
-				href='/'
-				style={{
-					display: 'flex',
-					alignItems: 'center',
-					cursor: 'pointer',
-					width: isMobile ? '50%' : '20%',
-					margin: '2% 5%',
-					gap: 15,
-					textDecoration: 'none',
-				}}
-			>
-				<div className='arrow' style={{ width: 30 }}>
-					<Arrow fill={'#458FF6'} />
-				</div>
-				<Button
-					href='/'
-					aria-label='Go to home screen'
-					variant='text'
-					style={{ cursor: 'pointer', color: '#458FF6' }}
+			<Container>
+				<Box
+					style={{
+						maxWidth: '100%',
+						paddingTop: 50,
+					}}
 				>
-					{isEnglish ? 'Back to Home' : 'На головну'}
-				</Button>
-			</StyledWrapper>
+					<Typography variant='news_text'>
+						<Box className='my-markdown'>
+							<ReactMarkdown>{data.text}</ReactMarkdown>
+						</Box>
+					</Typography>
+				</Box>
+				<StyledWrapper
+					className='back-to-home'
+					href='/'
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						cursor: 'pointer',
+						// width: isMobile ? '50%' : '20%',
+						margin: '4% 0',
+						gap: 15,
+						textDecoration: 'none',
+					}}
+				>
+					<div className='arrow' style={{ width: 30 }}>
+						<Arrow fill={'#458FF6'} />
+					</div>
+					<Button
+						href='/'
+						aria-label='Go to home screen'
+						variant='text'
+						style={{ cursor: 'pointer', color: '#458FF6' }}
+					>
+						{isEnglish ? 'Back to Home' : 'На головну'}
+					</Button>
+				</StyledWrapper>
+			</Container>
 		</Grid>
 	)
 }

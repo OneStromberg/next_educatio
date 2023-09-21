@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, useMediaQuery } from '@mui/material'
+import { Container, Box, Grid, Typography, useMediaQuery } from '@mui/material'
 import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
 import Wavy from './UI/Wavy'
@@ -16,11 +16,9 @@ const Centers = ({ isEnglish, data }) => {
 
 	return (
 		<div style={{ background: '#FBFBFB' }}>
-			<div
+			<Container
 				style={{
-					width: isMobile ? '95%' : '80%',
 					padding: isMobile ? '50px 0 0 0' : '4.5% 0%',
-					margin: '0 auto',
 				}}
 			>
 				<Typography variant='h4_blue' component={'h2'} gutterBottom>
@@ -101,7 +99,7 @@ const Centers = ({ isEnglish, data }) => {
 						</Grid>
 					</div>
 				</div>
-			</div>
+			</Container>
 		</div>
 	)
 }

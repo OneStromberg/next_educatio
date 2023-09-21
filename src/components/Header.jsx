@@ -12,6 +12,7 @@ import {
 	ListItem,
 	Hidden,
 	Divider,
+	Container,
 	Grid,
 	useMediaQuery,
 } from '@mui/material'
@@ -44,7 +45,7 @@ const StyledButton = styled(Button)`
 		font-size: 16px;
 		text-transform: uppercase;
 		text-decoration: none;
-		margin-right: 10px;
+		width: fit-content;
 		transition: 0.3s;
 		&:hover {
 			color: #1f1f71;
@@ -256,147 +257,150 @@ const MenuDrawer = ({
 			}}
 			BackdropProps={{ invisible: true }}
 		>
-			<List
-				style={{
-					display: 'flex',
-					flexDirection: isMobile ? 'column' : 'row',
-					flex: '1',
-					padding: isMobile ? '0 0 0 5%' : '0 8%',
-					width: '100%',
-				}}
-			>
-				{preferences?.attributes?.isShort ? (
-					<></>
-				) : (
+			<Container>
+				<List
+					style={{
+						display: 'flex',
+						flexDirection: isMobile ? 'column' : 'row',
+						gap: isMobile ? 15 : 0,
+						justifyContent: 'space-between',
+						padding: isMobile ? '3% 5%' : '3% 0',
+						flex: '1',
+						width: '100%',
+					}}
+				>
+					{preferences?.attributes?.isShort ? (
+						<></>
+					) : (
+						<ListItem
+							button
+							style={{ justifyContent: isMobile ? 'start' : 'center' }}
+							onClick={() => handleScrollToSection('actions')}
+						>
+							<StyledButton aria-label='actions'>{actions}</StyledButton>
+						</ListItem>
+					)}
 					<ListItem
 						button
 						style={{ justifyContent: isMobile ? 'start' : 'center' }}
-						onClick={() => handleScrollToSection('actions')}
+						onClick={() => handleScrollToSection('achievements')}
 					>
-						<StyledButton aria-label='actions'>{actions}</StyledButton>
+						<StyledButton aria-label='achievements'>
+							{achievements}
+						</StyledButton>
 					</ListItem>
-				)}
-				<ListItem
-					button
-					style={{ justifyContent: isMobile ? 'start' : 'center' }}
-					onClick={() => handleScrollToSection('achievements')}
-				>
-					<StyledButton aria-label='achievements'>{achievements}</StyledButton>
-				</ListItem>
 
-				<ListItem
-					button
-					style={{ justifyContent: isMobile ? 'start' : 'center' }}
-					onClick={() => handleScrollToSection('areas')}
-				>
-					<StyledButton aria-label='areas'>{areas}</StyledButton>
-				</ListItem>
-
-				<ListItem
-					button
-					style={{ justifyContent: isMobile ? 'start' : 'center' }}
-					onClick={() => handleScrollToSection('centers')}
-				>
-					<StyledButton aria-label='centers'>{centers}</StyledButton>
-				</ListItem>
-
-				{preferences?.attributes?.isShort ||
-				preferences?.attributes?.hideCalendar ? (
-					<></>
-				) : (
 					<ListItem
 						button
 						style={{ justifyContent: isMobile ? 'start' : 'center' }}
-						onClick={() => handleScrollToSection('calendar')}
+						onClick={() => handleScrollToSection('areas')}
 					>
-						<StyledButton aria-label='calendars'>{calendar}</StyledButton>
+						<StyledButton aria-label='areas'>{areas}</StyledButton>
 					</ListItem>
-				)}
 
-				<ListItem
-					button
-					style={{ justifyContent: isMobile ? 'start' : 'center' }}
-					onClick={() => handleScrollToSection('news')}
+					<ListItem
+						button
+						style={{ justifyContent: isMobile ? 'start' : 'center' }}
+						onClick={() => handleScrollToSection('centers')}
+					>
+						<StyledButton aria-label='centers'>{centers}</StyledButton>
+					</ListItem>
+
+					{preferences?.attributes?.isShort ||
+					preferences?.attributes?.hideCalendar ? (
+						<></>
+					) : (
+						<ListItem
+							button
+							style={{ justifyContent: isMobile ? 'start' : 'center' }}
+							onClick={() => handleScrollToSection('calendar')}
+						>
+							<StyledButton aria-label='calendars'>{calendar}</StyledButton>
+						</ListItem>
+					)}
+
+					<ListItem
+						button
+						style={{ justifyContent: isMobile ? 'start' : 'center' }}
+						onClick={() => handleScrollToSection('news')}
+					>
+						<StyledButton aria-label='news'>{news}</StyledButton>
+					</ListItem>
+				</List>
+				<Divider style={{ margin: '10px auto' }} />
+				<Grid
+					container
+					direction='column'
+					alignItems='center'
+					style={{ paddingBottom: '2%' }}
 				>
-					<StyledButton aria-label='news'>{news}</StyledButton>
-				</ListItem>
-			</List>
-			<Divider
-				style={{ margin: '10px auto', width: isMobile ? '80%' : '81%' }}
-			/>
-			<Grid
-				container
-				direction='column'
-				alignItems='center'
-				style={{ paddingBottom: '2%' }}
-			>
-				{isMobile && (
-					<div style={{ display: 'flex', gap: 45, padding: '50px 0' }}>
-						<a
-							style={{ color: '#AFABB8', height: 23, width: 23 }}
-							href={socials?.attributes?.facebook_link}
+					{isMobile && (
+						<div style={{ display: 'flex', gap: 45, padding: '50px 0' }}>
+							<a
+								style={{ color: '#AFABB8', height: 23, width: 23 }}
+								href={socials?.attributes?.facebook_link}
+							>
+								<Facebook fill={'#AFABB8'} />
+							</a>
+							<a
+								style={{ color: '#AFABB8', height: 23, width: 23 }}
+								href={socials?.attributes?.instagram_link}
+							>
+								<Instagram fill={'#AFABB8'} />
+							</a>
+							<a
+								style={{ color: '#AFABB8', height: 23, width: 23 }}
+								href={socials?.attributes?.youtube_link}
+							>
+								<Youtube fill={'#AFABB8'} />
+							</a>
+							<a
+								style={{ color: '#AFABB8', height: 23, width: 23 }}
+								href={socials?.attributes?.tiktok_link}
+							>
+								<TikTok fill={'#AFABB8'} />
+							</a>
+						</div>
+					)}
+					{isMobile ? (
+						<Grid
+							container
+							justifyContent='space-between'
+							style={{
+								padding: '2% 10% 4% 10%',
+							}}
 						>
-							<Facebook fill={'#AFABB8'} />
-						</a>
-						<a
-							style={{ color: '#AFABB8', height: 23, width: 23 }}
-							href={socials?.attributes?.instagram_link}
+							<Typography
+								variant='header_subtext'
+								style={{ textDecoration: 'underline' }}
+							>
+								{socials?.attributes?.email}
+							</Typography>
+							<Typography variant='header_subtext'>
+								{adress ? <ReactMarkdown>{adress}</ReactMarkdown> : <></>}
+							</Typography>
+						</Grid>
+					) : (
+						<Grid
+							container
+							justifyContent='space-between'
+							style={{
+								padding: '2% 0 4% 0',
+							}}
 						>
-							<Instagram fill={'#AFABB8'} />
-						</a>
-						<a
-							style={{ color: '#AFABB8', height: 23, width: 23 }}
-							href={socials?.attributes?.youtube_link}
-						>
-							<Youtube fill={'#AFABB8'} />
-						</a>
-						<a
-							style={{ color: '#AFABB8', height: 23, width: 23 }}
-							href={socials?.attributes?.tiktok_link}
-						>
-							<TikTok fill={'#AFABB8'} />
-						</a>
-					</div>
-				)}
-				{isMobile ? (
-					<Grid
-						container
-						justifyContent='space-between'
-						style={{
-							padding: '2% 10% 4% 10%',
-						}}
-					>
-						<Typography
-							variant='header_subtext'
-							style={{ textDecoration: 'underline' }}
-						>
-							{socials?.attributes?.email}
-						</Typography>
-						<Typography variant='header_subtext'>
-							{adress ? <ReactMarkdown>{adress}</ReactMarkdown> : <></>}
-						</Typography>
-					</Grid>
-				) : (
-					<Grid
-						container
-						justifyContent='space-between'
-						style={{
-							padding: '2% 0 4% 0',
-							width: '81%',
-						}}
-					>
-						<Typography variant='header_subtext'>
-							{adress ? <ReactMarkdown>{adress}</ReactMarkdown> : <></>}
-						</Typography>
-						<Typography
-							variant='header_subtext'
-							style={{ textDecoration: 'underline' }}
-						>
-							{socials?.attributes?.email}
-						</Typography>
-					</Grid>
-				)}
-			</Grid>
+							<Typography variant='header_subtext'>
+								{adress ? <ReactMarkdown>{adress}</ReactMarkdown> : <></>}
+							</Typography>
+							<Typography
+								variant='header_subtext'
+								style={{ textDecoration: 'underline' }}
+							>
+								{socials?.attributes?.email}
+							</Typography>
+						</Grid>
+					)}
+				</Grid>
+			</Container>
 		</Drawer>
 	)
 }

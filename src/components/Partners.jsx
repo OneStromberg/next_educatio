@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import {
+	Container,
 	Paper,
 	IconButton,
 	useMediaQuery,
@@ -64,116 +65,122 @@ const PartnersCarousel = memo(({ isEnglish }) => {
 	const pageTitle = isEnglish ? 'Our partners' : 'Наші партнери'
 
 	return (
-		<Box
-			style={{
-				padding: '6% 0',
-				flexDirection: 'column',
-				alignItems: 'center',
-				width: '80%',
-				margin: '0 auto',
-			}}
-		>
-			<div
+		<Container>
+			<Box
 				style={{
-					display: 'flex',
+					padding: '6% 0',
 					flexDirection: 'column',
 					alignItems: 'center',
-					justifyContent: 'center',
-					marginBottom: '50px',
+					width: '100%',
+					margin: '2% auto',
 				}}
 			>
-				<Typography variant='h4_about' component={'h2'}>
-					{pageTitle}
-				</Typography>
-				<Wavy fill={'#262626'} />
-			</div>
-			<Box>
-				<Carousel
-					key={itemsPerSlide}
-					navButtonsAlwaysVisible
-					indicators={false}
-					index={currentSlideIndex}
-					onChange={index => setCurrentSlideIndex(index)}
-					style={{ height: '100%', minHeight: '100px', width: '90%' }}
-					NavButton={({
-						onClick,
-						className,
-						style,
-						next = goToNextSlide,
-						prev = goToPrevSlide,
-					}) => {
-						return partnerData.length > itemsPerSlide ? (
-							<IconButton
-								onClick={onClick}
-								onMouseEnter={() => setHovered(prev ? 'prev' : 'next')}
-								onMouseLeave={() => setHovered(null)}
-								style={{
-									...style,
-									top: '33%',
-									transform: 'translateY(-50%)',
-									zIndex: 1000,
-									backgroundColor: 'rgba(255, 255, 255, 0)',
-									fontSize: '2.5rem',
-									display: 'flex',
-									alignItems: 'center',
-									width: 40,
-									left: prev ? '0px' : 'unset',
-									right: next ? '0px' : 'unset',
-									transform: prev ? 'rotate(180deg)' : 'unset',
-									transition: 'all 0.3s ease',
-									opacity: 1,
-								}}
-							>
-								{next && (
-									<Arrow fill={isHovered === 'next' ? '#458FF6' : '#b5d2fb'} />
-								)}
-								{prev && (
-									<Arrow fill={isHovered === 'prev' ? '#458FF6' : '#b5d2fb'} />
-								)}
-							</IconButton>
-						) : null
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						justifyContent: 'center',
+						marginBottom: '50px',
 					}}
 				>
-					{slides.map((slide, index) => (
-						<Paper
-							key={index}
-							elevation={0}
-							style={{
-								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
-								paddingBottom: 10,
-								width: '90%',
-								margin: '0 auto',
-							}}
-						>
-							{slide.map(partner => (
-								<div
-									key={partner.id}
-									style={{ textAlign: 'center', margin: '0 20px' }}
+					<Typography variant='h4_about' component={'h2'}>
+						{pageTitle}
+					</Typography>
+					<Wavy fill={'#262626'} />
+				</div>
+				<Box>
+					<Carousel
+						key={itemsPerSlide}
+						navButtonsAlwaysVisible
+						indicators={false}
+						index={currentSlideIndex}
+						onChange={index => setCurrentSlideIndex(index)}
+						style={{ height: '100%', minHeight: '100px', width: '90%' }}
+						NavButton={({
+							onClick,
+							className,
+							style,
+							next = goToNextSlide,
+							prev = goToPrevSlide,
+						}) => {
+							return partnerData.length > itemsPerSlide ? (
+								<IconButton
+									onClick={onClick}
+									onMouseEnter={() => setHovered(prev ? 'prev' : 'next')}
+									onMouseLeave={() => setHovered(null)}
+									style={{
+										...style,
+										top: '33%',
+										transform: 'translateY(-50%)',
+										zIndex: 1000,
+										backgroundColor: 'rgba(255, 255, 255, 0)',
+										fontSize: '2.5rem',
+										display: 'flex',
+										alignItems: 'center',
+										width: 40,
+										left: prev ? '0px' : 'unset',
+										right: next ? '0px' : 'unset',
+										transform: prev ? 'rotate(180deg)' : 'unset',
+										transition: 'all 0.3s ease',
+										opacity: 1,
+									}}
 								>
-									<Image
-										src={partner.logo}
-										alt='Partner Logo'
-										width={150}
-										height={85}
-										loading='lazy'
-										style={{
-											maxHeight: '90px',
-											width: 'auto',
-											minHeight: '85px',
-											objectFit: 'contain',
-											objectPosition: 'center',
-											margin: '0 auto',
-										}}
-									/>
-								</div>
-							))}
-						</Paper>
-					))}
-				</Carousel>
+									{next && (
+										<Arrow
+											fill={isHovered === 'next' ? '#458FF6' : '#b5d2fb'}
+										/>
+									)}
+									{prev && (
+										<Arrow
+											fill={isHovered === 'prev' ? '#458FF6' : '#b5d2fb'}
+										/>
+									)}
+								</IconButton>
+							) : null
+						}}
+					>
+						{slides.map((slide, index) => (
+							<Paper
+								key={index}
+								elevation={0}
+								style={{
+									display: 'flex',
+									justifyContent: 'center',
+									alignItems: 'center',
+									paddingBottom: 10,
+									width: '90%',
+									margin: '0 auto',
+								}}
+							>
+								{slide.map(partner => (
+									<div
+										key={partner.id}
+										style={{ textAlign: 'center', margin: '0 20px' }}
+									>
+										<Image
+											src={partner.logo}
+											alt='Partner Logo'
+											width={150}
+											height={85}
+											loading='lazy'
+											style={{
+												maxHeight: '90px',
+												width: 'auto',
+												minHeight: '85px',
+												objectFit: 'contain',
+												objectPosition: 'center',
+												margin: '0 auto',
+											}}
+										/>
+									</div>
+								))}
+							</Paper>
+						))}
+					</Carousel>
+				</Box>
 			</Box>
-		</Box>
+		</Container>
 	)
 })
 

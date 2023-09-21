@@ -12,6 +12,10 @@ const theme = createTheme({
 	components: {
 		MuiButton: {
 			styleOverrides: {
+				root: {
+					padding: 0,
+					margin: 0,
+				},
 				sizeLarge: {
 					fontFamily: 'Roboto',
 					fontSize: 42,
@@ -57,6 +61,8 @@ const theme = createTheme({
 		MuiButtonBase: {
 			styleOverrides: {
 				root: {
+					padding: 0,
+					margin: 0,
 					'&:hover': {
 						backgroundColor: '#0000000',
 					},
@@ -66,6 +72,8 @@ const theme = createTheme({
 		MuiListItem: {
 			styleOverrides: {
 				root: {
+					padding: 0,
+					width: 'fit-content',
 					'&:hover': {
 						backgroundColor: 'transparent',
 						color: ' #1F1F71',

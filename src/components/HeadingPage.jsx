@@ -1,31 +1,40 @@
 import React from 'react'
-import { Container, Typography, useMediaQuery, useTheme } from '@mui/material'
+import {
+	Container,
+	Typography,
+	useMediaQuery,
+	useTheme,
+	Box,
+} from '@mui/material'
 import ReactMarkdown from 'react-markdown'
 import { styled } from '@mui/system'
 import background from '../assets/heading_bg.svg'
 import Image from 'next/image'
 
 const StyledContainer = styled(Container)`
-	max-height: 100dvh;
-	display: flex;
+	display: grid;
 	align-items: center;
 	color: #fff;
-	max-width: 100dvw;
-	padding: 5% 20%;
-	column-gap: 10%;
+	max-width: 100vw;
+	grid-template-columns: 5.5fr 2fr 3.2fr;
+	padding: 10% 4%;
 	margin-top: 50px;
 
-	@media (max-width: 600px) {
-		flex-direction: column;
+	@media (max-width: 800px) {
+		display: flex;
+		flex-direction: column-reverse;
+		gap: 5vh;
+		grid-template-columns: 1fr; // Single column for mobile
 		padding: 10% 4%;
 	}
+
 	@media (max-width: 1280px) {
 		padding: 10% 4%;
 	}
 `
 
 const HeadingPage = ({ isEnglish, data, preferences }) => {
-	const isMobile = useMediaQuery('(max-width:600px)')
+	const isMobile = useMediaQuery('(max-width:800px)')
 	const isTablet = useMediaQuery('(max-width:1280px)')
 	const isWide = useMediaQuery('(min-width:1600px)')
 
@@ -40,10 +49,10 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 	const bgURL = apiUrl.slice(0, apiUrl.length - 4) + backgroundImage
 
 	return (
-		<StyledContainer
+		<Container
 			style={{
 				backgroundImage: `url(${background.src})`,
-				backgroundColor: ` ${isShort ? '#fff' : '#FBFBFB'}`,
+				backgroundColor: `${isShort ? '#fff' : '#FBFBFB'}`,
 				maxWidth: 'none',
 				minHeight: isMobile ? '850px' : 'none',
 				height: isTablet ? '100%' : '100vh',
@@ -52,42 +61,43 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 				backgroundPosition: isMobile ? '' : 'center center',
 				backgroundRepeat: 'no-repeat no-repeat',
 				paddingTop: isMobile ? 20 : '',
-				rowGap: isMobile ? '50px' : '',
 			}}
 		>
-			
 			<StyledContainer>
-				<div>
+				<Box style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
 					<Typography variant='h1' component='h1' gutterBottom>
 						<ReactMarkdown components={{ p: React.Fragment }}>
 							{text}
 						</ReactMarkdown>
 					</Typography>
 
-				<Typography
-					variant='h2'
-					component={'span'}
-					gutterBottom
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						gap: 20,
-						width: isTablet ? '90%' : '75%',
-					}}
-				>
-					<ReactMarkdown components={{ p: 'h2' }}>{subtext}</ReactMarkdown>
-				</Typography>
-			</div>
-			<div style={{ display: isMobile ? 'none' : 'block' }}>
-				<Image
-					src={bgURL}
-					alt='image'
-					width={isTablet ? 250 : isWide ? 420 : 300}
-					height={isTablet ? 250 : isWide ? 420 : 300}
-					loading='lazy'
-				/>
-			</div>
-		</StyledContainer>
+					<Typography
+						variant='h2'
+						component={'span'}
+						gutterBottom
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+							gap: 25,
+						}}
+					>
+						<ReactMarkdown components={{ p: 'h2' }}>{subtext}</ReactMarkdown>
+					</Typography>
+				</Box>
+
+				<div />
+
+				<div>
+					<Image
+						src={bgURL}
+						alt='image'
+						width={isTablet ? 250 : isWide ? 420 : 300}
+						height={isTablet ? 250 : isWide ? 420 : 300}
+						loading='lazy'
+					/>
+				</div>
+			</StyledContainer>
+		</Container>
 	)
 }
 

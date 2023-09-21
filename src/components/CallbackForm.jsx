@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import {
+	Container,
 	Grid,
 	Typography,
 	Button,
@@ -171,153 +172,156 @@ const CallbackForm = ({ isEnglish }) => {
 					right: 0,
 				}}
 			/>
-
-			<Grid
-				container
-				direction='column'
-				justifyContent='center'
-				alignItems='center'
-				style={{
-					background: `url(${background.src}) no-repeat center`,
-					backgroundSize: isMobile ? 'cover' : '100%', // was 'contain'
-					width: isMobile ? '100%' : isSmall ? '95%' : isTablet ? '85%' : '75%',
-					display: 'flex',
-					flexDirection: 'column',
-					height: '100%',
-					minHeight: 500,
-					aspectRatio: isMobile ? 'auto' : '9.5/4.9',
-					margin: isMobile ? '10% 0 -9% 0' : '10% auto',
-					paddingBottom: isMobile ? 50 : '',
-				}}
-			>
-				<div
+			<Container style={{ padding: isMobile ? 0 : 24 }}>
+				<Grid
+					container
+					direction='column'
+					justifyContent='center'
+					alignItems='center'
 					style={{
-						margin: isMobile ? '50px 0 0 0' : '',
+						background: `url(${background.src}) no-repeat center`,
+						backgroundSize: 'cover', // was 'contain'
+						width: isMobile ? '100%' : '95%',
 						display: 'flex',
 						flexDirection: 'column',
-						alignItems: 'center',
-						width: '100%',
+						height: '100%',
+						minHeight: 500,
+						aspectRatio: isMobile ? 'auto' : '9.5/4.9',
+						margin: isMobile ? '10% 0 -9% 0' : '10% auto',
+						paddingBottom: isMobile ? 50 : '',
 					}}
 				>
-					<Typography
-						id='contact'
-						variant='h4_light'
-						gutterBottom
+					<div
 						style={{
-							textAlign: 'center',
-						}}
-					>
-						{pageTitle}
-					</Typography>
-					<Typography variant='subtitle_light'>{pageSubTitle}</Typography>
-				</div>
-				<form
-					onSubmit={handleSubmit}
-					style={{
-						display: 'flex',
-						width: '80%',
-						// height: '100%',
-						flexDirection: 'column',
-						alignItems: 'flex-end',
-						gap: isMobile ? 8 : 15,
-						color: '#FFFFFFB2',
-					}}
-				>
-					<TextField
-						name='name'
-						label={nameField}
-						placeholder={namePalceholder}
-						value={formData.name}
-						onChange={handleInputChange}
-						fullWidth
-						variant='standard'
-						color='secondary'
-						required
-						error={!!formErrors.name}
-						helperText={
-							<Typography variant='error_message'>{formErrors.name}</Typography>
-						}
-					/>
-					<TextField
-						name='phone'
-						label={phoneField}
-						placeholder={phonePalceholder}
-						value={formData.phone}
-						onChange={handleInputChange}
-						fullWidth
-						variant='standard'
-						color='secondary'
-						required
-						error={!!formErrors.phone}
-						helperText={
-							<Typography variant='error_message'>
-								{formErrors.phone}
-							</Typography>
-						}
-					/>
-					<TextField
-						name='email'
-						label='Email'
-						placeholder='example@site.com'
-						value={formData.email}
-						onChange={handleInputChange}
-						fullWidth
-						variant='standard'
-						color='secondary'
-						required
-						error={!!formErrors.email}
-						helperText={
-							<Typography variant='error_message'>
-								{formErrors.email}
-							</Typography>
-						}
-					/>
-					<TextField
-						name='message'
-						label={messageField}
-						placeholder={messagePalceholder}
-						value={formData.message}
-						onChange={handleInputChange}
-						fullWidth
-						variant='standard'
-						color='secondary'
-						multiline
-						rows={1}
-						required
-						error={!!formErrors.message}
-						helperText={
-							<Typography variant='error_message'>
-								{formErrors.message}
-							</Typography>
-						}
-					/>
-					<StyledButton
-						type='submit'
-						variant='text'
-						aria-label='submit form'
-						onMouseEnter={() => setHovered(true)}
-						onMouseLeave={() => setHovered(false)}
-						style={{
-							cursor: 'pointer',
+							margin: isMobile ? '50px 0 0 0' : '',
 							display: 'flex',
-							gap: 10,
+							flexDirection: 'column',
 							alignItems: 'center',
-							color: '#FFC804',
-							width: '10%',
-							minWidth: 150,
-							alignSelf: 'flex-end',
-							padding: '0 0 1% 0',
-							margin: '2% 0 1% 0',
-							transition: '.3s',
+							width: '100%',
 						}}
 					>
-						{buttonText}
-						<div style={{ width: 15, height: 10 }}>
-							<Arrow fill={isHovered ? '#E3B30A' : '#FFC804'} />
-						</div>
-					</StyledButton>
-				</form>
-			</Grid>
+						<Typography
+							id='contact'
+							variant='h4_light'
+							gutterBottom
+							style={{
+								textAlign: 'center',
+							}}
+						>
+							{pageTitle}
+						</Typography>
+						<Typography variant='subtitle_light'>{pageSubTitle}</Typography>
+					</div>
+					<form
+						onSubmit={handleSubmit}
+						style={{
+							display: 'flex',
+							width: '80%',
+							// height: '100%',
+							flexDirection: 'column',
+							alignItems: 'flex-end',
+							gap: isMobile ? 8 : 15,
+							color: '#FFFFFFB2',
+						}}
+					>
+						<TextField
+							name='name'
+							label={nameField}
+							placeholder={namePalceholder}
+							value={formData.name}
+							onChange={handleInputChange}
+							fullWidth
+							variant='standard'
+							color='secondary'
+							required
+							error={!!formErrors.name}
+							helperText={
+								<Typography variant='error_message'>
+									{formErrors.name}
+								</Typography>
+							}
+						/>
+						<TextField
+							name='phone'
+							label={phoneField}
+							placeholder={phonePalceholder}
+							value={formData.phone}
+							onChange={handleInputChange}
+							fullWidth
+							variant='standard'
+							color='secondary'
+							required
+							error={!!formErrors.phone}
+							helperText={
+								<Typography variant='error_message'>
+									{formErrors.phone}
+								</Typography>
+							}
+						/>
+						<TextField
+							name='email'
+							label='Email'
+							placeholder='example@site.com'
+							value={formData.email}
+							onChange={handleInputChange}
+							fullWidth
+							variant='standard'
+							color='secondary'
+							required
+							error={!!formErrors.email}
+							helperText={
+								<Typography variant='error_message'>
+									{formErrors.email}
+								</Typography>
+							}
+						/>
+						<TextField
+							name='message'
+							label={messageField}
+							placeholder={messagePalceholder}
+							value={formData.message}
+							onChange={handleInputChange}
+							fullWidth
+							variant='standard'
+							color='secondary'
+							multiline
+							rows={1}
+							required
+							error={!!formErrors.message}
+							helperText={
+								<Typography variant='error_message'>
+									{formErrors.message}
+								</Typography>
+							}
+						/>
+						<StyledButton
+							type='submit'
+							variant='text'
+							aria-label='submit form'
+							onMouseEnter={() => setHovered(true)}
+							onMouseLeave={() => setHovered(false)}
+							style={{
+								cursor: 'pointer',
+								display: 'flex',
+								gap: 10,
+								alignItems: 'center',
+								color: '#FFC804',
+								width: '10%',
+								minWidth: 150,
+								alignSelf: 'flex-end',
+								padding: '0 0 1% 0',
+								margin: '2% 0 1% 0',
+								transition: '.3s',
+							}}
+						>
+							{buttonText}
+							<div style={{ width: 15, height: 10 }}>
+								<Arrow fill={isHovered ? '#E3B30A' : '#FFC804'} />
+							</div>
+						</StyledButton>
+					</form>
+				</Grid>
+			</Container>
 		</Grid>
 	)
 }

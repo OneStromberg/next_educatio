@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
-import { Grid, Typography, useMediaQuery } from '@mui/material'
+import { Container, Grid, Typography, useMediaQuery } from '@mui/material'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
@@ -26,12 +26,12 @@ const Footer = ({ isEnglish, data }) => {
 			style={{
 				background: `url(${background.src})`,
 				height: '100%',
-				padding: '3% 8% 0 8%',
+				padding: isMobile ? '10% 8% 2% 8%' : '3% 8% 0 8%',
 				zIndex: 2,
 				border: 'none',
 			}}
 		>
-			<Grid container alignItems='center' padding={'60px 0px'} gap={15}>
+			<Container container alignItems='center' gap={15}>
 				{isMobile ? (
 					<Grid container direction='column' alignItems='start' gap={3}>
 						<Image src={logo.src} alt='logo' width={80} height={35} />
@@ -203,7 +203,7 @@ const Footer = ({ isEnglish, data }) => {
 						</Grid>
 					</Grid>
 				)}
-			</Grid>
+			</Container>
 		</footer>
 	)
 }

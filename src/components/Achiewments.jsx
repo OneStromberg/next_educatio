@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, useMediaQuery } from '@mui/material'
+import { Container, Box, Grid, Typography, useMediaQuery } from '@mui/material'
 import { styled } from '@mui/system'
 import background from '../assets/achievments_bg.svg'
 import Wavy from './UI/Wavy'
@@ -94,121 +94,123 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 				backgroundSize: isShrink ? 'cover' : '100%',
 			}}
 		>
-			<div
-				style={{
-					background: `url(${arrows.src})`,
-					position: 'absolute',
-					left: 0,
-					top: '50%',
-					transform: 'translateY(-50%)',
-					height: '100%',
-					width: '4.5%',
-				}}
-				alt='Left arrow'
-			/>
-			<div
-				style={{
-					background: `url(${arrows.src})`,
-					position: 'absolute',
-					right: 0,
-					top: '50%',
-					transform: 'translateY(-50%) scaleX(-1)',
-					height: '100%',
-					width: '4.5%',
-				}}
-				alt='Right arrow'
-			/>
-			<GridContainer>
-				<StyledTextContainer>
-					<Typography
-						id='achievements'
-						variant='h4_light'
-						component={'h2'}
-						gutterBottom
-					>
-						{pageTitle}
-					</Typography>
-					<Wavy fill={'#E8E7E0'} />
-				</StyledTextContainer>
-				<div style={{ height: '100%' }} />
-				<div style={{ height: '100%' }} />
+			<Container>
+				<div
+					style={{
+						background: `url(${arrows.src})`,
+						position: 'absolute',
+						left: 0,
+						top: '50%',
+						transform: 'translateY(-50%)',
+						height: '100%',
+						width: '4.5%',
+					}}
+					alt='Left arrow'
+				/>
+				<div
+					style={{
+						background: `url(${arrows.src})`,
+						position: 'absolute',
+						right: 0,
+						top: '50%',
+						transform: 'translateY(-50%) scaleX(-1)',
+						height: '100%',
+						width: '4.5%',
+					}}
+					alt='Right arrow'
+				/>
+				<GridContainer>
+					<StyledTextContainer>
+						<Typography
+							id='achievements'
+							variant='h4_light'
+							component={'h2'}
+							gutterBottom
+						>
+							{pageTitle}
+						</Typography>
+						<Wavy fill={'#E8E7E0'} />
+					</StyledTextContainer>
+					<div style={{ height: '100%' }} />
+					<div style={{ height: '100%' }} />
 
-				{isMobile ? (
-					<Box
-						style={{
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'flex-start',
-							gap: 40,
-						}}
-					>
-						{data
-							.sort((a, b) => a.id - b.id)
-							.map((item, index) => (
-								<GridItem item key={item.id} gap={5} padding={0}>
+					{isMobile ? (
+						<Box
+							style={{
+								display: 'flex',
+								flexDirection: 'column',
+								alignItems: 'flex-start',
+								gap: 40,
+							}}
+						>
+							{data
+								.sort((a, b) => a.id - b.id)
+								.map((item, index) => (
+									<GridItem item key={item.id} gap={5} padding={0}>
+										<StyledGrid>
+											<Typography variant='h3_light' style={{ lineHeight: 1 }}>
+												{item.attributes.number}
+											</Typography>
+											<Typography variant='text_light' gutterBottom>
+												{item.attributes.title}
+											</Typography>
+										</StyledGrid>
+									</GridItem>
+								))}
+						</Box>
+					) : (
+						<GridContent
+							dataLength={data.length}
+							style={{ position: 'relative' }}
+						>
+							<div
+								style={{
+									background: `url(${lb_corner.src}) center center no-repeat`,
+									position: 'absolute',
+									left: '-5%',
+									bottom: '-25%',
+									width: 57,
+									height: 67,
+								}}
+							/>
+							<div
+								style={{
+									background: `url(${rt_corner.src}) center center no-repeat`,
+									position: 'absolute',
+									right: '-5%',
+									top: '-15%',
+									width: 57,
+									height: 67,
+								}}
+							/>
+							{data.map((item, index) => (
+								<GridItem item key={item.id}>
 									<StyledGrid>
-										<Typography variant='h3_light' style={{ lineHeight: 1 }}>
+										<Typography
+											variant='h3_light'
+											style={{
+												lineHeight: 1,
+												width: 'fit-content',
+												display: 'flex',
+												justifyContent: 'flex-start',
+											}}
+										>
 											{item.attributes.number}
 										</Typography>
-										<Typography variant='text_light' gutterBottom>
+										<Typography
+											variant='text_light'
+											gutterBottom
+											style={{ maxWidth: '230px' }}
+										>
 											{item.attributes.title}
 										</Typography>
 									</StyledGrid>
 								</GridItem>
 							))}
-					</Box>
-				) : (
-					<GridContent
-						dataLength={data.length}
-						style={{ position: 'relative' }}
-					>
-						<div
-							style={{
-								background: `url(${lb_corner.src}) center center no-repeat`,
-								position: 'absolute',
-								left: '-5%',
-								bottom: '-25%',
-								width: 57,
-								height: 67,
-							}}
-						/>
-						<div
-							style={{
-								background: `url(${rt_corner.src}) center center no-repeat`,
-								position: 'absolute',
-								right: '5%',
-								top: '-15%',
-								width: 57,
-								height: 67,
-							}}
-						/>
-						{data.map((item, index) => (
-							<GridItem item key={item.id}>
-								<StyledGrid>
-									<Typography
-										variant='h3_light'
-										style={{
-											lineHeight: 1,
-											width: 'fit-content',
-											display: 'flex',
-											justifyContent: 'flex-start',
-										}}
-									>
-										{item.attributes.number}
-									</Typography>
-									<Typography
-										variant='text_light'
-										gutterBottom
-										style={{ maxWidth: '230px' }}
-									>
-										{item.attributes.title}
-									</Typography>
-								</StyledGrid>
-							</GridItem>
-						))}
-					</GridContent>
-				)}
-			</GridContainer>
+						</GridContent>
+					)}
+				</GridContainer>
+			</Container>
 		</Box>
 	)
 }

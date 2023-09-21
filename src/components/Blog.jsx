@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
-import { Grid, Typography, Card, Button, useMediaQuery } from '@mui/material'
+import {
+	Grid,
+	Typography,
+	Container,
+	Button,
+	useMediaQuery,
+} from '@mui/material'
 import { styled } from '@mui/system'
 const BlogElement = dynamic(() => import('./Elements/BlogElement'))
 import Wavy from './UI/Wavy'
@@ -51,65 +57,71 @@ const Blog = ({ isEnglish, data }) => {
 			spacing={3}
 			style={{
 				background: `url(${snake.src}) center / 100% no-repeat `,
-				flexDirection: 'column',
-				alignItems: 'center',
-				justifyContent: 'center',
 			}}
 		>
-			<Grid
-				item
-				xs={12}
-				textAlign='center'
+			<Container
 				style={{
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
-					padding: 0,
-					marginBottom: 50,
+					justifyContent: 'center',
 				}}
 			>
-				<Typography variant='news_page_title' component={'h2'} gutterBottom>
-					{pageTitle}
-				</Typography>
-				<Wavy fill='#7D7987' />
-			</Grid>
-
-			<Grid
-				alignItems='center'
-				justifyContent='center'
-				id='news'
-				style={{
-					display: 'flex',
-					flexWrap: 'wrap',
-					// padding: isMobile ? 0 : '80px 0',
-					width: '90%',
-					height: '100%',
-					flexDirection: isMobile ? 'column' : 'row',
-					gap: 20,
-				}}
-			>
-				{displayedPosts
-					.sort((a, b) => b.id - a.id)
-					.map(post => (
-						<BlogElement
-							key={post.id}
-							post={post}
-							isMobile={isMobile}
-							isEnglish={isEnglish}
-						/>
-					))}
-			</Grid>
-			{data.length > 3 ? (
-				<StyledButton
-					aria-label='Show all news'
-					variant='outlined'
-					onClick={() => setShowAll(!showAll)}
+				<Grid
+					item
+					xs={12}
+					textAlign='center'
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						padding: 0,
+						marginBottom: 50,
+					}}
 				>
-					{showAll ? hideNews : allNews}
-				</StyledButton>
-			) : (
-				<></>
-			)}
+					<Typography variant='news_page_title' component={'h2'} gutterBottom>
+						{pageTitle}
+					</Typography>
+					<Wavy fill='#7D7987' />
+				</Grid>
+
+				<Grid
+					alignItems='center'
+					justifyContent='center'
+					id='news'
+					style={{
+						display: 'flex',
+						flexWrap: 'wrap',
+						// padding: isMobile ? 0 : '80px 0',
+						width: '100%',
+						height: '100%',
+						flexDirection: isMobile ? 'column' : 'row',
+						gap: 20,
+					}}
+				>
+					{displayedPosts
+						.sort((a, b) => b.id - a.id)
+						.map(post => (
+							<BlogElement
+								key={post.id}
+								post={post}
+								isMobile={isMobile}
+								isEnglish={isEnglish}
+							/>
+						))}
+				</Grid>
+				{data.length > 3 ? (
+					<StyledButton
+						aria-label='Show all news'
+						variant='outlined'
+						onClick={() => setShowAll(!showAll)}
+					>
+						{showAll ? hideNews : allNews}
+					</StyledButton>
+				) : (
+					<></>
+				)}
+			</Container>
 		</Grid>
 	)
 }
