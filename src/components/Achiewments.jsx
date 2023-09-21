@@ -32,7 +32,7 @@ const GridContainer = styled('div')`
 	grid-template-rows: 2fr auto;
 	gap: 20px;
 
-	@media (max-width: 1050px) {
+	@media (max-width: 1150px) {
 		grid-template-columns: 12fr; // Desktop view
 	}
 	@media (max-width: 700px) {
@@ -43,7 +43,8 @@ const GridContainer = styled('div')`
 
 const GridContent = styled('div')`
 	display: grid;
-	width: 100%;
+	width: fit-content;
+	max-width: 100%;
 	grid-template-columns: 4fr 4fr; // Desktop view
 	grid-template-rows: 2fr auto;
 	column-gap: 5%;
@@ -65,7 +66,7 @@ const GridItem = styled(Grid)`
 const Achiewments = ({ isEnglish, data, preferences }) => {
 	const apiUrl = process.env.API_URL
 	const isMobile = useMediaQuery('(max-width:600px)')
-	const isShrink = useMediaQuery('(max-width: 1150px)')
+	const isShrink = useMediaQuery('(max-width: 1170px)')
 	const isWide = useMediaQuery('(min-width:1450px)')
 
 	if (data.length < 1 || !data) {
@@ -165,8 +166,8 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 							style={{
 								background: `url(${lb_corner.src}) center center no-repeat`,
 								position: 'absolute',
-								left: '-10%',
-								bottom: '-15%',
+								left: '-5%',
+								bottom: '-25%',
 								width: 57,
 								height: 67,
 							}}
