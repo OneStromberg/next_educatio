@@ -230,7 +230,7 @@ const MenuDrawer = ({
 	socials,
 }) => {
 	const isMobile = useMediaQuery('(max-width:600px)')
-	const isSmallMobile = useMediaQuery('(max-width:400px)')
+	const isSmallMobile = useMediaQuery('(max-width:450px)')
 
 	return (
 		<Drawer
@@ -258,17 +258,24 @@ const MenuDrawer = ({
 			}}
 			BackdropProps={{ invisible: true }}
 		>
-			<Container>
+			<Container
+				style={{
+					maxWidth: isSmallMobile && '380px',
+					display: 'flex',
+					flexDirection: 'column',
+				}}
+			>
 				<List
 					style={{
 						display: 'flex',
 						flexDirection: isMobile ? 'column' : 'row',
 						gap: isMobile ? 15 : 5,
 						justifyContent: 'space-between',
-						padding: isMobile ? '3% 5%' : '3% 0',
+						alignSelf: 'start',
+						padding: isMobile ? '3% 1%' : '3% 0',
 						flex: '1',
-						width: isSmallMobile ? '70%' : '100%',
-						margin: '0 auto',
+						width: isMobile ? 'fit-content' : '100%',
+						margin: isMobile ? 0 : '0 auto',
 					}}
 				>
 					{preferences?.attributes?.isShort ? (
@@ -336,7 +343,7 @@ const MenuDrawer = ({
 					alignItems='center'
 					style={{
 						paddingBottom: '2%',
-						width: isSmallMobile ? '70%' : '100%',
+						width: '100%',
 						margin: '0 auto',
 					}}
 				>
@@ -421,6 +428,7 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
 	}
 
 	const handleScrollToSection = sectionId => {
+		localStorage.removeItem('scrollPosition')
 		const element = document.getElementById(sectionId)
 		if (element) {
 			element.scrollIntoView({ behavior: 'smooth' })

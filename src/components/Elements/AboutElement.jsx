@@ -12,7 +12,7 @@ export default function AboutElement({ index, item, isMobile = { isMobile } }) {
 				display: 'flex',
 				justifyContent: 'center',
 				maxWidth: '100%',
-				marginTop: isMobile ? 0 : index % 2 === 0 ? '-15%' : '0',
+				// marginTop: isMobile ? 0 : index % 2 === 0 ? '-15%' : '15%',
 			}}
 		>
 			<Grid
@@ -37,7 +37,7 @@ export default function AboutElement({ index, item, isMobile = { isMobile } }) {
 					alt='About Us'
 					width={180}
 					height={194}
-					style={{ width: isMobile ? '100%' : '' }}
+					style={{ width: '90%' }}
 					loading='lazy'
 				/>
 				<Grid

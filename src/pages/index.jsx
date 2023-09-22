@@ -37,6 +37,21 @@ const Main = ({
 	const router = useRouter()
 	const [isEnglish, setIsEnglish] = useState(router.locale === 'en')
 
+useEffect(() => {
+	const savedScrollPosition = localStorage.getItem('scrollPosition')
+	if (savedScrollPosition) {
+		window.scrollTo(0, parseInt(savedScrollPosition, 10))
+	}
+	const handleScroll = () => {
+		localStorage.setItem('scrollPosition', window.scrollY.toString())
+	}
+	window.addEventListener('scroll', handleScroll)
+	return () => {
+		window.removeEventListener('scroll', handleScroll)
+	}
+}, [])
+
+
 	useEffect(() => {
 		const savedLocale = localStorage.getItem('locale')
 		if (savedLocale) {

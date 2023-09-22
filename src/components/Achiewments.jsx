@@ -13,15 +13,15 @@ const StyledTextContainer = styled(Grid)`
 `
 
 const StyledGrid = styled(Grid)`
-	display: flex;
+	display: grid;
 	align-items: center;
-	justify-content: flex-start;
+	grid-template-columns: 1fr 3fr;
 	gap: 20px;
 	padding: 0;
 	width: 100%;
 	@media (max-width: 800px) {
-		flex-direction: column;
-		align-items: flex-start;
+		width: 100%;
+		grid-template-columns: 1fr;
 		gap: 10px;
 	}
 `
@@ -43,12 +43,12 @@ const GridContainer = styled('div')`
 
 const GridContent = styled('div')`
 	display: grid;
-	width: fit-content;
+	width: 100%;
 	max-width: 100%;
 	grid-template-columns: 4fr 4fr; // Desktop view
 	grid-template-rows: 2fr auto;
 	column-gap: 5%;
-	row-gap: 10%;
+	row-gap: 5%;
 
 	@media (max-width: 800px) {
 		grid-template-columns: 1fr; // Mobile view
@@ -58,7 +58,6 @@ const GridContent = styled('div')`
 
 const GridItem = styled(Grid)`
 	max-width: 100%;
-	width: fit-content;
 	align-items: center;
 	justify-content: space-between;
 `
@@ -140,7 +139,7 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 								display: 'flex',
 								flexDirection: 'column',
 								alignItems: 'flex-start',
-								gap: 40,
+								gap: 30,
 							}}
 						>
 							{data
@@ -183,30 +182,32 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 									height: 67,
 								}}
 							/>
-							{data.map((item, index) => (
-								<GridItem item key={item.id}>
-									<StyledGrid>
-										<Typography
-											variant='h3_light'
-											style={{
-												lineHeight: 1,
-												width: 'fit-content',
-												display: 'flex',
-												justifyContent: 'flex-start',
-											}}
-										>
-											{item.attributes.number}
-										</Typography>
-										<Typography
-											variant='text_light'
-											gutterBottom
-											style={{ maxWidth: '230px' }}
-										>
-											{item.attributes.title}
-										</Typography>
-									</StyledGrid>
-								</GridItem>
-							))}
+							{data
+								.sort((a, b) => a.id - b.id)
+								.map((item, index) => (
+									<GridItem item key={item.id}>
+										<StyledGrid>
+											<Typography
+												variant='h3_light'
+												style={{
+													lineHeight: 1,
+													width: '100%',
+													display: 'flex',
+													justifyContent: 'flex-end',
+												}}
+											>
+												{item.attributes.number}
+											</Typography>
+											<Typography
+												variant='text_light'
+												gutterBottom
+												style={{ maxWidth: '230px' }}
+											>
+												{item.attributes.title}
+											</Typography>
+										</StyledGrid>
+									</GridItem>
+								))}
 						</GridContent>
 					)}
 				</GridContainer>

@@ -20,7 +20,7 @@ const About = ({ isEnglish, data }) => {
 	if (data.length < 1 || !data) {
 		return <></>
 	}
-
+	const middle = Math.ceil(data.length / 2)
 	return (
 		<Container id='actions'>
 			<StyledHeaderContainer>
@@ -39,26 +39,58 @@ const About = ({ isEnglish, data }) => {
 
 			<Box
 				style={{
-					display: isMobile ? 'flex' : 'grid',
-					alignItems: 'center',
-					flexDirection: isMobile ? 'column' : '',
-					gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-					gap: isMobile ? '50px' : '30px 5%',
-					marginTop: '10%',
+					display: 'flex',
+					flexDirection: isMobile ? 'column' : 'row',
+					justifyContent: 'space-between',
+					alignItems: 'flex-start',
+					gap: 35,
+					// marginTop: '2%',
 				}}
 			>
-				{data
-					.sort((a, b) => a.id - b.id)
-					.map((item, index) => {
-						return (
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						justifyContent: 'flex-start',
+						alignItems: 'center',
+						gap: 15,
+					}}
+				>
+					{data
+						.sort((a, b) => a.id - b.id)
+						.slice(0, middle)
+						.map((item, index) => (
 							<AboutElement
 								key={index}
 								item={item}
 								index={index}
 								isMobile={isMobile}
 							/>
-						)
-					})}
+						))}
+				</div>
+
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						justifyContent: 'flex-start',
+						alignItems: 'center',
+						gap: 50,
+						marginTop: '15%',
+					}}
+				>
+					{data
+						.sort((a, b) => a.id - b.id)
+						.slice(middle, data.length)
+						.map((item, index) => (
+							<AboutElement
+								key={index}
+								item={item}
+								index={index}
+								isMobile={isMobile}
+							/>
+						))}
+				</div>
 			</Box>
 		</Container>
 	)

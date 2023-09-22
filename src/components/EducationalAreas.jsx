@@ -56,7 +56,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 							display: isMobile ? 'grid' : 'flex',
 							flexDirection: isMobile ? 'column' : 'row',
 							padding: isMobile ? '' : '',
-							gap: isMobile ? 45 : 25,
+							gap: isMobile ? 45 : 48,
 							flexWrap: 'nowrap',
 							width: '100%',
 							margin: '0 auto',
@@ -92,7 +92,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 												alignItems: 'center',
 												justifyContent: 'center',
 												justifySelf: 'center',
-												width: '15%',
+												width: '10%',
 												zIndex: 1,
 											}}
 										>
@@ -105,14 +105,14 @@ const EducationalAreas = ({ isEnglish, data }) => {
 											height={180}
 											style={{
 												position: 'absolute',
-												left: isMobile ? '-30%' : '-20%',
+												left: isMobile ? '-20%' : '-25%',
 												top: isMobile
 													? index === 0
-														? '-20%'
-														: '-35%'
+														? '-25%'
+														: '-50%'
 													: index === 0
-													? '-33%'
-													: '-45%',
+													? '-25%'
+													: '-40%',
 												transform:
 													index === 0
 														? 'rotate(0deg)'
