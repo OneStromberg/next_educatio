@@ -34,37 +34,38 @@ const Main = ({
 	preferencesData,
 	footerData,
 }) => {
-	const router = useRouter()
-	const [isEnglish, setIsEnglish] = useState(router.locale === 'en')
+const router = useRouter()
+const [isEnglish, setIsEnglish] = useState(router.locale === 'en')
 
 useEffect(() => {
-	const savedScrollPosition = localStorage.getItem('scrollPosition')
-	if (savedScrollPosition) {
-		window.scrollTo(0, parseInt(savedScrollPosition, 10))
-	}
-	const handleScroll = () => {
-		localStorage.setItem('scrollPosition', window.scrollY.toString())
-	}
-	window.addEventListener('scroll', handleScroll)
-	return () => {
-		window.removeEventListener('scroll', handleScroll)
+	const savedLocale = localStorage.getItem('locale') || 'uk'
+	setIsEnglish(savedLocale === 'en')
+	if (router.locale !== savedLocale) {
+		router.push(router.pathname, router.asPath, { locale: savedLocale })
 	}
 }, [])
 
+const handleLanguageToggle = () => {
+	const newLocale = isEnglish ? 'uk' : 'en'
+	localStorage.setItem('locale', newLocale)
+	setIsEnglish(!isEnglish)
+	router.push(router.pathname, router.asPath, { locale: newLocale })
+}
 
 	useEffect(() => {
-		const savedLocale = localStorage.getItem('locale')
-		if (savedLocale) {
-			setIsEnglish(savedLocale === 'en')
-			router.push(router.pathname, router.asPath, { locale: savedLocale })
+		const savedScrollPosition = localStorage.getItem('scrollPosition')
+		if (savedScrollPosition) {
+			window.scrollTo(0, parseInt(savedScrollPosition, 10))
 		}
-	}, [router.locale])
+		const handleScroll = () => {
+			localStorage.setItem('scrollPosition', window.scrollY.toString())
+		}
+		window.addEventListener('scroll', handleScroll)
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
+	}, [])
 
-	const handleLanguageToggle = () => {
-		const newLocale = isEnglish ? 'uk' : 'en'
-		localStorage.setItem('locale', newLocale)
-		router.push(router.pathname, router.asPath, { locale: newLocale })
-	}
 	return (
 		<>
 			<Head>

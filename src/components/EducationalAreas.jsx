@@ -15,7 +15,9 @@ const StyledGrid = styled(Grid)`
 const EducationalAreas = ({ isEnglish, data }) => {
 	const isWide = useMediaQuery('(min-width: 1300px)')
 	const isShrink = useMediaQuery('(max-width: 1250px)')
-	const isMobile = useMediaQuery('(max-width:800px)')
+	const isMobile = useMediaQuery('(max-width: 600px)')
+	const isSmallMobile = useMediaQuery('(max-width: 400px)')
+
 	if (!data || data.length < 1) {
 		return <></>
 	}
@@ -33,7 +35,9 @@ const EducationalAreas = ({ isEnglish, data }) => {
 				padding: isMobile ? '120px 0 150px' : '4% 0 12%',
 			}}
 		>
-			<Container>
+			<Container
+
+			>
 				<Typography variant='h4_light' component={'h2'} gutterBottom>
 					{pageTitle}
 				</Typography>
@@ -98,25 +102,18 @@ const EducationalAreas = ({ isEnglish, data }) => {
 										>
 											{index + 1}
 										</Typography>
-										<Image
+										<div
 											src={num_bg.src}
-											alt='educational area number background star'
-											width={180}
-											height={180}
 											style={{
 												position: 'absolute',
-												left: isMobile ? '-20%' : '-25%',
-												top: isMobile
-													? index === 0
-														? '-25%'
-														: '-50%'
-													: index === 0
-													? '-25%'
-													: '-40%',
-												transform:
+												background: `url(${num_bg.src})`,
+												width: 180,
+												height: 180,
+												transform: `translateX(-50%) translateY(-30%)${
 													index === 0
 														? 'rotate(0deg)'
-														: `rotate(${235 * index - 65}deg)`,
+														: `rotate(${235 * index - 65}deg)`
+												}`,
 											}}
 										/>
 										<Box

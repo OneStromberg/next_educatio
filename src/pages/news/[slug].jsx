@@ -17,12 +17,12 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 	const router = useRouter()
 
 	useEffect(() => {
-		const savedLocale = localStorage.getItem('locale')
-		if (savedLocale) {
-			setIsEnglish(savedLocale === 'en')
+		const savedLocale = localStorage.getItem('locale') || 'uk'
+		setIsEnglish(savedLocale === 'en')
+		if (router.locale !== savedLocale) {
 			router.push(router.pathname, router.asPath, { locale: savedLocale })
 		}
-	}, [router.locale])
+	}, [])
 
 	const handleLanguageToggle = () => {
 		const newLocale = isEnglish ? 'uk' : 'en'
@@ -51,7 +51,6 @@ const BlogPostPage = ({ footerData, preferencesData }) => {
 					)
 					if (response.data) {
 						setData(response.data)
-						console.log(data)
 					} else {
 						// router.push('/')
 					}

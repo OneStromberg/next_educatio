@@ -452,15 +452,15 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
 		}
 	}, [])
 
-	useEffect(() => {
-		const savedLocale = localStorage.getItem('locale')
-		if (savedLocale) {
-			router.push(router.pathname, router.asPath, { locale: savedLocale })
-		} else {
-			localStorage.setItem('locale', 'uk')
-			router.push(router.pathname, router.asPath, { locale: 'uk' })
-		}
-	}, [])
+	// useEffect(() => {
+	// 	const savedLocale = localStorage.getItem('locale')
+	// 	if (savedLocale) {
+	// 		router.push(router.pathname, router.asPath, { locale: savedLocale })
+	// 	} else {
+	// 		localStorage.setItem('locale', 'uk')
+	// 		router.push(router.pathname, router.asPath, { locale: 'uk' })
+	// 	}
+	// }, [])
 
 	const toggleLanguage = () => {
 		const newLocale = isEnglish ? 'uk' : 'en'

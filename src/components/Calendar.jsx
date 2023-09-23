@@ -55,8 +55,8 @@ const CalendarContainer = ({ isEnglish, preferences }) => {
 			direction='column'
 			justifyContent='flex-start'
 			alignItems='center'
-			minHeight={600}
 			style={{
+				minHeight: 600,
 				background: '#fbfbfb',
 			}}
 		>
@@ -84,11 +84,10 @@ const CalendarContainer = ({ isEnglish, preferences }) => {
 			>
 				<iframe
 					src={calendar}
-					style={{ borderWidth: 0 }}
+					style={{ borderWidth: 0, minHeight: 600 }}
 					title='calendar'
 					width='100%'
 					height='100%'
-					minHeight='600px'
 				></iframe>
 			</Grid>
 		</Grid>

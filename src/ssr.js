@@ -4,6 +4,7 @@ export async function getServerSideProps(context) {
 	const apiUrl = process.env.API_URL
 	const apiKey = process.env.API_TOKEN
 	const locale = context.locale
+	console.log(locale)
 
 	const fetchData = async url => {
 		try {
@@ -60,7 +61,6 @@ export async function getServerSideProps(context) {
 		calendarData,
 		membersData,
 	] = await Promise.all(fetchList)
-
 
 	if (
 		!mainData ||
