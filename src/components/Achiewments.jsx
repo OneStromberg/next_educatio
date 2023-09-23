@@ -15,7 +15,8 @@ const StyledTextContainer = styled(Grid)`
 const StyledGrid = styled(Grid)`
 	display: grid;
 	align-items: center;
-	grid-template-columns: 1fr 3fr;
+	grid-template-columns: 1fr 1.5fr;
+	justify-content: space-between;
 	gap: 20px;
 	padding: 0;
 	width: 100%;
@@ -79,7 +80,7 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 		<Box
 			style={{
 				position: 'relative',
-				padding: isMobile ? '50px 0%' : isWide ? '5% 0% 12%' : '5% 0% 11%',
+				padding: isMobile ? '50px 0%' : isWide ? '5% 0% 16%' : '5% 0% 11%',
 				margin: 0,
 				background: isShort
 					? `url(${background.src}), #fff`
@@ -187,18 +188,14 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 												variant='h3_light'
 												style={{
 													lineHeight: 1,
-													width: '100%',
+													width: 'fit-content',
 													display: 'flex',
-													justifyContent: 'flex-end',
+													justifySelf: 'flex-end',
 												}}
 											>
 												{item.attributes.number}
 											</Typography>
-											<Typography
-												variant='text_light'
-												gutterBottom
-												style={{ maxWidth: '230px' }}
-											>
+											<Typography variant='text_light' gutterBottom>
 												{item.attributes.title}
 											</Typography>
 										</StyledGrid>

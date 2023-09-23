@@ -22,35 +22,35 @@ const Footer = dynamic(() => import('@/components/Footer'))
 import logo from '@/assets/footter_logo.svg'
 
 const Main = ({
-	locale,
 	mainData,
 	aboutData,
 	areasData,
-	membersData,
 	centersData,
 	reviewsData,
 	achiewmentsData,
 	blogData,
 	preferencesData,
 	footerData,
+	calendarData,
+	membersData,
 }) => {
-const router = useRouter()
-const [isEnglish, setIsEnglish] = useState(router.locale === 'en')
+	const router = useRouter()
+	const [isEnglish, setIsEnglish] = useState(router.locale === 'en')
 
-useEffect(() => {
-	const savedLocale = localStorage.getItem('locale') || 'uk'
-	setIsEnglish(savedLocale === 'en')
-	if (router.locale !== savedLocale) {
-		router.push(router.pathname, router.asPath, { locale: savedLocale })
+	useEffect(() => {
+		const savedLocale = localStorage.getItem('locale') || 'uk'
+		setIsEnglish(savedLocale === 'en')
+		if (router.locale !== savedLocale) {
+			router.push(router.pathname, router.asPath, { locale: savedLocale })
+		}
+	}, [])
+
+	const handleLanguageToggle = () => {
+		const newLocale = isEnglish ? 'uk' : 'en'
+		localStorage.setItem('locale', newLocale)
+		setIsEnglish(!isEnglish)
+		router.push(router.pathname, router.asPath, { locale: newLocale })
 	}
-}, [])
-
-const handleLanguageToggle = () => {
-	const newLocale = isEnglish ? 'uk' : 'en'
-	localStorage.setItem('locale', newLocale)
-	setIsEnglish(!isEnglish)
-	router.push(router.pathname, router.asPath, { locale: newLocale })
-}
 
 	useEffect(() => {
 		const savedScrollPosition = localStorage.getItem('scrollPosition')
@@ -151,6 +151,7 @@ const handleLanguageToggle = () => {
 				<CalendarContainer
 					isEnglish={isEnglish}
 					preferences={preferencesData}
+					data={calendarData.attributes}
 				/>
 				<Blog isEnglish={isEnglish} data={blogData} />
 				<ReviewsCarousel isEnglish={isEnglish} data={reviewsData} />

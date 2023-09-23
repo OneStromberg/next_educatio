@@ -22,7 +22,7 @@ const About = ({ isEnglish, data }) => {
 	}
 	const middle = Math.ceil(data.length / 2)
 	return (
-		<Container id='actions'>
+		<Container id='actions' style={{ marginBottom: '5%' }}>
 			<StyledHeaderContainer>
 				<Typography
 					variant='h4_about'

@@ -3,32 +3,7 @@ import axios from 'axios'
 import { Grid, Typography } from '@mui/material'
 import Wavy from './UI/Wavy'
 
-const CalendarContainer = ({ isEnglish, preferences }) => {
-	const [data, setData] = useState(null)
-	const apiUrl = process.env.API_URL
-	const apiKey = process.env.API_TOKEN
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				if (
-					!preferences.attributes.isShort ||
-					!preferences.attributes.hideCalendar
-				) {
-					const response = await axios.get(`${apiUrl}/calendar`, {
-						headers: {
-							Authorization: `Bearer ${apiKey}`,
-						},
-					})
-					setData(response.data.data.attributes)
-				}
-			} catch (error) {
-				console.error('Error fetching data:', error)
-			}
-		}
-
-		fetchData()
-	}, [])
+const CalendarContainer = ({ isEnglish, preferences, data }) => {
 
 	if (!data) {
 		return (
