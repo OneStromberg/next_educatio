@@ -34,7 +34,6 @@ const StyledButton = styled(Button)({
 const Blog = ({ isEnglish, data }) => {
 	const [showAll, setShowAll] = useState(false)
 	const isMobile = useMediaQuery('(max-width:600px)')
-	const isSmallMobile = useMediaQuery('(max-width:370px)')
 	const displayedPosts = isMobile
 		? showAll
 			? data
@@ -86,16 +85,15 @@ const Blog = ({ isEnglish, data }) => {
 				</Grid>
 
 				<Grid
-					alignItems='center'
-					justifyContent='center'
 					id='news'
 					style={{
 						display: 'flex',
-						flexWrap: 'wrap',
-						// padding: isMobile ? 0 : '80px 0',
+						alignItems: 'center',
+						justifyContent: 'center',
 						width: '100%',
 						height: '100%',
 						flexDirection: isMobile ? 'column' : 'row',
+						flexWrap: isMobile ? '' : 'wrap',
 						gap: 20,
 					}}
 				>

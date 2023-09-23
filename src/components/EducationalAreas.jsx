@@ -109,7 +109,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 												background: `url(${num_bg.src})`,
 												width: 180,
 												height: 180,
-												transform: `translateX(-50%) translateY(-30%)${
+												transform: `translateX(-45%) translateY(-30%)${
 													index === 0
 														? 'rotate(0deg)'
 														: `rotate(${235 * index - 65}deg)`
