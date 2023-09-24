@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-	Container,
-	Typography,
-	useMediaQuery,
-	Box,
-} from '@mui/material'
+import { Container, Typography, useMediaQuery, Box } from '@mui/material'
 import ReactMarkdown from 'react-markdown'
 import { styled } from '@mui/system'
 import background from '../assets/heading_bg.svg'
@@ -98,7 +93,7 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 						alt='image'
 						width={isTablet ? 250 : isWide ? 420 : 300}
 						height={isTablet ? 250 : isWide ? 420 : 300}
-						loading='lazy'
+						loading='eager'
 					/>
 				</div>
 			</StyledContainer>
