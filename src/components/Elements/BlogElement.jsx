@@ -60,7 +60,7 @@ export default function BlogElement({ post, isMobile, isEnglish }) {
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'space-between',
-				margin: isMobile ? '0 auto' : '',
+				margin: isMobile ? '0 auto' : 0,
 			}}
 		>
 			<Link

@@ -36,7 +36,8 @@ export default function RootLayout({ children }) {
 				/>
 				<meta property='og:image' content={logo.src} />{' '}
 				<link rel='canonical' href='http://ceducatio.com/' />
-				<link rel='icon' href={logo.src} type='image/x-icon' />
+				<link rel='icon' href={logo.src} type='image/svg+xml' />
+				<link rel='alternate icon' href='/favicon.ico' />
 				<link
 					rel='alternate'
 					type='application/rss+xml'

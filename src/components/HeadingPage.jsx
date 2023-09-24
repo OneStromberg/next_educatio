@@ -17,18 +17,13 @@ const StyledContainer = styled(Container)`
 	color: #fff;
 	max-width: 100vw;
 	grid-template-columns: 5.5fr 2fr 3.2fr;
-	padding: 10% 4%;
 	margin-top: 50px;
 
 	@media (max-width: 800px) {
 		display: flex;
 		flex-direction: column-reverse;
 		gap: 5vh;
-		grid-template-columns: 1fr; // Single column for mobile
-		padding: 10% 4%;
-	}
-
-	@media (max-width: 1280px) {
+		grid-template-columns: 1fr;
 		padding: 10% 4%;
 	}
 `
@@ -51,6 +46,10 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 	return (
 		<Container
 			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				justifyContent: 'center',
 				backgroundImage: `url(${background.src})`,
 				backgroundColor: `${isShort ? '#fff' : '#FBFBFB'}`,
 				maxWidth: 'none',
@@ -60,11 +59,18 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 				backgroundSize: 'cover',
 				backgroundPosition: isMobile ? '' : 'center center',
 				backgroundRepeat: 'no-repeat no-repeat',
-				paddingTop: isMobile ? 20 : '',
+				paddingTop: isMobile ? 20 : 0,
 			}}
 		>
 			<StyledContainer>
-				<Box style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
+				<Box
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: 30,
+						paddingBottom: isMobile ? '33%' : '0%',
+					}}
+				>
 					<Typography variant='h1' component='h1' gutterBottom>
 						<ReactMarkdown components={{ p: React.Fragment }}>
 							{text}

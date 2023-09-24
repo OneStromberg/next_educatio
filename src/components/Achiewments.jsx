@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { Container, Box, Grid, Typography, useMediaQuery } from '@mui/material'
 import { styled } from '@mui/system'
 import background from '../assets/achievments_bg.svg'
@@ -80,7 +81,7 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 		<Box
 			style={{
 				position: 'relative',
-				padding: isMobile ? '50px 0%' : isWide ? '5% 0% 16%' : '5% 0% 11%',
+				padding: isMobile ? '50px 0% 30%' : isWide ? '5% 0% 16%' : '5% 0% 11%',
 				margin: 0,
 				background: isShort
 					? `url(${background.src}), #fff`
@@ -131,10 +132,10 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 					<div style={{ height: '100%' }} />
 
 					{isMobile ? (
-						<Box
+						<Grid
 							style={{
-								display: 'flex',
-								flexDirection: 'column',
+								display: 'grid',
+								gridTemplateColumns: '1fr 3fr',
 								alignItems: 'flex-start',
 								gap: 30,
 							}}
@@ -142,18 +143,24 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 							{data
 								.sort((a, b) => a.id - b.id)
 								.map((item, index) => (
-									<GridItem item key={item.id} gap={5} padding={0}>
-										<StyledGrid>
-											<Typography variant='h3_light' style={{ lineHeight: 1 }}>
-												{item.attributes.number}
-											</Typography>
-											<Typography variant='text_light' gutterBottom>
-												{item.attributes.title}
-											</Typography>
-										</StyledGrid>
-									</GridItem>
+									<Fragment key={item.id}>
+										<div />
+										<GridItem item gap={5} padding={0}>
+											<StyledGrid>
+												<Typography
+													variant='h3_light'
+													style={{ lineHeight: 1 }}
+												>
+													{item.attributes.number}
+												</Typography>
+												<Typography variant='text_light' gutterBottom>
+													{item.attributes.title}
+												</Typography>
+											</StyledGrid>
+										</GridItem>
+									</Fragment>
 								))}
-						</Box>
+						</Grid>
 					) : (
 						<GridContent
 							dataLength={data.length}

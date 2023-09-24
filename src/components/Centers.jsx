@@ -50,7 +50,6 @@ const Centers = ({ isEnglish, data }) => {
 								padding: isMobile ? '15% 0' : '3% 0 1% 0',
 								justifySelf: 'end',
 								display: 'flex',
-								flexDirection: isMobile ? '' : '',
 								alignItems: 'start',
 								rowGap: 20,
 							}}

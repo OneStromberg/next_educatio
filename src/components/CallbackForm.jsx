@@ -187,13 +187,13 @@ const CallbackForm = ({ isEnglish }) => {
 						height: '100%',
 						minHeight: 500,
 						aspectRatio: isMobile ? 'auto' : '9.5/4.9',
-						margin: isMobile ? '10% 0 -9% 0' : '10% auto',
+						margin: isMobile ? '10% 0 -7% 0' : '10% auto',
 						paddingBottom: isMobile ? 50 : '',
 					}}
 				>
 					<div
 						style={{
-							margin: isMobile ? '50px 0 0 0' : '',
+							margin: isMobile ? '50px 0 0 0' : 0,
 							display: 'flex',
 							flexDirection: 'column',
 							alignItems: 'center',
@@ -310,7 +310,7 @@ const CallbackForm = ({ isEnglish }) => {
 								minWidth: 150,
 								alignSelf: 'flex-end',
 								padding: '0 0 1% 0',
-								margin: '2% 0 1% 0',
+								margin: isMobile ? '15% 0' : '2% 0 1% 0',
 								transition: '.3s',
 							}}
 						>

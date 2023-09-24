@@ -122,7 +122,7 @@ const DesktopHeader = ({
 	isHovered,
 }) => (
 	<>
-		<Hidden mdDown style={{ display: 'flex', gap: '5%', alignItems: 'center' }}>
+		<Hidden mdDown>
 			<Logo variant='h6' component='div'>
 				<Link href='/' style={{ margin: 0, width: '10%' }}>
 					<Image

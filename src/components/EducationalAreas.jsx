@@ -59,7 +59,6 @@ const EducationalAreas = ({ isEnglish, data }) => {
 						style={{
 							display: isMobile ? 'grid' : 'flex',
 							flexDirection: isMobile ? 'column' : 'row',
-							padding: isMobile ? '' : '',
 							gap: isMobile ? 45 : 48,
 							flexWrap: 'nowrap',
 							width: '100%',
