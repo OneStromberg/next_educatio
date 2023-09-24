@@ -148,11 +148,13 @@ const Main = ({
 					</>
 				)}
 
-				<CalendarContainer
-					isEnglish={isEnglish}
-					preferences={preferencesData}
-					data={calendarData.attributes}
-				/>
+				{preferencesData?.attributes?.hideCalendar === false && (
+					<CalendarContainer
+						isEnglish={isEnglish}
+						preferences={preferencesData}
+						data={calendarData.attributes}
+					/>
+				)}
 				<Blog isEnglish={isEnglish} data={blogData} />
 				<ReviewsCarousel isEnglish={isEnglish} data={reviewsData} />
 				<CallbackForm isEnglish={isEnglish} />
