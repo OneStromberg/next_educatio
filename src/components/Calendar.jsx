@@ -1,50 +1,55 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 import { Grid, Typography } from '@mui/material'
+import { styled } from '@mui/system'
 import Wavy from './UI/Wavy'
 
-const CalendarContainer = ({ isEnglish, preferences, data }) => {
+const StyledGrid = styled(Grid)(({ theme }) => ({
+	minHeight: 600,
+	background: '#fbfbfb',
+	'& .header': {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+	},
+	'& iframe': {
+		border: 'none',
+		boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+		borderRadius: '8px',
+		width: '100%',
+		height: '100%',
+		minHeight: 600,
+		background: '#ffffff',
+	},
+}))
 
+const CalendarContainer = ({ isEnglish, preferences, data }) => {
 	if (!data) {
-		return (
-			<div id='calendar'>
-				<div style={{ height: 700, background: '#fbfbfb' }}></div>
-			</div>
-		)
+		return <div id='calendar' style={{ height: 700, background: '#fbfbfb' }} />
 	}
+
 	if (
 		preferences.attributes.isShort ||
 		data.length < 1 ||
 		preferences.attributes.hideCalendar
 	) {
-		return <></>
+		return null
 	}
 
 	const calendar = data.calendarURL
 	const pageTitle = isEnglish ? 'Calendar' : 'Календар'
 
 	return (
-		<Grid
+		<StyledGrid
 			container
 			id='calendar'
 			direction='column'
 			justifyContent='flex-start'
 			alignItems='center'
-			style={{
-				minHeight: 600,
-				background: '#fbfbfb',
-			}}
 		>
-			<div
-				style={{
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'center',
-				}}
-			>
+			<div className='header'>
 				<Typography variant='h4_pink'>{pageTitle}</Typography>
 				<Wavy fill={'#FF9888'} />
-			</div>{' '}
+			</div>
 			<Grid
 				container
 				spacing={2}
@@ -57,16 +62,10 @@ const CalendarContainer = ({ isEnglish, preferences, data }) => {
 					margin: '0',
 				}}
 			>
-				<iframe
-					src={calendar}
-					style={{ borderWidth: 0, minHeight: 600 }}
-					title='calendar'
-					width='100%'
-					height='100%'
-				></iframe>
+				<iframe src={calendar} title='calendar' loading='lazy'></iframe>
 			</Grid>
-		</Grid>
+		</StyledGrid>
 	)
 }
 
-export default CalendarContainer
+export default React.memo(CalendarContainer)

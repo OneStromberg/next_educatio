@@ -60,6 +60,7 @@ const BlogPost = ({ isEnglish, data }) => {
 					src={`${apiUrl.slice(0, apiUrl.length - 4)}${
 						data?.headingImage?.url
 					}`}
+					alt={data.title}
 					layout='fill'
 					objectFit='cover'
 				/>

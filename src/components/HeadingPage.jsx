@@ -3,7 +3,6 @@ import {
 	Container,
 	Typography,
 	useMediaQuery,
-	useTheme,
 	Box,
 } from '@mui/material'
 import ReactMarkdown from 'react-markdown'
