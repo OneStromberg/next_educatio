@@ -1,7 +1,7 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles'
-import '@fontsource/roboto'
-import '@fontsource/roboto-condensed'
-import '@fontsource/roboto-slab'
+import Roboto from '@fontsource/roboto'
+import RobotoSlab from '@fontsource/roboto-slab/900.css'
+import RobotoCondensed from '@fontsource/roboto-condensed/700.css'
 
 const theme = createTheme({
 	overrides: {
