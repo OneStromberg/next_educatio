@@ -42,6 +42,8 @@ const Blog = ({ isEnglish, data }) => {
 		? data
 		: data?.slice(0, 3)
 
+	const maxPosts = isMobile ? 1 : 3
+
 	if (!data || data.length < 1) {
 		return <></>
 	}
@@ -64,6 +66,7 @@ const Blog = ({ isEnglish, data }) => {
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'center',
+					padding: 0,
 				}}
 			>
 				<Grid
@@ -108,7 +111,7 @@ const Blog = ({ isEnglish, data }) => {
 							/>
 						))}
 				</Grid>
-				{data.length > 3 ? (
+				{data.length > maxPosts ? (
 					<StyledButton
 						aria-label='Show all news'
 						variant='outlined'
