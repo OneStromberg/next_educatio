@@ -32,7 +32,7 @@ export async function getServerSideProps({ locale }) {
 	const baseFetchList = [
 		fetchData(`${apiUrl}/main-page`),
 		fetchData(`${apiUrl}/about-uses`),
-		fetchData(`${apiUrl}/educational-areas/?populate=*`),
+		fetchData(`${apiUrl}/educational-areas`),
 		fetchData(`${apiUrl}/centers`),
 		fetchData(`${apiUrl}/reviews/`),
 		fetchData(`${apiUrl}/achiewments`),
