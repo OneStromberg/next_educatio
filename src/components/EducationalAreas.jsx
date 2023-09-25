@@ -32,7 +32,7 @@ const EducationalAreas = ({ isEnglish, data }) => {
 				backgroundSize: 'cover',
 				backgroundRepeat: 'no-repeat no-repeat',
 				backgroundPosition: isMobile ? '50% 0' : 'center center',
-				padding: isMobile ? '20% 0' : '4% 0 12%',
+				padding: isMobile ? '20% 0' : '6.2% 0 7.3%',
 			}}
 		>
 			<Container

@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { Container, Box, Grid, Typography, useMediaQuery } from '@mui/material'
 import { styled } from '@mui/system'
+import AchievementsElement from './Elements/AchievementsElement'
 import background from '../assets/achievments_bg.svg'
 import Wavy from './UI/Wavy'
 import arrows from '../assets/arrows.svg'
@@ -13,27 +14,11 @@ const StyledTextContainer = styled(Grid)`
 	align-items: flex-start;
 `
 
-const StyledGrid = styled(Grid)`
-	display: grid;
-	align-items: center;
-	grid-template-columns: 1fr 1.5fr;
-	justify-content: space-between;
-	gap: 20px;
-	padding: 0;
-	width: 100%;
-	@media (max-width: 800px) {
-		width: 100%;
-		grid-template-columns: 1fr;
-		gap: 10px;
-	}
-`
-
 const GridContainer = styled('div')`
 	display: grid;
 	grid-template-columns: 3fr 9fr; // Desktop view
 	grid-template-rows: 2fr auto;
 	gap: 20px;
-
 	@media (max-width: 1150px) {
 		grid-template-columns: 12fr; // Desktop view
 	}
@@ -47,9 +32,9 @@ const GridContent = styled('div')`
 	display: grid;
 	width: 100%;
 	max-width: 100%;
-	grid-template-columns: 4fr 4fr; // Desktop view
+	grid-template-columns: 1fr 1fr; // Desktop view
 	grid-template-rows: 2fr auto;
-	column-gap: 5%;
+	column-gap: 2%;
 	row-gap: 5%;
 
 	@media (max-width: 800px) {
@@ -58,14 +43,7 @@ const GridContent = styled('div')`
 	}
 `
 
-const GridItem = styled(Grid)`
-	max-width: 100%;
-	align-items: center;
-	justify-content: space-between;
-`
-
 const Achiewments = ({ isEnglish, data, preferences }) => {
-	const apiUrl = process.env.API_URL
 	const isMobile = useMediaQuery('(max-width:800px)')
 	const isShrink = useMediaQuery('(max-width: 1170px)')
 	const isWide = useMediaQuery('(min-width:1450px)')
@@ -76,12 +54,18 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 
 	const pageTitle = isEnglish ? 'Achievements' : 'Досягнення'
 	const isShort = preferences?.attributes?.isShort
+	const middle = Math.ceil(data.length / 2)
 
 	return (
 		<Box
 			style={{
 				position: 'relative',
-				padding: isMobile ? '50px 0% 100px' : isWide ? '5% 0% 16%' : '5% 0% 11%',
+				overflow: 'hidden',
+				padding: isMobile
+					? '50px 0% 100px'
+					: isWide
+					? '6.5% 0% 14.2%'
+					: '6.5% 0% 9.2%',
 				margin: 0,
 				background: isShort
 					? `url(${background.src}), #fff`
@@ -132,35 +116,48 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 					<div style={{ height: '100%' }} />
 
 					{isMobile ? (
-						<Grid
-							style={{
-								display: 'grid',
-								gridTemplateColumns: '1fr 3fr',
-								alignItems: 'flex-start',
-								gap: 30,
-							}}
+						<GridContent
+							dataLength={data.length}
+							style={{ position: 'relative' }}
 						>
-							{data
-								.sort((a, b) => a.id - b.id)
-								.map((item, index) => (
-									<Fragment key={item.id}>
-										<div />
-										<GridItem item gap={5} padding={0}>
-											<StyledGrid>
-												<Typography
-													variant='h3_light'
-													style={{ lineHeight: 1 }}
-												>
-													{item.attributes.number}
-												</Typography>
-												<Typography variant='text_light' gutterBottom>
-													{item.attributes.title}
-												</Typography>
-											</StyledGrid>
-										</GridItem>
-									</Fragment>
-								))}
-						</Grid>
+							<div
+								style={{
+									background: `url(${lb_corner.src}) center center no-repeat`,
+									position: 'absolute',
+									left: '15%',
+									bottom: '-5%',
+									width: 57,
+									height: 67,
+								}}
+							/>
+							<div
+								style={{
+									background: `url(${rt_corner.src}) center center no-repeat`,
+									position: 'absolute',
+									right: '5%',
+									top: '-5%',
+									width: 57,
+									height: 67,
+								}}
+							/>
+							<Grid
+								style={{
+									display: 'grid',
+									gridTemplateColumns: '1fr 3fr',
+									alignItems: 'flex-start',
+									gap: 30,
+								}}
+							>
+								{data
+									.sort((a, b) => a.id - b.id)
+									.map((item, index) => (
+										<Fragment key={item.id}>
+											<div />
+											<AchievementsElement item={item} />
+										</Fragment>
+									))}
+							</Grid>
+						</GridContent>
 					) : (
 						<GridContent
 							dataLength={data.length}
@@ -171,7 +168,7 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 									background: `url(${lb_corner.src}) center center no-repeat`,
 									position: 'absolute',
 									left: '-5%',
-									bottom: '-25%',
+									bottom: '-5%',
 									width: 57,
 									height: 67,
 								}}
@@ -186,28 +183,31 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 									height: 67,
 								}}
 							/>
-							{data
-								.sort((a, b) => a.id - b.id)
-								.map((item, index) => (
-									<GridItem item key={item.id}>
-										<StyledGrid>
-											<Typography
-												variant='h3_light'
-												style={{
-													lineHeight: 1,
-													width: 'fit-content',
-													display: 'flex',
-													justifySelf: 'flex-end',
-												}}
-											>
-												{item.attributes.number}
-											</Typography>
-											<Typography variant='text_light' gutterBottom>
-												{item.attributes.title}
-											</Typography>
-										</StyledGrid>
-									</GridItem>
-								))}
+							<Box
+								style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
+							>
+								{data
+									.sort((a, b) => a.id - b.id)
+									.slice(0, middle)
+									.map((item, index) => (
+										<Fragment key={item.id}>
+											<AchievementsElement item={item} />
+										</Fragment>
+									))}
+							</Box>
+
+							<Box
+								style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
+							>
+								{data
+									.sort((a, b) => a.id - b.id)
+									.slice(middle, data.length)
+									.map((item, index) => (
+										<Fragment key={item.id}>
+											<AchievementsElement item={item} />
+										</Fragment>
+									))}
+							</Box>
 						</GridContent>
 					)}
 				</GridContainer>
