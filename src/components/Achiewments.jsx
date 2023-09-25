@@ -81,13 +81,13 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 		<Box
 			style={{
 				position: 'relative',
-				padding: isMobile ? '50px 0% 30%' : isWide ? '5% 0% 16%' : '5% 0% 11%',
+				padding: isMobile ? '50px 0% 100px' : isWide ? '5% 0% 16%' : '5% 0% 11%',
 				margin: 0,
 				background: isShort
 					? `url(${background.src}), #fff`
 					: `url(${background.src}), linear-gradient(to bottom,  #FBFBFB, #FFFFFF)`,
 				backgroundRepeat: 'no-repeat',
-				backgroundPosition: isMobile ? '' : 'center center',
+				backgroundPosition: isMobile ? '50% 0' : 'center center',
 				backgroundSize: isShrink ? 'cover' : '100%',
 			}}
 		>

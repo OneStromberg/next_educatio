@@ -12,12 +12,15 @@ const StyledContainer = styled(Container)`
 	max-width: 100vw;
 	grid-template-columns: 5.5fr 2fr 3.2fr;
 	margin-top: 50px;
+	// box-sizing: border-box;
+	// border: none;
+	// box-shadow: none;
 
 	@media (max-width: 800px) {
+		height: 100%;
 		display: flex;
 		flex-direction: column-reverse;
 		gap: 5vh;
-		grid-template-columns: 1fr;
 		padding: 10% 4%;
 	}
 `
@@ -49,10 +52,11 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 				maxWidth: 'none',
 				minHeight: isMobile ? '850px' : '100svh',
 				height: '100%',
+				width:'100%',
 				justifyContent: 'center',
 				backgroundSize: 'cover',
-				backgroundPosition: isMobile ? '' : 'center center',
-				backgroundRepeat: 'no-repeat no-repeat',
+				backgroundPosition: isMobile ? '25% 0%' : 'center',
+				backgroundRepeat: 'no-repeat',
 				paddingTop: isMobile ? 20 : 0,
 			}}
 		>
@@ -87,15 +91,13 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 
 				<div />
 
-				<div>
-					<Image
-						src={bgURL}
-						alt='image'
-						width={isTablet ? 250 : isWide ? 420 : 300}
-						height={isTablet ? 250 : isWide ? 420 : 300}
-						loading='eager'
-					/>
-				</div>
+				<Image
+					src={bgURL}
+					alt='image'
+					width={isTablet ? 250 : isWide ? 420 : 300}
+					height={isTablet ? 250 : isWide ? 420 : 300}
+					loading='eager'
+				/>
 			</StyledContainer>
 		</Container>
 	)

@@ -68,7 +68,7 @@ const PartnersCarousel = memo(({ isEnglish }) => {
 		<Container>
 			<Box
 				style={{
-					padding: '6% 0',
+					padding: '70px 0',
 					flexDirection: 'column',
 					alignItems: 'center',
 					width: '100%',
