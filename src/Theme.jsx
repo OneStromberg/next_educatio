@@ -113,16 +113,17 @@ const theme = createTheme({
 			fontWeight: 400,
 		},
 		h1: {
-			fontFamily: 'Roboto',
-			fontWeight: 600,
+			fontFamily: 'Roboto Condensed',
+			fontWeight: 700,
 			fontSize: 50,
 			color: '#fff',
 		},
 		h2: {
+			color: '#fff',
 			fontFamily: 'Roboto',
-			fontWeight: 300,
 			fontSize: 18,
 			color: '#fff',
+			lineHeight: 1.75,
 		},
 		h3: {
 			fontFamily: 'Roboto',

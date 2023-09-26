@@ -13,13 +13,13 @@ const StyledContainer = styled(Container)`
 	grid-template-columns: 5.5fr 2fr 3.2fr;
 	margin-top: 50px;
 	height: 100%;
+	padding: 10% 4%;
 
 	@media (max-width: 800px) {
 		height: 100%;
 		display: flex;
 		flex-direction: column-reverse;
 		gap: 5vh;
-		padding: 10% 4%;
 	}
 `
 
@@ -64,7 +64,7 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 						display: 'flex',
 						flexDirection: 'column',
 						gap: 30,
-						paddingBottom: isMobile ? '33%' : '0%',
+						paddingBottom: isMobile ? '33%' : '0',
 					}}
 				>
 					<Typography variant='h1' component='h1' gutterBottom>
