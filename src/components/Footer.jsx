@@ -26,7 +26,7 @@ const Footer = ({ isEnglish, data }) => {
 			style={{
 				background: `url(${background.src})`,
 				height: '100%',
-				padding: isMobile ? '15% 8% 2% 8%' : '4.3% 8%',
+				padding: isMobile ? '15% 8% 5%' : '4.3% 8%',
 				zIndex: 2,
 				border: 'none',
 			}}
