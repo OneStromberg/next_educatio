@@ -50,7 +50,7 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 				backgroundImage: `url(${background.src})`,
 				backgroundColor: `${isShort ? '#fff' : '#FBFBFB'}`,
 				maxWidth: 'none',
-				minHeight: isMobile ? '850px' : '100svh',
+				minHeight: isMobile ? '850px' : '100vh',
 				height: '100%',
 				width:'100%',
 				justifyContent: 'center',
