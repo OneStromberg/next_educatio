@@ -94,8 +94,8 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 				<Image
 					src={bgURL}
 					alt='image'
-					width={isTablet ? 250 : isWide ? 420 : 300}
-					height={isTablet ? 250 : isWide ? 420 : 300}
+					width={isTablet ? 250 : isWide ? 340 : 300}
+					height={isTablet ? 250 : isWide ? 330 : 300}
 					loading='eager'
 				/>
 			</StyledContainer>
