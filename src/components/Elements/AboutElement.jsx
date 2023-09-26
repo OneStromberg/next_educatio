@@ -49,6 +49,7 @@ export default function AboutElement({ index, item, isMobile = { isMobile } }) {
 						display: 'flex',
 						flexDirection: 'column',
 						gap: 5,
+						width: isMobile ? '90%' : '100%',
 					}}
 				>
 					<Typography variant='about_heading' component='h3' gutterBottom>
