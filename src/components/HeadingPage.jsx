@@ -12,9 +12,7 @@ const StyledContainer = styled(Container)`
 	max-width: 100vw;
 	grid-template-columns: 5.5fr 2fr 3.2fr;
 	margin-top: 50px;
-	// box-sizing: border-box;
-	// border: none;
-	// box-shadow: none;
+	height: 100%;
 
 	@media (max-width: 800px) {
 		height: 100%;
@@ -52,7 +50,7 @@ const HeadingPage = ({ isEnglish, data, preferences }) => {
 				maxWidth: 'none',
 				minHeight: isMobile ? '850px' : '100vh',
 				height: '100%',
-				width:'100%',
+				width: '100%',
 				justifyContent: 'center',
 				backgroundSize: 'cover',
 				backgroundPosition: isMobile ? '25% 0%' : 'center',
