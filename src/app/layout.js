@@ -1,6 +1,5 @@
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
-import logo from '@/assets/footter_logo.svg'
 
 const inter = Inter({ subsets: ['cyrillic'] })
 
@@ -34,10 +33,8 @@ export default function RootLayout({ children }) {
 					property='og:description'
 					content='Мережа неформального навчання у Львові'
 				/>
-				<meta property='og:image' content={logo.src} />{' '}
 				<link rel='canonical' href='http://ceducatio.com/' />
-				<link rel='icon' href={logo.src} type='image/svg+xml' />
-				<link rel='alternate icon' href='/favicon.ico' />
+				<link rel='icon' href='/favicon.ico' />
 				<link
 					rel='alternate'
 					type='application/rss+xml'
