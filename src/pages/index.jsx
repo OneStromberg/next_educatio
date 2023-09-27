@@ -73,7 +73,7 @@ const Main = ({
 				<meta charSet='utf-8' />
 				<meta
 					name='google-site-verification'
-					content='X3nEOHz-tdnYIKuG9Pwl2QfTyn-s_29wyc6xW2KF6sU'
+					content='4_iK96bXwRUrxhy6nAm3gIHhi3yz_JDJ6JBEZke6yV0'
 				/>
 				<meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
