@@ -15,7 +15,10 @@ const Centers = ({ isEnglish, data }) => {
 	const pageSubtitle = isEnglish ? 'acting in' : 'діють у'
 
 	return (
-		<div style={{ background: '#FBFBFB', padding: isMobile?'30px 0':'70px 0' }} id='centers'>
+		<div
+			style={{ background: '#FBFBFB', padding: isMobile ? '30px 0' : '70px 0' }}
+			id='centers'
+		>
 			<Container>
 				<Typography variant='h4_blue' component={'h2'} gutterBottom>
 					{pageTitle}

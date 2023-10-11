@@ -58,6 +58,7 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 
 	return (
 		<Box
+			id='achievements'
 			style={{
 				position: 'relative',
 				overflow: 'hidden',
@@ -102,12 +103,7 @@ const Achiewments = ({ isEnglish, data, preferences }) => {
 				/>
 				<GridContainer>
 					<StyledTextContainer>
-						<Typography
-							id='achievements'
-							variant='h4_light'
-							component={'h2'}
-							gutterBottom
-						>
+						<Typography variant='h4_light' component={'h2'} gutterBottom>
 							{pageTitle}
 						</Typography>
 						<Wavy fill={'#E8E7E0'} />
