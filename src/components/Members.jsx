@@ -54,12 +54,6 @@ const Members = ({ isEnglish, data, preferences }) => {
 		? 'Our actions and education'
 		: 'Наші події і навчання'
 
-	console.log(
-		data.sort(
-			(a, b) =>
-				new Date(b.attributes.updated_at) - new Date(a.attributes.updated_at)
-		)
-	)
 	return (
 		<Box
 			id='actions'
