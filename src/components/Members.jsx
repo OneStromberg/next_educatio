@@ -15,11 +15,13 @@ const StyledGrid = styled(Link)`
 	border-radius: 18px;
 	flex-direction: column;
 	align-items: stretch;
-	aspect-ratio: 1.2/1;
-	justify-content: center;
+	aspect-ratio: 1/1;
+	justify-content: space-between;
 	padding: 25px;
+	min-height: 100%;
 	gap: 10px;
 	text-decoration: none;
+	flex: 1;
 	transition: all 0.3s ease;
 	&:hover {
 		box-shadow: 0px 20px 60px 0px rgba(157, 166, 189, 0.8);
@@ -52,6 +54,7 @@ const Members = ({ isEnglish, data, preferences }) => {
 		? 'Our actions and education'
 		: 'Наші події і навчання'
 
+	console.log(data)
 	return (
 		<Box
 			id='services'
@@ -89,7 +92,11 @@ const Members = ({ isEnglish, data, preferences }) => {
 					</Typography>
 					<Wavy fill='#262626' />
 				</div>
-				<Grid container spacing={2} style={{ alignItems: 'stretch' }}>
+				<Grid
+					container
+					spacing={2}
+					style={{ display: 'flex', alignItems: 'stretch' }}
+				>
 					{data
 						.sort((a, b) => b.id - a.id)
 						.map(item => (
@@ -131,7 +138,7 @@ const Members = ({ isEnglish, data, preferences }) => {
 											}}
 											className='text-element'
 										>
-											<SvgBack fill={item.attributes.highlight_type} />
+											<SvgBack fill={item.attributes.hightight_type} />
 											<Typography
 												variant='card_decorated_text'
 												style={{
