@@ -54,7 +54,12 @@ const Members = ({ isEnglish, data, preferences }) => {
 		? 'Our actions and education'
 		: 'Наші події і навчання'
 
-	console.log(data)
+	console.log(
+		data.sort(
+			(a, b) =>
+				new Date(b.attributes.updated_at) - new Date(a.attributes.updated_at)
+		)
+	)
 	return (
 		<Box
 			id='actions'
@@ -98,7 +103,11 @@ const Members = ({ isEnglish, data, preferences }) => {
 					style={{ display: 'flex', alignItems: 'stretch' }}
 				>
 					{data
-						.sort((a, b) => b.id - a.id)
+						.sort(
+							(a, b) =>
+								new Date(b.attributes.updatedAt) -
+								new Date(a.attributes.updatedAt)
+						)
 						.map(item => (
 							<Grid item xs={12} sm={6} md={4} key={item.id}>
 								<StyledGrid

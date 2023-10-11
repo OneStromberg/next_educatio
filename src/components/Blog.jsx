@@ -101,7 +101,11 @@ const Blog = ({ isEnglish, data }) => {
 					}}
 				>
 					{displayedPosts
-						.sort((a, b) => b.id - a.id)
+						.sort(
+							(a, b) =>
+								new Date(b.attributes.updated_at) -
+								new Date(a.attributes.updated_at)
+						)
 						.map(post => (
 							<BlogElement
 								key={post.id}
