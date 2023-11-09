@@ -120,6 +120,7 @@ const DesktopHeader = ({
 	isMenuOpen,
 	setHovered,
 	isHovered,
+	socials,
 }) => (
 	<>
 		<Hidden mdDown>
@@ -148,7 +149,7 @@ const DesktopHeader = ({
 				</StyledButton>
 				<SocialWrapper>
 					<a
-						href='https://www.facebook.com/C.Educatio'
+						href={socials?.attributes?.facebook_link}
 						onMouseEnter={() => setHovered('Facebook')}
 						onMouseLeave={() => setHovered(null)}
 						style={{ height: 23, width: 23 }}
@@ -159,7 +160,7 @@ const DesktopHeader = ({
 						/>
 					</a>
 					<a
-						href='ttps://www.instagram.com/c.educatio.lviv/'
+						href={socials?.attributes?.instagram_link}
 						onMouseEnter={() => setHovered('Instagram')}
 						onMouseLeave={() => setHovered(null)}
 						style={{ height: 23, width: 23 }}
@@ -170,7 +171,7 @@ const DesktopHeader = ({
 						/>
 					</a>
 					<a
-						href='https://www.youtube.com/@c.educatio'
+						href={socials?.attributes?.youtube_link}
 						onMouseEnter={() => setHovered('Youtube')}
 						onMouseLeave={() => setHovered(null)}
 						style={{ height: 23, width: 23 }}
@@ -181,7 +182,7 @@ const DesktopHeader = ({
 						/>
 					</a>
 					<a
-						href='https://tiktok.com/@c.educatio'
+						href={socials?.attributes?.tiktok_link}
 						onMouseEnter={() => setHovered('Tiktok')}
 						onMouseLeave={() => setHovered(null)}
 						style={{ height: 23, width: 23 }}
@@ -493,6 +494,7 @@ const Header = ({ onLanguageToggle, isEnglish, preferences, socials }) => {
 						isMenuOpen={isMenuOpen}
 						setHovered={setHovered}
 						isHovered={isHovered}
+						socials={socials}
 					/>
 					<MobileHeader
 						languageIcon={languageIcon}
